@@ -6,6 +6,7 @@ class cUsuario extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('crm/mUsuario');
+		$this->load->model('crm/mTelefono');
 	}
 	public function index(){
 
@@ -24,30 +25,34 @@ class cUsuario extends CI_Controller
 
 
 //Telefonos
-		$param['Telefono1'] = $this->input->post('Telefono1');
-		$param['TipoTelefono1'] = $this->input->post('TipoTelefono1');
-		$param['Telefono2'] = $this->input->post('Telefono2');
-		$param['TipoTelefono2'] = $this->input->post('TipoTelefono2');
+		$paramTel['Telefono1'] = $this->input->post('Telefono1');
+		$paramTel['TipoTelefono1'] = $this->input->post('TipoTelefono1');
+		$paramTel['Telefono2'] = $this->input->post('Telefono2');
+		$paramTel['TipoTelefono2'] = $this->input->post('TipoTelefono2');
 
 
 //correos
 
-		$param['Correo1'] = $this->input->post('Correo1');
-		$param['TipoCorreo1'] = $this->input->post('TipoCorreo1');
-		$param['Correo2'] = $this->input->post('Correo2');
-		$param['TipoCorreo2'] = $this->input->post('TipoCorreo2');
+		$paramCor['Correo1'] = $this->input->post('Correo1');
+		$paramCor['TipoCorreo1'] = $this->input->post('TipoCorreo1');
+		$paramCor['Correo2'] = $this->input->post('Correo2');
+		$paramCor['TipoCorreo2'] = $this->input->post('TipoCorreo2');
 
 //Direccion
-		$param['Calle'] = $this->input->post('Calle');
-		$param['Numero'] = $this->input->post('Numero');
-		$param['Colonia'] = $this->input->post('Colonia');
-		$param['Municipio'] = $this->input->post('Municipio');
-		$param['Estado'] = $this->input->post('Estado');
-		$param['Cp'] = $this->input->post('Cp');
-		$param['Pais '] = $this->input->post('Pais');
+		$paramDir['Calle'] = $this->input->post('Calle');
+		$paramDir['Numero'] = $this->input->post('Numero');
+		$paramDir['Colonia'] = $this->input->post('Colonia');
+		$paramDir['Municipio'] = $this->input->post('Municipio');
+		$paramDir['Estado'] = $this->input->post('Estado');
+		$paramDir['Cp'] = $this->input->post('Cp');
+		$paramDir['Pais '] = $this->input->post('Pais');
+ 
+ 		$ultimoid=$this->mUsuario->guardar($param);
 
-		$this->mUsuario->guardar($param);
-
-	}
+		if($ultimoid > 0){
+			$paramTel['idUsuario'] = $ultimoid;
+			$this->mTelefono->guardar($paramTel);
+			}
+		}
 }
 ?>

@@ -11,7 +11,7 @@
         <div class="col-md-12 text-center">
           <h2>Registrar Usuario</h2>
         </div>
-        <form method="POST" action="<?php echo base_url();?>cUsuario/guardar"></form>
+        <form method="POST" action="<?php echo base_url();?>cUsuario/guardar">
         <div class="col-md-6 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>Nombre</b></span>
@@ -53,7 +53,7 @@
         <div class="col-md-3 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>2º Telefono</b></span>
-                <input type="text" class="form-control formsNP" id="Telefono2" name="Telefono">
+                <input type="text" class="form-control formsNP" id="Telefono2" name="Telefono2">
                 <select class=" form-control formsNP selectpicker" id="TipoTelefono2" name="TipoTelefono2">
                   <option selected="true" disabled="true">Tipo</option>
                   <option value="Trabajo">Trabajo</option>
@@ -101,8 +101,8 @@
                 <input type="text" class="col-md-2 formsNP2" id="Cp" name="Cp" placeholder="C.P:">
                 <input type="text" class="col-md-3 formsNP2" id="Pais" name="Pais" placeholder="Pais:">
               </div>
-              <input type="submit" name="registrarPersona" class="divsNP formsNP btn btn-primary btn-block" value="Registrar Persona">
         </div>
+              <input type="submit" name="registrarPersona" class="divsNP formsNP btn btn-primary btn-block" value="Registrar Persona">
         </form>
 </div>
 
