@@ -63,8 +63,8 @@
 
 <!-- AdminLTE for demo purposes -->
 <!-- Page script -->
-<script src="<?php echo base_url();?>Js/verNegociacion.js"></script>
-<script>
+<!-- <script src="<?php echo base_url();?>Js/verNegociacion.js"></script>
+ --><script>
   $(function () {
     //Initialize Select2 Elements
     $(".select2").select2();
