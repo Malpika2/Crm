@@ -1,0 +1,31 @@
+ <?php
+
+class cGetPersonas extends CI_Controller
+{
+	
+	function __construct()
+	{
+		parent::__construct();
+		$this->load->model('crm/mGetPersonas');
+	}
+	public function getRepresentantes(){
+		$s = $this->input->post('Cargo');
+		$resultado = $this->mGetPersonas->getRepresentantes($s);
+		echo json_encode($resultado);
+	}
+	public function getContactos(){
+		$s = $this->input->post('Cargo');
+		$resultado = $this->mGetPersonas->getContactos($s);
+		echo json_encode($resultado);
+	}
+	public function getPersonas(){
+		$s = $this->input->post('Cargo');
+		$resultado = $this->mGetPersonas->getPersonas();
+		echo json_encode($resultado);
+	}
+	public function getPersonasPorEmpresa(){
+		$s = $this->input->post('idEmpresa');
+		$resultado = $this->mGetPersonas->getPersonasPorEmpresa($s);
+		echo json_encode($resultado);
+	}
+}

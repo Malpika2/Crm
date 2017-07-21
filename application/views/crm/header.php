@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>CRM</title>
+
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -12,24 +13,25 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- daterange picker -->
+  <!-- bootstrap datepicker -->
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/datepicker/datepicker3.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/iCheck/all.css">
+  <!-- Bootstrap Color Picker -->
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/colorpicker/bootstrap-colorpicker.min.css">
+  <!-- Bootstrap time Picker -->
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/timepicker/bootstrap-timepicker.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/select2/select2.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url();?>assets/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="<?php echo base_url();?>assets/dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" href="<?php echo base_url();?>assets/dist/css/personalizado/style.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/iCheck/flat/blue.css">
-  <!-- Morris chart -->
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/morris/morris.css">
-  <!-- jvectormap -->
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
-  <!-- Date Picker -->
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/datepicker/datepicker3.css">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/daterangepicker/daterangepicker.css">
-  <!-- bootstrap wysihtml5 - text editor -->
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+<!-- DataTables -->
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/dataTables/dataTables.bootstrap.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -38,6 +40,7 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
+
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
@@ -45,9 +48,9 @@
     <!-- Logo -->
     <a href="#" class="logo" style="height: 59px">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>C</b>RM</span>
+      <span class="logo-mini"><b></b>SPP</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>LOGO</b></span>
+      <span class="logo-lg text-center"><img src="<?php echo base_url();?>assets/dist/img/FUNDEPPO.jpg" class="img-responsive" style="height: 74px; width: 140px; display:inline;"></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -59,7 +62,7 @@
       <!-- search form -->
       <form action="#" method="get" class="sidebar-form" style="margin: 10px 10px; border:none">
         <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Buscar(Contacto, Prospección)...  ">
+          <input type="text" name="q" class="form-control" placeholder="Buscar( Personas o Empresas)...  ">
               <span class="input-group-btn">
                 <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
                 </button>
@@ -81,12 +84,12 @@
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
                   <li>
-                    <a href="<?php echo base_url();?>cContactos/nuevaPersona">
+                    <a href="<?php echo base_url();?>cPersona">
                       <i class="fa fa-user-plus text-aqua"></i>Persona
                     </a>
                   </li>
                   <li>
-                    <a href="<?php echo base_url();?>cContactos/NuevaEmpresa">
+                    <a href="<?php echo base_url();?>cEmpresa">
                       <i class="fa fa-university text-yellow"></i>Empresa
                     </a>
                   </li>
@@ -110,42 +113,43 @@
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
                   <li>
-                    <a href="#">
+                    <a href="<?php echo base_url();?>cPersona/verEliminarPersona">
                       <i class="fa  fa-user-times text-aqua"></i>Persona
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="<?php echo base_url();?>cEmpresa/verEliminarEmpresa">
                       <i class="fa  fa-university text-yellow"></i>Empresa
                     </a>
                   </li>
                   <li>
-                    <a href="#">
-                      <i class="fa fa-briefcase text-red"></i>Prospección
+                    <a href="<?php echo base_url();?>cNegociacion/verEliminarNegociacion">
+                      <i class="fa fa-briefcase text-red"></i>Negociacion
                     </a>
                   </li>
                 </ul>
               </li>
             </ul>
           </li>
+
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="<?php echo base_url();?>assets/dist/img/<?php echo $this->session->userdata('s_Foto');?>" class="user-image" alt="User Image">
               <span class="hidden-xs"></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="<?php echo base_url();?>assets/dist/img/<?php echo $this->session->userdata('s_Foto');?>" class="img-circle" alt="User Image">
 
                 <p>
-                  Nombre Usuario
-                  <small>Puesto Usuario</small>
+                  <?php echo $this->session->userdata('s_Usuario');?>
+                  <small><?php echo $this->session->userdata('s_Puesto');?></small>
                 </p>
               </li>
               <!-- Menu Footer-->
-              <li class="user-footer">
+              <li class="user-footer" style="background-color: black">
                 <div class="pull-left">
                   <a href="#" class="btn btn-default btn-flat">Editar Datos</a>
                 </div>

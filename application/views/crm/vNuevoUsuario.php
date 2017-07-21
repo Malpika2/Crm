@@ -34,8 +34,8 @@
               <div class="input-group">
                 <span class="input-group-addon"><b>Puesto</b></span>
                 <select class=" form-control formsNP selectpicker" title="Selecciona un Puesto..." id="Puesto" name="Puesto">
-                  <option value="Contacto">Administrador</option>
-                  <option value="Representante">Encargado</option>
+                  <option value="Administrador">Administrador</option>
+                  <option value="Encargado">Encargado</option>
                 </select>
               </div>
         </div>

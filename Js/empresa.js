@@ -1,0 +1,40 @@
+$.post(baseurl+"cGetPersonas/getContactos",
+	{ 
+		Cargo:'Contacto'
+	},
+	function(data){
+		var emp = JSON.parse(data);
+		$.each(emp,function(i,item){
+			$('#Contacto').append('<option value="'+item.idPersona+'">'+item.Nombre+'</option>')
+			});
+	});
+
+$.post(baseurl+"cGetPersonas/getRepresentantes",
+	{
+		Cargo:'Representante'
+	},
+	function(data){
+		var emp = JSON.parse(data);
+		$.each(emp,function(i,item){
+			$('#Representante').append('<option value="'+item.idPersona+'">'+item.Nombre+'</option>')
+			});
+
+	});
+
+
+$(document).ready(function() {
+$('#ListaEmpresas').on('click','#btnRealizadaEmpresas', function() {
+      var Empresaid = $(this).val();
+      alert(Empresaid);
+              $.ajax({
+              type: 'POST',
+              url: baseurl+"cEmpresa/EliminarEmpresa" ,
+              data:{Empresaid:Empresaid},
+              success: function(data) {
+              	alert('Persona Eliminada');
+              	location.reload();
+              }
+          });
+          return true;
+    });
+});

@@ -10,8 +10,9 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12 text-center">
-          <h2>Registrar Empresa<small> ó <a href="<?php echo base_url();?>cContactos/nuevaPersona">Registrar persona</a></small></h2>
+          <h2>Registrar Empresa<small> ó <a href="<?php echo base_url();?>cPersona">Registrar persona</a></small></h2>
         </div>
+        <form method="POST" action="<?php echo base_url();?>cEmpresa/guardar">
         <div class="col-md-6 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>Razón Social</b></span>
@@ -35,48 +36,63 @@
         <div class="col-md-6 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>Representante</b></span>
-                <select class=" form-control formsNP selectpicker" id="Representante" name="Representante">
-                  <option selected="true" disabled="true">Representante</option>
-                  <option value="rep">Rep</option>
-                </select>              
+                <select class=" form-control formsNP" id="Representante" name="Representante">
+                <option selected="true" disabled="true" value="0">Representante</option>
+                </select>
+
               </div>
         </div>
         <div class="col-md-6 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>Contacto</b></span>
-                <select class=" form-control formsNP selectpicker" id="Contacto" name="Contacto">
-                  <option selected="true" disabled="true">Contacto</option>
-                  <option value="Contacto">Contacto</option>
-                </select>              
+                <select class=" form-control formsNP" id="Contacto" name="Contacto">
+                <option selected="true" disabled="true" value="0">Contacto</option>
+                </select>
               </div>
         </div>
         <div class="col-md-3 divsNP">
               <div class="input-group">
-                <span class="input-group-addon"><b>Telefono</b></span>
-                <input type="text" class="form-control formsNP" id="Telefono" name="Telefono">
-                <select class=" form-control formsNP selectpicker" id="TipoTelefono" name="TipoTelefono">
+                <span class="input-group-addon"><b>1º Telefono</b></span>
+                <input type="text" class="form-control formsNP" id="Telefono1" name="Telefono1">
+                <select class=" form-control formsNP selectpicker" id="TipoTelefono1" name="TipoTelefono1">
                   <option selected="true" disabled="true">Tipo</option>
-                  <option value="Contacto">Trabajo</option>
-                  <option value="Representante">Personal</option>
+                  <option value="Trabajo">Trabajo</option>
+                  <option value="Personal">Personal</option>
               </select>
               </div>
-        </div>
-        <div class="col-md-3 divsNP text-center">
-          aqui se mostraran los telefonos ingresados
         </div>
         <div class="col-md-3 divsNP">
               <div class="input-group">
-                <span class="input-group-addon"><b>Email</b></span>
-                <input type="text" class="form-control formsNP" id="Correo" name="Correo">
-                <select class=" form-control formsNP selectpicker" id="TipoCorreo" name="TipoCorreo">
+                <span class="input-group-addon"><b>2º Telefono</b></span>
+                <input type="text" class="form-control formsNP" id="Telefono2" name="Telefono2">
+                <select class=" form-control formsNP selectpicker" id="TipoTelefono2" name="TipoTelefono2">
                   <option selected="true" disabled="true">Tipo</option>
-                  <option value="Contacto">Trabajo</option>
-                  <option value="Representante">Personal</option>
+                  <option value="Trabajo">Trabajo</option>
+                  <option value="Personal">Personal</option>
               </select>
               </div>
         </div>
-        <div class="col-md-3 divsNP text-center">
-          aqui se mostraran los correos ingresados
+        <div class="col-md-3 divsNP">
+              <div class="input-group">
+                <span class="input-group-addon"><b>1º Email</b></span>
+                <input type="text" class="form-control formsNP" id="Correo1" name="Correo1">
+                <select class=" form-control formsNP selectpicker" id="TipoCorreo1" name="TipoCorreo1">
+                  <option selected="true" disabled="true">Tipo</option>
+                  <option value="Trabajo">Trabajo</option>
+                  <option value="Personal">Personal</option>
+              </select>
+              </div>
+        </div>
+        <div class="col-md-3 divsNP">
+              <div class="input-group">
+                <span class="input-group-addon"><b>2º Email</b></span>
+                <input type="text" class="form-control formsNP" id="Correo2" name="Correo2">
+                <select class=" form-control formsNP selectpicker" id="TipoCorreo2" name="TipoCorreo2">
+                  <option selected="true" disabled="true">Tipo</option>
+                  <option value="Trabajo">Trabajo</option>
+                  <option value="Personal">Personal</option>
+              </select>
+              </div>
         </div>
         <div class="col-md-6 divsNP">
               <div class="input-group">
@@ -96,7 +112,6 @@
                 <input type="text" class="col-md-5 formsNP2" id="Calle" name="Calle" placeholder="Calle">
                 <input type="text" class="col-md-3 formsNP2" id="Numero" name="Numero" placeholder="Número">
                 <input type="text" class="col-md-4 formsNP2" id="Colonia" name="Colonia" placeholder="Colonia">
-
                 <input type="text" class="col-md-4 formsNP2" id="Municipio" name="Municipio" placeholder="Municipio">
                 <input type="text" class="col-md-3 formsNP2" id="Estado" name="Estado" placeholder="Estado">
                 <input type="text" class="col-md-2 formsNP2" id="Cp" name="Cp" placeholder="C.P:">
@@ -104,7 +119,11 @@
               </div>
               <input type="submit" name="registrarPersona" class="divsNP formsNP btn btn-primary btn-block" value="Registrar Empresa">
         </div>
-</div>
+        </form>
+      </div>
 
       </div>
     </section>
+<script type="text/javascript">
+  var baseurl = "<?php echo base_url();?>";
+</script>

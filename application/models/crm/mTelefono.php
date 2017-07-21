@@ -9,6 +9,8 @@ class mTelefono extends CI_Model
 	}
 	public function guardar($paramTel){
 		$camposT = array(
+			'idPersona' => $paramTel['idPersona'],
+			'idEmpresa' => $paramTel['idEmpresa'],
 			'idUsuario' => $paramTel['idUsuario'],
 			'Telefono1' => $paramTel['Telefono1'],
 			'TipoTelefono1' => $paramTel['TipoTelefono1'],
@@ -24,4 +26,3 @@ class mTelefono extends CI_Model
 			}
 	}
 }
-?>
