@@ -320,6 +320,7 @@ $('#form, #fat, #formNegociacion').submit(function() {
           });
           return false;
       });
+
 //Mostrar Negociaciones
 $.post(baseurl+"cPersona/getNegociaciones",
   {

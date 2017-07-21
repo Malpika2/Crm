@@ -289,3 +289,8 @@
 
       </div>
     </section>
+    <script type="text/javascript">
+<script type="text/javascript">
+  var idUsuario = "<?php echo $this->session->userdata('s_idUsuario');?>";
+  var baseurl = "<?php echo base_url();?>"
+</script>    </script>

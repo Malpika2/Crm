@@ -63,8 +63,7 @@
 
 <!-- AdminLTE for demo purposes -->
 <!-- Page script -->
-
-
+<script src="<?php echo base_url();?>Js/verNegociacion.js"></script>
 <script>
   $(function () {
     //Initialize Select2 Elements
@@ -161,10 +160,12 @@
 <!-- Scripts del proyecto -->
 <?php if ($this->uri->segment(1)=='cPersona') {?>
   <script src="<?php echo base_url();?>Js/persona.js"></script>
-  <script src="<?php echo base_url();?>Js/verPersona.js"></script>
-    <script src="<?php echo base_url();?>Js/negociacion.js"></script>
-
+  <script src="<?php echo base_url();?>Js/negociacion.js"></script>
 <?php } ?>
+<?php if ($this->uri->segment(2)=='verPersona') {?>
+  <script src="<?php echo base_url();?>Js/verPersona.js"></script>
+<?php } ?>
+
 
 <?php if ($this->uri->segment(1)=='cEmpresa') {?>
   <script src="<?php echo base_url();?>Js/empresa.js"></script>
@@ -185,7 +186,6 @@
   <script src="<?php echo base_url();?>Js/verTarea.js"></script>
 <?php } ?>
 <?php if ($this->uri->segment(2)=='verNegociacion') {?>
-  <script src="<?php echo base_url();?>Js/verNegociacion.js"></script>
 <?php } ?>
 <?php if ($this->uri->segment(1)=='cTareas') {?>
   <script src="<?php echo base_url();?>Js/Tareas.js"></script>
@@ -201,7 +201,7 @@
       "lengthChange": false,
       "searching": true,
       "ordering": true,
-      "info": true,
+      "info": false,
       "autoWidth": true,
           oLanguage: {
             "sProcessing":     "Procesando...",
