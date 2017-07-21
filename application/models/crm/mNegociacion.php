@@ -87,4 +87,21 @@ class mNegociacion extends CI_Model
 		return $s->result();
 
 	}
+		public function getNegociaciones(){
+			$this->db->select('*');
+			$this->db->from('Negociaciones');
+			$this->db->join('Usuarios','Negociaciones.PersonaCargo = Usuarios.idUsuario') ;
+			$s = $this->db->get();
+			return $s->result();
+	}
+		public function EliminarNegociacion($s){
+		// $this->db->delete('Empresas', array('idEmpresa'=>$s));
+$this->db->set('Status','Inactivo');
+$this->db->where('idNegociacion',$s);
+$this->db->update('Negociaciones'); 
+// $this->db->where('idEmpresas',$s);
+// $this->db->delete('Empresas');
+		return true;
+	}
+
 }

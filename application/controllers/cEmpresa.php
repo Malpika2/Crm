@@ -229,11 +229,8 @@ class cEmpresa extends CI_Controller
 	}
 		public function EliminarEmpresa(){
 		$s = $this->input->post('Empresaid');
-		$result = $this->mEmpresa->EliminarPersona($s);
+		$result = $this->mEmpresa->EliminarEmpresa($s);
 	}
-		public function eliminarTareaInterna(){
-		$s = $this->input->post('Tareaid');
-		$result= $this->mTareas->eliminarTareaInterna($s);
-	}
+
 
 }

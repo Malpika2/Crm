@@ -30,8 +30,13 @@ class mEmpresa extends CI_Model
 			{return false;}
 
 	}
-	public function EliminarPersona($s){
-		$this->db->delete('Empresas', array('idEmpresa'=>$s));
+	public function EliminarEmpresa($s){
+		// $this->db->delete('Empresas', array('idEmpresa'=>$s));
+$this->db->set('sitReg','0');
+$this->db->where('idEmpresa',$s);
+$this->db->update('Empresas'); 
+// $this->db->where('idEmpresas',$s);
+// $this->db->delete('Empresas');
 		return true;
 	}
 }

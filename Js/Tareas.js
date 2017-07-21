@@ -411,7 +411,9 @@ $.post(baseurl+"cGetPersonas/getPersonas",
 function(data){
   var emp= JSON.parse(data);
   $.each(emp,function(i,item){
-    $('#PersonasPart').append('<option value="'+item.idPersona+'">'+item.Nombre+' '+item.Paterno+'</option>')
+          if(item.Status=='Inactivo'){}
+      else {
+    $('#PersonasPart').append('<option value="'+item.idPersona+'">'+item.Nombre+' '+item.Paterno+'</option>')}
   });
 });
 

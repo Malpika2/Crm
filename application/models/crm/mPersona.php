@@ -32,7 +32,14 @@ class mPersona extends CI_Model
 
 	}	 
 	public function eliminarPersona($s){
- 		$this->db->delete('Personas',array('idPersona'=> $s)); 
-		return '1';
+ 		// $this->db->delete('Personas', array('idPersona' => $s));
+$this->db->set('Status','Inactivo');
+$this->db->where('idPersona',$s);
+$this->db->update('Personas'); 
+// $this->db->where('idPersona',$s);
+// $this->db->delete('Personas');
+return '1';
+					// $error = $this->db->error(); 	
+		
 	 }
 }

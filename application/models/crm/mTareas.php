@@ -194,8 +194,4 @@ public function tareaNoRealizada($s){
  		$this->db->delete('Tareas', array('idTarea' => $s)); 
  		return '1';
 	 }
-	 public function eliminarPersona($s){
- 		$this->db->delete('Personas',array('idPersona'=> $s)); 
-		return '1';
-	 }
 }

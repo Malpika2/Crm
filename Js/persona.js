@@ -12,13 +12,13 @@ $.post(baseurl+"cGetEmpresas/getEmpresas",
 $(document).ready(function() {
 $('#ListaPersonas').on('click','#btnRealizadaPersonas', function() {
 			var Personaid = $(this).val();
-			              	alert(Personaid);
               $.ajax({
               type: 'POST',
               url: baseurl+"cPersona/eliminarPersona" ,
               data:{Personaid:Personaid},
               success: function(data) {
-              	location.reload();
+              	alert('Persona Eliminada');
+              	location.reload(true);
               }
           });
           return true;

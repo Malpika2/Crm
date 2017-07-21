@@ -21,17 +21,19 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Titulo Tarea</th>
-                  <th>Descripción</th>
-                  <th>Usuario</th>
-                  <th>Prioridad</th>
-                  <th>Fecha Limite</th>
+                  <th>Razon Social</th>
+                  <th>Tipo</th>
+                  <th>Skype</th>
+                  <th>Sitio Web</th>
+                  <th>Fecha Registro</th>
                   <th>Eliminar</th>
                 </tr>
                 </thead>
                 <tbody id="ListaEmpresas">
                 <?php
+
                   foreach ($Empresa as $Empresa) {
+                    if ($Empresa->sitReg==1) {
                       echo '<tr>
                               <td align="left">
                                 '.$Empresa->RazonSocial.'
@@ -53,6 +55,7 @@
                               </td>
                             </tr>';
                   }
+                }
                 ?>
                 <tr>
                   <td></td>
@@ -72,3 +75,7 @@
       </div>
       <!-- //ROW -->
     </section>
+    <script type="text/javascript">
+  var idUsuarioActivo = "<?php echo $this->session->userdata('s_idUsuario');?>";
+  var baseurl = "<?php echo base_url();?>"
+</script>

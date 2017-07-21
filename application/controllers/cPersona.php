@@ -198,7 +198,7 @@ class cPersona extends CI_Controller
 	}
 	public function eliminarPersona(){
 		$s = $this->input->post('Personaid');
-		$result = $this->mTareas->eliminarPersona($s);
-	}
+		$result=$this->mPersona->eliminarPersona($s);
+		}
 
 }

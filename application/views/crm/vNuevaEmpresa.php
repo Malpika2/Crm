@@ -109,13 +109,13 @@
         <div class="col-md-12 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>Direccion</b></span>
-                <input type="text" class="col-md-5 formsNP2" id="Calle" name="Calle" placeholder="Calle">
-                <input type="text" class="col-md-3 formsNP2" id="Numero" name="Numero" placeholder="Número">
-                <input type="text" class="col-md-4 formsNP2" id="Colonia" name="Colonia" placeholder="Colonia">
-                <input type="text" class="col-md-4 formsNP2" id="Municipio" name="Municipio" placeholder="Municipio">
-                <input type="text" class="col-md-3 formsNP2" id="Estado" name="Estado" placeholder="Estado">
-                <input type="text" class="col-md-2 formsNP2" id="Cp" name="Cp" placeholder="C.P:">
-                <input type="text" class="col-md-3 formsNP2" id="Pais" name="Pais" placeholder="Pais:">
+                <input type="text" class="col-md-8 formsNP2" id="Calle" name="Calle" placeholder="Calle">
+                <input type="text" class="col-md-4 formsNP2" id="Numero" name="Numero" placeholder="Número">
+                <input type="hidden" class="col-md-4 formsNP2" id="Colonia" name="Colonia" placeholder="Colonia" value="">
+                <input type="hidden" class="col-md-4 formsNP2" id="Municipio" name="Municipio" placeholder="Municipio" value="">
+                <input type="text" class="col-md-4 formsNP2" id="Estado" name="Estado" placeholder="Estado">
+                <input type="text" class="col-md-4 formsNP2" id="Cp" name="Cp" placeholder="C.P:">
+                <input type="text" class="col-md-4 formsNP2" id="Pais" name="Pais" placeholder="Pais:">
               </div>
               <input type="submit" name="registrarPersona" class="divsNP formsNP btn btn-primary btn-block" value="Registrar Empresa">
         </div>

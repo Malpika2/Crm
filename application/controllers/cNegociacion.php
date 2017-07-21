@@ -72,10 +72,15 @@ class cNegociacion extends CI_Controller
 		}
 	}
 		public function verEliminarNegociacion(){
+		$data['Negociacion'] = $this->mNegociacion->getNegociaciones();
 		$this->load->view('crm/header');
 		$this->load->view('crm/menu');
-		$this->load->view('crm/vEliminarNegociacion');
+		$this->load->view('crm/vEliminarNegociacion',$data);
 		$this->load->view('crm/footer');
+	}
+		public function EliminarNegociacion(){
+		$s = $this->input->post('Negociacionid');
+		$result = $this->mNegociacion->EliminarNegociacion($s);
 	}
 }
 

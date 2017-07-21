@@ -28,6 +28,8 @@ $.post(baseurl+"cGetPersonas/getPersonas",
 	function(data){
 		var emp = JSON.parse(data);
 		$.each(emp,function(i,item){
+            if(item.Status=='Inactivo'){}
+      else {
 			$('#listaPersonas').append(
         '<a href="'+baseurl+'cPersona/verPersona/'+item.idPersona+'">'+
           '<div class="info-box bg-green">'+
@@ -40,7 +42,7 @@ $.post(baseurl+"cGetPersonas/getPersonas",
               '<span class="progress-description">'+item.Cargo+'</span>'+
             '</div>'+
           '</div>'+
-          '</a>')
+          '</a>')}
 			});
 	});
 

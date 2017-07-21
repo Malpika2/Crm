@@ -26,7 +26,7 @@ $('#ListaTareasInternas').on('click','#btnRealizada', function() {
       var Tareaid = $(this).val();
               $.ajax({
               type: 'POST',
-              url: baseurl+"cTareasInternas/eliminarTareaInterna" ,
+              url: baseurl+"cTareasInternas/btnRealizadaNegociacion" ,
               data:{Tareaid:Tareaid},
               success: function(data) {
               	alert('Tarea Eliminada');

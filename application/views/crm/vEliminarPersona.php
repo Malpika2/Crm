@@ -8,31 +8,32 @@
     <!-- Main content -->
     <section class="content">
       <div class="row">
-      <h3>Tareas Internas</h3>
       <div class="col-md-12">
         <div class="col-md-12">
           <div class="callout callout-default">
             <div class="box">                    
             <div class="box-header">
-              <h3 class="box-title">LISTADO COMPLETO DE TAREAS INTERNAS</h3>
-                      <button id="btn_nTarea" class="btn btn-primary pull-right " data-toggle="modal" data-target="#ModalTarea"><i class="fa fa-plus fa-x2"></i> Nueva Tarea</button>
+              <h3 class="box-title">LISTADO COMPLETO DE PERSONAS</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Titulo Tarea</th>
-                  <th>Descripción</th>
-                  <th>Usuario</th>
-                  <th>Prioridad</th>
-                  <th>Fecha Limite</th>
+                  <th>Nombre</th>
+                  <th>Cargo</th>
+                  <th>Skype</th>
+                  <th>Status</th>
+                  <th>Fecha Registro</th>
                   <th>Eliminar</th>
                 </tr>
                 </thead>
                 <tbody id="ListaPersonas">
                 <?php
                   foreach ($Persona as $Persona) {
+                    if ($Persona->Status=='Inactivo') {
+                      
+                    }else{
                       echo '<tr>
                               <td align="left">
                                 '.$Persona->Nombre.' '.$Persona->Paterno.'
@@ -53,7 +54,8 @@
                                 <button class="btn btn-danger btn-xs" id="btnRealizadaPersonas" name="btnRealizadaPersonas" value="'.$Persona->idPersona.'"><i class="fa fa-trash"></i></button>
                               </td>
                             </tr>';
-                  }
+                            }
+                    }
                 ?>
                 <tr>
 

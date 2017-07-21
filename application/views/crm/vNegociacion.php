@@ -37,6 +37,9 @@
 .Confirmado{
   color:#24c631;
 }
+.Default{
+  color: black;
+}
 
 </style>
     <!-- Main content -->
@@ -240,9 +243,11 @@
                     if ($Negociaciones->NegStatus=='Interes en participar confirmado') {
                         $ClaseNeg='Confirmado';
                         }
-
-                 
-                  echo 
+                    if ($Negociaciones->NegStatus=='Inactivo') {
+                        $ClaseNeg='hidden';
+                    }               
+                    if ($Negociaciones->NegStatus!='Inactivo') {
+                        echo 
                 '<tr>
                   <td class="text-center" style="padding:6px 0px">
                     <i class="fa fa-briefcase fa-4x"></i>
@@ -271,6 +276,10 @@
                     </td>
               </tr>
               ';
+                    }
+
+                 
+                
                 }?>
               </table>
             </div>

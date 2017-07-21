@@ -5,7 +5,9 @@ $.post(baseurl+"cGetPersonas/getContactos",
 	function(data){
 		var emp = JSON.parse(data);
 		$.each(emp,function(i,item){
-			$('#Contacto').append('<option value="'+item.idPersona+'">'+item.Nombre+'</option>')
+						if(item.Status=='Inactivo'){}
+			else {
+			$('#Contacto').append('<option value="'+item.idPersona+'">'+item.Nombre+'</option>')}
 			});
 	});
 
@@ -16,7 +18,11 @@ $.post(baseurl+"cGetPersonas/getRepresentantes",
 	function(data){
 		var emp = JSON.parse(data);
 		$.each(emp,function(i,item){
+			if(item.Status=='Inactivo'){}
+			else {
+			$('#Contacto').append('<option value="'+item.idPersona+'">'+item.Nombre+'</option>')
 			$('#Representante').append('<option value="'+item.idPersona+'">'+item.Nombre+'</option>')
+			}
 			});
 
 	});
@@ -25,13 +31,11 @@ $.post(baseurl+"cGetPersonas/getRepresentantes",
 $(document).ready(function() {
 $('#ListaEmpresas').on('click','#btnRealizadaEmpresas', function() {
       var Empresaid = $(this).val();
-      alert(Empresaid);
               $.ajax({
               type: 'POST',
               url: baseurl+"cEmpresa/EliminarEmpresa" ,
               data:{Empresaid:Empresaid},
               success: function(data) {
-              	alert('Persona Eliminada');
               	location.reload();
               }
           });
