@@ -70,9 +70,12 @@ $('#EmpresaNegociacion').change(function(){
 					idEmpresa:id
 				},
 				function(data){
+					alert(data);
 					var emp = JSON.parse(data);
 					$.each(emp,function(i,item){
-						if(item.Status=='Inactivo'){}
+						if(item.Status=='Inactivo'){
+
+						}
 						else {
 						$('#PersonaContacto').append('<option value="'+item.idPersona+'">'+item.Nombre+'</option>')}
 						});

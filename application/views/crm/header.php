@@ -50,7 +50,10 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b></b>SPP</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg text-center"><img src="<?php echo base_url();?>assets/dist/img/FUNDEPPO.jpg" class="img-responsive" style="height: 74px; width: 140px; display:inline;"></span>
+      <span class="logo-lg text-center">
+     <b>R.P.S.E</b>
+      <!-- <img src="<?php echo base_url();?>assets/dist/img/FU<!-- NDEPPO.jpg" class="img-responsive" style="height: 74px; width: 140px; display:inline;"> -->
+      </span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -135,13 +138,13 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="<?php echo base_url();?>assets/dist/img/<?php echo $this->session->userdata('s_Foto');?>" class="user-image" alt="User Image">
+              <img src="<?php echo base_url();?>assets/dist/img/avatar04.png" class="user-image" alt="User Image">
               <span class="hidden-xs"></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="<?php echo base_url();?>assets/dist/img/<?php echo $this->session->userdata('s_Foto');?>" class="img-circle" alt="User Image">
+                <img src="<?php echo base_url();?>assets/dist/img/avatar04.png" class="img-circle" alt="User Image">
 
                 <p>
                   <?php echo $this->session->userdata('s_Usuario');?>

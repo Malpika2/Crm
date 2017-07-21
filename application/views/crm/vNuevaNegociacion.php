@@ -30,7 +30,7 @@
                   <div class="col-md-12 divsNP">
                     <div class="input-group">
                       <span class="input-group-addon"><b>Nombre de la negociación</b></span>
-                      <input type="text" class="form-control formsNP" id="NombreNegociacion" name="NombreNegociacion">
+                      <input type="text" class="form-control formsNP" id="NombreNegociacion" name="NombreNegociacion" required>
                     </div>
                   </div>
                   <div class="col-md-6 divsNP">
@@ -52,13 +52,13 @@
                   <div class="col-md-6 divsNP">
                         <div class="input-group">
                           <span class="input-group-addon"><b>Motivo</b></span>
-                          <input type="text" class="form-control formsNP" id="Motivo" name="Motivo">
+                          <textarea rows="6" class="form-control formsNP" id="Motivo" name="Motivo" required></textarea>
                         </div>
                   </div>
                   <div class="col-md-3 divsNP">
                         <div class="input-group">
                           <span class="input-group-addon"><b>Prioridad</b></span>
-                          <select class=" form-control formsNP selectpicker" id="Prioridad" name="Prioridad">
+                          <select class=" form-control formsNP selectpicker" id="Prioridad" name="Prioridad" required>
                             <option selected="true" disabled="true">Prioridad</option>
                             <option value="Baja">Baja</option>
                             <option value="Media">Media</option>
@@ -69,7 +69,7 @@
                 <div class="col-md-3 divsNP">
                   <div class="input-group">
                     <span class="input-group-addon"><b>Status</b></span>
-                    <select class=" form-control formsNP selectpicker" id="Status" name="Status">
+                    <select class=" form-control formsNP selectpicker" id="Status" name="Status" required>
                       <option selected="true" disabled="true">Status</option>
                       <option value="Avanzado">Avanzado</option>
                       <option value="Cancelado">Cancelado</option>
@@ -93,13 +93,13 @@
                 <div class="col-md-6 divsNP">
                       <div class="input-group">
                         <span class="input-group-addon"><b>Fecha limite aproximada</b></span>
-                          <input type="date" class="form-control pull-right" id="FechaLimite" name="FechaLimite">
+                          <input type="date" class="form-control pull-right" id="FechaLimite" name="FechaLimite" required>
                       </div>
                 </div>
                 <div class="col-md-12 divsNP">
                       <div class="input-group">
                         <span class="input-group-addon"><b>Detalles</b></span>
-                        <textarea class="form-control formsNP" id="Detalles" name="Detalles"></textarea>
+                        <textarea class="form-control formsNP" id="Detalles" name="Detalles" required></textarea>
                       </div>
                       <input type="submit" name="registrarPersona" class="divsNP formsNP btn btn-primary btn-block" value="Registrar Negociación">
 

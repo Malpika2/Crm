@@ -35,17 +35,17 @@
         </div>
         <div class="col-md-6 divsNP">
               <div class="input-group">
-                <span class="input-group-addon"><b>Representante</b></span>
-                <select class=" form-control formsNP" id="Representante" name="Representante">
+                <span class="input-group-addon"><button style="padding: 0px" type="none"><i class="fa fa-plus-square"></i></button> Representante</b></span>
+                <select class=" form-control formsNP" id="Representante" name="Representante" required>
                 <option selected="true" disabled="true" value="0">Representante</option>
+                <option value="Agregar">Agregar Nuevo</option>
                 </select>
-
               </div>
         </div>
         <div class="col-md-6 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>Contacto</b></span>
-                <select class=" form-control formsNP" id="Contacto" name="Contacto">
+                <select class=" form-control formsNP" id="Contacto" name="Contacto" required>
                 <option selected="true" disabled="true" value="0">Contacto</option>
                 </select>
               </div>
@@ -121,9 +121,30 @@
         </div>
         </form>
       </div>
-
       </div>
     </section>
+
+<!-- Modal -->
+<div id="ModalNPersona" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <script type="text/javascript">
   var baseurl = "<?php echo base_url();?>";
 </script>

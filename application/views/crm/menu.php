@@ -5,7 +5,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="<?php echo base_url();?>assets/dist/img/<?php echo $this->session->userdata('s_Foto');?>" class="img-circle" alt="User Image">
+          <img src="<?php echo base_url();?>assets/dist/img/avatar04.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p class="h5"></p><?php echo $this->session->userdata('s_Usuario');?> 
