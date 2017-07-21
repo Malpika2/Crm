@@ -23,6 +23,7 @@ class mTareas extends CI_Model
 		'idUsuarioCrea' => $param['idUsuarioCrea']);
 
 		$this->db->insert('Tareas',$campos);
+		
 		if ($this->db->affected_rows() > 0) {
 			return $this->db->insert_id();				
 			}

@@ -218,6 +218,7 @@
             <div class="row">
               <table class="table table-hover">
                 <?php foreach ($row_Negociaciones as $Negociaciones) {
+                  $ClaseNeg="";
 
                    if (($Negociaciones->NegStatus)=='Avanzado') {
                         $ClaseNeg='Avanzado';
@@ -244,7 +245,7 @@
                         $ClaseNeg='Confirmado';
                         }
                     if ($Negociaciones->NegStatus=='Inactivo') {
-                        $ClaseNeg='hidden';
+                        $ClaseNeg='Inactivo';
                     }               
                     if ($Negociaciones->NegStatus!='Inactivo') {
                         echo 

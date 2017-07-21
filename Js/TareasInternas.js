@@ -6,31 +6,31 @@ $.post(baseurl+"cGetUsuarios/getUsuarios",
 			});
 });
 
-$('#form, #fat, #formTareasInternas').submit(function() {
-          $.ajax({
-              type: 'POST',
-              url: $(this).attr('action'),
-              data: $(this).serialize(),
-              success: function(data) {
-                $("#formTareasInternas")[0].reset();
-                $("#formTareasInternas").val(null).trigger("change");
-                $("#ModalTarea").modal("hide");
-              }
-          });
+// $('#form, #fat, #formTareasInternas').submit(function() {
+//           $.ajax({
+//               type: 'POST',
+//               url: $(this).attr('action'),
+//               data: $(this).serialize(),
+//               success: function(data) {
+//                 $("#formTareasInternas")[0].reset();
+//                 $("#formTareasInternas").val(null).trigger("change");
+//                 $("#ModalTarea").modal("hide");
+//               }
+//           });
           
-          return true;
-      });
+//           return true;
+//       });
 
 $(document).ready(function() {
 $('#ListaTareasInternas').on('click','#btnRealizada', function() {
       var Tareaid = $(this).val();
               $.ajax({
               type: 'POST',
-              url: baseurl+"cTareasInternas/btnRealizadaNegociacion" ,
+              url: baseurl+"cTareasInternas/eliminarTareaInterna" ,
               data:{Tareaid:Tareaid},
               success: function(data) {
               	alert('Tarea Eliminada');
-              	location.reload();
+                location.href="http://localhost/crm/cTareasInternas/";
               }
           });
           return true;
