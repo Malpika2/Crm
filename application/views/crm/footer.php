@@ -63,7 +63,6 @@
 
 <!-- AdminLTE for demo purposes -->
 <!-- Page script -->
-<!-- <script src="<?php echo base_url();?>Js/verNegociacion.js"></script>
  --><script>
   $(function () {
     //Initialize Select2 Elements
@@ -192,6 +191,9 @@
 <?php } ?>
 <?php if($this->uri->segment(1)=='cTareasInternas'){?>
   <script src="<?php echo base_url();?>Js/TareasInternas.js"></script>
+<?php } ?>
+<?php if($this->uri->segment(2)=='VerNegociacion'){?>
+  <script src="<?php echo base_url();?>Js/verNegociacion.js"></script>
 <?php } ?>
 
 <script>
