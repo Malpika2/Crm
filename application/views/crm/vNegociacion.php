@@ -215,8 +215,23 @@
         <hr>
         <div class="row" id="NGdesc">
           <div class="col-md-12">
-            <div class="row">
-              <table class="table table-hover">
+          <div class="row">
+          <div class="col-md-12" id="tab_empresasActivas">
+          <div class="tab-content">
+            <!--TODAS NEGOCIACIONES-->
+            <div class="tab-pane active" id="TodasNegociaciones"> 
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Titulo</th>
+                  <th>Persona/Empresa</th>
+                  <th>Prioridad</th>
+                  <th>Motivo</th>
+                  <th>Fecha Fin</th>
+                  <th>Eliminar</th>
+                </tr>
+                </thead>
+                <tbody id="tablaAvanzado">
                 <?php foreach ($row_Negociaciones as $Negociaciones) {
                   $ClaseNeg="";
 
@@ -247,50 +262,223 @@
                     if ($Negociaciones->NegStatus=='Inactivo') {
                         $ClaseNeg='Inactivo';
                     }               
-                    if ($Negociaciones->NegStatus!='Inactivo') {
-                        echo 
-                '<tr>
-                  <td class="text-center" style="padding:6px 0px">
-                    <i class="fa fa-briefcase fa-4x"></i>
-                  </td>
-                  <td>
-                      <p>
-                      <label>
-                      <a class="'.$ClaseNeg.' h4" href="'.base_url().'cPersona/VerNegociacion/'.$Negociaciones->idNegociacion.'">'?>
-                      <?php echo strtoupper($Negociaciones->NombreNegociacion);'</a></label>'?>
-
-                      <?php if ($Negociaciones->RazonSocial){
-                      echo '<small> con </small><a class="h4" href="'.base_url().'cEmpresa/verEmpresa/'.$Negociaciones->idEmpresa.'">';
-                      echo ''.$Negociaciones->RazonSocial.'';
-                      echo '</a>';
-                      }
-                     else{
-                      echo '<small> con </small><a class="h4" href="'.base_url().'cPersona/verPersona/'.$Negociaciones->idPersona.'">';?>
-                     <?php echo ''.$Negociaciones->Nombre.' '.$Negociaciones->Paterno.'';
-                           echo '</a>';
-                      }?>
-                     <?php echo '</p>
-
-                    <span style="color:gray">Prioridad: '.$Negociaciones->Prioridad.'</span>
-                    &nbsp;<span class="h4">'.$Negociaciones->Motivo.' </span>
-                    <span style="color:gray" class="pull-right">Fecha Limite: '.$Negociaciones->FechaLimite.'</span>
-                    </td>
-              </tr>
-              ';
-                    }
-
-                 
-                
+                    if ($Negociaciones->NegStatus!='Inactivo') {?>
+                        <tr>
+                          <td>
+                            <label>
+                              <a class="<?php echo $ClaseNeg ;?> h5" href=" <?php echo base_url();?>cPersona/VerNegociacion/<?php echo $Negociaciones->idNegociacion;?>">
+                              <?php echo strtoupper($Negociaciones->NombreNegociacion);?></a>
+                            </label>
+                          </td>
+                          <td>
+                              <?php if ($Negociaciones->RazonSocial){?>
+                                <a class="h5" href="<?php echo base_url();?>cEmpresa/verEmpresa/<?php echo $Negociaciones->idEmpresa ?>">
+                                <?php echo $Negociaciones->RazonSocial;?>
+                                 </a>
+                              <?php }
+                                else{?>
+                                <a class="h5" href="<?php echo base_url();?>cPersona/verPersona/<?php echo $Negociaciones->idPersona?>">
+                                <?php echo $Negociaciones->Nombre.' '.$Negociaciones->Paterno.'';
+                                ?></a>
+                              <?php } ?>
+                                </p>
+                          </td>
+                          <td>
+                          <span style="color:gray">Prioridad: <?php echo $Negociaciones->Prioridad; ?></span>
+                          </td>
+                          <td>
+                              <span class="h5"> <?php echo $Negociaciones->Motivo;?> </span>
+                          </td>
+                          <td>
+                            <span style="color:gray" class="pull-right">Fecha Limite:<?php echo $Negociaciones->FechaLimite;?></span>
+                          </td>
+                          <td>
+                          eliminar
+                          </td>
+                        </tr>
+                        <?php }
                 }?>
+                </tbody>
               </table>
-            </div>
+            </div><!--Fin TodasNegociaciones-->
+
+              <!--NEG Activas-->
+            <div class="tab-pane" id="NGActivas"> 
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Titulo</th>
+                  <th>Persona/Empresa</th>
+                  <th>Prioridad</th>
+                  <th>Motivo</th>
+                  <th>Fecha Fin</th>
+                  <th>Eliminar</th>
+                </tr>
+                </thead>
+                <tbody id="tablaAvanzado">
+                <?php foreach ($row_Negociaciones as $Negociaciones) {
+                  $ClaseNeg="";
+                   if (($Negociaciones->NegStatus)=='Avanzado') {
+                        $ClaseNeg='Avanzado';?>
+                        <tr>
+                          <td>
+                            <label>
+                              <a class="<?php echo $ClaseNeg ;?> h5" href=" <?php echo base_url();?>cPersona/VerNegociacion/<?php echo $Negociaciones->idNegociacion;?>">
+                              <?php echo strtoupper($Negociaciones->NombreNegociacion);?></a>
+                            </label>
+                          </td>
+                          <td>
+                              <?php if ($Negociaciones->RazonSocial){?>
+                                <a class="h5" href="<?php echo base_url();?>cEmpresa/verEmpresa/<?php echo $Negociaciones->idEmpresa ?>">
+                                <?php echo $Negociaciones->RazonSocial;?>
+                                 </a>
+                              <?php }
+                                else{?>
+                                <a class="h5" href="<?php echo base_url();?>cPersona/verPersona/<?php echo $Negociaciones->idPersona?>">
+                                <?php echo $Negociaciones->Nombre.' '.$Negociaciones->Paterno.'';
+                                ?></a>
+                              <?php } ?>
+                                </p>
+                          </td>
+                          <td>
+                          <span style="color:gray">Prioridad: <?php echo $Negociaciones->Prioridad; ?></span>
+                          </td>
+                          <td>
+                              <span class="h5"> <?php echo $Negociaciones->Motivo;?> </span>
+                          </td>
+                          <td>
+                            <span style="color:gray" class="pull-right">Fecha Limite:<?php echo $Negociaciones->FechaLimite;?></span>
+                          </td>
+                          <td>
+                          eliminar
+                          </td>
+                        </tr>
+                        <?php }
+                }?>
+                </tbody>
+              </table>
+            </div><!--NEG Activas fin-->
+
+            <div class="tab-pane" id="NGCanceladas"> 
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Titulo</th>
+                  <th>Persona/Empresa</th>
+                  <th>Prioridad</th>
+                  <th>Motivo</th>
+                  <th>Fecha Fin</th>
+                  <th>Eliminar</th>
+                </tr>
+                </thead>
+                <tbody id="tablaCancelado">
+                <?php foreach ($row_Negociaciones as $Negociaciones) {
+                  $ClaseNeg="";
+                   if (($Negociaciones->NegStatus)=='Cancelado') {
+                        $ClaseNeg='Cancelado';?>
+                        <tr>
+                          <td>
+                            <label>
+                              <a class="<?php echo $ClaseNeg ;?> h5" href=" <?php echo base_url();?>cPersona/VerNegociacion/<?php echo $Negociaciones->idNegociacion;?>">
+                              <?php echo strtoupper($Negociaciones->NombreNegociacion);?></a>
+                            </label>
+                          </td>
+                          <td>
+                              <?php if ($Negociaciones->RazonSocial){?>
+                                <a class="h5" href="<?php echo base_url();?>cEmpresa/verEmpresa/<?php echo $Negociaciones->idEmpresa ?>">
+                                <?php echo $Negociaciones->RazonSocial;?>
+                                 </a>
+                              <?php }
+                                else{?>
+                                <a class="h5" href="<?php echo base_url();?>cPersona/verPersona/<?php echo $Negociaciones->idPersona?>">
+                                <?php echo $Negociaciones->Nombre.' '.$Negociaciones->Paterno.'';
+                                ?></a>
+                              <?php } ?>
+                                </p>
+                          </td>
+                          <td>
+                          <span style="color:gray">Prioridad: <?php echo $Negociaciones->Prioridad; ?></span>
+                          </td>
+                          <td>
+                              <span class="h5"> <?php echo $Negociaciones->Motivo;?> </span>
+                          </td>
+                          <td>
+                            <span style="color:gray" class="pull-right">Fecha Limite:<?php echo $Negociaciones->FechaLimite;?></span>
+                          </td>
+                          <td>
+                          eliminar
+                          </td>
+                        </tr>
+                        <?php }
+                }?>
+                </tbody>
+              </table>
+            </div><!--NEG Canceladas fin-->
+
+            <div class="tab-pane" id="NGEnProceso"> 
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Titulo</th>
+                  <th>Persona/Empresa</th>
+                  <th>Prioridad</th>
+                  <th>Motivo</th>
+                  <th>Fecha Fin</th>
+                  <th>Eliminar</th>
+                </tr>
+                </thead>
+                <tbody id="tablaCancelado">
+                <?php foreach ($row_Negociaciones as $Negociaciones) {
+                  $ClaseNeg="";
+                   if (($Negociaciones->NegStatus)=='En proceso') {
+                        $ClaseNeg='Enproceso';?>
+                        <tr>
+                          <td>
+                            <label>
+                              <a class="<?php echo $ClaseNeg ;?> h5" href=" <?php echo base_url();?>cPersona/VerNegociacion/<?php echo $Negociaciones->idNegociacion;?>">
+                              <?php echo strtoupper($Negociaciones->NombreNegociacion);?></a>
+                            </label>
+                          </td>
+                          <td>
+                              <?php if ($Negociaciones->RazonSocial){?>
+                                <a class="h5" href="<?php echo base_url();?>cEmpresa/verEmpresa/<?php echo $Negociaciones->idEmpresa ?>">
+                                <?php echo $Negociaciones->RazonSocial;?>
+                                 </a>
+                              <?php }
+                                else{?>
+                                <a class="h5" href="<?php echo base_url();?>cPersona/verPersona/<?php echo $Negociaciones->idPersona?>">
+                                <?php echo $Negociaciones->Nombre.' '.$Negociaciones->Paterno.'';
+                                ?></a>
+                              <?php } ?>
+                                </p>
+                          </td>
+                          <td>
+                          <span style="color:gray">Prioridad: <?php echo $Negociaciones->Prioridad; ?></span>
+                          </td>
+                          <td>
+                              <span class="h5"> <?php echo $Negociaciones->Motivo;?> </span>
+                          </td>
+                          <td>
+                            <span style="color:gray" class="pull-right">Fecha Limite:<?php echo $Negociaciones->FechaLimite;?></span>
+                          </td>
+                          <td>
+                          eliminar
+                          </td>
+                        </tr>
+                        <?php }
+                }?>
+                </tbody>
+              </table>
+            </div><!--NEG Canceladas fin-->
+
+          </div><!-- tab content-->
+          </div>
           </div>
         </div>
-
+        </div>
       </div>
     </section>
-    <script type="text/javascript">
 <script type="text/javascript">
   var idUsuario = "<?php echo $this->session->userdata('s_idUsuario');?>";
-  var baseurl = "<?php echo base_url();?>"
+  var baseurl = "<?php echo base_url();?>";
 </script>    </script>
