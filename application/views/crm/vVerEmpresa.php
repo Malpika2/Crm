@@ -38,6 +38,13 @@
                 <?php if (isset($row_Persona->idPersona)){} else {echo "";}?>
                 </li>
 
+                <?php if ($row_Empresas->sitReg==0): ?>
+                  <li class="list-group-item">
+                    <b>Justificacion de Inactividad:</b>
+                    <?php echo $row_Empresas->StatusFinalEmp; ?>
+                  </li>  
+                <?php endif ?>
+
               </ul>
 
               <a href="#" class="btn btn-primary btn-block"><b>Editar</b></a>

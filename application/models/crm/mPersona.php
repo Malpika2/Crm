@@ -42,4 +42,11 @@ return '1';
 					// $error = $this->db->error(); 	
 		
 	 }
+	 public function PersonaInactiva($idPersona,$StatusFinal){
+	 	$this->db->set('Status','Inactivo');
+	 	$this->db->set('StatusFinal',$StatusFinal);
+	 	$this->db->where('idPersona',$idPersona);
+	 	$this->db->update('Personas');
+	 	return 1;
+	 }
 }

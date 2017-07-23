@@ -52,7 +52,6 @@ $.post(baseurl+"cGetComentarios/getComentarios_Por_Tarea",
       });
   });
 function Recargar(){
-
 //Recargar comentarios para las tareas
 $.post(baseurl+"cGetComentarios/getComentarios_Por_Tarea",
   {

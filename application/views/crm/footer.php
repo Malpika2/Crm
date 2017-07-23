@@ -63,7 +63,7 @@
 
 <!-- AdminLTE for demo purposes -->
 <!-- Page script -->
- --><script>
+<script>
   $(function () {
     //Initialize Select2 Elements
     $(".select2").select2();
@@ -157,48 +157,77 @@
 });
 </script>
 <!-- Scripts del proyecto -->
+
 <?php if ($this->uri->segment(1)=='cPersona') {?>
-  <script src="<?php echo base_url();?>Js/persona.js"></script>
+ <script src="<?php echo base_url();?>Js/persona.js"></script>
   <script src="<?php echo base_url();?>Js/negociacion.js"></script>
-<?php } ?>
-<?php if ($this->uri->segment(2)=='verPersona') {?>
-  <script src="<?php echo base_url();?>Js/verPersona.js"></script>
-<?php } ?>
-
-
-<?php if ($this->uri->segment(1)=='cEmpresa') {?>
-  <script src="<?php echo base_url();?>Js/empresa.js"></script>
-  <script src="<?php echo base_url();?>Js/verEmpresa.js"></script>
-    <script src="<?php echo base_url();?>Js/negociacion.js"></script>
-
-<?php } ?>
-
-<?php if ($this->uri->segment(1)=='cNegociacion') {?>
-  <script src="<?php echo base_url();?>Js/negociacion.js"></script>
-<?php } ?>
-
-<?php if ($this->uri->segment(1)=='cContactos') {?>
-  <script src="<?php echo base_url();?>Js/contactos.js"></script>
-<?php } ?>
-
-<?php if ($this->uri->segment(2)=='verTarea') {?>
-  <script src="<?php echo base_url();?>Js/verTarea.js"></script>
-<?php } ?>
-<?php if ($this->uri->segment(2)=='verNegociacion') {?>
-<?php } ?>
-<?php if ($this->uri->segment(1)=='cTareas') {?>
-  <script src="<?php echo base_url();?>Js/Tareas.js"></script>
-<?php } ?>
-<?php if($this->uri->segment(1)=='cTareasInternas'){?>
-  <script src="<?php echo base_url();?>Js/TareasInternas.js"></script>
-<?php } ?>
-<?php if($this->uri->segment(1)=='cPersona'){?>
+<?php if ($this->uri->segment(2)=='VerNegociacion') {?>
   <script src="<?php echo base_url();?>Js/verNegociacion.js"></script>
 <?php } ?>
+<?php } ?>
+<?php if ($this->uri->segment(2)==='verTarea') {?>
+  <script src="<?php echo base_url();?>Js/verTarea.js"></script>
+<?php  }?>
 
+<?php if ($this->uri->segment(2)==='verNegociacion') {?>
+  <script src="<?php echo base_url();?>Js/verNegociacion.js"></script>
+<?php } ?>
+<?php if ($this->uri->segment(2)==='verPersona') {?>
+  <script src="<?php echo base_url();?>Js/verPersona.js"></script>
+<?php } ?>
+<?php if ($this->uri->segment(1)==='cEmpresa') {?>
+  <script src="<?php echo base_url();?>Js/empresa.js"></script>
+  <script src="<?php echo base_url();?>Js/verEmpresa.js"></script>
+  <script src="<?php echo base_url();?>Js/negociacion.js"></script>
+<?php } ?>
+
+<?php if ($this->uri->segment(1)==='cNegociacion') {?>
+  <script src="<?php echo base_url();?>Js/negociacion.js"></script>
+<?php } ?>
+
+<?php if ($this->uri->segment(1)==='cContactos') {?>
+  <script src="<?php echo base_url();?>Js/contactos.js"></script>
+<?php } ?>
+<?php if ($this->uri->segment(1)==='cTareas') {?>
+  <script src="<?php echo base_url();?>Js/Tareas.js"></script>
+<?php } ?>
+<?php if($this->uri->segment(1)==='cTareasInternas'){?>
+  <script src="<?php echo base_url();?>Js/TareasInternas.js"></script>
+<?php } ?>
 <script>
   $(function () {
     $('#example1').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": false,
+      "autoWidth": true,
+          oLanguage: {
+            "sProcessing":     "Procesando...",
+            "sLengthMenu":     "Mostrar _MENU_ registros",
+            "sZeroRecords":    "No se encontraron resultados",
+            "sEmptyTable":     "Ningún dato disponible en esta tabla",
+            "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix":    "",
+            "sSearch":         "Buscar:",
+            "sUrl":            "",
+            "sInfoThousands":  ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":     "Último",
+            "sNext":     "Siguiente",
+            "sPrevious": "Anterior"
+            }}
+    });
+  });
+</script>
+<script>
+  $(function () {
+    $('#example2').DataTable({
       "paging": true,
       "lengthChange": false,
       "searching": true,

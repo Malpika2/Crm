@@ -231,6 +231,10 @@ class cEmpresa extends CI_Controller
 		$s = $this->input->post('Empresaid');
 		$result = $this->mEmpresa->EliminarEmpresa($s);
 	}
-
+	public function EmpresaInactiva(){
+		$idEmpresa = $this->input->post('idEmpresa');
+		$StatusFinalE = $this->input->post('StatusFinalE');
+		$result=$this->mEmpresa->EmpresaInactiva($idEmpresa,$StatusFinalE);
+	}
 
 }

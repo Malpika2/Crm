@@ -200,5 +200,10 @@ class cPersona extends CI_Controller
 		$s = $this->input->post('Personaid');
 		$result=$this->mPersona->eliminarPersona($s);
 		}
+	public function PersonaInactiva(){
+		$idPersona = $this->input->post('idPersona');
+		$StatusFinal = $this->input->post('StatusFinal');
+		$result=$this->mPersona->PersonaInactiva($idPersona,$StatusFinal);
+	}
 
 }

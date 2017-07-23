@@ -39,4 +39,11 @@ $this->db->update('Empresas');
 // $this->db->delete('Empresas');
 		return true;
 	}
+	public function EmpresaInactiva($idEmpresa,$StatusFinalE){
+	 	$this->db->set('sitReg','0');
+	 	$this->db->set('StatusFinalEmp',$StatusFinalE);
+	 	$this->db->where('idEmpresa',$idEmpresa);
+	 	$this->db->update('Empresas');
+	 	return 1;
+	 }
 }

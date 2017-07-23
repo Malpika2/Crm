@@ -12,7 +12,7 @@ class mComentarios extends CI_Model
 		$this->db->from('Comentarios c');
 		$this->db->join('Usuarios u','u.idUsuario = c.idUsuarioc');
 		$this->db->where('c.idPersona',$s);
-		$this->db->order_by('Fecha_Creacion','ASC');
+		$this->db->order_by('Fecha_Creacion','DESC');
 		$s = $this->db->get();
 		return $s->result();
 	}
@@ -21,7 +21,7 @@ class mComentarios extends CI_Model
 		$this->db->from('Comentarios c');
 		$this->db->join('Usuarios u','u.idUsuario = c.idUsuarioc');
 		$this->db->where('c.idComent',$s);
-		$this->db->order_by('Fecha_Creacion','ASC');
+		$this->db->order_by('Fecha_Creacion','DESC');
 		$s = $this->db->get();
 		return $s->result();
 	}
@@ -30,7 +30,7 @@ class mComentarios extends CI_Model
 		$this->db->from('Comentarios c');
 		$this->db->join('Usuarios u','u.idUsuario = c.idUsuarioc');
 		$this->db->where('c.idEmpresa',$s);
-		$this->db->order_by('Fecha_Creacion','ASC');
+		$this->db->order_by('Fecha_Creacion','DESC');
 		$s = $this->db->get();
 		return $s->result();
 

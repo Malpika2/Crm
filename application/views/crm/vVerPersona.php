@@ -42,6 +42,12 @@
                   <li class="list-group-item">
                     <b>Cargo: </b><?php echo $row_Persona->Cargo; ?>
                   </li>
+                  <?php if ($row_Persona->Status=='Inactivo'): ?>
+                  <li class="list-group-item">
+                    <b>Justificacion de Inactividad:</b>
+                    <?php echo $row_Persona->StatusFinal; ?>
+                  </li>  
+                <?php endif ?>
                 </ul>
                 <a href="#" class="btn btn-primary btn-block"><b>Editar</b></a>
               </div><!-- /.box-body -->
