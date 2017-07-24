@@ -63,7 +63,6 @@ $('#Representante').change(function(){
 	});
 		}
 		else{
-			alert(id);
 		}
 	});
 });

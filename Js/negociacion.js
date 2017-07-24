@@ -70,7 +70,6 @@ $('#EmpresaNegociacion').change(function(){
 					idEmpresa:id
 				},
 				function(data){
-					alert(data);
 					var emp = JSON.parse(data);
 					$.each(emp,function(i,item){
 						if(item.Status=='Inactivo'){
@@ -85,7 +84,6 @@ $('#EmpresaNegociacion').change(function(){
 $(document).ready(function() {
 $('#ListaNegociaciones').on('click','#btnRealizadaNegociacion', function() {
       var Negociacionid = $(this).val();
-      alert(Negociacionid);
               $.ajax({
               type: 'POST',
               url: baseurl+"cNegociacion/EliminarNegociacion" ,

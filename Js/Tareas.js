@@ -216,6 +216,7 @@ $('#form, #fat, #formTareaEmpresas').submit(function() {
                 $("#formTareaEmpresas")[0].reset();
                 $("#ModalTareap").modal("hide");
                 recargar();
+                recargar2();
               }
           });
           
@@ -232,6 +233,7 @@ $('#form, #fat, #formTareaEmpresas2').submit(function() {
                 $("#ModalTarea").modal("hide");
                 $("#Asignados").val(null).trigger("change");
                 recargar2();
+                recargar();
               }
           });
           

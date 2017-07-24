@@ -35,11 +35,13 @@
         </div>
         <div class="col-md-6 divsNP">
               <div class="input-group">
-                <span class="input-group-addon"><button style="padding: 0px" type="none"><i class="fa fa-plus-square"></i></button> Representante</b></span>
-                <select class=" form-control formsNP" id="Representante" name="Representante" required>
+                 <span class="input-group-addon">
+<!--<button style="padding: 0px" type="none"><i class="fa fa-plus-square"></i></button> -->
+<b>Representante</b></span>
+             <select class=" form-control formsNP" id="Representante" name="Representante" required>
                 <option selected="true" disabled="true" value="0">Representante</option>
-                <option value="Agregar">Agregar Nuevo</option>
-                </select>
+<!--                 <option value="Agregar">Agregar Nuevo</option>
+ -->                </select>
               </div>
         </div>
         <div class="col-md-6 divsNP">
