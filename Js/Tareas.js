@@ -23,7 +23,7 @@ $.post(baseurl+"cTareas/getTareas_deEmpresas_PorUsuario",
                     '<i class="fa fa-ellipsis-v"></i>'+
                   '</span>'+
                   '<input onclick="ActualizarTarea('+item.idTarea+')"  id="checkRealizada" type="checkbox" value="'+item.idTarea+'">'+
-                  '<span class="text LinkTarea"><a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
+                  '<span class="text LinkTarea">Titulo<a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
                   '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cEmpresa/verEmpresa/'+item.idEmpresa+'">'+item.RazonSocial+'</a></span>'+
                   '<div class="tools pull-right">'+
                     '<label class="text-verde pull-right">'+item.Categoria+'</label>'+
@@ -207,6 +207,37 @@ $.post(baseurl+"cTareas/getTareas_deEmpresas_PorUsuarioGrupales",
 
 
 //=================================PERSONAS===============
+$('#form, #fat, #formTareaEmpresas').submit(function() {
+          $.ajax({
+              type: 'POST',
+              url: $(this).attr('action'),
+              data: $(this).serialize(),
+              success: function(data) { 
+                $("#formTareaEmpresas")[0].reset();
+                $("#ModalTareap").modal("hide");
+                recargar();
+              }
+          });
+          
+          return false;
+      });
+
+$('#form, #fat, #formTareaEmpresas2').submit(function() {
+          $.ajax({
+              type: 'POST',
+              url: $(this).attr('action'),
+              data: $(this).serialize(),
+              success: function(data) { 
+                $("#formTareaEmpresas2")[0].reset();
+                $("#ModalTarea").modal("hide");
+                $("#Asignados").val(null).trigger("change");
+                recargar2();
+              }
+          });
+          
+          return false;
+      });
+
 
 
 
@@ -436,3 +467,4 @@ $.post(baseurl+"cGetEmpresas/getEmpresas",
       $('#EmpresasPart').append('<option value="'+item.idEmpresa+'">'+item.RazonSocial+'</option>')
       });
   });
+

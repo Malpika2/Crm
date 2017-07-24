@@ -134,6 +134,7 @@
           </div><!-- nav-tabs-custom -->
         </div><!-- /.col -->
       </div>
+
 <div class="modal fade modal-info" id="ModalTareap" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -240,7 +241,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="exampleModalLabel">AGREGAR NUEVA TAREA GRUPAL</h4>
       </div>
-      <form name="formTareaEmpresas" id="formTareaEmpresas" method="POST" action="<?php echo base_url();?>cEmpresa/guardarTarea">
+      <form name="formTareaEmpresas2" id="formTareaEmpresas2" method="POST" action="<?php echo base_url();?>cEmpresa/guardarTarea">
       <div class="modal-body">
           <div class="box box-info">
             <div class="box-body" style="background-color: #f9f8eb; color: black">
