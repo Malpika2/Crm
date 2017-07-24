@@ -157,6 +157,11 @@
 });
 </script>
 <!-- Scripts del proyecto -->
+<?php
+ if ($this->uri->segment(1)=='cInicio'){ ?>
+ <script src="<?php echo base_url();?>Js/Inicio.js"></script>
+<?php } ?>
+
 
 <?php if ($this->uri->segment(1)=='cPersona') {?>
  <script src="<?php echo base_url();?>Js/persona.js"></script>

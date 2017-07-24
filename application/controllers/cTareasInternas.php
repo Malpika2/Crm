@@ -24,6 +24,11 @@ class cTareasInternas extends CI_Controller
 		$resultado = $this->mTareas->getTareasInternas($s);
 		echo json_encode($resultado);
 	}
+	public function getTareasInternasPorUsuarioActivo(){
+		$s = $this->input->post('idUsuarioActivo');
+		$resultado = $this->mTareas->getTareasInternasPorUsuarioActivo($s);
+		echo json_encode($resultado);
+	}
 
 	public function guardarTareaInterna(){
 

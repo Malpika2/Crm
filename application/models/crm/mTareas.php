@@ -191,6 +191,16 @@ public function tareaNoRealizada($s){
 	 	$s = $this->db->get();
 	 	return $s->result();
 	 }
+	 public function getTareasInternasPorUsuarioActivo($s)
+	 {
+	 	$this->db->select('*');
+	 	$this->db->from('Participantes_Tareas');
+	 	$this->db->join('Tareas','Tareas.idTarea = Participantes_Tareas.idTarea');
+	 	$this->db->join('Usuarios','Usuarios.idUsuario = Participantes_Tareas.idUsuario');
+	 	$this->db->where('Participantes_Tareas.idUsuario',$s);
+	 	$s = $this->db->get();
+	 	return $s->result();
+	 }
 	 public function eliminarTareaInterna($s){
  		$this->db->delete('Tareas', array('idTarea' => $s)); 
  		return '1';

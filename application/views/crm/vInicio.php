@@ -47,13 +47,12 @@
       	</div>
       	<div class="col-md-3" style="background-color: #e9eab4;">
 	      	<div class="row">
-	      		<div class="col-md-12" style="background-color: red">
-	      			<h2 class="text-center">Recordatorios</h2>
+	      		<div class="col-md-12" style="background-color: #1085c3">
+	      			<h3 class="text-center" style="margin: 5px">TAREAS PERSONALES</h3>
 	      		</div>
 	      		<div class="col-md-12">
-	      			<ul style="list-style-type: none">
-	      				<li><a href="#">Tarea Proxima a vencer</a></li>
-	      				<li><a href="#">Ultima Nota Personal</a></li>
+	      			<ul style="list-style-type: none; text-align: left; padding: 0px;" id="ListaTareasInternas">
+                <li><div class="col-md-12"><b class="col-md-6" style="padding: 0px;">Tarea:</b><b class="col-md-6" style="padding: 0px;">Fecha Limite:</b></div></li>
 	      			</ul>
 	      		</div>
 	      		
@@ -61,3 +60,7 @@
       	</div>
       </div>
     </section>
+    <script type="text/javascript">
+  var idUsuarioActivo = "<?php echo $this->session->userdata('s_idUsuario');?>";
+  var baseurl = "<?php echo base_url();?>"
+</script>
