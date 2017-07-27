@@ -1,7 +1,7 @@
 
     <section class="content-header">
       <h1>
-
+      <br>
       </h1>
       <ol class="breadcrumb">
         <li><a href="cLogin"><i class="fa fa-map-signs"></i>Inicio</a></li>
@@ -116,7 +116,7 @@
                   </form>
                   </div>
               </div>
-              <div id="activity">
+              <div id="activity" style="max-height: 700px; overflow: scroll;">
                 <div class="col-md-12" id="NotasPersona">
                 </div>
               </div>
@@ -127,7 +127,7 @@
                 <!-- The timeline -->
                 <button id="btn_nTarea" class="btn btn-success " data-toggle="modal" data-target="#ModalTarea"><i class="fa fa-plus fa-x2"></i> Nueva Tarea</button>
                 <hr>
-                <ul class="timeline timeline-inverse" id="LineaTareas">
+                <ul class="timeline timeline-inverse" id="LineaTareas" style="height: 720px; overflow: scroll;" >
 
                 </ul>
               </div>
@@ -135,7 +135,7 @@
               <div class="tab-pane" id="Negociaciones">
                 <button id="btn_nTarea" class="btn btn-success " data-toggle="modal" data-target="#ModalNegociacionEmp"><i class="fa fa-plus fa-x2"></i> Nueva Negociación</button>
                   <hr>
-                <ul class="timeline timeline-inverse" id="LineaNegociaciones">
+                <ul class="timeline timeline-inverse" id="LineaNegociaciones" style="height: 720px; overflow: scroll;">
                 </ul>
               </div><!--/.Tab-Pane-->
             </div>
@@ -145,7 +145,50 @@
         </div>
       </div>
     </section>
-
+<div id="ModalCancelar" class="modal modal-success fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">La Tarea Será marcada como Cancelada</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+        <div class="col-md-12">
+        <label>Cual Fue la razón?</label>
+          <textarea id="StatusFinal" class="col-md-12 text-black"></textarea>
+        </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="ModalCancelarNg" class="modal modal-success fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">La Negociación Será marcada como Cancelada</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+        <div class="col-md-12">
+        <label>Cual Fue la razón?</label>
+          <textarea id="StatusFinalNg" class="col-md-12 text-black"></textarea>
+        </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- MODAL -->
 <div class="modal fade modal-info" id="ModalNegociacionEmp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">

@@ -23,6 +23,12 @@
             <label class="h4">Estatus:</label>&nbsp;&nbsp;<label class="h5"><?php echo $row_Negociacion->Status; ?><br></label><br><hr>
             <label class="h4">Detalles:</label>&nbsp;&nbsp;<label class="h5"><?php echo $row_Negociacion->Detalles; ?></label><br><hr>
             <label class="h4">Fecha Vencimiento:</label>&nbsp;&nbsp;<label class="h5"><?php echo $row_Negociacion->FechaLimite; ?></label><br><hr>
+            <?php if ($row_Negociacion->StatusFinal!=NULL): ?>
+                  <li class="list-group-item">
+                    <b>Justificación de Cancelación:</b>
+                    <?php echo $row_Negociacion->StatusFinal; ?>
+                  </li>  
+          <?php endif ?>
             </div><!-- /.box-body -->
           </div>
         </div>
@@ -44,7 +50,7 @@
                         <button id="btn_Coment" type="submit" class="btn btn-success pull-right btn-block btn-sm">Guardar</button>
                       </div>
                   </form>
-                <div class="col-md-12" id="ListaTareasNG">
+                <div class="col-md-12" id="ListaTareasNG" style="height: 400px; overflow: scroll;">
                 </div>
                 </div>  
             </div><!-- /.box-body -->

@@ -18,7 +18,7 @@
 </style>
 <section class="content-header">
       <ol class="breadcrumb">
-        <li><a href="cLogin"><i class="fa fa-map-signs"></i>Inicio</a></li>
+        <li><a href="cInicio"><i class="fa fa-map-signs"></i>Inicio</a></li>
         <li class="active"></li>
       </ol>
 </section>
@@ -26,7 +26,7 @@
     <!-- Main content -->
 <section class="content">
       <div class="row">
-      <h1></h1>
+      <h1><br></h1>
         <div class="col-md-6">
           <!-- Custom Tabs -->
           <div class="nav-tabs-custom">
@@ -332,6 +332,28 @@
   </div>
 </div>
 
+<div id="ModalCancelar" class="modal modal-success fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Tarea Realizada</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+        <div class="col-md-12">
+        <label>Dictamen Final de la Tarea:</label>
+          <textarea id="StatusFinal" class="col-md-12 text-black"></textarea>
+        </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
 </section>
 <script type="text/javascript">
   var idUsuarioActivo = "<?php echo $this->session->userdata('s_idUsuario');?>";

@@ -5,6 +5,7 @@ class cPersona extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
+		$this->load->library('My_phpmailer');
 		$this->load->model('crm/mPersona');
 		$this->load->model('crm/mTelefono');
 		$this->load->model('crm/mCorreo');
@@ -13,9 +14,8 @@ class cPersona extends CI_Controller
 		$this->load->model('crm/mGetEmpresas');
 		$this->load->model('crm/mTareas');
 		$this->load->model('crm/mNegociacion');
-		$this->load->model('crm/mMailer');
+		// $this->load->model('crm/mMailer');
 		$this->load->helper('date');
-		$this->load->library('My_PHPMailer');
 	}
 
 	public function index(){
@@ -148,7 +148,7 @@ class cPersona extends CI_Controller
 			if(isset($_POST['Asignados'])){
 				foreach ($_POST['Asignados'] as $asignados_value){
 				$this->mTareas->guardarParticipantes($asignados_value,$paramTarea);
-				$this->mMailer->enviarCorreo($ultimaTarea,$paramTarea);
+				// $this->mMailer->enviarCorreo($ultimaTarea,$paramTarea);
 				}
 			}
 		}
@@ -162,7 +162,8 @@ class cPersona extends CI_Controller
 	}
 	public function tareaRealizada(){
 		$s = $this->input->post('Tareaid');
-		$resultado = $this->mTareas->tareaRealizada($s);
+		$StatusFinal = $this->input->post('StatusFinal');
+		$resultado = $this->mTareas->tareaRealizada($s,$StatusFinal);
 		
 	}
 	public function tareaNoRealizada(){
@@ -176,7 +177,8 @@ class cPersona extends CI_Controller
 	}
 	public function NegociacionEliminada(){
 		$s = $this->input->post('idNegociacion');
-		$resultado = $this->mNegociacion->NegociacionEliminada($s);
+		$StatusFinalNG = $this->input->post('StatusFinalNG');
+		$resultado = $this->mNegociacion->NegociacionEliminada($s,$StatusFinalNG);
 	}
 	public function verNegociacion($idNegociacion){
 		$data['row_Negociacion'] = $this->mNegociacion->getNegociacion($idNegociacion);

@@ -69,9 +69,9 @@ class mNegociacion extends CI_Model
 			$s = $this->db->get();
 			return $s->row();
 	}
-	public function NegociacionEliminada($s){
+	public function NegociacionEliminada($s,$StatusFinalNG){
 			$data = array(
-				'Activa' => '0');
+				'Activa' => '0','StatusFinal'=>$StatusFinalNG,'Status'=>'Cancelado');
 			$this->db->where('idNegociacion',$s);
 			$this->db->update('Negociaciones',$data);
 			return true;

@@ -69,6 +69,7 @@ $('#Representante').change(function(){
 
 $(document).ready(function() {
 $('#ListaEmpresas').on('click','#btnRealizadaEmpresas', function() {
+	
       var Empresaid = $(this).val();
               $.ajax({
               type: 'POST',

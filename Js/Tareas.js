@@ -23,7 +23,7 @@ $.post(baseurl+"cTareas/getTareas_deEmpresas_PorUsuario",
                     '<i class="fa fa-ellipsis-v"></i>'+
                   '</span>'+
                   '<input onclick="ActualizarTarea('+item.idTarea+')"  id="checkRealizada" type="checkbox" value="'+item.idTarea+'">'+
-                  '<span class="text LinkTarea">Titulo<a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
+                  '<span class="text LinkTarea">Tarea: &nbsp;<a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
                   '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cEmpresa/verEmpresa/'+item.idEmpresa+'">'+item.RazonSocial+'</a></span>'+
                   '<div class="tools pull-right">'+
                     '<label class="text-verde pull-right">'+item.Categoria+'</label>'+
@@ -62,7 +62,7 @@ $.post(baseurl+"cTareas/getTareas_deEmpresas_PorUsuarioGrupales",
                     '<i class="fa fa-ellipsis-v"></i>'+
                   '</span>'+
                   '<input onclick="ActualizarTarea('+item.idTarea+')"  id="checkRealizada" type="checkbox" value="'+item.idTarea+'">'+
-                  '<span class="text LinkTarea"><a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
+                  '<span class="text LinkTarea">Tarea: &nbsp;<a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
                   '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cEmpresa/verEmpresa/'+item.idEmpresa+'">'+item.RazonSocial+'</a>&nbsp;...</span>'+
                   '<div class="tools pull-right">'+
                     '<label class="text-verde pull-right">'+item.Categoria+'</label>'+
@@ -85,7 +85,7 @@ function agregarTareaRealizadaEmpresa(clase,idTarea,TituloTarea,idEmpresa,RazonS
                     '<i class="fa fa-ellipsis-v"></i>'+
                   '</span>'+
                   '<input onclick="ActualizarTareaR('+idTarea+')"  id="checkRealizada" type="checkbox" value="'+idTarea+'" checked>'+
-                  '<span class="text LinkTarea"><a href="'+baseurl+'cPersona/verTarea/'+idTarea+'">'+TituloTarea+'</a></span>'+
+                  '<span class="text LinkTarea">Tarea: &nbsp;<a href="'+baseurl+'cPersona/verTarea/'+idTarea+'">'+TituloTarea+'</a></span>'+
                   '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cEmpresa/verEmpresa/'+idEmpresa+'">'+RazonSocial+'</a></span>'+
                   '<div class="tools pull-right">'+
                     '<i class="fa fa-calendar-check-o  pull-right echoPalomita"></i>'+
@@ -95,10 +95,13 @@ function agregarTareaRealizadaEmpresa(clase,idTarea,TituloTarea,idEmpresa,RazonS
     }
 function ActualizarTarea(index){
   var Tareaid = index;
+        $("#ModalCancelar").modal();
+        $("#ModalCancelar").on('hidden.bs.modal', function () {
+            var StatusFinal = $('#StatusFinal').val();
               $.ajax({
               type: 'POST',
               url: baseurl+"cPersona/tareaRealizada" ,
-              data:{Tareaid:Tareaid},
+              data:{Tareaid:Tareaid,StatusFinal:StatusFinal},
               success: function(data) { 
                 $("#tarea" + index).remove();
                 recargar();
@@ -106,7 +109,9 @@ function ActualizarTarea(index){
               }
           });
                   return false;
+        });
   }
+
 function ActualizarTareaR(index){
   var Tareaid = index;
               $.ajax({
@@ -149,7 +154,7 @@ $('#ListaTareasRealizadasEmp').empty();
                     '<i class="fa fa-ellipsis-v"></i>'+
                   '</span>'+
                   '<input onclick="ActualizarTarea('+item.idTarea+')"  id="checkRealizada" type="checkbox" value="'+item.idTarea+'">'+
-                  '<span class="text LinkTarea"><a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
+                  '<span class="text LinkTarea">Tarea: &nbsp;<a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
                   '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cEmpresa/verEmpresa/'+item.idEmpresa+'">'+item.RazonSocial+'</a></span>'+
                   '<div class="tools pull-right">'+
                     '<label class="text-verde pull-right">'+item.Categoria+'</label>'+
@@ -187,7 +192,7 @@ $.post(baseurl+"cTareas/getTareas_deEmpresas_PorUsuarioGrupales",
                     '<i class="fa fa-ellipsis-v"></i>'+
                   '</span>'+
                   '<input onclick="ActualizarTarea('+item.idTarea+')"  id="checkRealizada" type="checkbox" value="'+item.idTarea+'">'+
-                  '<span class="text LinkTarea"><a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
+                  '<span class="text LinkTarea">Tarea: &nbsp;<a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
                   '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cEmpresa/verEmpresa/'+item.idEmpresa+'">'+item.RazonSocial+'</a>&nbsp;...</span>'+
                   '<div class="tools pull-right">'+
                     '<label class="text-verde pull-right">'+item.Categoria+'</label>'+
@@ -268,7 +273,7 @@ $.post(baseurl+"cTareas/getTareas_dePersonas_PorUsuario",
                     '<i class="fa fa-ellipsis-v"></i>'+
                   '</span>'+
                   '<input onclick="ActualizarTarea('+item.idTarea+')" type="checkbox" value="'+item.idTarea+'" >'+
-                  '<span class="text LinkTarea"><a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
+                  '<span class="text LinkTarea">Tarea: &nbsp;<a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
                   '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cPersona/verPersona/'+item.idPersona+'">'+item.Nombre+'</a></span>'+
                   '<div class="tools pull-right">'+
                     '<label class="text-verde pull-right">'+item.Categoria+'</label>'+
@@ -305,7 +310,7 @@ $.post(baseurl+"cTareas/getTareas_dePersonasGrupales_PorUsuario",
                     '<i class="fa fa-ellipsis-v"></i>'+
                   '</span>'+
                   '<input onclick="ActualizarTarea('+item.idTarea+')" type="checkbox" value="'+item.idTarea+'" >'+
-                  '<span class="text LinkTarea"><a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
+                  '<span class="text LinkTarea">Tarea: &nbsp;<a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
                   '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cPersona/verPersona/'+item.idPersona+'">'+item.Nombre+'...</a></span>'+
                   '<div class="tools pull-right">'+
                     '<label class="text-verde pull-right">'+item.Categoria+'</label>'+
@@ -326,7 +331,7 @@ function agregarTareaRealizadaPersona(clase,idTarea,TituloTarea,idPersona,Nombre
                     '<i class="fa fa-ellipsis-v"></i>'+
                   '</span>'+
                   '<input onclick="ActualizarTareaR('+idTarea+')"  id="checkRealizada" type="checkbox" value="'+idTarea+'" checked>'+
-                  '<span class="text LinkTarea"><a href="'+baseurl+'cPersona/verTarea/'+idTarea+'">'+TituloTarea+'</a></span>'+
+                  '<span class="text LinkTarea">Tarea: &nbsp;<a href="'+baseurl+'cPersona/verTarea/'+idTarea+'">'+TituloTarea+'</a></span>'+
                   '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cPersona/verPersona/'+idPersona+'">'+Nombre+'</a></span>'+
                   '<div class="tools pull-right">'+
                     '<i class="fa fa-calendar-check-o  pull-right echoPalomita"></i>'+
@@ -387,7 +392,7 @@ $('#ListaTareasRealizadasPersonas').empty();
                     '<i class="fa fa-ellipsis-v"></i>'+
                   '</span>'+
                   '<input onclick="ActualizarTarea('+item.idTarea+')" type="checkbox" value="'+item.idTarea+'" >'+
-                  '<span class="text LinkTarea"><a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
+                  '<span class="text LinkTarea">Tarea: &nbsp;<a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
                   '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cPersona/verPersona/'+item.idPersona+'">'+item.Nombre+'</a></span>'+
                   '<div class="tools pull-right">'+
                     '<label class="text-verde pull-right">'+item.Categoria+'</label>'+
@@ -424,7 +429,7 @@ $.post(baseurl+"cTareas/getTareas_dePersonasGrupales_PorUsuario",
                     '<i class="fa fa-ellipsis-v"></i>'+
                   '</span>'+
                   '<input onclick="ActualizarTarea('+item.idTarea+')" type="checkbox" value="'+item.idTarea+'" >'+
-                  '<span class="text LinkTarea"><a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
+                  '<span class="text LinkTarea">Tarea: &nbsp;<a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
                   '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cPersona/verPersona/'+item.idPersona+'">'+item.Nombre+'...</a></span>'+
                   '<div class="tools pull-right">'+
                     '<label class="text-verde pull-right">'+item.Categoria+'</label>'+

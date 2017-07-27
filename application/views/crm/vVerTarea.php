@@ -26,6 +26,12 @@
 
             <label class="h4">Descripcion:</label>&nbsp;&nbsp;<label class="h5"><?php echo $row_Tareas->Descripcion?></label><br><hr>
             <label class="h4">Fecha Vencimiento:</label>&nbsp;&nbsp;<label class="h5"><?php echo $row_Tareas->FechaFin?></label><br><hr>
+            <?php if ($row_Tareas->Activa==0): ?>
+            <li class="list-group-item">
+              <b>Dictamen Final:</b>
+              <?php echo $row_Tareas->StatusFinal; ?>
+            </li>  
+            <?php endif ?>
             </div><!-- /.box-body -->
           </div>
         </div>
@@ -47,7 +53,7 @@
                         <button id="btn_Coment" type="submit" class="btn btn-success pull-right btn-block btn-sm">Guardar</button>
                       </div>
                   </form>
-                <div class="col-md-12" id="ListaTareas">
+                <div class="col-md-12" id="ListaTareas" style="height: 400px; overflow: scroll;">
                 </div>
                 </div>  
             </div><!-- /.box-body -->

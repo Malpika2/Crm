@@ -81,6 +81,7 @@ $('#EmpresaNegociacion').change(function(){
 				});
 	});
 });
+
 $(document).ready(function() {
 $('#ListaNegociaciones').on('click','#btnRealizadaNegociacion', function() {
       var Negociacionid = $(this).val();
@@ -95,3 +96,4 @@ $('#ListaNegociaciones').on('click','#btnRealizadaNegociacion', function() {
           return true;
     });
 });
+

@@ -228,7 +228,7 @@
                   <th>Prioridad</th>
                   <th>Motivo</th>
                   <th>Fecha Fin</th>
-                  <th>Eliminar</th>
+                  <th>Cancelar</th>
                 </tr>
                 </thead>
                 <tbody id="tablaAvanzado">

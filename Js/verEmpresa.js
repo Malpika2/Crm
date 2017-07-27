@@ -274,18 +274,23 @@ $.post(baseurl+"cEmpresa/getTareas",
 $(document).ready(function() { //======Ocultar Tareas Realizadas
 $('#LineaTareas').on('click','#btnRealizada', function() {
       var Tareaid = $(this).val();
+              $("#ModalCancelar").modal();
+        $("#ModalCancelar").on('hidden.bs.modal', function () {
+              var StatusFinal = $('#StatusFinal').val();
               $.ajax({
               type: 'POST',
               url: baseurl+"cPersona/tareaRealizada" ,
-              data:{Tareaid:Tareaid},
+              data:{Tareaid:Tareaid,StatusFinal:StatusFinal},
               success: function(data) { 
                 $('#LineaTareas').empty();
                 recargarTareas();
-              }
-          });
+                }
+              });
                   return false;
+        });
     });
 });//Fin Ocultar tareas realizadas
+
 //==========NEGOCIACIONES=============//
 //Guardar Negociaciones
 $('#form, #fat, #formNegociacion').submit(function() {
@@ -328,7 +333,7 @@ $.post(baseurl+"cEmpresa/getNegociaciones",
 
               '<p>Detalles: '+item.Detalles+'</p>'+
               '<p>Persona a cargo: '+item.Nombre+' '+item.Paterno+'</p>'+
-              '<button class="btn btn-danger btn-sm pull-right" id="btnEliminar" name="btnEliminar" value="'+item.idNegociacion+'">Eliminar</button>'+
+              '<button class="btn btn-danger btn-sm pull-right" id="btnEliminar" name="btnEliminar" value="'+item.idNegociacion+'">Cancelar</button>'+
             '</div>'+
           '</li>'
         )
@@ -364,7 +369,7 @@ function recargarNegociaciones(){$.post(baseurl+"cEmpresa/getNegociaciones",
 
               '<p>Detalles: '+item.Detalles+'</p>'+
               '<p>Persona a cargo: '+item.Nombre+' '+item.Paterno+'</p>'+
-              '<button class="btn btn-danger btn-sm pull-right" id="btnEliminar" name="btnEliminar" value="'+item.idNegociacion+'">Eliminar</button>'+
+              '<button class="btn btn-danger btn-sm pull-right" id="btnEliminar" name="btnEliminar" value="'+item.idNegociacion+'">Cancelar</button>'+
             '</div>'+
           '</li>'
         )
@@ -376,20 +381,25 @@ function recargarNegociaciones(){$.post(baseurl+"cEmpresa/getNegociaciones",
     '</li>')
   });
 }
+
 //Oculta las Negociaciones Realizadas
 $(document).ready(function() {
 $('#LineaNegociaciones').on('click','#btnEliminar', function() {
       var idNegociacion = $(this).val();
+              $("#ModalCancelarNg").modal();
+        $("#ModalCancelarNg").on('hidden.bs.modal', function () {
+              var StatusFinalNG = $('#StatusFinalNg').val();
               $.ajax({
               type: 'POST',
               url: baseurl+"cPersona/NegociacionEliminada" ,
-              data:{idNegociacion:idNegociacion},
+              data:{idNegociacion:idNegociacion,StatusFinalNG:StatusFinalNG},
               success: function(data) { 
                 $('#LineaNegociaciones').empty();
                 recargarNegociaciones();
               }
           });
                   return false;
+          });
     });
 });//Fin Ocultar Negociaciones realizadas
 
