@@ -80,7 +80,6 @@ var options = {
 			var Ciudad = $('#RazonSocial').getSelectedItemData().ciudad;
 			var Pais = $('#RazonSocial').getSelectedItemData().pais;
 
-
 			$("#Abreviacion").val(abreviacion).trigger("change");
 			$("#SPP").val(SPP).trigger("change");
 			$("#SitioWeb").val(SitioWeb).trigger("change");
@@ -264,12 +263,10 @@ $('#form, #fat, #formPersona').submit(function() {
               url: $(this).attr('action'),
               data: $(this).serialize(),
               success: function(data) {
-              		alert(cargo);
               if(control=='1'){
               	control=0;
               	if(cargo=='Contacto'){
 					var emp = JSON.parse(data);
-					alert(emp);
 					$.each(emp,function(i,item){
 					$('#ContactoEmp').append('<option selected="true" value="'+item.idPersona+'">'+item.Nombre+'</option>')
 						});

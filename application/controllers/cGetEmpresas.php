@@ -8,6 +8,7 @@ class cGetEmpresas extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('crm/mGetEmpresas');
+		$this->load->helper('text');
 	}
 	public function getEmpresas(){
 		$s = $this->input->post('sitReg');
@@ -16,6 +17,7 @@ class cGetEmpresas extends CI_Controller
 	}
 	public function getEmpresasAutoComplete(){
 		$resultado = $this->mGetEmpresas->getEmpresasAutoComplete();
-		echo json_encode($resultado);
+		$resultado =  json_encode($resultado);
+		echo $resultado;
 	}
 }

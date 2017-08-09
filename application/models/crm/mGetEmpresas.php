@@ -16,9 +16,12 @@ class mGetEmpresas extends CI_Model
 		return $s->result();
 	}
 	public function getEmpresasAutoComplete(){
-			$s = $this->DBSPP->get('empresa');
+		$this->DBSPP->select('*');
+		$this->DBSPP->from('empresa');
+		$s =$this->DBSPP->get();
 			return $s->result();
 	}
+
 	public function getEmpresaPorUsuario($s){
 		$this->DBCRM->select('*');
 		$this->DBCRM->from('Empresas');
