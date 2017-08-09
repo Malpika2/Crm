@@ -1,7 +1,7 @@
      <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="<?php echo base_url();?>cInicio"><i class="fa fa-map-signs"></i>Inicio</a></li>
-        <li class="active">Negociaciones</li>
+        <li class="active">Objetivos</li>
       </ol>
     </section>
 <style type="text/css">
@@ -45,7 +45,7 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-          <h1>Negociaciones</h1>
+          <h1>Objetivos</h1>
           <hr>
         <div class="row" id="statusNG">
           <div class="col-md-3" style="color: #638ccc"">
@@ -227,8 +227,8 @@
                   <th>Persona/Empresa</th>
                   <th>Prioridad</th>
                   <th>Motivo</th>
-                  <th>Fecha Fin</th>
-                  <th>Cancelar</th>
+                  <th>Fecha Limite</th>
+                  <th>Desarrollo</th>
                 </tr>
                 </thead>
                 <tbody id="tablaAvanzado">
@@ -290,10 +290,10 @@
                               <span class="h5"> <?php echo $Negociaciones->Motivo;?> </span>
                           </td>
                           <td>
-                            <span style="color:gray" class="pull-right">Fecha Limite:<?php echo $Negociaciones->FechaLimite;?></span>
+                            <span style="color:gray" class="pull-right"><?php echo $Negociaciones->FechaLimite;?></span>
                           </td>
                           <td>
-                          eliminar
+                          %
                           </td>
                         </tr>
                         <?php }

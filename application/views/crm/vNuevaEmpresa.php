@@ -10,21 +10,36 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12 text-center">
+          <button type="button" class="btn btn-app pull-left" onclick="limpiarFormularioEmpresa()">
+            <i class="glyphicon glyphicon-erase"></i>Limpiar
+          </button> 
           <h2>Registrar Empresa<small> ó <a href="<?php echo base_url();?>cPersona">Registrar persona</a></small></h2>
         </div>
-        <form method="POST" action="<?php echo base_url();?>cEmpresa/guardar">
-        <div class="col-md-6 divsNP">
+        <form method="POST" action="<?php echo base_url();?>cEmpresa/guardar" id="formEmpresa">
+        <div class="col-md-6">
+            <div class="col-md-12 divsNP">
               <div class="input-group">
-                <span class="input-group-addon"><b>Razón Social</b></span>
-                <input type="text" class="form-control formsNP" id="RazonSocial" name="RazonSocial">
+                <span class="input-group-addon"><b>Nombre Empresa</b></span>
+                <input type="text" class="formsNP" id="RazonSocial" name="RazonSocial" style="border:1px solid #d2d6de;">
               </div>
-        </div>
-
-        <div class="col-md-6 divsNP">
+            </div>
+            <div class="col-md-12 divsNP">
+              <div class="input-group">
+                <span class="input-group-addon"><b>SPP<br><small>(Opcional)</small></b></span>
+                <input type="text" class="formsNP" id="SPP" name="SPP">
+              </div>
+            </div>
+            <div class="col-md-12 divsNP">
+              <div class="input-group">
+                <span class="input-group-addon"><b>Abreviación</b></span>
+                <input type="text" class="form-control formsNP" id="Abreviacion" name="Abreviacion">
+              </div>
+            </div>
+            <div class="col-md-12 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>Tipo</b></span>
-                <select class=" form-control formsNP selectpicker" id="Tipo" name="Tipo">
-                  <option selected="true" disabled="true">Tipo</option>
+                <select class=" select2 form-control formsNP" id="Tipo" name="Tipo" required="">
+                  <option selected="true" disabled="false" value="">Tipo</option>
                   <option value="Comprador final">Comprador Final</option>
                   <option value="Intermediario">Intermediario</option>
                   <option value="Maquilador">Maquilador</option>
@@ -32,31 +47,207 @@
                   <option value="Organismo de Certificacion">Organismo de Certificacion</option>
               </select>              
               </div>
+            </div>
+            <div class="col-md-12" style="margin: 0px; padding: 0px;">
+              <div class="col-md-12 divsNP">
+                  <div class="input-group">
+                    <span class="input-group-addon"><b>Skype</b></span>
+                    <input type="text" class="formsNP" id="Skype" name="Skype">
+                  </div>
+              </div>
+              <div class="col-md-12 divsNP">
+                    <div class="input-group">
+                      <span class="input-group-addon"><b>Sitio Web</b></span>
+                      <input type="text" class="form-control formsNP" id="SitioWeb" name="SitioWeb">
+                    </div>
+              </div>
+              <div class="col-md-12 divsNP">
+                    <div class="input-group">
+                    <span class="input-group-addon"><b>Datos Fiscales</b></span>
+                      <textarea rows="4" cols="50" class="col-md-12" id="DatosFiscales" name="DatosFiscales" placeholder="Datos Fiscales"></textarea> 
+                    </div>
+              </div>
+            </div>
+        </div><!--fincol-md-12 -->
+
+        <div class="col-md-6">
+            <div class="col-md-12 divsNP" style="border:.5px solid #d2d6de; padding-bottom: 1em;">
+                <div class="col-md-12 divsNP">
+                    <button style="padding: 0px" type="button" data-toggle="modal" data-target="#ModalNPersona" id="btnAgregarNuevo" class="btn col-md-2" data-toggle="tooltip" title="AGREGAR NUEVO"><i class="fa fa-plus-square fa-2x"></i></button>
+                    <label class="col-md-8 h4 text-center">REPRESENTANTE</label>
+                    <button style="padding: 0px" type="button" id="btnBuscarExistente" class="btn col-md-2" data-toggle="tooltip" title="BUSCAR EXISTENTE"><i class="fa fa-search fa-2x"></i></button>
+                </div>
+                <div class="col-md-12 divsNP">
+                    <div class="input-group">
+                       <span class="input-group-addon">
+                        <b>Representante</b></span>
+                      <input type="text" class="col-md-12" id="RepresentanteEmp">
+                      <input type="hidden" class="col-md-12" id="idRepresentanteEmp">
+                      <select class="hidden form-control formsNP selectpicker" id="Representante" name="Representante" required>
+                        <option selected="true" disabled="true" value="0">Lista de Representantes</option>
+                      </select>
+                    </div>
+                </div>
+                <div class="col-md-12 divsNP">
+                    <button style="padding: 0px" type="button" data-toggle="modal" data-target="#ModalNPersona" id="btnAgregarNuevoCont" class="btn col-md-2" data-toggle="tooltip" title="AGREGAR NUEVO"><i class="fa fa-plus-square fa-2x"></i></button>
+                    <label class="col-md-8 h4 text-center">CONTACTO</label>
+                    <button style="padding: 0px" type="button" id="btnBuscarExistenteCont" class="btn col-md-2" data-toggle="tooltip" title="BUSCAR EXISTENTE"><i class="fa fa-search fa-2x"></i></button>
+                    <div class="input-group">
+                      <span class="input-group-addon"><b>Contacto</b></span>
+                      <!-- <input type="text" class="col-md-12" id="ContactoEmp"> -->
+                      <select class="js-example-programmatic-multi select2 form-control" id="ContactoEmp" multiple="multiple" maximumSelectionLength="2">
+                      </select>
+                      <select class="hidden form-control formsNP js-example-programmatic-multi" id="Contacto" name="Contacto" required>
+                        <option selected="true" disabled="true" value="0">Lista de Contactos</option>
+                      </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                  <div class="col-md-6 divsNP">
+                  <div class="input-group">
+                    <span class="input-group-addon"><b>1º Telefono</b></span>
+                    <input type="text" class="formsNP" id="Telefono1" name="Telefono1">
+                    <select class="select2 form-control formsNP selectpicker" id="TipoTelefono1" name="TipoTelefono1">
+                      <option selected="true" disabled="true">Tipo</option>
+                      <option value="Trabajo">Trabajo</option>
+                      <option value="Personal">Personal</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6 divsNP">
+                      <div class="input-group">
+                        <span class="input-group-addon"><b>2º Telefono</b></span>
+                        <input type="text" class="form-control formsNP" id="Telefono2" name="Telefono2">
+                        <select class="select2 form-control formsNP selectpicker" id="TipoTelefono2" name="TipoTelefono2">
+                          <option selected="true" disabled="true">Tipo</option>
+                          <option value="Trabajo">Trabajo</option>
+                          <option value="Personal">Personal</option>
+                      </select>
+                      </div>
+                </div>
+                <div class="col-md-6 divsNP">
+                      <div class="input-group">
+                        <span class="input-group-addon"><b>1º Email</b></span>
+                        <input type="text" class="form-control formsNP" id="Correo1" name="Correo1">
+                        <select class="select2 form-control formsNP selectpicker" id="TipoCorreo1" name="TipoCorreo1">
+                          <option selected="true" disabled="true">Tipo</option>
+                          <option value="Trabajo">Trabajo</option>
+                          <option value="Personal">Personal</option>
+                      </select>
+                      </div>
+                </div>
+                <div class="col-md-6 divsNP">
+                      <div class="input-group">
+                        <span class="input-group-addon"><b>2º Email</b></span>
+                        <input type="text" class="form-control formsNP" id="Correo2" name="Correo2">
+                        <select class="select2 form-control formsNP selectpicker" id="TipoCorreo2" name="TipoCorreo2">
+                          <option selected="true" disabled="true">Tipo</option>
+                          <option value="Trabajo">Trabajo</option>
+                          <option value="Personal">Personal</option>
+                      </select>
+                      </div>
+                </div>
+            </div>
         </div>
-        <div class="col-md-6 divsNP">
+        <div class="col-md-12 divsNP">
               <div class="input-group">
-                 <span class="input-group-addon">
-<!--<button style="padding: 0px" type="none"><i class="fa fa-plus-square"></i></button> -->
-<b>Representante</b></span>
-             <select class=" form-control formsNP" id="Representante" name="Representante" required>
-                <option selected="true" disabled="true" value="0">Representante</option>
-<!--                 <option value="Agregar">Agregar Nuevo</option>
- -->                </select>
+                <span class="input-group-addon"><b>Direccion</b></span>
+                <input type="text" class="col-md-12 formsNP2" id="DireccionOficina" name="DireccionOficina" placeholder="Direccion Oficina">
+                <input type="text" class="col-md-12 formsNP2" id="DireccionFiscal" name="DireccionFiscal" placeholder="Direccion Fiscal">
+
+                <input type="text" class="col-md-6 formsNP2" id="Ciudad" name="Ciudad" placeholder="Ciudad">
+                <input type="text" class="col-md-6 formsNP2" id="Pais" name="Pais" placeholder="Pais:">
+              </div>
+<!--               <div class="input-group">
+                <span class="input-group-addon"><b>Direccion<br>Fiscal</b></span>
+                <input type="text" class="col-md-8 formsNP2" id="Calle" name="Calle" placeholder="Calle">
+                <input type="text" class="col-md-4 formsNP2" id="Numero" name="Numero" placeholder="Número">
+                <input type="hidden" class="col-md-4 formsNP2" id="Colonia" name="Colonia" placeholder="Colonia" value="">
+                <input type="hidden" class="col-md-4 formsNP2" id="Municipio" name="Municipio" placeholder="Municipio" value="">
+                <input type="text" class="col-md-4 formsNP2" id="Estado" name="Estado" placeholder="Estado">
+                <input type="text" class="col-md-4 formsNP2" id="Cp" name="Cp" placeholder="C.P:">
+                <input type="text" class="col-md-4 formsNP2" id="Pais" name="Pais" placeholder="Pais:">
+              </div> -->
+              <input type="submit" name="registrarEmpresa" class="divsNP formsNP btn btn-primary btn-block" value="Registrar Empresa">
+        </div>
+        </form>
+      </div>
+      </div>
+    </section>
+
+<!-- Modal -->
+<div id="ModalNPersona" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Registrar Empresa > Registrar Persona</h4>
+      </div>
+      <div class="modal-body">
+      <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <button type="button" class="btn btn-app pull-left" onclick="limpiarFormularioPersona()">
+            <i class="glyphicon glyphicon-erase"></i>Limpiar
+          </button> 
+          <h3>REGISTRAR PERSONA</h3>
+        </div>
+        <form id="formPersona" method="POST" action="<?php echo base_url();?>cPersona/guardar2">
+        <div class="col-md-12 divsNP">
+              <div class="input-group">
+                <span class="input-group-addon"><b>Nombre Completo</b></span>
+                <input type="text" class="formsNP" id="Nombre" name="Nombre" placeholder="Nombre(s) Apellidos"/>
               </div>
         </div>
         <div class="col-md-6 divsNP">
               <div class="input-group">
-                <span class="input-group-addon"><b>Contacto</b></span>
-                <select class=" form-control formsNP" id="Contacto" name="Contacto" required>
-                <option selected="true" disabled="true" value="0">Contacto</option>
+                <span class="input-group-addon"><b>Cargo</b></span>
+                <select class=" Cargo select2 formsNP" id="Cargo" name="Cargo">
+                  <option selected="true" value="Representante">Representante</option>
+                  <option selected="true" value="Contacto">Contacto</option>
                 </select>
               </div>
+        </div>
+<!--         <div class="col-md-6 divsNP">
+              <div class="input-group">
+                <span class="input-group-addon"><b>Empresa</b></span>
+                <select class="form-control select2 formsNP selectpicker" title="Empresa..." id="Empresa" name="Empresa">
+                  <option value="0">Sin Empresa</option>
+                </select>
+              </div>
+        </div> -->
+        <div class="col-md-6 " style="padding: 0px;">
+        <div class="col-md-12 divsNP">
+              <div class="input-group">
+                <span class="input-group-addon"><b>Puesto</b></span>
+                <input type="text" class="Puesto  formsNP" id="Puesto" name="Puesto">
+              </div>
+        </div>
+<!--         <div class="col-md-6 divsNP">
+              <div class="input-group">
+                <span class="input-group-addon"><b>Status</b></span>
+                <select class=" Status form-control select2 formsNP selectpicker" id="Status" name="Status">
+                  <option selected="true" disabled="true">Status</option>
+                  <option value="Avanzado">Avanzado</option>
+                  <option value="Cancelado">Cancelado</option>
+                  <option value="En proceso">En proceso</option>
+                  <option value="Incorporado">Incorporado</option>
+                  <option value="No iniciado">No iniciado</option>
+                  <option value="Suspendido">Suspendido</option>
+                  <option value="Interes sin compromiso">Interes sin compromiso</option>
+                  <option value="Interes en participar confirmado">Interes en participar confirmado</option>
+              </select>              
+              </div>
+        </div> -->
         </div>
         <div class="col-md-3 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>1º Telefono</b></span>
-                <input type="text" class="form-control formsNP" id="Telefono1" name="Telefono1">
-                <select class=" form-control formsNP selectpicker" id="TipoTelefono1" name="TipoTelefono1">
+                <input type="text" class="Telefono1 formsNP" id="Telefono1" name="Telefono1">
+                <select class="select2 form-control formsNP selectpicker" id="TipoTelefono1" name="TipoTelefono1">
                   <option selected="true" disabled="true">Tipo</option>
                   <option value="Trabajo">Trabajo</option>
                   <option value="Personal">Personal</option>
@@ -66,8 +257,8 @@
         <div class="col-md-3 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>2º Telefono</b></span>
-                <input type="text" class="form-control formsNP" id="Telefono2" name="Telefono2">
-                <select class=" form-control formsNP selectpicker" id="TipoTelefono2" name="TipoTelefono2">
+                <input type="text" class="Telefono2  formsNP" id="Telefono2" name="Telefono2">
+                <select class="select2 form-control formsNP selectpicker" id="TipoTelefono2" name="TipoTelefono2">
                   <option selected="true" disabled="true">Tipo</option>
                   <option value="Trabajo">Trabajo</option>
                   <option value="Personal">Personal</option>
@@ -77,8 +268,8 @@
         <div class="col-md-3 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>1º Email</b></span>
-                <input type="text" class="form-control formsNP" id="Correo1" name="Correo1">
-                <select class=" form-control formsNP selectpicker" id="TipoCorreo1" name="TipoCorreo1">
+                <input type="text" class="Correo1 form-control formsNP" id="Correo1" name="Correo1">
+                <select class="select2 form-control formsNP selectpicker" id="TipoCorreo1" name="TipoCorreo1">
                   <option selected="true" disabled="true">Tipo</option>
                   <option value="Trabajo">Trabajo</option>
                   <option value="Personal">Personal</option>
@@ -88,65 +279,44 @@
         <div class="col-md-3 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>2º Email</b></span>
-                <input type="text" class="form-control formsNP" id="Correo2" name="Correo2">
-                <select class=" form-control formsNP selectpicker" id="TipoCorreo2" name="TipoCorreo2">
+                <input type="text" class="Correo2 form-control formsNP" id="Correo2" name="Correo2">
+                <select class="select2 form-control formsNP selectpicker" id="TipoCorreo2" name="TipoCorreo2">
                   <option selected="true" disabled="true">Tipo</option>
                   <option value="Trabajo">Trabajo</option>
                   <option value="Personal">Personal</option>
               </select>
               </div>
         </div>
-        <div class="col-md-6 divsNP">
+        <div class="col-md-12 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>Skype</b></span>
                 <input type="text" class="form-control formsNP" id="Skype" name="Skype">
               </div>
         </div>
-        <div class="col-md-6 divsNP">
-              <div class="input-group">
-                <span class="input-group-addon"><b>Sitio Web</b></span>
-                <input type="text" class="form-control formsNP" id="SitioWeb" name="SitioWeb">
-              </div>
-        </div>
         <div class="col-md-12 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>Direccion</b></span>
-                <input type="text" class="col-md-8 formsNP2" id="Calle" name="Calle" placeholder="Calle">
-                <input type="text" class="col-md-4 formsNP2" id="Numero" name="Numero" placeholder="Número">
+                <input type="text" class="Calle col-md-12 formsNP2" id="Calle" name="Calle" placeholder="Dirección">
+                <input type="hidden" class="col-md-4 formsNP2" id="Numero" name="Numero" placeholder="Número">
                 <input type="hidden" class="col-md-4 formsNP2" id="Colonia" name="Colonia" placeholder="Colonia" value="">
+
                 <input type="hidden" class="col-md-4 formsNP2" id="Municipio" name="Municipio" placeholder="Municipio" value="">
-                <input type="text" class="col-md-4 formsNP2" id="Estado" name="Estado" placeholder="Estado">
-                <input type="text" class="col-md-4 formsNP2" id="Cp" name="Cp" placeholder="C.P:">
-                <input type="text" class="col-md-4 formsNP2" id="Pais" name="Pais" placeholder="Pais:">
+                <input type="text" class="col-md-6 formsNP2" id="Estado" name="Estado" placeholder="Ciudad">
+                <input type="hidden" class="col-md-4 formsNP2" id="Cp" name="Cp" placeholder="C.P:">
+                <input type="text" class="Pais col-md-6 formsNP2" id="Pais" name="Pais" placeholder="Pais:">
               </div>
-              <input type="submit" name="registrarPersona" class="divsNP formsNP btn btn-primary btn-block" value="Registrar Empresa">
+              <input type="submit" id="registrarPersona" name="registrarPersona" class="divsNP formsNP btn btn-primary btn-block" value="Registrar Persona">
         </div>
         </form>
+        </div> <!-- row -->
       </div>
-      </div>
-    </section>
-
-<!-- Modal -->
-<div id="ModalNPersona" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
-      </div>
-      <div class="modal-body">
-        <p>Some text in the modal.</p>
-      </div>
+      </div><!--  modal-bod7 -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button id="btnCerrarModal" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
-
   </div>
 </div>
-
 <script type="text/javascript">
   var baseurl = "<?php echo base_url();?>";
 </script>

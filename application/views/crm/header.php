@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<?php ob_start(); ?>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,7 +32,13 @@
   <link rel="stylesheet" href="<?php echo base_url();?>assets/dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" href="<?php echo base_url();?>assets/dist/css/personalizado/style.css">
 <!-- DataTables -->
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/dataTables/dataTables.bootstrap.css">
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/datatables/dataTables.bootstrap.css">
+
+  <!-- JS file -->
+<!-- CSS file -->
+<link rel="stylesheet" href="<?php echo base_url();?>Js/EasyAutocomplete/easy-autocomplete.min.css"> 
+<!-- Additional CSS Themes file - not required-->
+<link rel="stylesheet" href="<?php echo base_url();?>Js/EasyAutocomplete/easy-autocomplete.themes.min.css"> 
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -51,8 +58,8 @@
       <span class="logo-mini"><b></b>SPP</span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg text-center">
-     <b>R.P.S.E</b>
-      <!-- <img src="<?php echo base_url();?>assets/dist/img/FU<!-- NDEPPO.jpg" class="img-responsive" style="height: 74px; width: 140px; display:inline;"> -->
+     <b>C.R.M</b>
+      <!-- <img src="<?php echo base_url();?>assets/dist/img/FU<! NDEPPO.jpg" class="img-responsive" style="height: 74px; width: 140px; display:inline;"> -->
       </span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
@@ -98,7 +105,7 @@
                   </li>
                   <li>
                     <a href="<?php echo base_url();?>cNegociacion/nuevaNegociacion">
-                      <i class="fa fa-briefcase text-red"></i>Negociación
+                      <i class="fa fa-briefcase text-red"></i>Objetivo
                     </a>
                   </li>
                 </ul>
@@ -127,7 +134,7 @@
                   </li>
                   <li>
                     <a href="<?php echo base_url();?>cNegociacion/verEliminarNegociacion">
-                      <i class="fa fa-briefcase text-red"></i>Negociacion
+                      <i class="fa fa-briefcase text-red"></i>Objetivo
                     </a>
                   </li>
                 </ul>

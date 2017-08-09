@@ -13,7 +13,16 @@
         <div class="col-md-6">
           <div class="box box-info bg-info">
             <div class="box-header with-border bg-success">
-              <label class="h3"></label>&nbsp;&nbsp;<label class="h3 text-info"><?php echo $row_Tareas->TituloTarea ?></label>
+              <div class="col-md-5">
+                <label class="h3 text-info"><?php echo $row_Tareas->TituloTarea; ?></label>
+              </div>
+              <div class="col-md-4">
+                <a href="#" class="btn btn-sm text-center btn-success" id="btnRealizarTarea" data-toggle="modal" data-target="#ModalStatusFinal">Realizada</a>
+                <button class="btn btn-sm text-center btn-danger" id="btnCancelarTarea" data-toggle="modal" data-target="#ModalStatusFinalCancelar">Cancelar</button>
+              </div>
+              <div class="col-md-3">
+                  <label class="h4 text-info pull-right"><?php echo $row_Tareas->StatusTarea; ?></label>  
+              </div>
             </div>
             <!-- /.box-header -->
             <div class="box-body bg-info">
@@ -61,6 +70,56 @@
         </div>
       </div>
     </section>
+
+<div id="ModalStatusFinal" class="modal modal-success fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Actualización de tarea</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+        <div class="col-md-12">
+        <label>Dictamen Final:</label>
+          <textarea id="StatusFinal" class="col-md-12 text-black"></textarea>
+        </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="mbtnCancelar" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button type="button" id="mbtnEnviar" class="btn btn-default">Enviar</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div id="ModalStatusFinalCancelar" class="modal modal-success fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Actualización de tarea</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+        <div class="col-md-12">
+        <label>Dictamen Final:</label>
+          <textarea id="StatusFinalCancelada" class="col-md-12 text-black"></textarea>
+        </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="mbtnCancelarC" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button type="button" id="mbtnEnviarCancelada" class="btn btn-default">Enviar</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
 <script type="text/javascript">
   var baseurl = "<?php echo base_url();?>";
   var idTarea = "<?php echo $row_Tareas->idTarea; ?>";

@@ -1,5 +1,5 @@
- <?php
-
+<?php ob_start();?>
+<?php
 class cGetPersonas extends CI_Controller
 {
 	
@@ -28,4 +28,13 @@ class cGetPersonas extends CI_Controller
 		$resultado = $this->mGetPersonas->getPersonasPorEmpresa($s);
 		echo json_encode($resultado);
 	}
-}
+	public function getPersonasAutoComplete(){
+		$resultado = $this->mGetPersonas->getPersonasAutoComplete();
+		echo json_encode($resultado);
+	}
+	public function getPersonaPorId(){
+		$idPersona= $this->input->post('idPersona');
+		$resultado = $this->mGetPersonas->getPersonaPorId2($idPersona);		
+		echo json_encode($resultado);
+	}
+}?>

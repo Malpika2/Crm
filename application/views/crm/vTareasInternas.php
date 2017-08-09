@@ -8,14 +8,14 @@
     <!-- Main content -->
     <section class="content">
       <div class="row">
-      <h3>Tareas Internas</h3>
+      <h3>GESTION DE OBJETIVOS</h3>
       <div class="col-md-12">
         <div class="col-md-12">
           <div class="callout callout-default">
             <div class="box">                    
             <div class="box-header">
-              <h3 class="box-title">LISTADO COMPLETO DE TAREAS INTERNAS</h3>
-                      <button id="btn_nTarea" class="btn btn-primary pull-right " data-toggle="modal" data-target="#ModalTarea"><i class="fa fa-plus fa-x2"></i> Nueva Tarea</button>
+              <h3 class="box-title">LISTADO COMPLETO</h3>
+              <button id="btn_nTarea" class="btn btn-primary pull-right " data-toggle="modal" data-target="#ModalTarea"><i class="fa fa-plus fa-x2"></i>Nuevo Objetivo</button>
             </div>
             <!-- /.box-header -->
             <div class="box-body">

@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <?php 
 /**
 * 
@@ -36,7 +37,21 @@ class cTareas extends CI_Controller
 		$resultado = $this->mTareas->getTareas_dePersonas_PorUsuarioGrupales($s);
 		echo json_encode($resultado);
 	}
-	
+	public function getTareas_deObjetivos(){
+		$s = $this->input->post('idNegociacion');
+		$resultado = $this->mTareas->getTareas_deObjetivos($s);
+		echo json_encode($resultado);
+	}
+	public function StatusRealizada(){
+		$id = $this->input->post('idTarea');
+		$status = $this->input->post('StatusFinal');
+		$resultado = $this->mTareas->StatusRealizada($id,$status);
+	}
+	public function StatusCancelar(){
+		$id = $this->input->post('idTarea');
+		$status = $this->input->post('StatusFinal');
+		$resultado = $this->mTareas->StatusCancelar($id,$status);
+	}
 	
 
 }

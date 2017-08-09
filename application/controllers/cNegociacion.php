@@ -1,4 +1,5 @@
- <?php
+<?php ob_start(); ?>
+<?php
 /**
 * 
 */ 
@@ -32,7 +33,8 @@ class cNegociacion extends CI_Controller
 		// $param['idPersona'] = $this->input->post('PersonaContacto');
 		$param['Motivo'] = $this->input->post('Motivo');
 		$param['Prioridad'] = $this->input->post('Prioridad');
-		$param['Status'] = $this->input->post('Status');
+		// $param['Status'] = $this->input->post('Status');
+		$param['Status'] = 'En Proceso';
 		$param['PersonaCargo'] = $this->input->post('PersonaCargo');
 		$param['FechaLimite'] = $this->input->post('FechaLimite');
 		$param['Detalles'] = $this->input->post('Detalles');
@@ -58,7 +60,7 @@ class cNegociacion extends CI_Controller
 
 		$param['Motivo'] = $this->input->post('MotivoP');
 		$param['Prioridad'] = $this->input->post('PrioridadP');
-		$param['Status'] = $this->input->post('StatusP');
+		$param['Status'] = 'En Proceso';
 		$param['PersonaCargo'] = $this->input->post('PersonaCargoP');
 		$param['FechaLimite'] = $this->input->post('FechaLimiteP');
 		$param['Detalles'] = $this->input->post('DetallesP');

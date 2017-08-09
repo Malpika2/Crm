@@ -10,14 +10,17 @@
 <!-- ./wrapper -->
 
 
+
 <!-- jQuery 2.2.3 -->
 <script src="<?php echo base_url();?>assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
+
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button);
 </script>
+<script src="<?php echo base_url();?>Js/EasyAutocomplete/jquery.easy-autocomplete.min.js"></script> 
 <!-- Bootstrap 3.3.6 -->
 <script src="<?php echo base_url();?>assets/bootstrap/js/bootstrap.min.js"></script>
 <!-- Morris.js charts -->
@@ -157,6 +160,7 @@
 });
 </script>
 <!-- Scripts del proyecto -->
+<script src="<?php echo base_url();?>Js/typeahead.js"></script>
 <?php
  if ($this->uri->segment(1)=='cInicio'){ ?>
  <script src="<?php echo base_url();?>Js/Inicio.js"></script>
@@ -198,6 +202,9 @@
 <?php } ?>
 <?php if($this->uri->segment(1)==='cTareasInternas'){?>
   <script src="<?php echo base_url();?>Js/TareasInternas.js"></script>
+<?php } ?>
+<?php if($this->uri->segment(1)==='CObjetivos'){?>
+  <script src="<?php echo base_url();?>Js/Objetivos.js"></script>
 <?php } ?>
 <script>
   $(function () {

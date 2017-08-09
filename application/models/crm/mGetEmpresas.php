@@ -2,49 +2,58 @@
 
 class mGetEmpresas extends CI_Model
 {
+	private $DBCRM; // Base de datos local
+    private $DBSPP;  // Base de datos en la nube
 	function __construct()
 	{
 		parent::__construct();
+		$this->DBCRM = $this->load->database('default', TRUE);
+		$this->DBSPP = $this->load->database('d-spp', TRUE);
+
 	}
 	public function getEmpresas($s){
-		$s = $this->db->get_where('Empresas',array('sitReg' =>$s));
+		$s =$this->DBCRM->get_where('Empresas',array('sitReg' =>$s));
 		return $s->result();
 	}
+	public function getEmpresasAutoComplete(){
+			$s = $this->DBSPP->get('empresa');
+			return $s->result();
+	}
 	public function getEmpresaPorUsuario($s){
-		$this->db->select('*');
-		$this->db->from('Empresas');
-		$this->db->where('idRepresentante',$s);
-		$this->db->or_where('idContacto',$s);
-		$query = $this->db->get();	
+		$this->DBCRM->select('*');
+		$this->DBCRM->from('Empresas');
+		$this->DBCRM->where('idRepresentante',$s);
+		$this->DBCRM->or_where('idContacto',$s);
+		$query = $this->DBCRM->get();	
 		return $query->row();
 				// $this->db->join('Personas','Representante = idPersona OR Contacto = idPersona');
 	}
 	public function getEmpresaPorId($s){
-		$this->db->select('*');
-		$this->db->from('Empresas');
-		$this->db->where('idEmpresa',$s);
-		$query = $this->db->get();
+		$this->DBCRM->select('*');
+		$this->DBCRM->from('Empresas');
+		$this->DBCRM->where('idEmpresa',$s);
+		$query = $this->DBCRM->get();
 		return $query->row();
 	}
 	public function getDireccion($s){
-		$this->db->select('*');
-		$this->db->from('Direcciones');
-		$this->db->where('idEmpresa',$s);
-		$query = $this->db->get();			
+		$this->DBCRM->select('*');
+		$this->DBCRM->from('Direcciones');
+		$this->DBCRM->where('idEmpresa',$s);
+		$query = $this->DBCRM->get();			
 		return $query->row();
 	}
 		public function getTelefonos($s){
-		$this->db->select('*');
-		$this->db->from('Telefonos');
-		$this->db->where('idEmpresa',$s);
-		$query = $this->db->get();			
+		$this->DBCRM->select('*');
+		$this->DBCRM->from('Telefonos');
+		$this->DBCRM->where('idEmpresa',$s);
+		$query = $this->DBCRM->get();			
 		return $query->row();
 	}
 		public function getCorreos($s){
-		$this->db->select('*');
-		$this->db->from('Correos');
-		$this->db->where('idEmpresa',$s);
-		$query = $this->db->get();			
+		$this->DBCRM->select('*');
+		$this->DBCRM->from('Correos');
+		$this->DBCRM->where('idEmpresa',$s);
+		$query = $this->DBCRM->get();			
 		return $query->row();
 	}
 

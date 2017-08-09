@@ -33,7 +33,7 @@
         <li class="treeview">
           <a href="<?php echo base_url();?>cNegociacion">
             <i class="fa fa-briefcase"></i>
-            <span>Negociación</span>
+            <span>Objetivos</span>
             <span class="pull-right-container">
               <span class="label label-primary pull-right"></span>
             </span>
@@ -49,9 +49,9 @@
         </li>
         <li class="header" style="color:white">Usuario</li>
         <li class="treeview">
-          <a href="<?php echo base_url();?>cTareasInternas">
+          <a href="<?php echo base_url();?>CObjetivos">
             <i class="fa fa-calendar-check-o"></i>
-            <span>Tareas Internas</span>
+            <span>Objetivos Internos</span>
           </a>
         </li>
       <!--   <li class="treeview">

@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <?php
 /**
 * 
@@ -15,7 +16,7 @@ class cTareasInternas extends CI_Controller
 		$data['Tareas'] = $this->mTareas->getTareasInternas();
 		$this->load->view('crm/header');
 		$this->load->view('crm/menu');
-		$this->load->view('crm/vTareasInternas',$data);
+		$this->load->view('crm/vObjetivos',$data);
 		$this->load->view('crm/footer');
 	}
 
@@ -32,21 +33,21 @@ class cTareasInternas extends CI_Controller
 
 	public function guardarTareaInterna(){
 
-$param['TituloTarea'] =  $this->input->post('TituloTarea');
-$param['Categoria'] =  $this->input->post('Categoria');
-$param['Prioridad'] =  $this->input->post('Prioridad');
-$param['Asignados'] = NULL;
+	$param['TituloTarea'] =  $this->input->post('TituloTarea');
+	$param['Categoria'] =  $this->input->post('Categoria');
+	$param['Prioridad'] =  $this->input->post('Prioridad');
+	$param['Asignados'] = NULL;
 
-$param['EmpresasPart'] = NULL;
-$param['PersonasPart'] = NULL;
-$param['idPersona'] = NULL;
-$param['idNegociacion'] = NULL;
-$param['idEmpresa'] = NULL;
+	$param['EmpresasPart'] = NULL;
+	$param['PersonasPart'] = NULL;
+	$param['idPersona'] = NULL;
+	$param['idNegociacion'] = NULL;
+	$param['idEmpresa'] = NULL;
 
-$param['Descripcion'] =  $this->input->post('Descripcion');
-$param['datepickerE'] =  $this->input->post('datepickerE');
-$param['FechaFin'] =  $this->input->post('FechaFinE');
-$param['idUsuarioCrea'] =  $this->input->post('idUsuarioc');
+	$param['Descripcion'] =  $this->input->post('Descripcion');
+	$param['datepickerE'] =  $this->input->post('datepickerE');
+	$param['FechaFin'] =  $this->input->post('FechaFinE');
+	$param['idUsuarioCrea'] =  $this->input->post('idUsuarioc');
 
 		if(isset($_POST['UsuarioTareaInterna'])){
 			foreach ($_POST['UsuarioTareaInterna'] as $asignados_value){
@@ -58,7 +59,6 @@ $param['idUsuarioCrea'] =  $this->input->post('idUsuarioc');
 		if ($ultimaTarea>0) {
 			foreach ($_POST['UsuarioTareaInterna'] as $asignados_value){
 			$this->mTareas->guardarParticipantes($asignados_value,$param);
-			// $this->mMailer->enviarCorreo($ultimaTarea,$param);
 			}
 			$this->index();
 			}

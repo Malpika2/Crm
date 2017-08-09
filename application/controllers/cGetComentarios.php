@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <?php 
 
 class cGetComentarios extends CI_Controller

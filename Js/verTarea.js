@@ -92,3 +92,41 @@ $.post(baseurl+"cGetComentarios/getComentarios_Por_Tarea",
       });
   });
 }
+
+// StatusRealizada = function(){
+//   $.post(baseurl+"cTareas/StatusRealizada",
+//   {
+//     idTarea:idTarea
+//   },
+//   function(data){
+//     location.reload(); 
+//   });
+// };
+$("#mbtnEnviar").click(function(){
+  var StatusFinal = $('#StatusFinal').val();
+      $.post(baseurl+"cTareas/StatusRealizada",
+      {
+        idTarea:idTarea,
+        StatusFinal:StatusFinal
+      },
+      function(data){
+        location.reload(); 
+        $('#mbtnCancelar').click();
+      }
+
+    );
+});
+$("#mbtnEnviarCancelada").click(function(){
+  var StatusFinalC = $('#StatusFinalCancelada').val();
+      $.post(baseurl+"cTareas/StatusCancelar",
+      {
+        idTarea:idTarea,
+        StatusFinal:StatusFinalC
+      },
+      function(data){
+        location.reload(); 
+        $('#mbtnCancelarC').click();
+      }
+
+    );
+});

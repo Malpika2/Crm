@@ -1,13 +1,66 @@
+GuardarEditEmpresa = function(){
+var idEmpresa = $("#idEmpresa").val();
+var RazonSocial = $("#RazonSocial").val();
+var SPP = $("#SPP").val();
+var Abreviacion = $("#Abreviacion").val();
+var Tipo = $("#Tipo").val();
+var Representante = $("#Representante").val();
+var Contacto = $("#Contacto").val();
+var Skype = $("#Skype").val();
+var SitioWeb = $("#SitioWeb").val();
+var Telefono1 = $("#Telefono1").val();
+var TipoTelefono1 = $("#TipoTelefono1").val();
+var Telefono2 = $("#Telefono2").val();
+var TipoTelefono2 = $("#TipoTelefono2").val();
+var Correo1 = $("#Correo1").val();
+var TipoCorreo1 = $("#TipoCorreo1").val();
+var Correo2 = $("#Correo2").val();
+var TipoCorreo2 = $("#TipoCorreo2").val();
+var DatosFiscales = $("#DatosFiscales").val();
+var DireccionOficina = $("#DireccionOficina").val();
+var DireccionFiscal = $("#DireccionFiscal").val();
+var Ciudad = $("#Ciudad").val();
+var Pais = $("#Pais").val();
+$.post(baseurl+"cEmpresa/updateEmpresa/",
+  { idEmpresa:idEmpresa,
+    RazonSocial:RazonSocial,
+    SPP:SPP,
+    Abreviacion:Abreviacion,
+    Tipo:Tipo,
+    Representante:Representante,
+    Contacto:Contacto,
+    Skype:Skype,
+    SitioWeb:SitioWeb,
+    Telefono1:Telefono1,
+    TipoTelefono1:TipoTelefono1,
+    Telefono2:Telefono2,
+    TipoTelefono2:TipoTelefono2,
+    Correo1:Correo1,
+    TipoCorreo1:TipoCorreo1,
+    Correo2:Correo2,
+    TipoCorreo2:TipoCorreo2,
+    DatosFiscales:DatosFiscales,
+    DireccionOficina:DireccionOficina,
+    DireccionFiscal:DireccionFiscal,
+    Ciudad:Ciudad,
+    Pais:Pais
+  },
+  function(data){
+    location.reload();
+  });
+}
+
 //Mostrar Comentarios
-$.post(baseurl+"cGetComentarios/getComentarios_Por_Empresa",
-	{
-		idEmpresa:idEmpresa
-	},
-	function(data){
-		var emp = JSON.parse(data);
-		$.each(emp,function(i,item){
-			$('#activity').append(
-                '<div class="box box-info collapsed-box bg-info">'+
+ if(typeof(idEmpresa) != "undefined"){
+  $.post(baseurl+"cGetComentarios/getComentarios_Por_Empresa",
+  {
+    idEmpresa:idEmpresa
+  },
+  function(data){
+    var emp = JSON.parse(data);
+    $.each(emp,function(i,item){
+      $('#activity').append(
+        '<div class="box box-info collapsed-box bg-info">'+
             '<div class="box-header with-border bg-info">'+
                   '<div class="user-block">'+
                     '<img class="img-circle img-bordered-sm" src="'+baseurl+'assets/dist/img/'+item.url_foto+'" alt="User Image">'+
@@ -40,8 +93,10 @@ $.post(baseurl+"cGetComentarios/getComentarios_Por_Empresa",
             '</div><!-- /.box-body -->'+
           '</div><!-- /.box -->')
             ComentarioPorComentario(item.idComentario);
-			});
-	});
+      });
+  });
+ }
+
 //Recargar los comentarios
 function Recargar(idEmpresa){
   limpiar();
@@ -184,6 +239,7 @@ $.post(baseurl+"cGetUsuarios/getUsuarios",
   });
 
 //GET TAREAS==========MOSTRAR LAS TAREAS
+ if(typeof(idEmpresa) != "undefined"){
 $.post(baseurl+"cEmpresa/getTareas",
   {
     idEmpresa:idEmpresa
@@ -226,6 +282,8 @@ $.post(baseurl+"cEmpresa/getTareas",
       '<i class="fa fa-clock-o bg-gray"></i>'+
     '</li>')
   });
+ }
+
 
 function recargarTareas(){ //===============RECARGAR LAS TAREAS DESPUES DE GUARDAR
 $.post(baseurl+"cEmpresa/getTareas",
@@ -309,6 +367,7 @@ $('#form, #fat, #formNegociacion').submit(function() {
           return false;
       });
 //Mostrar Negociaciones
+ if(typeof(idEmpresa) != "undefined"){
 $.post(baseurl+"cEmpresa/getNegociaciones",
   {
     idEmpresa:idEmpresa
@@ -344,7 +403,7 @@ $.post(baseurl+"cEmpresa/getNegociaciones",
       '<i class="fa fa-clock-o bg-gray"></i>'+
     '</li>')
   });
-
+}
 function recargarNegociaciones(){$.post(baseurl+"cEmpresa/getNegociaciones",
   {
     idEmpresa:idEmpresa

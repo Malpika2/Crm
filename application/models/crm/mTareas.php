@@ -20,6 +20,7 @@ class mTareas extends CI_Model
 		'idNegociacion' => $param['idNegociacion'],
 		'Prioridad' => $param['Prioridad'],
 		'Descripcion' => $param['Descripcion'],
+		'idMeta' => $param['idMeta'],
 		'idUsuarioCrea' => $param['idUsuarioCrea']);
 
 		$this->db->insert('Tareas',$campos);
@@ -113,6 +114,18 @@ public function tareaNoRealizada($s){
 			$this->db->join('Tareas','Tareas.idTarea=Participantes_Tareas.idTarea');
 			$this->db->join('Empresas','Empresas.idEmpresa=Tareas.idEmpresa');
 			$this->db->where('Participantes_Tareas.idUsuario',$s);
+			$this->db->group_by('Tareas.idTarea');
+			$this->db->order_by('Tareas.FechaFin','DESC');
+			$s = $this->db->get();
+			return $s->result();
+		}
+		public function getTareas_dePersonas_PorUsuario($s){
+			$this->db->select('*');
+			$this->db->from('Participantes_Tareas');
+			$this->db->join('Tareas','Tareas.idTarea=Participantes_Tareas.idTarea');
+			$this->db->join('Personas','Personas.idPersona=Tareas.idPersona');
+			$this->db->where('Participantes_Tareas.idUsuario',$s);
+			$this->db->group_by('Tareas.idTarea');
 			$this->db->order_by('Tareas.FechaFin','DESC');
 			$s = $this->db->get();
 			return $s->result();
@@ -132,16 +145,7 @@ public function tareaNoRealizada($s){
 			return $s->result();
 		}
 
-		public function getTareas_dePersonas_PorUsuario($s){
-			$this->db->select('*');
-			$this->db->from('Participantes_Tareas');
-			$this->db->join('Tareas','Tareas.idTarea=Participantes_Tareas.idTarea');
-			$this->db->join('Personas','Personas.idPersona=Tareas.idPersona');
-			$this->db->where('Participantes_Tareas.idUsuario',$s);
-			$this->db->order_by('Tareas.FechaFin','DESC');
-			$s = $this->db->get();
-			return $s->result();
-		}
+
 		public function getTareas_dePersonas_PorUsuarioGrupales($s){
 			$this->db->distinct();
 			$this->db->select('*');
@@ -161,6 +165,7 @@ public function tareaNoRealizada($s){
 		$this->db->from('Participantes_Tareas');
 		$this->db->join('Usuarios','Usuarios.idUsuario = Participantes_Tareas.idUsuario');
 		$this->db->where('idTarea',$s);
+		$this->db->group_by('Usuarios.idUsuario');
 		$s = $this->db->get();
 		return $s->result();
 	 }
@@ -191,6 +196,14 @@ public function tareaNoRealizada($s){
 	 	$s = $this->db->get();
 	 	return $s->result();
 	 }
+	 public function getTareas_deObjetivos($s)
+	 {
+	 	$this->db->select('*');
+	 	$this->db->from('Tareas');
+	  	$this->db->where('idNegociacion',$s);
+	 	$s = $this->db->get();
+	 	return $s->result();
+	 }
 	 public function getTareasInternasPorUsuarioActivo($s)
 	 {
 	 	$this->db->select('*');
@@ -205,4 +218,23 @@ public function tareaNoRealizada($s){
  		$this->db->delete('Tareas', array('idTarea' => $s)); 
  		return '1';
 	 }
+	 public function StatusRealizada($id,$status){
+	 	$data = array(
+	 		'StatusTarea' =>'Realizada',
+	 		'StatusFinal' =>$status
+	 		);
+	 	$this->db->where('idTarea',$id);
+	 	$this->db->update('Tareas',$data);
+	 	return true;
+	 }
+	 public function StatusCancelar($id,$status){
+	 	$data = array(
+	 		'StatusTarea' =>'Cancelada',
+	 		'StatusFinal' =>$status
+	 		);
+	 	$this->db->where('idTarea',$id);
+	 	$this->db->update('Tareas',$data);
+	 	return true;
+	 }
+
 }

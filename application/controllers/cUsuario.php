@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <?php
 
 class cUsuario extends CI_Controller

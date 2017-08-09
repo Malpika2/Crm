@@ -46,8 +46,7 @@
                 <?php endif ?>
 
               </ul>
-
-              <a href="#" class="btn btn-primary btn-block"><b>Editar</b></a>
+                <button id="btn_Editar" class="btn btn-primary btn-block " data-toggle="modal" data-target="#ModalEditarEmp">Editar</button>
             </div>
             <!-- /.box-body -->
           </div>
@@ -70,7 +69,10 @@
 
               <strong><i class="fa fa-map-marker margin-r-5"></i> Direccion</strong>
 
-              <p class="text-muted"> <?php echo " ".$row_Direccion->Calle." #".$row_Direccion->Numero.", ".$row_Direccion->Colonia.", ".$row_Direccion->Municipio.", ".$row_Direccion->Estado.", ".$row_Direccion->Cp.", ".$row_Direccion->Pais.".";?><p>
+              <p class="text-muted"><b>D. Oficina: </b> <?php echo $row_Empresas->DireccionOficina;?><p>
+              <p class="text-muted"><b>D. Fiscal: </b><?php echo $row_Empresas->DireccionFiscal;?><p>
+              <p class="text-muted"><b>Ciudad: </b><?php echo $row_Empresas->Ciudad;?><p>
+              <p class="text-muted"><b>Pais: </b><?php echo $row_Empresas->Pais;?><p>
 
               <hr>
 
@@ -98,7 +100,7 @@
             <ul class="nav nav-tabs">
               <li class="active"><a href="#Notas" data-toggle="tab">Notas</a></li>
               <li><a href="#Tareas" data-toggle="tab">Tareas</a></li>
-              <li><a href="#Negociaciones" data-toggle="tab">Negociaciones</a></li>
+              <li><a href="#Negociaciones" data-toggle="tab">Objetivos</a></li>
             </ul>
             <div class="tab-content"><!-- Comentarios -->
               <div class="active tab-pane" id="Notas">
@@ -133,7 +135,7 @@
               </div>
               <!-- /.tab-pane -->
               <div class="tab-pane" id="Negociaciones">
-                <button id="btn_nTarea" class="btn btn-success " data-toggle="modal" data-target="#ModalNegociacionEmp"><i class="fa fa-plus fa-x2"></i> Nueva Negociación</button>
+                <button id="btn_nTarea" class="btn btn-success " data-toggle="modal" data-target="#ModalNegociacionEmp"><i class="fa fa-plus fa-x2"></i> Nuevo objetivo</button>
                   <hr>
                 <ul class="timeline timeline-inverse" id="LineaNegociaciones" style="height: 720px; overflow: scroll;">
                 </ul>
@@ -145,6 +147,162 @@
         </div>
       </div>
     </section>
+<div id="ModalEditarEmp" class="modal modal-success fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content modal-lg">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Editar Empresa</h4>
+      </div>
+      <div class="modal-body">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h2>EDITAR EMPRESA</h2>
+        </div>
+        <div class="col-md-6 divsNP">
+              <div class="input-group">
+                <span class="input-group-addon"><b>Nombre Empresa</b></span>
+                <input type="text" class="formsNP" id="RazonSocial" name="RazonSocial" style="border:1px solid #d2d6de;" value=" <? echo $row_Empresas->RazonSocial; ?>" disabled>
+              </div>
+        </div>
+       <div class="col-md-3 divsNP">
+              <div class="input-group">
+                <span class="input-group-addon"><b>SPP<br><small>(Opcional)</small></b></span>
+                <input type="text" class="formsNP" id="SPP" name="SPP" value="<?php echo $row_Empresas->spp;?>">
+              </div>
+        </div>
+        <div class="col-md-3 divsNP">
+              <div class="input-group">
+                <span class="input-group-addon"><b>Abreviación</b></span>
+                <input type="text" class="form-control formsNP" id="Abreviacion" name="Abreviacion" value="<?php echo $row_Empresas->Abreviacion;?>">
+              </div>
+        </div>
+        <div class="col-md-6 divsNP">
+              <div class="input-group">
+                <span class="input-group-addon"><b>Tipo</b></span>
+                <select class=" select2 form-control formsNP" id="Tipo" name="Tipo" required="">
+                  <option selected="true" disabled="false" value="<?php echo $row_Empresas->Tipo;?>"><?php echo $row_Empresas->Tipo;?></option>
+                  <option value="Comprador final">Comprador Final</option>
+                  <option value="Intermediario">Intermediario</option>
+                  <option value="Maquilador">Maquilador</option>
+                  <option value="Organizador de Pequeños Productores">Organizador de Pequeños Productores</option>
+                  <option value="Organismo de Certificacion">Organismo de Certificacion</option>
+              </select>              
+              </div>
+        </div>
+        <div class="col-md-6 divsNP">
+              <div class="input-group">
+                 <span class="input-group-addon">
+                  <b>Representante</b></span>
+             <select class="select2 form-control formsNP selectpicker" id="Representante" name="Representante" required>
+                    <?php if (isset($row_Persona->Nombre)){?>
+                      <option selected="true" value="<?php echo $row_Persona->idPersona; ?>"><?php echo $row_Persona->Nombre; ?></option>
+                    <?php }
+                    else {?>
+                <option  disabled="true" value="0">Representante</option>
+                <?php } ?>
+                </select>
+              </div>
+        </div>
+        <div class="col-md-6" style="margin: 0px; padding: 0px;">
+          <div class="col-md-12 divsNP">
+            <div class="input-group">
+              <span class="input-group-addon"><b>Contacto</b></span>
+              <select class="select2 form-control formsNP" id="Contacto" name="Contacto" required>
+                <option selected="true" disabled="true" value="0">Contacto</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-12 divsNP">
+              <div class="input-group">
+                <span class="input-group-addon"><b>Skype</b></span>
+                <input type="text" class="formsNP" id="Skype" name="Skype" value="<?php echo $row_Empresas->Skype;?>" style="color:black;">
+              </div>
+          </div>
+          <div class="col-md-12 divsNP">
+                <div class="input-group">
+                  <span class="input-group-addon"><b>Sitio Web</b></span>
+                  <input type="text" class="form-control formsNP" id="SitioWeb" name="SitioWeb" value="<?php echo $row_Empresas->SitioWeb;?>">
+                </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+              <div class="col-md-6 divsNP">
+              <div class="input-group">
+                <span class="input-group-addon"><b>1º Telefono</b></span>
+                <input type="text" class="formsNP" id="Telefono1" name="Telefono1" value="<?php echo $row_Telefonos->Telefono1 ; ?>" style="color:black;">
+                <select class="select2 form-control formsNP selectpicker" id="TipoTelefono1" name="TipoTelefono1">
+                  <option selected="true" disabled="true">Tipo</option>
+                  <option value="Trabajo">Trabajo</option>
+                  <option value="Personal">Personal</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6 divsNP">
+                  <div class="input-group">
+                    <span class="input-group-addon"><b>2º Telefono</b></span>
+                    <input type="text" class="form-control formsNP" id="Telefono2" name="Telefono2" value="<?php echo $row_Telefonos->Telefono2; ?>">
+                    <select class="select2 form-control formsNP selectpicker" id="TipoTelefono2" name="TipoTelefono2">
+                      <option selected="true" disabled="true">Tipo</option>
+                      <option value="Trabajo">Trabajo</option>
+                      <option value="Personal">Personal</option>
+                  </select>
+                  </div>
+            </div>
+            <div class="col-md-6 divsNP">
+                  <div class="input-group">
+                    <span class="input-group-addon"><b>1º Email</b></span>
+                    <input type="text" class="formsNP" id="Correo1" name="Correo1" value="<?php echo $row_Correos->Correo1; ?>" style="color:black;">
+                    <select class="select2 form-control formsNP selectpicker" id="TipoCorreo1" name="TipoCorreo1">
+                      <option selected="true" disabled="true">Tipo</option>
+                      <option value="Trabajo">Trabajo</option>
+                      <option value="Personal">Personal</option>
+                  </select>
+                  </div>
+            </div>
+            <div class="col-md-6 divsNP">
+                  <div class="input-group">
+                    <span class="input-group-addon"><b>2º Email</b></span>
+                    <input type="text" class="form-control formsNP" id="Correo2" name="Correo2" value="<?php echo $row_Correos->Correo2; ?>" style="color:black;" >
+                    <select class="select2 form-control formsNP selectpicker" id="TipoCorreo2" name="TipoCorreo2">
+                      <option selected="true" disabled="true">Tipo</option>
+                      <option value="Trabajo">Trabajo</option>
+                      <option value="Personal">Personal</option>
+                  </select>
+                  </div>
+            </div>
+        </div>
+        <div class="col-md-12 divsNP">
+              <div class="input-group">
+              <span class="input-group-addon"><b>Datos Fiscales</b></span>
+                <textarea type="text" class="col-md-12 formsNP2" id="DatosFiscales" name="DatosFiscales" value="<?php echo $row_Empresas->DatosFiscales;?>" style="color:black;"></textarea> 
+              </div>
+        </div>
+        <div class="col-md-12 divsNP">
+              <div class="input-group">
+                <span class="input-group-addon"><b>Direccion</b></span>
+                <input type="text" class="col-md-12 formsNP2" id="DireccionOficina" name="DireccionOficina" value="<?php echo $row_Empresas->DireccionOficina; ?>" style="color:black;">
+                <input type="text" class="col-md-12 formsNP2" id="DireccionFiscal" name="DireccionFiscal" placeholder="Direccion Fiscal" value="<?php echo $row_Empresas->DireccionFiscal; ?>" style="color:black;">
+
+
+                <input type="text" class="col-md-6 formsNP2" id="Ciudad" name="Ciudad" value="<?php echo $row_Empresas->Ciudad; ?>" style="color:black;">
+                <input type="text" class="col-md-6 formsNP2" id="Pais" name="Pais" value="<?php echo $row_Empresas->Pais; ?>" style="color:black;">
+                <input type="hidden" class="col-md-6 formsNP2" id="idEmpresa"  value="<?php echo $row_Empresas->idEmpresa; ?>" style="color:black;">
+              </div>
+              <input onclick="GuardarEditEmpresa();" type="submit" id="btn_GuardarEditar" class="divsNP formsNP btn btn-primary btn-block" value="Guardar" data-dismiss="modal">
+        </div>
+      </div>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
 <div id="ModalCancelar" class="modal modal-success fade" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->
@@ -195,7 +353,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="exampleModalLabel">AGREGAR NUEVA NEGOCIACIÓN</h4>
+        <h4 class="modal-title" id="exampleModalLabel">AGREGAR NUEVO OBJETIVO</h4>
       </div>
       <form name="formNegociacion" id="formNegociacion" method="POST" action="<?php echo base_url();?>cNegociacion/guardarEmpresa">
       <div class="modal-body">
@@ -203,7 +361,7 @@
             <div class="box-body" style="background-color: #f9f8eb; color: black">
                   <div class="col-md-12 divsNP">
                     <div class="input-group">
-                      <span class="input-group-addon"><b>Nombre de la negociación</b></span>
+                      <span class="input-group-addon"><b>Nombre del objetivo</b></span>
                       <input type="text" class="form-control formsNP" id="NombreNegociacion" name="NombreNegociacion"/>
                       <input type="hidden" name="EmpresaNegociacion" id="EmpresaNegociacion" value="<?php echo $row_Empresas->idEmpresa ; ?>">
                     </div>
@@ -271,7 +429,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cancelar</button>
-        <button type="submit" class="btn btn-outline">Guardar Negociacion</button>
+        <button type="submit" class="btn btn-outline">Guardar Objetivo</button>
       </div>
     </form>
     </div>

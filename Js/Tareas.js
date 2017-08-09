@@ -1,10 +1,15 @@
+ // mostrarTareaEmpresa();
+ // mostrarTareaPersonas();
  //Mostrar Tareas de las Empresas============================>
-$.post(baseurl+"cTareas/getTareas_deEmpresas_PorUsuario",
+ // function mostrarTareaEmpresa(){
+  $.post(baseurl+"cTareas/getTareas_deEmpresas_PorUsuario",
   {
     idUsuarioActivo:idUsuarioActivo
   },
   function(data){
     var emp = JSON.parse(data);
+    $('#ListaTareas').empty();
+      $('#ListaTareasRealizadasEmp').empty();
     $.each(emp,function(i,item){
       if (item.Prioridad=='Alta') {
           var clase="bg-red";
@@ -16,6 +21,23 @@ $.post(baseurl+"cTareas/getTareas_deEmpresas_PorUsuario",
           var clase="";
         }
     if (item.Activa==1) {
+          if (item.idNegociacion>0) {
+          $('#ListaTareas').append(
+                '<li class="'+clase+'" id="tarea'+item.idTarea+'">'+
+                  '<span class="handle">'+
+                    '<i class="fa fa-ellipsis-v"></i>'+
+                    '<i class="fa fa-ellipsis-v"></i>'+
+                  '</span>'+
+                  '<input  onclick="ActualizarTarea('+item.idTarea+')"  id="checkRealizada" type="checkbox" value="'+item.idTarea+'">'+
+                  '<span class="text LinkTarea">Tarea: &nbsp;<a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
+                  '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cEmpresa/verEmpresa/'+item.idEmpresa+'">'+item.RazonSocial+'</a></span>'+
+                  '<div class="tools pull-right">'+
+                  '<span class="badge bg-aqua"><a href="'+baseurl+'cPersona/verNegociacion/'+item.idNegociacion+'">OBJETIVO</a></span>'+
+                    '<label class="text-verde pull-right">'+item.Categoria+'</label>'+
+                  '</div>'+
+                '</li>'
+                )}
+          else{
             $('#ListaTareas').append(
                 '<li class="'+clase+'" id="tarea'+item.idTarea+'">'+
                   '<span class="handle">'+
@@ -29,16 +51,18 @@ $.post(baseurl+"cTareas/getTareas_deEmpresas_PorUsuario",
                     '<label class="text-verde pull-right">'+item.Categoria+'</label>'+
                   '</div>'+
                 '</li>'
-        )
+                )
+          }  
       }
       else
       {
-        agregarTareaRealizadaEmpresa(clase,item.idTarea,item.TituloTarea,item.idEmpresa,item.RazonSocial,item.Categoria);
+        agregarTareaRealizadaEmpresa(clase,item.idTarea,item.TituloTarea,item.idEmpresa,item.RazonSocial,item.Categoria,item.idNegociacion);
       } 
     }); 
   });
+
 //Mostrar Tareas grupales de las Empresas============================>
-$.post(baseurl+"cTareas/getTareas_deEmpresas_PorUsuarioGrupales",
+  $.post(baseurl+"cTareas/getTareas_deEmpresas_PorUsuarioGrupales",
   {
     idUsuarioActivo:idUsuarioActivo
   },
@@ -72,13 +96,135 @@ $.post(baseurl+"cTareas/getTareas_deEmpresas_PorUsuarioGrupales",
       }
       else
       {
-        agregarTareaRealizadaEmpresa(clase,item.idTarea,item.TituloTarea,item.idEmpresa,item.RazonSocial,item.Categoria);
+        agregarTareaRealizadaEmpresa(clase,item.idTarea,item.TituloTarea,item.idEmpresa,item.RazonSocial,item.Categoria,'0');
       } 
     }); 
   });
+// }//fin mostrar tarea empresa
+
+function recargar(){
+$('#ListaTareas').empty();
+$('#ListaTareasRealizadasEmp').empty();
+  $.post(baseurl+"cTareas/getTareas_deEmpresas_PorUsuario",
+  {
+    idUsuarioActivo:idUsuarioActivo
+  },
+  function(data){
+    var emp = JSON.parse(data);
+    $('#ListaTareas').empty();
+      $('#ListaTareasRealizadasEmp').empty();
+    $.each(emp,function(i,item){
+      if (item.Prioridad=='Alta') {
+          var clase="bg-red";
+        }else if (item.Prioridad=='Media') {
+          var clase="bg-yellow";
+        }else if (item.Prioridad=='Baja') {
+          var clase="bg-green";
+        }else {
+          var clase="";
+        }
+    if (item.Activa==1) {
+          if (item.idNegociacion>0) {
+          $('#ListaTareas').append(
+                '<li class="'+clase+'" id="tarea'+item.idTarea+'">'+
+                  '<span class="handle">'+
+                    '<i class="fa fa-ellipsis-v"></i>'+
+                    '<i class="fa fa-ellipsis-v"></i>'+
+                  '</span>'+
+                  '<input  onclick="ActualizarTarea('+item.idTarea+')"  id="checkRealizada" type="checkbox" value="'+item.idTarea+'">'+
+                  '<span class="text LinkTarea">Tarea: &nbsp;<a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
+                  '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cEmpresa/verEmpresa/'+item.idEmpresa+'">'+item.RazonSocial+'</a></span>'+
+                  '<div class="tools pull-right">'+
+                  '<span class="badge bg-aqua"><a href="'+baseurl+'cPersona/verNegociacion/'+item.idNegociacion+'">OBJETIVO</a></span>'+
+                    '<label class="text-verde pull-right">'+item.Categoria+'</label>'+
+                  '</div>'+
+                '</li>'
+                )}
+          else{
+            $('#ListaTareas').append(
+                '<li class="'+clase+'" id="tarea'+item.idTarea+'">'+
+                  '<span class="handle">'+
+                    '<i class="fa fa-ellipsis-v"></i>'+
+                    '<i class="fa fa-ellipsis-v"></i>'+
+                  '</span>'+
+                  '<input onclick="ActualizarTarea('+item.idTarea+')"  id="checkRealizada" type="checkbox" value="'+item.idTarea+'">'+
+                  '<span class="text LinkTarea">Tarea: &nbsp;<a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
+                  '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cEmpresa/verEmpresa/'+item.idEmpresa+'">'+item.RazonSocial+'</a></span>'+
+                  '<div class="tools pull-right">'+
+                    '<label class="text-verde pull-right">'+item.Categoria+'</label>'+
+                  '</div>'+
+                '</li>'
+                )
+          }  
+      }
+      else
+      {
+        agregarTareaRealizadaEmpresa(clase,item.idTarea,item.TituloTarea,item.idEmpresa,item.RazonSocial,item.Categoria,item.idNegociacion);
+      } 
+    }); 
+  });
+
+//Mostrar Tareas grupales de las Empresas============================>
+  $.post(baseurl+"cTareas/getTareas_deEmpresas_PorUsuarioGrupales",
+  {
+    idUsuarioActivo:idUsuarioActivo
+  },
+  function(data){
+    var emp = JSON.parse(data);
+    $.each(emp,function(i,item){
+      if (item.Prioridad=='Alta') {
+          var clase="bg-red";
+        }else if (item.Prioridad=='Media') {
+          var clase="bg-yellow";
+        }else if (item.Prioridad=='Baja') {
+          var clase="bg-green";
+        }else {
+          var clase="";
+        }
+    if (item.Activa==1) {
+            $('#ListaTareas').append(
+                '<li class="'+clase+'" id="tarea'+item.idTarea+'">'+
+                  '<span class="handle">'+
+                    '<i class="fa fa-ellipsis-v"></i>'+
+                    '<i class="fa fa-ellipsis-v"></i>'+
+                  '</span>'+
+                  '<input onclick="ActualizarTarea('+item.idTarea+')"  id="checkRealizada" type="checkbox" value="'+item.idTarea+'">'+
+                  '<span class="text LinkTarea">Tarea: &nbsp;<a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
+                  '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cEmpresa/verEmpresa/'+item.idEmpresa+'">'+item.RazonSocial+'</a>&nbsp;...</span>'+
+                  '<div class="tools pull-right">'+
+                    '<label class="text-verde pull-right">'+item.Categoria+'</label>'+
+                  '</div>'+
+                '</li>'
+        )
+      }
+      else
+      {
+        agregarTareaRealizadaEmpresa(clase,item.idTarea,item.TituloTarea,item.idEmpresa,item.RazonSocial,item.Categoria,'0');
+      } 
+    }); 
+  });
+}
+
 //=======Agrega las tareas marcadas como realizadas a la lista "realizadas".
-function agregarTareaRealizadaEmpresa(clase,idTarea,TituloTarea,idEmpresa,RazonSocial,Categoria){
-                    $('#ListaTareasRealizadasEmp').append(
+function agregarTareaRealizadaEmpresa(clase,idTarea,TituloTarea,idEmpresa,RazonSocial,Categoria,idNegociacion){
+  if (idNegociacion>0){
+          $('#ListaTareasRealizadasEmp').append(
+                '<li class="'+clase+'" id="tarea'+idTarea+'">'+
+                  '<span class="handle">'+
+                    '<i class="fa fa-ellipsis-v"></i>'+
+                    '<i class="fa fa-ellipsis-v"></i>'+
+                  '</span>'+
+                  '<input onclick="ActualizarTareaR('+idTarea+')"  id="checkRealizada" type="checkbox" value="'+idTarea+'" checked>'+
+                  '<span class="text LinkTarea">Tarea: &nbsp;<a href="'+baseurl+'cPersona/verTarea/'+idTarea+'">'+TituloTarea+'</a></span>'+
+                  '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cEmpresa/verEmpresa/'+idEmpresa+'">'+RazonSocial+'</a></span>'+
+                  '<div class="tools pull-right">'+
+                  '<span class="badge bg-aqua"><a href="'+baseurl+'cPersona/verNegociacion/'+idNegociacion+'">OBJETIVO</a></span>'+
+                    '<label class="text-verde pull-right">'+Categoria+'</label>'+
+                  '</div>'+
+                '</li>'
+                )}
+          else{
+              $('#ListaTareasRealizadasEmp').append(
                 '<li class="'+clase+' done" id="tarea'+idTarea+'">'+
                   '<span class="handle">'+
                     '<i class="fa fa-ellipsis-v"></i>'+
@@ -91,127 +237,50 @@ function agregarTareaRealizadaEmpresa(clase,idTarea,TituloTarea,idEmpresa,RazonS
                     '<i class="fa fa-calendar-check-o  pull-right echoPalomita"></i>'+
                     '<label class="text-verde pull-right">'+Categoria+'</label>'+
                   '</div>'+
-                '</li>')
+                '</li>')}
     }
 function ActualizarTarea(index){
-  var Tareaid = index;
         $("#ModalCancelar").modal();
         $("#ModalCancelar").on('hidden.bs.modal', function () {
             var StatusFinal = $('#StatusFinal').val();
               $.ajax({
               type: 'POST',
               url: baseurl+"cPersona/tareaRealizada" ,
-              data:{Tareaid:Tareaid,StatusFinal:StatusFinal},
+              data:{Tareaid:index,StatusFinal:StatusFinal},
               success: function(data) { 
                 $("#tarea" + index).remove();
-                recargar();
+                // $('#ListaTareas').empty();
+                // mostrarTareaEmpresa();
                 recargar2();
+                recargar();
+                location.href = baseurl+"cTareas";
               }
-          });
-                  return false;
+          });              
+              return false;
         });
   }
 
 function ActualizarTareaR(index){
   var Tareaid = index;
+                $('#ListaTareas').empty();
+                $('#ListaTareasPersonas').empty();
+                $('#ListaTareasRealizadasPersonas').empty();
+                $('#ListaTareasRealizadasEmp').empty();
               $.ajax({
               type: 'POST',
               url: baseurl+"cPersona/tareaNoRealizada" ,
               data:{Tareaid:Tareaid},
               success: function(data) { 
                 $("#tarea" + index).remove();
-                recargar();
                 recargar2();
+                recargar();
+
               }
           });
-                  return false;
+            return false;
   }
 
-function recargar(){
-$('#ListaTareas').empty();
-$('#ListaTareasRealizadasEmp').empty();
-  $.post(baseurl+"cTareas/getTareas_deEmpresas_PorUsuario",
-  {
-    idUsuarioActivo:idUsuarioActivo
-  },
-  function(data){
-    var emp = JSON.parse(data);
-    $.each(emp,function(i,item){
-      if (item.Prioridad=='Alta') {
-          var clase="bg-red";
-        }else if (item.Prioridad=='Media') {
-          var clase="bg-yellow";
-        }else if (item.Prioridad=='Baja') {
-          var clase="bg-green";
-        }else {
-          var clase="";
-        }
-    if (item.Activa==1) {
-            $('#ListaTareas').append(
-                '<li class="'+clase+'" id="tarea'+item.idTarea+'">'+
-                  '<span class="handle">'+
-                    '<i class="fa fa-ellipsis-v"></i>'+
-                    '<i class="fa fa-ellipsis-v"></i>'+
-                  '</span>'+
-                  '<input onclick="ActualizarTarea('+item.idTarea+')"  id="checkRealizada" type="checkbox" value="'+item.idTarea+'">'+
-                  '<span class="text LinkTarea">Tarea: &nbsp;<a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
-                  '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cEmpresa/verEmpresa/'+item.idEmpresa+'">'+item.RazonSocial+'</a></span>'+
-                  '<div class="tools pull-right">'+
-                    '<label class="text-verde pull-right">'+item.Categoria+'</label>'+
-                  '</div>'+
-                '</li>'
-        )
-      }
-      else
-      {
-        agregarTareaRealizadaEmpresa(clase,item.idTarea,item.TituloTarea,item.idEmpresa,item.RazonSocial,item.Categoria);
-      } 
-    }); 
-  });
-$.post(baseurl+"cTareas/getTareas_deEmpresas_PorUsuarioGrupales",
-  {
-    idUsuarioActivo:idUsuarioActivo
-  },
-  function(data){
-    var emp = JSON.parse(data);
-    $.each(emp,function(i,item){
-      if (item.Prioridad=='Alta') {
-          var clase="bg-red";
-        }else if (item.Prioridad=='Media') {
-          var clase="bg-yellow";
-        }else if (item.Prioridad=='Baja') {
-          var clase="bg-green";
-        }else {
-          var clase="";
-        }
-    if (item.Activa==1) {
-            $('#ListaTareas').append(
-                '<li class="'+clase+'" id="tarea'+item.idTarea+'">'+
-                  '<span class="handle">'+
-                    '<i class="fa fa-ellipsis-v"></i>'+
-                    '<i class="fa fa-ellipsis-v"></i>'+
-                  '</span>'+
-                  '<input onclick="ActualizarTarea('+item.idTarea+')"  id="checkRealizada" type="checkbox" value="'+item.idTarea+'">'+
-                  '<span class="text LinkTarea">Tarea: &nbsp;<a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
-                  '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cEmpresa/verEmpresa/'+item.idEmpresa+'">'+item.RazonSocial+'</a>&nbsp;...</span>'+
-                  '<div class="tools pull-right">'+
-                    '<label class="text-verde pull-right">'+item.Categoria+'</label>'+
-                  '</div>'+
-                '</li>'
-        )
-      }
-      else
-      {
-        agregarTareaRealizadaEmpresa(clase,item.idTarea,item.TituloTarea,item.idEmpresa,item.RazonSocial,item.Categoria);
-      } 
-    }); 
-  });
-}
-
-
-
-
-//=================================PERSONAS===============
+//=================================PERSONAS=====================================
 $('#form, #fat, #formTareaEmpresas').submit(function() {
           $.ajax({
               type: 'POST',
@@ -220,8 +289,7 @@ $('#form, #fat, #formTareaEmpresas').submit(function() {
               success: function(data) { 
                 $("#formTareaEmpresas")[0].reset();
                 $("#ModalTareap").modal("hide");
-                recargar();
-                recargar2();
+                recargar2();              
               }
           });
           
@@ -237,8 +305,7 @@ $('#form, #fat, #formTareaEmpresas2').submit(function() {
                 $("#formTareaEmpresas2")[0].reset();
                 $("#ModalTarea").modal("hide");
                 $("#Asignados").val(null).trigger("change");
-                recargar2();
-                recargar();
+                recargar();              
               }
           });
           
@@ -248,7 +315,7 @@ $('#form, #fat, #formTareaEmpresas2').submit(function() {
 
 
 
-
+// function mostrarTareaPersonas(){
 $.post(baseurl+"cTareas/getTareas_dePersonas_PorUsuario",
   {
     idUsuarioActivo:idUsuarioActivo
@@ -266,6 +333,23 @@ $.post(baseurl+"cTareas/getTareas_dePersonas_PorUsuario",
           var clase="";
         }
     if (item.Activa==1) {
+        if (item.idNegociacion>0){
+          $('#ListaTareasPersonas').append(
+                '<li class="'+clase+'" id="tarea'+item.idTarea+'">'+
+                  '<span class="handle">'+
+                    '<i class="fa fa-ellipsis-v"></i>'+
+                    '<i class="fa fa-ellipsis-v"></i>'+
+                  '</span>'+
+                  '<input onclick="ActualizarTarea('+item.idTarea+')" type="checkbox" value="'+item.idTarea+'" >'+
+                  '<span class="text LinkTarea">Tarea: &nbsp;<a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
+                  '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cPersona/verPersona/'+item.idPersona+'">'+item.Nombre+'</a></span>'+
+                  '<div class="tools pull-right">'+
+                  '<span class="badge bg-aqua"><a href="'+baseurl+'cPersona/verNegociacion/'+item.idNegociacion+'">OBJETIVO</a></span>'+
+                    '<label class="text-verde pull-right">'+item.Categoria+'</label>'+
+                  '</div>'+
+                '</li>'
+                )}
+          else{
       $('#ListaTareasPersonas').append(
                 '<li class="'+clase+'">'+
                   '<span class="handle">'+
@@ -279,10 +363,10 @@ $.post(baseurl+"cTareas/getTareas_dePersonas_PorUsuario",
                     '<label class="text-verde pull-right">'+item.Categoria+'</label>'+
                   '</div>'+
                 '</li>'
-        )
+        )}
     }
     else{
-                  agregarTareaRealizadaPersona(clase,item.idTarea,item.TituloTarea,item.idPersona,item.Nombre,item.Categoria);
+                  agregarTareaRealizadaPersona(clase,item.idTarea,item.TituloTarea,item.idPersona,item.Nombre,item.Categoria,item.idNegociacion);
     }
           }); 
   });
@@ -319,18 +403,133 @@ $.post(baseurl+"cTareas/getTareas_dePersonasGrupales_PorUsuario",
         )
     }
     else{
-                  agregarTareaRealizadaPersona(clase,item.idTarea,item.TituloTarea,item.idPersona,item.Nombre,item.Categoria);
+                  agregarTareaRealizadaPersona(clase,item.idTarea,item.TituloTarea,item.idPersona,item.Nombre,item.Categoria,item.idNegociacion);
     }
           }); 
   });
-function agregarTareaRealizadaPersona(clase,idTarea,TituloTarea,idPersona,Nombre,Categoria){
+// }
+function recargar2(){
+  $('#ListaTareasPersonas').empty();
+$('#ListaTareasRealizadasPersonas').empty();
+$.post(baseurl+"cTareas/getTareas_dePersonas_PorUsuario",
+  {
+    idUsuarioActivo:idUsuarioActivo
+  },
+  function(data){
+    var emp = JSON.parse(data);
+    $.each(emp,function(i,item){
+        if (item.Prioridad=='Alta') {
+          var clase="bg-red";
+        }else if (item.Prioridad=='Media') {
+          var clase="bg-yellow";
+        }else if (item.Prioridad=='Baja') {
+          var clase="bg-green";
+        }else {
+          var clase="";
+        }
+    if (item.Activa==1) {
+        if (item.idNegociacion>0) {
+          $('#ListaTareasPersonas').append(
+                '<li class="'+clase+'" id="tarea'+item.idTarea+'">'+
+                  '<span class="handle">'+
+                    '<i class="fa fa-ellipsis-v"></i>'+
+                    '<i class="fa fa-ellipsis-v"></i>'+
+                  '</span>'+
+                  '<input onclick="ActualizarTarea('+item.idTarea+')" type="checkbox" value="'+item.idTarea+'" >'+
+                  '<span class="text LinkTarea">Tarea: &nbsp;<a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
+                  '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cPersona/verPersona/'+item.idPersona+'">'+item.Nombre+'</a></span>'+
+                  '<div class="tools pull-right">'+
+                  '<span class="badge bg-aqua"><a href="'+baseurl+'cPersona/verNegociacion/'+item.idNegociacion+'">OBJETIVO</a></span>'+
+                    '<label class="text-verde pull-right">'+item.Categoria+'</label>'+
+                  '</div>'+
+                '</li>'
+                )}
+          else{
+      $('#ListaTareasPersonas').append(
+                '<li class="'+clase+'">'+
+                  '<span class="handle">'+
+                    '<i class="fa fa-ellipsis-v"></i>'+
+                    '<i class="fa fa-ellipsis-v"></i>'+
+                  '</span>'+
+                  '<input onclick="ActualizarTarea('+item.idTarea+')" type="checkbox" value="'+item.idTarea+'" >'+
+                  '<span class="text LinkTarea">Tarea: &nbsp;<a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
+                  '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cPersona/verPersona/'+item.idPersona+'">'+item.Nombre+'</a></span>'+
+                  '<div class="tools pull-right">'+
+                    '<label class="text-verde pull-right">'+item.Categoria+'</label>'+
+                  '</div>'+
+                '</li>'
+        )
+    }
+    }
+    else{
+                  agregarTareaRealizadaPersona(clase,item.idTarea,item.TituloTarea,item.idPersona,item.Nombre,item.Categoria,item.idNegociacion);
+    }
+          }); 
+  });
+$.post(baseurl+"cTareas/getTareas_dePersonasGrupales_PorUsuario",
+  {
+    idUsuarioActivo:idUsuarioActivo
+  },
+  function(data){
+    var emp = JSON.parse(data);
+    $.each(emp,function(i,item){
+        if (item.Prioridad=='Alta') {
+          var clase="bg-red";
+        }else if (item.Prioridad=='Media') {
+          var clase="bg-yellow";
+        }else if (item.Prioridad=='Baja') {
+          var clase="bg-green";
+        }else {
+          var clase="";
+        }
+    if (item.Activa==1) {
+      $('#ListaTareasPersonas').append(
+                '<li class="'+clase+'">'+
+                  '<span class="handle">'+
+                    '<i class="fa fa-ellipsis-v"></i>'+
+                    '<i class="fa fa-ellipsis-v"></i>'+
+                  '</span>'+
+                  '<input onclick="ActualizarTarea('+item.idTarea+')" type="checkbox" value="'+item.idTarea+'" >'+
+                  '<span class="text LinkTarea">Tarea: &nbsp;<a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
+                  '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cPersona/verPersona/'+item.idPersona+'">'+item.Nombre+'...</a></span>'+
+                  '<div class="tools pull-right">'+
+                    '<label class="text-verde pull-right">'+item.Categoria+'</label>'+
+                  '</div>'+
+                '</li>'
+        )
+    }
+    else{
+                  agregarTareaRealizadaPersona(clase,item.idTarea,item.TituloTarea,item.idPersona,item.Nombre,item.Categoria,item.idNegociacion);
+    }
+          }); 
+  });
+}
+
+function agregarTareaRealizadaPersona(clase,idTarea,TituloTarea,idPersona,Nombre,Categoria,idNegociacion){
+  if (idNegociacion>0) {
+    $('#ListaTareasRealizadasPersonas').append(
+                '<li class="'+clase+'" id="tarea'+idTarea+'">'+
+                  '<span class="handle">'+
+                    '<i class="fa fa-ellipsis-v"></i>'+
+                    '<i class="fa fa-ellipsis-v"></i>'+
+                  '</span>'+
+                  '<input onclick="ActualizarTareaR('+idTarea+')" id="checkRealizada" type="checkbox" value="'+idTarea+'" checked>'+
+                  '<span class="text LinkTarea">Tarea: &nbsp;<a href="'+baseurl+'cPersona/verTarea/'+idTarea+'">'+TituloTarea+'</a></span>'+
+                  '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cPersona/verPersona/'+idPersona+'">'+Nombre+'</a></span>'+
+                  '<div class="tools pull-right">'+
+                  '<span class="badge bg-aqua"><a href="'+baseurl+'cPersona/verNegociacion/'+idNegociacion+'">OBJETIVO</a></span>'+
+                    '<label class="text-verde pull-right">'+Categoria+'</label>'+
+                  '</div>'+
+                '</li>'
+                )}
+    else{
               $('#ListaTareasRealizadasPersonas').append(
                 '<li class="'+clase+' done" id="tarea'+idTarea+'">'+
                   '<span class="handle">'+
                     '<i class="fa fa-ellipsis-v"></i>'+
                     '<i class="fa fa-ellipsis-v"></i>'+
                   '</span>'+
-                  '<input onclick="ActualizarTareaR('+idTarea+')"  id="checkRealizada" type="checkbox" value="'+idTarea+'" checked>'+
+                  '<input onclick="ActualizarTareaR('+idTarea+')" id="checkRealizada" type="checkbox" value="'+idTarea+'" checked>'+
                   '<span class="text LinkTarea">Tarea: &nbsp;<a href="'+baseurl+'cPersona/verTarea/'+idTarea+'">'+TituloTarea+'</a></span>'+
                   '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cPersona/verPersona/'+idPersona+'">'+Nombre+'</a></span>'+
                   '<div class="tools pull-right">'+
@@ -338,112 +537,8 @@ function agregarTareaRealizadaPersona(clase,idTarea,TituloTarea,idPersona,Nombre
                     '<label class="text-verde pull-right">'+Categoria+'</label>'+
                   '</div>'+
                 '</li>')
-    }
-// function ActualizarTarea(index){
-//   var Tareaid = index;
-//               $.ajax({
-//               type: 'POST',
-//               url: baseurl+"cPersona/tareaRealizada" ,
-//               data:{Tareaid:Tareaid},
-//               success: function(data) { 
-//                 $("#tarea" + index).remove();
-//                 recargar();
-//               }
-//           });
-//                   return false;
-//   }
-//   function ActualizarTareaR(index){
-//   var Tareaid = index;
-//               $.ajax({
-//               type: 'POST',
-//               url: baseurl+"cPersona/tareaNoRealizada" ,
-//               data:{Tareaid:Tareaid},
-//               success: function(data) { 
-//                 $("#tarea" + index).remove();
-//                 recargar();
-//               }
-//           });
-//                   return false;
-//   }
-function recargar2(){
-$('#ListaTareasPersonas').empty();
-$('#ListaTareasRealizadasPersonas').empty();
-  $.post(baseurl+"cTareas/getTareas_dePersonas_PorUsuario",
-  {
-    idUsuarioActivo:idUsuarioActivo
-  },
-  function(data){
-    var emp = JSON.parse(data);
-    $.each(emp,function(i,item){
-        if (item.Prioridad=='Alta') {
-          var clase="bg-red";
-        }else if (item.Prioridad=='Media') {
-          var clase="bg-yellow";
-        }else if (item.Prioridad=='Baja') {
-          var clase="bg-green";
-        }else {
-          var clase="";
-        }
-    if (item.Activa==1) {
-      $('#ListaTareasPersonas').append(
-                '<li class="'+clase+'">'+
-                  '<span class="handle">'+
-                    '<i class="fa fa-ellipsis-v"></i>'+
-                    '<i class="fa fa-ellipsis-v"></i>'+
-                  '</span>'+
-                  '<input onclick="ActualizarTarea('+item.idTarea+')" type="checkbox" value="'+item.idTarea+'" >'+
-                  '<span class="text LinkTarea">Tarea: &nbsp;<a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
-                  '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cPersona/verPersona/'+item.idPersona+'">'+item.Nombre+'</a></span>'+
-                  '<div class="tools pull-right">'+
-                    '<label class="text-verde pull-right">'+item.Categoria+'</label>'+
-                  '</div>'+
-                '</li>'
-        )
-    }
-    else{
-                  agregarTareaRealizadaPersona(clase,item.idTarea,item.TituloTarea,item.idPersona,item.Nombre,item.Categoria);
-    }
-          }); 
-  });
-$.post(baseurl+"cTareas/getTareas_dePersonasGrupales_PorUsuario",
-  {
-    idUsuarioActivo:idUsuarioActivo
-  },
-  function(data){
-    var emp = JSON.parse(data);
-    $.each(emp,function(i,item){
-        if (item.Prioridad=='Alta') {
-          var clase="bg-red";
-        }else if (item.Prioridad=='Media') {
-          var clase="bg-yellow";
-        }else if (item.Prioridad=='Baja') {
-          var clase="bg-green";
-        }else {
-          var clase="";
-        }
-    if (item.Activa==1) {
-      $('#ListaTareasPersonas').append(
-                '<li class="'+clase+'">'+
-                  '<span class="handle">'+
-                    '<i class="fa fa-ellipsis-v"></i>'+
-                    '<i class="fa fa-ellipsis-v"></i>'+
-                  '</span>'+
-                  '<input onclick="ActualizarTarea('+item.idTarea+')" type="checkbox" value="'+item.idTarea+'" >'+
-                  '<span class="text LinkTarea">Tarea: &nbsp;<a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
-                  '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cPersona/verPersona/'+item.idPersona+'">'+item.Nombre+'...</a></span>'+
-                  '<div class="tools pull-right">'+
-                    '<label class="text-verde pull-right">'+item.Categoria+'</label>'+
-                  '</div>'+
-                '</li>'
-        )
-    }
-    else{
-                  agregarTareaRealizadaPersona(clase,item.idTarea,item.TituloTarea,item.idPersona,item.Nombre,item.Categoria);
-    }
-          }); 
-  });
+            }
 }
-
 
 $.post(baseurl+"cGetPersonas/getPersonas",
 function(data){

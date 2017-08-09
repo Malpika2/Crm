@@ -2,10 +2,14 @@
 
 class mGetPersonas extends CI_Model
 {
-	
+	// private $DBSPP;  // Base de datos en la nube
+
 	function __construct()
 	{
 		parent::__construct();
+
+		$this->DBSPP = $this->load->database('d-spp', TRUE);
+
 	}
 	public function getRepresentantes($s){
 		$s = $this->db->get_where('Personas',array('Cargo' =>$s));
@@ -42,7 +46,13 @@ class mGetPersonas extends CI_Model
 		$query = $this->db->get();			
 		return $query->row();
 	}
-	
+	public function getPersonaPorIdResult($s){
+		$this->db->select('*');
+		$this->db->from('Personas');
+		$this->db->where('idPersona',$s);
+		$query = $this->db->get();			
+		return $query->result();
+	}
 	public function getDireccion($s){
 		$this->db->select('*');
 		$this->db->from('Direcciones');
@@ -63,5 +73,16 @@ class mGetPersonas extends CI_Model
 		$this->db->where('idPersona',$s);
 		$query = $this->db->get();			
 		return $query->row();
+	}
+	public function getPersonasAutoComplete(){
+			$s = $this->DBSPP->get('contactos');
+			return $s->result();
+	}
+	public function getPersonaPorId2($idPersona){
+		$this->db->select('*');
+		$this->db->from('Personas');
+		$this->db->where('idPersona',$idPersona);
+		$r = $this->db->get();			
+		return $r->result();
 	}
 }

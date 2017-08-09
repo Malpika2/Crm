@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
  <?php
 
 class cGetUsuarios extends CI_Controller

@@ -88,7 +88,7 @@
             <ul class="nav nav-tabs">
               <li class="active"><a href="#Notas" data-toggle="tab">Notas</a></li>
               <li><a href="#Tareas" data-toggle="tab">Tareas</a></li>
-              <li><a href="#Negociaciones" data-toggle="tab">Negociaciones</a></li>
+              <li><a href="#Negociaciones" data-toggle="tab">Objetivo</a></li>
             </ul>
             <div class="tab-content"><!-- Comentarios -->
 
@@ -122,7 +122,7 @@
                 </ul>
               </div><!-- /.tab-pane -->
               <div class="tab-pane" id="Negociaciones">
-                <button id="btn_nTarea" class="btn btn-success " data-toggle="modal" data-target="#ModalNegociacion"><i class="fa fa-plus fa-x2"></i> Nueva Negociación</button>
+                <button id="btn_nTarea" class="btn btn-success " data-toggle="modal" data-target="#ModalNegociacion"><i class="fa fa-plus fa-x2"></i> Nuevo Objetivo</button>
                   <hr>
                 <ul class="timeline timeline-inverse" id="LineaNegociaciones" style="height: 720px; overflow: scroll;">
                 </ul>
@@ -286,7 +286,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="exampleModalLabel">AGREGAR NUEVA NEGOCIACIÓN</h4>
+        <h4 class="modal-title" id="exampleModalLabel">AGREGAR NUEVO OBJETIVO</h4>
       </div>
       <form name="formNegociacion" id="formNegociacion" method="POST" action="<?php echo base_url();?>cNegociacion/guardarPersona">
       <div class="modal-body">
@@ -294,7 +294,7 @@
             <div class="box-body" style="background-color: #f9f8eb; color: black">
                   <div class="col-md-12 divsNP">
                     <div class="input-group">
-                      <span class="input-group-addon"><b>Nombre de la negociación</b></span>
+                      <span class="input-group-addon"><b>Nombre del objetivo</b></span>
                       <input type="text" class="form-control formsNP" id="NombreNegociacionP" name="NombreNegociacionP"/>
                       <input type="hidden" name="PersonaNegociacion2" id="PersonaNegociacion2" value="<?php echo $row_Persona->idPersona ; ?>">
                     </div>
@@ -362,7 +362,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cancelar</button>
-        <button type="submit" class="btn btn-outline">Guardar Negociacion</button>
+        <button type="submit" class="btn btn-outline">Guardar Objetivo</button>
       </div>
     </form>
     </div>

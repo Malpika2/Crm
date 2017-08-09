@@ -1,7 +1,7 @@
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="<?php echo base_url();?>cInicio"><i class="fa fa-map-signs"></i>Inicio</a></li>
-        <li class="active">Nueva Negociación</li>
+        <li class="active">Nuevo Objetivo</li>
       </ol>
     </section>
 
@@ -17,7 +17,7 @@
                   <i class="fa fa-briefcase fa-3x"></i><br>Empresa
                 </a>
               </li>
-              <li class="col-md-5 text-center"><h2>CREAR NUEVA NEGOCIACIÓN</h2></li>
+              <li class="col-md-5 text-center"><h2>CREAR NUEVO OBJETIVO</h2></li>
               <li class="pull-right col-md-3">
                 <a class="btn text-center" href="#tab_2" data-toggle="tab">
                   <i class="fa fa-user fa-3x "></i><br>Persona
@@ -29,13 +29,13 @@
                 <form method="POST" action="<?php echo base_url();?>cNegociacion/guardarEmpresa">
                   <div class="col-md-12 divsNP">
                     <div class="input-group">
-                      <span class="input-group-addon"><b>Nombre de la negociación</b></span>
+                      <span class="input-group-addon"><b>Nombre del objetivo</b></span>
                       <input type="text" class="form-control formsNP" id="NombreNegociacion" name="NombreNegociacion" required>
                     </div>
                   </div>
                   <div class="col-md-6 divsNP">
                     <div class="input-group">
-                      <span class="input-group-addon"><b>¿Con quien es la negociación?</b></span>
+                      <span class="input-group-addon"><b>¿Con quien es el objetivo?</b></span>
                       <select class=" form-control formsNP selectpicker" id="EmpresaNegociacion" name="EmpresaNegociacion" required="true">
                         <option selected="true" disabled="true">Empresa</option>
                       </select>              
@@ -55,7 +55,7 @@
                           <textarea rows="6" class="form-control formsNP" id="Motivo" name="Motivo" required></textarea>
                         </div>
                   </div>
-                  <div class="col-md-3 divsNP">
+                  <div class="col-md-6 divsNP">
                         <div class="input-group">
                           <span class="input-group-addon"><b>Prioridad</b></span>
                           <select class=" form-control formsNP selectpicker" id="Prioridad" name="Prioridad" required>
@@ -66,7 +66,7 @@
                         </select>              
                         </div>
                   </div>
-                <div class="col-md-3 divsNP">
+<!--                 <div class="col-md-3 divsNP">
                   <div class="input-group">
                     <span class="input-group-addon"><b>Status</b></span>
                     <select class=" form-control formsNP selectpicker" id="Status" name="Status" required>
@@ -81,7 +81,7 @@
                       <option value="Interes en participar confirmado">Interes en participar confirmado</option>
                     </select>              
                   </div>
-                </div>
+                </div> -->
                 <div class="col-md-6 divsNP">
                       <div class="input-group">
                         <span class="input-group-addon"><b>Persona a cargo</b></span>
@@ -109,15 +109,15 @@
               <!-- /.tab-pane -->
               <div class="tab-pane" id="tab_2">
                 <form method="POST" action="<?php echo base_url();?>cNegociacion/guardarPersona">
-                  <div class="col-md-12 divsNP">
+                  <div class="col-md-6 divsNP">
                     <div class="input-group">
-                      <span class="input-group-addon"><b>Nombre de la negociación</b></span>
+                      <span class="input-group-addon"><b>Nombre del objetivo</b></span>
                       <input type="text" class="form-control formsNP" id="NombreNegociacionP" name="NombreNegociacionP"/>
                     </div>
                   </div>
                   <div class="col-md-6 divsNP">
                     <div class="input-group">
-                      <span class="input-group-addon"><b>¿Con quien es la negociación?</b></span>
+                      <span class="input-group-addon"><b>¿Con quien es el objetivo?</b></span>
                       <select class=" form-control formsNP selectpicker" id="PersonaNegociacion2" name="PersonaNegociacion2" required>
                         <option selected="true" disabled="true">Persona</option>
                       </select>              
@@ -140,7 +140,7 @@
                       </select>              
                     </div>
                   </div>
-                  <div class="col-md-6 divsNP">
+<!--                   <div class="col-md-6 divsNP">
                     <div class="input-group">
                       <span class="input-group-addon"><b>Status</b></span>
                       <select class=" form-control formsNP selectpicker" id="StatusP" name="StatusP">
@@ -155,7 +155,7 @@
                         <option value="Interes en participar confirmado">Interes en participar confirmado</option>
                       </select>              
                     </div>
-                  </div>
+                  </div> -->
                 <div class="col-md-6 divsNP">
                   <div class="input-group">
                     <span class="input-group-addon"><b>Persona a cargo</b></span>

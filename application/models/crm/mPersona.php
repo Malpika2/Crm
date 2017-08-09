@@ -19,7 +19,8 @@ class mPersona extends CI_Model
 				'Skype' => $param['Skype'],
 				'FechaRegistro' =>$param['FechaRegistro'],
 				'idUsuarioRegistro' => $param['idUsuarioRegistro'],
-				'Status' => $param['Status']);
+				'Status' => $param['Status'],
+				'Puesto' => $param['Puesto']);
 
 				$this->db->insert("Personas",$campos);
 

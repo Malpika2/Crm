@@ -58,7 +58,7 @@ $('#tablaPersonas').on('click','#btnEliminarPersona', function() {
               data:{idPersona:idPersona,StatusFinal:StatusFinal},
               success: function(data) {
                 alert('Persona Marcada como "Inactiva"');
-                location.href="http://localhost/crm/cContactos";
+                location.href=baseurl+"/cContactos";
               }
           });
           return true;
@@ -77,7 +77,7 @@ $('#tablaEmpreas').on('click','#btnEliminarEmpresa', function() {
               data:{idEmpresa:idEmpresa,StatusFinalE:StatusFinalE},
               success: function(data) {
                 alert('Empresa Marcada como "Inactiva"');
-                location.href="http://localhost/crm/cContactos";
+                location.href=baseurl+"cContactos";
               }
           });
           return true;

@@ -1,3 +1,5 @@
+<?php ob_start(); ?>
+
    <?php
 
 class cPersona extends CI_Controller
@@ -34,6 +36,8 @@ class cPersona extends CI_Controller
 	$param['idEmpresa'] = $this->input->post('Empresa');
 	$param['Skype'] = $this->input->post('Skype');
 	$param['Status'] = $this->input->post('Status');
+
+	$param['Puesto'] = $this->input->post('Puesto');
 	$param['idUsuarioRegistro'] = $this->session->userdata('s_idUsuario');
 
 
@@ -88,10 +92,10 @@ class cPersona extends CI_Controller
 			$this->mTelefono->guardar($paramTel);
 			$this->mCorreo->guardar($paramCor);
 			if($this->mDireccion->guardar($paramDir)){
-		$this->load->view('crm/header');
-		$this->load->view('crm/menu');
-		$this->load->view('crm/vNuevaPersona');
-		$this->load->view('crm/footer');
+			$this->load->view('crm/header');
+			$this->load->view('crm/menu');
+			$this->load->view('crm/vNuevaPersona');
+			$this->load->view('crm/footer');
 			}
 
 
@@ -124,6 +128,31 @@ class cPersona extends CI_Controller
 				$this->load->view('crm/footer');
 
 	}
+	public function guardar2(){
+	$param['Nombre'] = $this->input->post('Nombre');
+	$param['Paterno'] = $this->input->post('ApPaterno');
+	$param['Materno'] = $this->input->post('ApMaterno');
+	$param['Cargo'] = $this->input->post('Cargo');
+	$param['idEmpresa'] = $this->input->post('Empresa');
+	$param['Skype'] = $this->input->post('Skype');
+	$param['Status'] = $this->input->post('Status');
+	$param['Puesto'] = $this->input->post('Puesto');
+	$param['idUsuarioRegistro'] = $this->session->userdata('s_idUsuario');
+	$format = 'DATE_RFC822';
+	$time = time();
+	$fecha = standard_date($format, $time);
+	$param['FechaRegistro'] = $fecha;
+	if ($param['idEmpresa']==0) {
+		$param['idEmpresa']=Null;
+	}
+	$ultimaPersona=$this->mPersona->guardar($param);
+
+		if($ultimaPersona>0){
+				$result = $this->mPersona->mGetPersonas->getPersonaPorIdResult($ultimaPersona);
+		echo json_encode($result);	
+		}
+
+	}
 	public function guardarTarea(){
 		$paramTarea['TituloTarea'] = $this->input->post('TituloTarea');
 		$paramTarea['Categoria'] = $this->input->post('Categoria');
@@ -133,6 +162,39 @@ class cPersona extends CI_Controller
 		$paramTarea['idEmpresa'] = NULL;
 		$paramTarea['Prioridad'] = $this->input->post('Prioridad');
 		$paramTarea['idNegociacion'] = NULL;
+		$paramTarea['idUsuarioCrea'] = $this->input->post('idUsuarioc'); 
+		$paramTarea['Descripcion'] = $this->input->post('Descripcion');
+
+		if(isset($_POST['Asignados'])){
+		foreach ($_POST['Asignados'] as $asignados_value){
+			$paramTarea['Asignados'] = $paramTarea['Asignados'].','.$asignados_value;
+			}
+		}
+		$ultimaTarea=$this->mTareas->guardarTarea($paramTarea);
+		$paramTarea['UltimaTarea']=$ultimaTarea;
+
+		if ($ultimaTarea>0) {
+			if(isset($_POST['Asignados'])){
+				foreach ($_POST['Asignados'] as $asignados_value){
+				$this->mTareas->guardarParticipantes($asignados_value,$paramTarea);
+				// $this->mMailer->enviarCorreo($ultimaTarea,$paramTarea);
+				}
+			}
+		}
+
+	}
+		public function guardarTareaObjetivo(){
+		$paramTarea['TituloTarea'] = $this->input->post('TituloTarea');
+		$paramTarea['Categoria'] = $this->input->post('Categoria');
+		$paramTarea['Asignados'] = NULL; 
+		$paramTarea['FechaFin'] = $this->input->post('FechaFin');
+		$paramTarea['idPersona'] = $this->input->post('idPersona');
+		$paramTarea['EmpresasPart'] = NULL;
+		$paramTarea['PersonasPart'] = NULL;
+		$paramTarea['idMeta'] = NULL;
+		$paramTarea['idEmpresa']= $this->input->post('idEmpresa');
+		$paramTarea['Prioridad'] = $this->input->post('Prioridad');
+		$paramTarea['idNegociacion'] = $this->input->post('idNegociacion');
 		$paramTarea['idUsuarioCrea'] = $this->input->post('idUsuarioc'); 
 		$paramTarea['Descripcion'] = $this->input->post('Descripcion');
 
@@ -164,7 +226,7 @@ class cPersona extends CI_Controller
 		$s = $this->input->post('Tareaid');
 		$StatusFinal = $this->input->post('StatusFinal');
 		$resultado = $this->mTareas->tareaRealizada($s,$StatusFinal);
-		
+		return true;
 	}
 	public function tareaNoRealizada(){
 		$s = $this->input->post('Tareaid');
@@ -181,7 +243,8 @@ class cPersona extends CI_Controller
 		$resultado = $this->mNegociacion->NegociacionEliminada($s,$StatusFinalNG);
 	}
 	public function verNegociacion($idNegociacion){
-		$data['row_Negociacion'] = $this->mNegociacion->getNegociacion($idNegociacion);
+		$data['row_Negociacion'] = $this->mNegociacion->getNegociacionyEmpresa($idNegociacion);
+		// $data['row_Empresa'] = $this->mNegociacion->getNegociacionyEmpresa($idNegociacion);
 		$this->load->view('crm/header');
 		$this->load->view('crm/menu');
 		$this->load->view('crm/vVerNegociacion',$data);
