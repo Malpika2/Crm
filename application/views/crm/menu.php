@@ -61,6 +61,12 @@
           </a>
         </li> -->
         <li class="treeview">
+          <a href="<?php echo base_url();?>cForo">
+            <i class="fa fa-comments-o"></i>
+            <span>Seguimiento CRM</span>
+          </a>
+        </li>
+        <li class="treeview">
           <a href="<?php echo base_url();?>cUsuario">
             <i class="fa fa-male"></i>
             <span>Agregar Usuario</span>
