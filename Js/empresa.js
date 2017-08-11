@@ -49,9 +49,7 @@ $('#ListaEmpresas').on('click','#btnRealizadaEmpresas', function() {
 $(document).ready(function() {
 var options = {
 	url: baseurl+"cGetEmpresas/getEmpresasAutoComplete",
-	encoding:"UTF-8",
 	getValue: "nombre",
-	contentType: "text/json; charset=UTF-8",
 	list: {
 		maxNumberOfElements: 5,
 		match: {
@@ -125,19 +123,19 @@ var options = {
 			callback: function() {}
 		},		
 		onSelectItemEvent: function() {
-			var abreviacion = $('#SPP').getSelectedItemData().abreviacion;
-			var nombre = $('#SPP').getSelectedItemData().nombre;
-			var SitioWeb = $('#SPP').getSelectedItemData().sitio_web;
-			var Telefono1 = $('#SPP').getSelectedItemData().telefono;
-			var Correo1 = $('#SPP').getSelectedItemData().email;
-			var DatosFiscales = $('#SPP').getSelectedItemData().rfc;
+			var abreviacion = utf8_decode($('#SPP').getSelectedItemData().abreviacion);
+			var nombre = utf8_decode($('#SPP').getSelectedItemData().nombre);
+			var SitioWeb = utf8_decode($('#SPP').getSelectedItemData().sitio_web);
+			var Telefono1 = utf8_decode($('#SPP').getSelectedItemData().telefono);
+			var Correo1 = utf8_decode($('#SPP').getSelectedItemData().email);
+			var DatosFiscales = utf8_decode($('#SPP').getSelectedItemData().rfc);
 			if (DatosFiscales==null){
-				var DatosFiscales = $('#SPP').getSelectedItemData().ruc;
+				var DatosFiscales = utf8_decode($('#SPP').getSelectedItemData().ruc);
 			}
-			var DireccionOficina = $('#SPP').getSelectedItemData().direccion_oficina;
-			var DireccionFiscal = $('#SPP').getSelectedItemData().direccion_fiscal;
-			var Ciudad = $('#SPP').getSelectedItemData().ciudad;
-			var Pais = $('#SPP').getSelectedItemData().pais;
+			var DireccionOficina = utf8_decode($('#SPP').getSelectedItemData().direccion_oficina);
+			var DireccionFiscal = utf8_decode($('#SPP').getSelectedItemData().direccion_fiscal);
+			var Ciudad = utf8_decode($('#SPP').getSelectedItemData().ciudad);
+			var Pais = utf8_decode($('#SPP').getSelectedItemData().pais);
 
 
 			$("#Abreviacion").val(abreviacion).trigger("change");
@@ -189,17 +187,18 @@ var options = {
       callback: function() {}
     },    
     onSelectItemEvent: function() {
-var Nombre = $("#Nombre").getSelectedItemData().nombre;
-var Puesto = $("#Nombre").getSelectedItemData().cargo;
-var Telefono1 = $("#Nombre").getSelectedItemData().telefono1;
-var Telefono2 = $("#Nombre").getSelectedItemData().telefono2;
-var Correo1 = $("#Nombre").getSelectedItemData().email1;
-var Correo2 = $("#Nombre").getSelectedItemData().email2;
-var Calle = $("#Nombre").getSelectedItemData().direccion;
-var Pais = $("#Nombre").getSelectedItemData().pais;
+var Nombre = utf8_decode($("#Nombre").getSelectedItemData().nombre);
+var Puesto = utf8_decode($("#Nombre").getSelectedItemData().cargo);
+var Telefono1 = utf8_decode($("#Nombre").getSelectedItemData().telefono1);
+var Telefono2 = utf8_decode($("#Nombre").getSelectedItemData().telefono2);
+var Correo1 = utf8_decode($("#Nombre").getSelectedItemData().email1);
+var Correo2 = utf8_decode($("#Nombre").getSelectedItemData().email2);
+var Calle = utf8_decode($("#Nombre").getSelectedItemData().direccion);
+var Pais = utf8_decode($("#Nombre").getSelectedItemData().pais);
 var Cargo = "Representante";
 var Status = "Incorporado";
-
+      
+      $('#Nombre').val(Nombre).trigger("change");
       $(".Puesto").val(Puesto).trigger("change");
       $(".Telefono1").val(Telefono1).trigger("change");
       $(".Telefono2").val(Telefono2).trigger("change");
@@ -361,20 +360,7 @@ $('#btnAgregarNuevoCont').click(function(){
 	$(".Cargo").val(Cargo).trigger("change");
 });
 
-function utf8_decode (strData) { // eslint-disable-line camelcase
-  //  discuss at: http://locutus.io/php/utf8_decode/
-  // original by: Webtoolkit.info (http://www.webtoolkit.info/)
-  //    input by: Aman Gupta
-  //    input by: Brett Zamir (http://brett-zamir.me)
-  // improved by: Kevin van Zonneveld (http://kvz.io)
-  // improved by: Norman "zEh" Fuchs
-  // bugfixed by: hitwork
-  // bugfixed by: Onno Marsman (https://twitter.com/onnomarsman)
-  // bugfixed by: Kevin van Zonneveld (http://kvz.io)
-  // bugfixed by: kirilloid
-  // bugfixed by: w35l3y (http://www.wesley.eti.br)
-  //   example 1: utf8_decode('Kevin van Zonneveld')
-  //   returns 1: 'Kevin van Zonneveld'
+function utf8_decode (strData) {
   var tmpArr = []
   var i = 0
   var c1 = 0
@@ -383,7 +369,6 @@ function utf8_decode (strData) { // eslint-disable-line camelcase
   while (i < strData.length) {
     c1 = strData.charCodeAt(i) & 0xFF
     seqlen = 0
-    // http://en.wikipedia.org/wiki/UTF-8#Codepage_layout
     if (c1 <= 0xBF) {
       c1 = (c1 & 0x7F)
       seqlen = 1
@@ -412,21 +397,7 @@ function utf8_decode (strData) { // eslint-disable-line camelcase
   return tmpArr.join('')
 }
 
-function utf8_encode (argString) { // eslint-disable-line camelcase
-  //  discuss at: http://locutus.io/php/utf8_encode/
-  // original by: Webtoolkit.info (http://www.webtoolkit.info/)
-  // improved by: Kevin van Zonneveld (http://kvz.io)
-  // improved by: sowberry
-  // improved by: Jack
-  // improved by: Yves Sucaet
-  // improved by: kirilloid
-  // bugfixed by: Onno Marsman (https://twitter.com/onnomarsman)
-  // bugfixed by: Onno Marsman (https://twitter.com/onnomarsman)
-  // bugfixed by: Ulrich
-  // bugfixed by: Rafał Kukawski (http://blog.kukawski.pl)
-  // bugfixed by: kirilloid
-  //   example 1: utf8_encode('Kevin van Zonneveld')
-  //   returns 1: 'Kevin van Zonneveld'
+function utf8_encode (argString) { 
   if (argString === null || typeof argString === 'undefined') {
     return ''
   }

@@ -46,15 +46,16 @@ var options = {
       callback: function() {}
     },    
     onSelectItemEvent: function() {
-var Nombre = $("#Nombre").getSelectedItemData().nombre;
-var Puesto = $("#Nombre").getSelectedItemData().cargo;
-var Telefono1 = $("#Nombre").getSelectedItemData().telefono1;
-var Telefono2 = $("#Nombre").getSelectedItemData().telefono2;
-var Correo1 = $("#Nombre").getSelectedItemData().email1;
-var Correo2 = $("#Nombre").getSelectedItemData().email2;
-var Calle = $("#Nombre").getSelectedItemData().direccion;
-var Pais = $("#Nombre").getSelectedItemData().pais;
+var Nombre = utf8_decode($("#Nombre").getSelectedItemData().nombre);
+var Puesto = utf8_decode($("#Nombre").getSelectedItemData().cargo);
+var Telefono1 = utf8_decode($("#Nombre").getSelectedItemData().telefono1);
+var Telefono2 = utf8_decode($("#Nombre").getSelectedItemData().telefono2);
+var Correo1 = utf8_decode($("#Nombre").getSelectedItemData().email1);
+var Correo2 = utf8_decode($("#Nombre").getSelectedItemData().email2);
+var Calle = utf8_decode($("#Nombre").getSelectedItemData().direccion);
+var Pais = utf8_decode($("#Nombre").getSelectedItemData().pais);
 
+      $('#Nombre').val(Nombre).trigger("change");
 
       $("#Puesto").val(Puesto).trigger("change");
       $("#Telefono1").val(Telefono1).trigger("change");
@@ -77,4 +78,40 @@ function limpiarFormularioPersona(){
         $(this).change();
       }
   });
+}
+function utf8_decode (strData) {
+  var tmpArr = []
+  var i = 0
+  var c1 = 0
+  var seqlen = 0
+  strData += ''
+  while (i < strData.length) {
+    c1 = strData.charCodeAt(i) & 0xFF
+    seqlen = 0
+    if (c1 <= 0xBF) {
+      c1 = (c1 & 0x7F)
+      seqlen = 1
+    } else if (c1 <= 0xDF) {
+      c1 = (c1 & 0x1F)
+      seqlen = 2
+    } else if (c1 <= 0xEF) {
+      c1 = (c1 & 0x0F)
+      seqlen = 3
+    } else {
+      c1 = (c1 & 0x07)
+      seqlen = 4
+    }
+    for (var ai = 1; ai < seqlen; ++ai) {
+      c1 = ((c1 << 0x06) | (strData.charCodeAt(ai + i) & 0x3F))
+    }
+    if (seqlen === 4) {
+      c1 -= 0x10000
+      tmpArr.push(String.fromCharCode(0xD800 | ((c1 >> 10) & 0x3FF)))
+      tmpArr.push(String.fromCharCode(0xDC00 | (c1 & 0x3FF)))
+    } else {
+      tmpArr.push(String.fromCharCode(c1))
+    }
+    i += seqlen
+  }
+  return tmpArr.join('')
 }
