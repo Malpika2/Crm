@@ -17,7 +17,7 @@ class cGetEmpresas extends CI_Controller
 	}
 	public function getEmpresasAutoComplete(){
 		$resultado = $this->mGetEmpresas->getEmpresasAutoComplete();
-		$resultado =  json_encode($resultado);
+		$resultado = json_encode($resultado);
 		echo $resultado;
 	}
 }

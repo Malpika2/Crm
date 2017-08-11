@@ -6,6 +6,7 @@ class mGetEmpresas extends CI_Model
     private $DBSPP;  // Base de datos en la nube
 	function __construct()
 	{
+		
 		parent::__construct();
 		$this->DBCRM = $this->load->database('default', TRUE);
 		$this->DBSPP = $this->load->database('d-spp', TRUE);
