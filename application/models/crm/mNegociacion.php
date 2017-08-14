@@ -70,14 +70,13 @@ class mNegociacion extends CI_Model
 			return $s->row();
 	}
 	public function getNegociacionyEmpresa($s){
-		$this->db->select('idNegociacion, NombreNegociacion,Negociaciones.idEmpresa,Negociaciones.idPersona,Motivo,Prioridad,Negociaciones.Status as NegStatus,Negociaciones.StatusFinal,PersonaCargo,FechaLimite,Detalles,CreadaPor,Activa,Empresas.RazonSocial,Personas.Nombre,Personas.Paterno');
+		$this->db->select('idNegociacion, NombreNegociacion,Negociaciones.idEmpresa,Negociaciones.idPersona,Motivo,Prioridad,Negociaciones.Status as NegStatus,Negociaciones.StatusFinal,PersonaCargo,FechaLimite,Detalles,CreadaPor,Activa,Empresas.RazonSocial,Empresas.NombreEmpresa,Personas.Nombre,Personas.Paterno,COUNT(*) as numero');
 		$this->db->from('Negociaciones');
 		$this->db->join('Personas','Negociaciones.idPersona = Personas.idPersona','left');
 		$this->db->join('Empresas','Negociaciones.idEmpresa = Empresas.idEmpresa','left');
 		$this->db->where('Negociaciones.idNegociacion',$s);
 		$s = $this->db->get();
 		return $s->row();
-
 	}
 	public function NegociacionEliminada($s,$StatusFinalNG){
 			$data = array(

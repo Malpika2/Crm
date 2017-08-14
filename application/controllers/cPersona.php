@@ -36,70 +36,81 @@ class cPersona extends CI_Controller
 	$param['idEmpresa'] = $this->input->post('Empresa');
 	$param['Skype'] = $this->input->post('Skype');
 	$param['Status'] = $this->input->post('Status');
-
+	$param['Telefono1'] = $this->input->post('Telefono1');
+	$param['Telefono2'] = $this->input->post('Telefono2');
+	$param['Correo1'] = $this->input->post('Correo1');
+	$param['Correo2'] = $this->input->post('Correo2');
 	$param['Puesto'] = $this->input->post('Puesto');
+	$param['Ciudad'] = $this->input->post('Estado');
+	$param['Pais'] = $this->input->post('Pais');
+	$param['Direccion'] = $this->input->post('Calle');
 	$param['idUsuarioRegistro'] = $this->session->userdata('s_idUsuario');
-
-
-	$format = 'DATE_RFC822';
-	$time = time();
-	$fecha = standard_date($format, $time);
-	$param['FechaRegistro'] = $fecha;
-
-
-
-	if ($param['idEmpresa']==0) {
-		$param['idEmpresa']=Null;
-	}
-//Telefonos
-		$paramTel['Telefono1'] = $this->input->post('Telefono1');
-		$paramTel['TipoTelefono1'] = $this->input->post('TipoTelefono1');
-		$paramTel['Telefono2'] = $this->input->post('Telefono2');
-		$paramTel['TipoTelefono2'] = $this->input->post('TipoTelefono2');
-
-
-//correos
-
-		$paramCor['Correo1'] = $this->input->post('Correo1');
-		$paramCor['TipoCorreo1'] = $this->input->post('TipoCorreo1');
-		$paramCor['Correo2'] = $this->input->post('Correo2');
-		$paramCor['TipoCorreo2'] = $this->input->post('TipoCorreo2');
-
-//Direccion
-		$paramDir['Calle'] = $this->input->post('Calle');
-		$paramDir['Numero'] = $this->input->post('Numero');
-		$paramDir['Colonia'] = $this->input->post('Colonia');
-		$paramDir['Municipio'] = $this->input->post('Municipio');
-		$paramDir['Estado'] = $this->input->post('Estado');
-		$paramDir['Cp'] = $this->input->post('Cp');
-		$paramDir['Pais'] = $this->input->post('Pais');
-		
-		$ultimaPersona=$this->mPersona->guardar($param);
-
-		if($ultimaPersona>0){
-			$paramTel['idPersona'] = $ultimaPersona;
-			$paramCor['idPersona'] = $ultimaPersona;
-			$paramDir['idPersona'] = $ultimaPersona;
-
-			$paramTel['idUsuario'] = NULL;
-			$paramCor['idUsuario'] = NULL;
-			$paramDir['idUsuario'] = NULL;
-
-			$paramTel['idEmpresa'] = NULL;
-			$paramCor['idEmpresa'] = NULL;
-			$paramDir['idEmpresa'] = NULL;
-
-			$this->mTelefono->guardar($paramTel);
-			$this->mCorreo->guardar($paramCor);
-			if($this->mDireccion->guardar($paramDir)){
+	$ultimaPersona=$this->mPersona->guardar($param);
+	
 			$this->load->view('crm/header');
 			$this->load->view('crm/menu');
 			$this->load->view('crm/vNuevaPersona');
 			$this->load->view('crm/footer');
-			}
+
+	// $format = 'DATE_RFC822';
+	// $time = time();
+	// $fecha = standard_date($format, $time);
+	// $param['FechaRegistro'] = $fecha;
 
 
-		}
+
+	// if ($param['idEmpresa']==0) {
+	// 	$param['idEmpresa']=Null;
+	// }
+//Telefonos
+		// $paramTel['Telefono1'] = $this->input->post('Telefono1');
+		// $paramTel['TipoTelefono1'] = $this->input->post('TipoTelefono1');
+		// $paramTel['Telefono2'] = $this->input->post('Telefono2');
+		// $paramTel['TipoTelefono2'] = $this->input->post('TipoTelefono2');
+
+
+//correos
+
+		// $paramCor['Correo1'] = $this->input->post('Correo1');
+		// $paramCor['TipoCorreo1'] = $this->input->post('TipoCorreo1');
+		// $paramCor['Correo2'] = $this->input->post('Correo2');
+		// $paramCor['TipoCorreo2'] = $this->input->post('TipoCorreo2');
+
+//Direccion
+		// $paramDir['Calle'] = $this->input->post('Calle');
+		// $paramDir['Numero'] = $this->input->post('Numero');
+		// $paramDir['Colonia'] = $this->input->post('Colonia');
+		// $paramDir['Municipio'] = $this->input->post('Municipio');
+		// $paramDir['Estado'] = $this->input->post('Estado');
+		// $paramDir['Cp'] = $this->input->post('Cp');
+		// $paramDir['Pais'] = $this->input->post('Pais');
+		
+		// $ultimaPersona=$this->mPersona->guardar($param);
+
+		// if($ultimaPersona>0){
+		// 	$paramTel['idPersona'] = $ultimaPersona;
+		// 	$paramCor['idPersona'] = $ultimaPersona;
+		// 	$paramDir['idPersona'] = $ultimaPersona;
+
+		// 	$paramTel['idUsuario'] = NULL;
+		// 	$paramCor['idUsuario'] = NULL;
+		// 	$paramDir['idUsuario'] = NULL;
+
+		// 	$paramTel['idEmpresa'] = NULL;
+		// 	$paramCor['idEmpresa'] = NULL;
+		// 	$paramDir['idEmpresa'] = NULL;
+
+		// 	$this->mTelefono->guardar($paramTel);
+		// 	$this->mCorreo->guardar($paramCor);
+		// 	if($this->mDireccion->guardar($paramDir)){
+		// 	$this->load->view('crm/header');
+		// 	$this->load->view('crm/menu');
+		// 	$this->load->view('crm/vNuevaPersona');
+		// 	$this->load->view('crm/footer');
+		// 	}
+
+
+		// }
 
 
 	}

@@ -20,7 +20,6 @@ $.post(baseurl+"cGetPersonas/getRepresentantes",
 		$.each(emp,function(i,item){
 			if(item.Status=='Inactivo'){}
 			else {
-			$('#Contacto').append('<option value="'+item.idPersona+'">'+item.Nombre+'</option>')
 			$('#Representante').append('<option value="'+item.idPersona+'">'+item.Nombre+'</option>')
 			}
 			});
@@ -66,24 +65,24 @@ var options = {
 			callback: function() {}
 		},		
 		onSelectItemEvent: function() {
-			var nombre = utf8_decode($('#RazonSocial').getSelectedItemData().nombre);
+			var nombre = utf8_decode($('#NombreEmpresa').getSelectedItemData().nombre);
 
-			var abreviacion = utf8_decode($("#RazonSocial").getSelectedItemData().abreviacion);
-			var SPP = utf8_decode($('#RazonSocial').getSelectedItemData().spp);
-			var SitioWeb = utf8_decode($('#RazonSocial').getSelectedItemData().sitio_web);
-			var Telefono1 = utf8_decode($('#RazonSocial').getSelectedItemData().telefono);
-			var Correo1 = utf8_decode($('#RazonSocial').getSelectedItemData().email);
-			var DatosFiscales = utf8_decode($('#RazonSocial').getSelectedItemData().rfc);
+			var abreviacion = utf8_decode($("#NombreEmpresa").getSelectedItemData().abreviacion);
+			var SPP = utf8_decode($('#NombreEmpresa').getSelectedItemData().spp);
+			var SitioWeb = utf8_decode($('#NombreEmpresa').getSelectedItemData().sitio_web);
+			var Telefono1 = utf8_decode($('#NombreEmpresa').getSelectedItemData().telefono);
+			var Correo1 = utf8_decode($('#NombreEmpresa').getSelectedItemData().email);
+			var DatosFiscales = utf8_decode($('#NombreEmpresa').getSelectedItemData().rfc);
 			if (DatosFiscales==null){
-				var DatosFiscales = utf8_decode($('#RazonSocial').getSelectedItemData().ruc);
+				var DatosFiscales = utf8_decode($('#NombreEmpresa').getSelectedItemData().ruc);
 			}
-			var DireccionOficina = utf8_decode($('#RazonSocial').getSelectedItemData().direccion_oficina);
-			var DireccionFiscal = utf8_decode($('#RazonSocial').getSelectedItemData().direccion_fiscal);
-			var Ciudad = utf8_decode($('#RazonSocial').getSelectedItemData().ciudad);
-			var Pais = utf8_decode($('#RazonSocial').getSelectedItemData().pais);
+			var DireccionOficina = utf8_decode($('#NombreEmpresa').getSelectedItemData().direccion_oficina);
+			var DireccionFiscal = utf8_decode($('#NombreEmpresa').getSelectedItemData().direccion_fiscal);
+			var Ciudad = utf8_decode($('#NombreEmpresa').getSelectedItemData().ciudad);
+			var Pais = utf8_decode($('#NombreEmpresa').getSelectedItemData().pais);
 			DireccionFiscal = utf8_decode(DireccionFiscal);
 
-			$("#RazonSocial").val(nombre).trigger("change");
+			$("#NombreEmpresa").val(nombre).trigger("change");
 
 			$("#Abreviacion").val(abreviacion).trigger("change");
 			$("#SPP").val(SPP).trigger("change");
@@ -99,7 +98,7 @@ var options = {
 	}
 };
 
-$("#RazonSocial").easyAutocomplete(options); 
+$("#NombreEmpresa").easyAutocomplete(options); 
 });
 
 //Autocomplete SPP
@@ -139,7 +138,7 @@ var options = {
 
 
 			$("#Abreviacion").val(abreviacion).trigger("change");
-			$("#RazonSocial").val(nombre).trigger("change");
+			$("#NombreEmpresa").val(nombre).trigger("change");
 			$("#SitioWeb").val(SitioWeb).trigger("change");
 			$("#Telefono1").val(Telefono1).trigger("change");
 			$("#Correo1").val(Correo1).trigger("change");
@@ -226,8 +225,9 @@ function limpiarFormularioPersona(){
 
 
 function cargarPersonas(){
-		$('#Representante').html('');
-		$('#Contacto').html('');
+
+		$('#Representante').empty();
+		$('#Contacto').empty();
 	$.post(baseurl+"cGetPersonas/getRepresentantes",
 	{
 		Cargo:'Representante'
@@ -261,16 +261,16 @@ function cargarPersonas(){
 
 // $('#ModalNPersona').on('click','#registrarPersona', function() {
 $('#registrarPersona').click(function(){
-	              		var control='1';
+var control='1';
 $('#form, #fat, #formPersona').submit(function() {
+	if(control=='1'){
+	control=0;
 	var cargo = $('#Cargo').val();
           $.ajax({
               type: 'POST',
               url: $(this).attr('action'),
               data: $(this).serialize(),
               success: function(data) {
-              if(control=='1'){
-              	control=0;
               	if(cargo=='Contacto'){
 					var emp = JSON.parse(data);
 					$.each(emp,function(i,item){
@@ -284,17 +284,17 @@ $('#form, #fat, #formPersona').submit(function() {
 						$('#idRepresentanteEmp').val(item.idPersona);
 						});
 					}
-				}
 						limpiarFormularioPersona();
 						cargarPersonas();
 						$("#btnCerrarModal").click();
 
               }
           });
-
+      }
           return false;
       });
     });
+
 //CAMPOS REPRESENTANTE Y CONTACTO Multiple
 $(document).ready(function() {
 	$('#ContactoEmp').on('select2:unselect', function (evt) {

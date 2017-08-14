@@ -17,10 +17,17 @@ class mPersona extends CI_Model
 				'Cargo' => $param['Cargo'],
 				'idEmpresa' => $param['idEmpresa'],
 				'Skype' => $param['Skype'],
-				'FechaRegistro' =>$param['FechaRegistro'],
+				// 'FechaRegistro' =>$param['FechaRegistro'],
 				'idUsuarioRegistro' => $param['idUsuarioRegistro'],
 				'Status' => $param['Status'],
-				'Puesto' => $param['Puesto']);
+				'Puesto' => $param['Puesto'],
+				'Telefono1' => $param['Telefono1'],
+				'Telefono2' => $param['Telefono2'],
+				'Correo1' => $param['Correo1'],
+				'Correo2' => $param['Correo2'],
+				'Direccion' => $param['Direccion'],
+				'Ciudad' => $param['Ciudad'],
+				'Pais' => $param['Pais']);
 
 				$this->db->insert("Personas",$campos);
 

@@ -18,6 +18,7 @@
     </section>
     <!-- Main content -->
     <section class="content">
+    <h1></h1>
       <div class="row">
           <div class="col-md-3">
             <!-- Profile Image -->
@@ -28,16 +29,7 @@
                 <p class="text-muted text-center"></p>
                 <ul class="list-group list-group-unbordered">
                   <li class="list-group-item">
-                    <b><?php echo $row_Persona->Paterno;?>  <?php echo $row_Persona->Materno; ?></b>
-                  </li>
-                  <li class="list-group-item">
-                    <b>Empresa: </b> 
-                    <?php if (isset($row_Empresas)) {?>
-                      <a href="<?php echo base_url();?>cEmpresa/verEmpresa/<?php echo $row_Empresas->idEmpresa ?>" class="text-center">
-                      <?php echo $row_Empresas->RazonSocial; ?>
-                      </a>
-                    <?php }
-                    else{ echo "Ninguna"; }?>
+                    <b>Puesto: </b><?php echo $row_Persona->Puesto;?>
                   </li>
                   <li class="list-group-item">
                     <b>Cargo: </b><?php echo $row_Persona->Cargo; ?>
@@ -65,19 +57,19 @@
                   </p>
                   <hr>
                 <strong><i class="fa fa-map-marker margin-r-5"></i> Direccion</strong>
-                <p class="text-muted"> <?php echo " ".$row_Direccion->Calle." #".$row_Direccion->Numero.", ".$row_Direccion->Colonia.", ".$row_Direccion->Municipio.", ".$row_Direccion->Estado.", ".$row_Direccion->Cp.", ".$row_Direccion->Pais.".";?>
-                </p>
+                <p class="text-muted"> <?php /*echo " ".$row_Direccion->Calle." #".$row_Direccion->Numero.", ".$row_Direccion->Colonia.", ".$row_Direccion->Municipio.", ".$row_Direccion->Estado.", ".$row_Direccion->Cp.", ".$row_Direccion->Pais."."; */?>
+                </p>  
                 <hr>
                 <strong><i class="fa fa-pencil margin-r-5"></i>Telefonos</strong>
                 <ul>
-                  <li><?php echo $row_Telefonos->Telefono1." ".$row_Telefonos->TipoTelefono1; ?></li>
-                  <li><?php echo $row_Telefonos->Telefono2." ".$row_Telefonos->TipoTelefono2; ?></li>
+                  <li><b>Personal: </b><? echo $row_Persona->Telefono1; ?></li>
+                  <li><b>Trabajo: </b> <? echo $row_Persona->Telefono2; ?></li>
                 </ul>
                 <hr>
                 <strong><i class="fa fa-file-text-o margin-r-5"></i> Correos</strong>
                 <ul>
-                  <li><?php echo $row_Correos->Correo1." ".$row_Correos->TipoCorreo1;?></li>
-                  <li><?php echo $row_Correos->Correo2." ".$row_Correos->TipoCorreo2;?></li>
+                  <li><b>Personal: </b><? echo $row_Persona->Correo1; ?></li>
+                  <li><b>Trabajo: </b> <? echo $row_Persona->Correo2; ?></li>
                 </ul>
               </div><!-- /.box-body -->
             </div><!-- /.box primary datos-->

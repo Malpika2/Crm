@@ -15,6 +15,7 @@
           <div class="box box-info bg-info">
             <div class="box-header with-border bg-success">
               <label class="h3"></label>&nbsp;&nbsp;<label class="h3 text-info"><?php echo $row_Negociacion->NombreNegociacion; ?></label>
+                <span class="h3 text-info pull-right" id="Avance" name="Avance"></span>
             </div>
             <!-- /.box-header -->
             <div class="box-body bg-info">
@@ -26,7 +27,7 @@
             <label class="">Fecha Vencimiento:</label>&nbsp;&nbsp;<p class=""><?php echo $row_Negociacion->FechaLimite; ?></p><hr>
 
             <?php if ($row_Negociacion->idEmpresa>0) { ?>
-            <label class="">Empresa:</label>&nbsp;&nbsp;<p class=""><a href="<?php echo base_url().'cEmpresa/verEmpresa/'.$row_Negociacion->idEmpresa.''; ?>"><?php echo $row_Negociacion->RazonSocial; ?></a></p><hr>
+            <label class="">Empresa:</label>&nbsp;&nbsp;<p class=""><a href="<?php echo base_url().'cEmpresa/verEmpresa/'.$row_Negociacion->idEmpresa.''; ?>"><?php echo $row_Negociacion->NombreEmpresa; ?></a></p><hr>
             <?php }
             else{?>
             <label class="">Persona:</label>&nbsp;&nbsp;<p class=""><a href="<?php echo base_url().'cPersona/verPersona/'.$row_Negociacion->idPersona.''; ?>"><?php echo $row_Negociacion->Nombre; ?></a></p><hr>
@@ -47,6 +48,10 @@
                 <ul class="nav nav-tabs">
                   <li class="active"><a href="#Comentarios" data-toggle="tab">Comentarios</a></li>
                   <li class=""><a href="#TareasOb" data-toggle="tab">Tareas</a></li>
+                  <!-- <div class="btn btn-group"> -->
+                  <!-- <span id="TareasActivas" name="TareasActivas" class="badge bg-yellow"></span>
+                  <span id="TareasRealizadas" name="TareasRealizadas" class="badge bg-green"></span>
+                  <span id="TareasCanceladas" name="TareasCanceladas" class="badge bg-red"></span></div> -->
               </div>
                   <div class="box-body bg-info">
                     <div class="tab-content"><!-- Comentarios -->
@@ -70,6 +75,10 @@
                     <div class="tab-pane" id="TareasOb">
                         <!-- The timeline -->
                       <button id="btn_nTarea" class="btn btn-success " data-toggle="modal" data-target="#ModalTareOb"><i class="fa fa-plus fa-x2"></i> Nueva Tarea</button>
+                      <div class="btn btn-group">
+                  <span id="TareasActivas" name="TareasActivas" class="badge bg-yellow"></span>
+                  <span id="TareasRealizadas" name="TareasRealizadas" class="badge bg-green"></span>
+                  <span id="TareasCanceladas" name="TareasCanceladas" class="badge bg-red"></span></div>
                       <hr>
                       <ul class="timeline timeline-inverse" id="LineaTareasOb" style="height: 400px; overflow: scroll;">
                       </ul>

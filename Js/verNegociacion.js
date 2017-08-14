@@ -180,11 +180,17 @@ $.post(baseurl+"cTareas/getTareas_deObjetivos",
     },
    function(data){
     var emp = JSON.parse(data);
+    var Activa =0;
+    var Cancelada =0;
+    var Realizada =0;
     $.each(emp,function(i,item){
       var texto = $('#idUsuarioc').val();
       var cadena = item.Asignados;
       if (cadena.indexOf(texto) != -1) {
     if(item.Activa==1){
+      if(item.StatusTarea=='Activa'){Activa++;}
+        if(item.StatusTarea=='Cancelada'){Cancelada++;}
+          if(item.StatusTarea=='Realizada'){Realizada++;}
       $('#LineaTareasOb').append(                  
                   '<li class="time-label">'+
                    ' <span class="bg-yellow">'+
@@ -194,14 +200,14 @@ $.post(baseurl+"cTareas/getTareas_deObjetivos",
                   '<li>'+
                     '<i class="fa fa-envelope bg-blue"></i>'+
                     '<div class="timeline-item">'+
-                      '<span class="time"><i class="fa fa-clock-o"></i>'+item.FechaCreacion+'</span>'+
+                      '<button disabled class="btn btn-info btn-sm pull-right" id="btnRealizada" name="btnRealizada" value="'+item.idTarea+'">'+item.StatusTarea+'</button>'+
                       '<h3 class="timeline-header"><a href="'+baseurl+'/cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></h3>'+
                       '<div class="timeline-body">'+
                         ''+item.Descripcion+''+
                       '</div>'+
                       '<div class="timeline-footer">'+
                       '<b>Categoria: </b>'+item.Categoria+''+
-                      '<button class="btn btn-danger btn-xs pull-right" id="btnRealizada" name="btnRealizada" value="'+item.idTarea+'">Realizada</button>'+
+                      '<span class="time pull-right"><i class="fa fa-clock-o"></i>'+item.FechaCreacion+'</span>'+
                       '</div>'+
                     '</div>'+
                   '</li>'+
@@ -210,6 +216,16 @@ $.post(baseurl+"cTareas/getTareas_deObjetivos",
                   )}
     }
       });
+    $('#TareasActivas').html('Activas: '+Activa);
+    $('#TareasCanceladas').html('Canceladas: '+Cancelada);
+    $('#TareasRealizadas').html('Realizadas: '+Realizada);
+    var Avance = Activa+Realizada+Cancelada;
+    Avance = (Realizada/Avance)*100;
+    if (Avance>0) {
+    $('#Avance').html(Avance+'%');  
+    }
+    
+
     $('#LineaTareasOb').append(
     '<li>'+                  
       '<i class="fa fa-clock-o bg-gray"></i>'+

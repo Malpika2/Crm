@@ -12,14 +12,14 @@ class mEmpresa extends CI_Model
 	}
 	public function guardar($param){
 		$campos = array(
-			'RazonSocial' => $param['RazonSocial'],
+			'NombreEmpresa' => $param['NombreEmpresa'],
 			'Tipo' => $param['Tipo'],
 			'idRepresentante' => $param['Representante'],
 			'idContacto' => $param['Contacto'],
 			'Skype' => $param['Skype'],
 			'SitioWeb' => $param['SitioWeb'],
 			'idUsuarioRegistro' => $param['idUsuarioRegistro'],
-			'FechaRegistro' => $param['FechaRegistro'],
+			// 'FechaRegistro' => $param['FechaRegistro'],
 			'spp' => $param['SPP'],
 			'DireccionOficina' => $param['DireccionOficina'],
 			'DireccionFiscal' => $param['DireccionFiscal'],
@@ -57,7 +57,7 @@ $this->db->update('Empresas');
 	 }
 	 public function updateEmpresa($param){
 	 	$campos = array(
-	 		'RazonSocial' => $param['RazonSocial'],
+	 		'NombreEmpresa' => $param['NombreEmpresa'],
 			'Tipo' => $param['Tipo'],
 			'idRepresentante' => $param['Representante'],
 			'idContacto' => $param['Contacto'],

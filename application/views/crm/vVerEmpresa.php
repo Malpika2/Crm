@@ -1,4 +1,3 @@
-
     <section class="content-header">
       <h1>
       <br>
@@ -18,7 +17,7 @@
             <div class="box-body box-profile">
               <img class="profile-user-img img-responsive img-circle" src="<?php echo base_url();?>assets/dist/img/silueta_user.png" alt="User profile picture">
 
-              <h3 class="profile-username text-center"><?php echo $row_Empresas->RazonSocial; ?></h3>
+              <h3 class="profile-username text-center"><?php echo $row_Empresas->NombreEmpresa; ?></h3>
 
               <p class="text-muted text-center"></p>
 

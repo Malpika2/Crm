@@ -32,10 +32,11 @@ class cEmpresa extends CI_Controller
 		$time = time();
 		$fechaActual = standard_date($format, $time);
 
-		$param['RazonSocial'] = $this->input->post('RazonSocial');
+		$param['NombreEmpresa'] = $this->input->post('NombreEmpresa');
 		$param['Tipo'] = $this->input->post('Tipo');
-		$param['Representante'] = $this->input->post('Representante');
-		$param['Contacto'] = $this->input->post('Contacto');
+		$param['Representante'] =$this->input->post('idRepresentanteEmp');
+		$param['Contacto'] = null;
+		// $param['Contacto'] = $this->input->post('ContactoEmp');
 		$param['Skype'] = $this->input->post('Skype');
 		$param['SitioWeb'] = $this->input->post('SitioWeb');
 		$param['FechaRegistro'] = $fechaActual;
@@ -51,6 +52,12 @@ class cEmpresa extends CI_Controller
 		$param['Telefono'] = $this->input->post('Telefono1');
 		$param['Telefono2'] = $this->input->post('Telefono2');
 		$param['Email2'] = $this->input->post('Correo2');
+
+		if(isset($_POST['ContactoEmp'])){
+		foreach ($_POST['ContactoEmp'] as $contactos_value){
+			$param['Contacto'] = $contactos_value.','.$param['Contacto'];
+			}
+		}
 //Telefonos
 		$paramTel['Telefono1'] = $this->input->post('Telefono1');
 		$paramTel['TipoTelefono1'] = $this->input->post('TipoTelefono1');
@@ -245,7 +252,7 @@ class cEmpresa extends CI_Controller
 	}
 	public function updateEmpresa(){
 $param['idEmpresa'] = $this->input->post('idEmpresa');
-$param['RazonSocial'] = $this->input->post('RazonSocial');
+$param['NombreEmpresa'] = $this->input->post('NombreEmpresa');
 $param['SPP'] = $this->input->post('SPP');
 $param['Abreviacion'] = $this->input->post('Abreviacion');
 $param['Tipo'] = $this->input->post('Tipo');

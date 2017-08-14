@@ -43,21 +43,21 @@
               </div>
         </div>
         <div class="col-md-6 divsNP">
+            <div class="input-group">
+              <span class="input-group-addon"><b>Puesto</b></span>
+              <input type="text" class=" formsNP" id="Puesto" name="Puesto">
+            </div>
+        </div>
+<!--         <div class="col-md-6 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>Empresa</b></span>
                 <select class="form-control select2 formsNP selectpicker" title="Empresa..." id="Empresa" name="Empresa">
                   <option value="0">Sin Empresa</option>
                 </select>
               </div>
-        </div>
-        <div class="col-md-12 " style="padding: 0px;">
-        <div class="col-md-6 divsNP">
-              <div class="input-group">
-                <span class="input-group-addon"><b>Puesto</b></span>
-                <input type="text" class=" formsNP" id="Puesto" name="Puesto">
-              </div>
-        </div>
-        <div class="col-md-6 divsNP">
+        </div> -->
+        <!-- <div class="col-md-12 " style="padding: 0px;"> -->
+<!--         <div class="col-md-6 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>Status</b></span>
                 <select class="form-control select2 formsNP selectpicker" id="Status" name="Status">
@@ -72,50 +72,34 @@
                   <option value="Interes en participar confirmado">Interes en participar confirmado</option>
               </select>              
               </div>
-        </div>
-        </div>
+        </div> -->
+        <!-- </div> -->
         <div class="col-md-3 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>1º Telefono</b></span>
                 <input type="text" class="formsNP" id="Telefono1" name="Telefono1">
-                <select class="select2 form-control formsNP selectpicker" id="TipoTelefono1" name="TipoTelefono1">
-                  <option selected="true" disabled="true">Tipo</option>
-                  <option value="Trabajo">Trabajo</option>
-                  <option value="Personal">Personal</option>
-              </select>
+                <input type="text" class="text-center" disabled="true" name="" value="Personal">
               </div>
         </div>
         <div class="col-md-3 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>2º Telefono</b></span>
                 <input type="text" class=" formsNP" id="Telefono2" name="Telefono2">
-                <select class="select2 form-control formsNP selectpicker" id="TipoTelefono2" name="TipoTelefono2">
-                  <option selected="true" disabled="true">Tipo</option>
-                  <option value="Trabajo">Trabajo</option>
-                  <option value="Personal">Personal</option>
-              </select>
+                <input type="text" class="text-center" disabled="true" name="" value="Trabajo">
               </div>
         </div>
         <div class="col-md-3 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>1º Email</b></span>
                 <input type="text" class="form-control formsNP" id="Correo1" name="Correo1">
-                <select class="select2 form-control formsNP selectpicker" id="TipoCorreo1" name="TipoCorreo1">
-                  <option selected="true" disabled="true">Tipo</option>
-                  <option value="Trabajo">Trabajo</option>
-                  <option value="Personal">Personal</option>
-              </select>
+                <input type="text" class="text-center" disabled="true" name="" value="Personal">
               </div>
         </div>
         <div class="col-md-3 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>2º Email</b></span>
                 <input type="text" class="form-control formsNP" id="Correo2" name="Correo2">
-                <select class="select2 form-control formsNP selectpicker" id="TipoCorreo2" name="TipoCorreo2">
-                  <option selected="true" disabled="true">Tipo</option>
-                  <option value="Trabajo">Trabajo</option>
-                  <option value="Personal">Personal</option>
-              </select>
+                <input type="text" class="text-center" disabled="true" name="" value="Trabajo">
               </div>
         </div>
         <div class="col-md-12 divsNP">

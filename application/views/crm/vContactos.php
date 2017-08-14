@@ -138,7 +138,7 @@
               <table id="example2" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Razón Social</th>
+                  <th>Nombre Empresa</th>
                   <th>Tipo</th>
                   <th>Skype</th>
                   <th>Sitio Web</th>
@@ -155,7 +155,7 @@
                       echo '<tr>
                               <td align="left">
                                 <a href="'.base_url().'/cEmpresa/verEmpresa/'.$Empresa->idEmpresa.'">
-                                '.$Empresa->RazonSocial.'</a>
+                                '.$Empresa->NombreEmpresa.'</a>
                               </td>
                               <td align="left">
                                 '.$Empresa->Tipo.'
