@@ -17,7 +17,7 @@ class mPersona extends CI_Model
 				'Cargo' => $param['Cargo'],
 				'idEmpresa' => $param['idEmpresa'],
 				'Skype' => $param['Skype'],
-				// 'FechaRegistro' =>$param['FechaRegistro'],
+				// 'FechaRegistro' =>$paratm['FechaRegistro'],
 				'idUsuarioRegistro' => $param['idUsuarioRegistro'],
 				'Status' => $param['Status'],
 				'Puesto' => $param['Puesto'],

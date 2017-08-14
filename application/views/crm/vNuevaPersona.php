@@ -78,28 +78,28 @@
               <div class="input-group">
                 <span class="input-group-addon"><b>1º Telefono</b></span>
                 <input type="text" class="formsNP" id="Telefono1" name="Telefono1">
-                <input type="text" class="text-center" disabled="true" name="" value="Personal">
+                <input type="text" class="text-center formsNP" disabled="true" name="" value="Personal">
               </div>
         </div>
         <div class="col-md-3 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>2º Telefono</b></span>
                 <input type="text" class=" formsNP" id="Telefono2" name="Telefono2">
-                <input type="text" class="text-center" disabled="true" name="" value="Trabajo">
+                <input type="text" class="text-center formsNP" disabled="true" name="" value="Trabajo">
               </div>
         </div>
         <div class="col-md-3 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>1º Email</b></span>
                 <input type="text" class="form-control formsNP" id="Correo1" name="Correo1">
-                <input type="text" class="text-center" disabled="true" name="" value="Personal">
+                <input type="text" class="text-center formsNP" disabled="true" name="" value="Personal">
               </div>
         </div>
         <div class="col-md-3 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>2º Email</b></span>
                 <input type="text" class="form-control formsNP" id="Correo2" name="Correo2">
-                <input type="text" class="text-center" disabled="true" name="" value="Trabajo">
+                <input type="text" class="text-center formsNP" disabled="true" name="" value="Trabajo">
               </div>
         </div>
         <div class="col-md-12 divsNP">

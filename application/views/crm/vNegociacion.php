@@ -271,9 +271,9 @@
                             </label>
                           </td>
                           <td>
-                              <?php if ($Negociaciones->RazonSocial){?>
+                              <?php if ($Negociaciones->NombreEmpresa){?>
                                 <a class="h5" href="<?php echo base_url();?>cEmpresa/verEmpresa/<?php echo $Negociaciones->idEmpresa ?>">
-                                <?php echo $Negociaciones->RazonSocial;?>
+                                <?php echo $Negociaciones->NombreEmpresa;?>
                                  </a>
                               <?php }
                                 else{?>

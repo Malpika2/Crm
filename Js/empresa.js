@@ -225,7 +225,6 @@ function limpiarFormularioPersona(){
 
 
 function cargarPersonas(){
-
 		$('#Representante').empty();
 		$('#Contacto').empty();
 	$.post(baseurl+"cGetPersonas/getRepresentantes",
@@ -259,7 +258,6 @@ function cargarPersonas(){
 	});
 }
 
-// $('#ModalNPersona').on('click','#registrarPersona', function() {
 $('#registrarPersona').click(function(){
 var control='1';
 $('#form, #fat, #formPersona').submit(function() {

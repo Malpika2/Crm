@@ -54,7 +54,7 @@ $.post(baseurl+"cGetEmpresas/getEmpresas",
 		var emp = JSON.parse(data);
 		$.each(emp,function(i,item){
 			if(item.sitReg=='1'){
-				$('#EmpresaNegociacion').append('<option value="'+item.idEmpresa+'">'+item.RazonSocial+'</option>')
+				$('#EmpresaNegociacion').append('<option value="'+item.idEmpresa+'">'+item.NombreEmpresa+'</option>')
 			}
 			else {
 			}

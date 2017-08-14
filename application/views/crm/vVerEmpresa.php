@@ -163,7 +163,7 @@
         <div class="col-md-6 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>Nombre Empresa</b></span>
-                <input type="text" class="formsNP" id="RazonSocial" name="RazonSocial" style="border:1px solid #d2d6de;" value=" <? echo $row_Empresas->RazonSocial; ?>" disabled>
+                <input type="text" class="formsNP" id="NombreEmpresa" name="NombreEmpresa" style="border:1px solid #d2d6de;" value=" <? echo $row_Empresas->NombreEmpresa; ?>" disabled>
               </div>
         </div>
        <div class="col-md-3 divsNP">

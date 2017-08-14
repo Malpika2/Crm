@@ -147,20 +147,20 @@ class cPersona extends CI_Controller
 	$param['idEmpresa'] = $this->input->post('Empresa');
 	$param['Skype'] = $this->input->post('Skype');
 	$param['Status'] = $this->input->post('Status');
+	$param['Telefono1'] = $this->input->post('Telefono1');
+	$param['Telefono2'] = $this->input->post('Telefono2');
+	$param['Correo1'] = $this->input->post('Correo1');
+	$param['Correo2'] = $this->input->post('Correo2');
 	$param['Puesto'] = $this->input->post('Puesto');
+	$param['Ciudad'] = $this->input->post('Estado');
+	$param['Pais'] = $this->input->post('Pais');
+	$param['Direccion'] = $this->input->post('Calle');
 	$param['idUsuarioRegistro'] = $this->session->userdata('s_idUsuario');
-	$format = 'DATE_RFC822';
-	$time = time();
-	$fecha = standard_date($format, $time);
-	$param['FechaRegistro'] = $fecha;
-	if ($param['idEmpresa']==0) {
-		$param['idEmpresa']=Null;
-	}
 	$ultimaPersona=$this->mPersona->guardar($param);
 
 		if($ultimaPersona>0){
 				$result = $this->mPersona->mGetPersonas->getPersonaPorIdResult($ultimaPersona);
-		echo json_encode($result);	
+				echo json_encode($result);	
 		}
 
 	}

@@ -1,6 +1,6 @@
 GuardarEditEmpresa = function(){
 var idEmpresa = $("#idEmpresa").val();
-var RazonSocial = $("#RazonSocial").val();
+var NombreEmpresa = $("#NombreEmpresa").val();
 var SPP = $("#SPP").val();
 var Abreviacion = $("#Abreviacion").val();
 var Tipo = $("#Tipo").val();
@@ -234,7 +234,7 @@ $.post(baseurl+"cGetUsuarios/getUsuarios",
   function(data){ 
     var emp = JSON.parse(data);
     $.each(emp,function(i,item){
-      $('#Asignados').append('<option value="'+item.idUsuario+'">'+item.Nombre+' '+item.Paterno+'</option>')
+      $('#Asignados').append('<option value="'+item.idUsuario+'">'+item.Nombre+'</option>')
       });
   });
 

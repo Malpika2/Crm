@@ -30,7 +30,7 @@
                   '</span>'+
                   '<input  onclick="ActualizarTarea('+item.idTarea+')"  id="checkRealizada" type="checkbox" value="'+item.idTarea+'">'+
                   '<span class="text LinkTarea">Tarea: &nbsp;<a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
-                  '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cEmpresa/verEmpresa/'+item.idEmpresa+'">'+item.RazonSocial+'</a></span>'+
+                  '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cEmpresa/verEmpresa/'+item.idEmpresa+'">'+item.NombreEmpresa+'</a></span>'+
                   '<div class="tools pull-right">'+
                   '<span class="badge bg-aqua"><a href="'+baseurl+'cPersona/verNegociacion/'+item.idNegociacion+'">OBJETIVO</a></span>'+
                     '<label class="text-verde pull-right">'+item.Categoria+'</label>'+
@@ -46,7 +46,7 @@
                   '</span>'+
                   '<input onclick="ActualizarTarea('+item.idTarea+')"  id="checkRealizada" type="checkbox" value="'+item.idTarea+'">'+
                   '<span class="text LinkTarea">Tarea: &nbsp;<a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
-                  '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cEmpresa/verEmpresa/'+item.idEmpresa+'">'+item.RazonSocial+'</a></span>'+
+                  '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cEmpresa/verEmpresa/'+item.idEmpresa+'">'+item.NombreEmpresa+'</a></span>'+
                   '<div class="tools pull-right">'+
                     '<label class="text-verde pull-right">'+item.Categoria+'</label>'+
                   '</div>'+
@@ -56,7 +56,7 @@
       }
       else
       {
-        agregarTareaRealizadaEmpresa(clase,item.idTarea,item.TituloTarea,item.idEmpresa,item.RazonSocial,item.Categoria,item.idNegociacion);
+        agregarTareaRealizadaEmpresa(clase,item.idTarea,item.TituloTarea,item.idEmpresa,item.NombreEmpresa,item.Categoria,item.idNegociacion);
       } 
     }); 
   });
@@ -87,7 +87,7 @@
                   '</span>'+
                   '<input onclick="ActualizarTarea('+item.idTarea+')"  id="checkRealizada" type="checkbox" value="'+item.idTarea+'">'+
                   '<span class="text LinkTarea">Tarea: &nbsp;<a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
-                  '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cEmpresa/verEmpresa/'+item.idEmpresa+'">'+item.RazonSocial+'</a>&nbsp;...</span>'+
+                  '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cEmpresa/verEmpresa/'+item.idEmpresa+'">'+item.NombreEmpresa+'</a>&nbsp;...</span>'+
                   '<div class="tools pull-right">'+
                     '<label class="text-verde pull-right">'+item.Categoria+'</label>'+
                   '</div>'+
@@ -96,7 +96,7 @@
       }
       else
       {
-        agregarTareaRealizadaEmpresa(clase,item.idTarea,item.TituloTarea,item.idEmpresa,item.RazonSocial,item.Categoria,'0');
+        agregarTareaRealizadaEmpresa(clase,item.idTarea,item.TituloTarea,item.idEmpresa,item.NombreEmpresa,item.Categoria,'0');
       } 
     }); 
   });
@@ -133,7 +133,7 @@ $('#ListaTareasRealizadasEmp').empty();
                   '</span>'+
                   '<input  onclick="ActualizarTarea('+item.idTarea+')"  id="checkRealizada" type="checkbox" value="'+item.idTarea+'">'+
                   '<span class="text LinkTarea">Tarea: &nbsp;<a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
-                  '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cEmpresa/verEmpresa/'+item.idEmpresa+'">'+item.RazonSocial+'</a></span>'+
+                  '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cEmpresa/verEmpresa/'+item.idEmpresa+'">'+item.NombreEmpresa+'</a></span>'+
                   '<div class="tools pull-right">'+
                   '<span class="badge bg-aqua"><a href="'+baseurl+'cPersona/verNegociacion/'+item.idNegociacion+'">OBJETIVO</a></span>'+
                     '<label class="text-verde pull-right">'+item.Categoria+'</label>'+
@@ -149,7 +149,7 @@ $('#ListaTareasRealizadasEmp').empty();
                   '</span>'+
                   '<input onclick="ActualizarTarea('+item.idTarea+')"  id="checkRealizada" type="checkbox" value="'+item.idTarea+'">'+
                   '<span class="text LinkTarea">Tarea: &nbsp;<a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
-                  '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cEmpresa/verEmpresa/'+item.idEmpresa+'">'+item.RazonSocial+'</a></span>'+
+                  '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cEmpresa/verEmpresa/'+item.idEmpresa+'">'+item.NombreEmpresa+'</a></span>'+
                   '<div class="tools pull-right">'+
                     '<label class="text-verde pull-right">'+item.Categoria+'</label>'+
                   '</div>'+
@@ -159,7 +159,7 @@ $('#ListaTareasRealizadasEmp').empty();
       }
       else
       {
-        agregarTareaRealizadaEmpresa(clase,item.idTarea,item.TituloTarea,item.idEmpresa,item.RazonSocial,item.Categoria,item.idNegociacion);
+        agregarTareaRealizadaEmpresa(clase,item.idTarea,item.TituloTarea,item.idEmpresa,item.NombreEmpresa,item.Categoria,item.idNegociacion);
       } 
     }); 
   });
@@ -190,7 +190,7 @@ $('#ListaTareasRealizadasEmp').empty();
                   '</span>'+
                   '<input onclick="ActualizarTarea('+item.idTarea+')"  id="checkRealizada" type="checkbox" value="'+item.idTarea+'">'+
                   '<span class="text LinkTarea">Tarea: &nbsp;<a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
-                  '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cEmpresa/verEmpresa/'+item.idEmpresa+'">'+item.RazonSocial+'</a>&nbsp;...</span>'+
+                  '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cEmpresa/verEmpresa/'+item.idEmpresa+'">'+item.NombreEmpresa+'</a>&nbsp;...</span>'+
                   '<div class="tools pull-right">'+
                     '<label class="text-verde pull-right">'+item.Categoria+'</label>'+
                   '</div>'+
@@ -199,14 +199,14 @@ $('#ListaTareasRealizadasEmp').empty();
       }
       else
       {
-        agregarTareaRealizadaEmpresa(clase,item.idTarea,item.TituloTarea,item.idEmpresa,item.RazonSocial,item.Categoria,'0');
+        agregarTareaRealizadaEmpresa(clase,item.idTarea,item.TituloTarea,item.idEmpresa,item.NombreEmpresa,item.Categoria,'0');
       } 
     }); 
   });
 }
 
 //=======Agrega las tareas marcadas como realizadas a la lista "realizadas".
-function agregarTareaRealizadaEmpresa(clase,idTarea,TituloTarea,idEmpresa,RazonSocial,Categoria,idNegociacion){
+function agregarTareaRealizadaEmpresa(clase,idTarea,TituloTarea,idEmpresa,NombreEmpresa,Categoria,idNegociacion){
   if (idNegociacion>0){
           $('#ListaTareasRealizadasEmp').append(
                 '<li class="'+clase+'" id="tarea'+idTarea+'">'+
@@ -216,7 +216,7 @@ function agregarTareaRealizadaEmpresa(clase,idTarea,TituloTarea,idEmpresa,RazonS
                   '</span>'+
                   '<input onclick="ActualizarTareaR('+idTarea+')"  id="checkRealizada" type="checkbox" value="'+idTarea+'" checked>'+
                   '<span class="text LinkTarea">Tarea: &nbsp;<a href="'+baseurl+'cPersona/verTarea/'+idTarea+'">'+TituloTarea+'</a></span>'+
-                  '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cEmpresa/verEmpresa/'+idEmpresa+'">'+RazonSocial+'</a></span>'+
+                  '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cEmpresa/verEmpresa/'+idEmpresa+'">'+NombreEmpresa+'</a></span>'+
                   '<div class="tools pull-right">'+
                   '<span class="badge bg-aqua"><a href="'+baseurl+'cPersona/verNegociacion/'+idNegociacion+'">OBJETIVO</a></span>'+
                     '<label class="text-verde pull-right">'+Categoria+'</label>'+
@@ -232,7 +232,7 @@ function agregarTareaRealizadaEmpresa(clase,idTarea,TituloTarea,idEmpresa,RazonS
                   '</span>'+
                   '<input onclick="ActualizarTareaR('+idTarea+')"  id="checkRealizada" type="checkbox" value="'+idTarea+'" checked>'+
                   '<span class="text LinkTarea">Tarea: &nbsp;<a href="'+baseurl+'cPersona/verTarea/'+idTarea+'">'+TituloTarea+'</a></span>'+
-                  '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cEmpresa/verEmpresa/'+idEmpresa+'">'+RazonSocial+'</a></span>'+
+                  '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cEmpresa/verEmpresa/'+idEmpresa+'">'+NombreEmpresa+'</a></span>'+
                   '<div class="tools pull-right">'+
                     '<i class="fa fa-calendar-check-o  pull-right echoPalomita"></i>'+
                     '<label class="text-verde pull-right">'+Categoria+'</label>'+
@@ -546,7 +546,7 @@ function(data){
   $.each(emp,function(i,item){
           if(item.Status=='Inactivo'){}
       else {
-    $('#PersonasPart').append('<option value="'+item.idPersona+'">'+item.Nombre+' '+item.Paterno+'</option>')}
+    $('#PersonasPart').append('<option value="'+item.idPersona+'">'+item.Nombre+'</option>')}
   });
 });
 
@@ -554,8 +554,8 @@ $.post(baseurl+"cGetUsuarios/getUsuarios",
   function(data){
     var emp = JSON.parse(data);
     $.each(emp,function(i,item){
-      $('#Asignados').append('<option value="'+item.idUsuario+'">'+item.Nombre+' '+item.Paterno+'</option>');
-      $('#Usuarios').append('<option value="'+item.idUsuario+'">'+item.Nombre+' '+item.Paterno+'</option>')
+      $('#Asignados').append('<option value="'+item.idUsuario+'">'+item.Nombre+'</option>');
+      $('#Usuarios').append('<option value="'+item.idUsuario+'">'+item.Nombre+'</option>')
       });
   });
 
@@ -566,7 +566,7 @@ $.post(baseurl+"cGetEmpresas/getEmpresas",
   function(data){
     var emp = JSON.parse(data);
     $.each(emp,function(i,item){
-      $('#EmpresasPart').append('<option value="'+item.idEmpresa+'">'+item.RazonSocial+'</option>')
+      $('#EmpresasPart').append('<option value="'+item.idEmpresa+'">'+item.NombreEmpresa+'</option>')
       });
   });
 
