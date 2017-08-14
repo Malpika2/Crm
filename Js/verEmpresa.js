@@ -23,7 +23,7 @@ var Ciudad = $("#Ciudad").val();
 var Pais = $("#Pais").val();
 $.post(baseurl+"cEmpresa/updateEmpresa/",
   { idEmpresa:idEmpresa,
-    RazonSocial:RazonSocial,
+    NombreEmpresa:NombreEmpresa,
     SPP:SPP,
     Abreviacion:Abreviacion,
     Tipo:Tipo,
