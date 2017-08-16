@@ -1,4 +1,22 @@
-Recargar();
+// Recargar();
+Recargar2();
+comentariosPorTema();
+function Recargar2(){
+ $.post(baseurl+"cForo/getTemas",
+  function(data){
+    var tema = JSON.parse(data);
+    $.each(tema,function(i,item){
+      var Titulo = item.TituloTema;
+      $('#bodyTablaForo').append('<tr>'+
+        '<td class="text-right"><i class="fa fa-comments-o fa-2x"></i></td>'+
+        '<td><a href='+baseurl+'cForo/verTemaForo/'+item.idTemasForo+'><b>'+Titulo.toUpperCase()+'</b></a><p>'+item.AsuntoTema+'</p>'+
+        '</td>'+
+        '<td>'+item.seccion+'</td>'+
+        '<td>'+item.Status+'</td>'+        
+        '<td>'+item.FechaCreacion+'</td></tr>');
+    });
+  });
+}
 function Recargar(){
  $.post(baseurl+"cForo/getTemas",
 	function(data){
@@ -28,7 +46,7 @@ function Recargar(){
                 '</p>'+
               '</div>'+
               '<hr>'+
-              '<div class="col-md-12" id="ListaComentariosTema'+item.idTemasForo+'">'+
+              '<div class="col-md-12" id="ListaComentariosTema'+item.idTemasForo+'" style="max-height:300px; overflow:scroll;">'+
               '</div>'+
             '</div>'+
     		'<form name="formComentarioTema" id="formComentarioTema" method="POST" action="#">'+
@@ -48,7 +66,8 @@ function Recargar(){
 		});
 	});
 }
-function comentariosPorTema(idTemaForo){
+function comentariosPorTema(){
+  var idTemaForo = idTemasForo;
 	          $.ajax({
               type: 'POST',
               url: baseurl+"cForo/getComentariosPorTema",
@@ -56,29 +75,60 @@ function comentariosPorTema(idTemaForo){
               success: function(data) { 
 				var tema = JSON.parse(data);
 				$.each(tema,function(i,item){
-					$('#ListaComentariosTema'+idTemaForo+'').append('<div class="item">'+
-		                '<img src="<?php echo base_url();?>assets/dist/img/silueta_user.png" alt="user" class="offline">'+
+					$('#ListaComentariosTema'+idTemaForo+'').append('<hr><div class="item">'+
+		                '<img src="<?php echo base_url();?>assets/dist/img/silueta_user.png" alt="" class="offline">'+
 		                '<p class="message">'+
 		                  '<a href="#" class="name">'+
 		                    '<small class="text-muted pull-right"><i class="fa fa-clock-o"></i>'+item.Fecha_Creacion+'</small>'+
 		                    ''+item.Nombre+'  '+item.Paterno+'' +
 		                  '</a>'+
-		                  ''+item.Comentario+''+
+                      '<div id="item'+item.idComentario+'">'+
+		                  '<input onblur="ActualizarComentario('+item.idComentario+');" id="Comentario'+item.idComentario+'" disabled class="pasive coments btn link" type="text" value="'+item.Comentario+'">'+
+                       '</div>'+
 		                '</p>'+
 		              '</div>');
+                  if (item.idUsuarioc==idUsuarioActivo){
+                    $('#item'+item.idComentario+'').append(
+                        '<button type="button" onclick="funcionclick('+item.idComentario+');" id="btnEditarComent" name="btnEditarComent" class="pull-right fa fa-edit" value="'+item.idComentario+'">'+
+                        '</button>')}
               	});
           	}
           });
 }
+
+function ActualizarComentario(idComentario){
+  $('#Comentario'+idComentario).prop('disabled', true);
+  $('#Comentario'+idComentario).toggleClass('EnEdicion');
+
+  var comentario = $('#Comentario'+idComentario).val();
+  $.ajax({
+      type:'POST',
+      url:baseurl+"cForo/ActualizarComentario",
+      data:{valor:idComentario,comentario:comentario},
+      success: function(data){
+          alert('Actualizacion correcta');
+      }
+  });
+  return false;
+}
+
+function funcionclick(valor){
+  $('#Comentario'+valor).prop('disabled', false);
+  // $('#Comentario'+valor).classList.remove('pasive');
+  $('#Comentario'+valor).addClass('EnEdicion');
+  $('#Comentario'+valor).focus();
+}
+
 $(document).ready(function(){
-$('#TemasForo').on('submit','#formComentarioTema',function(){
+$('#ComentariosTemaForo').on('submit','#formComentarioTema',function(){
           $.ajax({
-              type: 'POST',
+              type:'POST',
               url: baseurl+"cForo/guardarComentario",
               data: $(this).serialize(),
               success: function(data) { 
-              	$('#TemasForo').empty();
-                Recargar();
+              	$('#ListaComentariosTema'+idTemasForo).empty();
+               //  Recargar();
+               comentariosPorTema();
               }
           });
           
@@ -86,18 +136,18 @@ $('#TemasForo').on('submit','#formComentarioTema',function(){
       });
 });
 $('#form, #fat, #formAgregarTema').submit(function() {
+      $(this).preventDefault();
           $.ajax({
-              type: 'POST',
-              url: $(this).attr('action'),
-              data: $(this).serialize(),
+              type:'POST',
+              url:$(this).attr('action'),
+              data:$(this).serialize(),
               success: function(data) { 
-                $("#formAgregarTema")[0].reset();
-                $('#TemasForo').empty();
+                $('#formAgregarTema')[0].reset();
+                $('#bodyTablaForo').empty();
                 $('#mbtnCerrarModal').click();
-                 Recargar();
+                 Recargar2();
               }
           });
-          
-          return false;
+        return false;
 });
 

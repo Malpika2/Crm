@@ -1,3 +1,4 @@
+mostrarPersonas();
 $.post(baseurl+"cGetEmpresas/getEmpresas",
 	{
 		sitReg:1
@@ -20,7 +21,7 @@ $.post(baseurl+"cGetEmpresas/getEmpresas",
           '</a')
 			});
 	});
-
+function mostrarPersonas(){
 $.post(baseurl+"cGetPersonas/getPersonas",
 	{
 		Cargo:'Representante'
@@ -45,7 +46,7 @@ $.post(baseurl+"cGetPersonas/getPersonas",
           '</a>')}
 			});
 	});
-
+}
  $(document).ready(function() {
 $('#tablaPersonas').on('click','#btnEliminarPersona', function() {
       var idPersona = $(this).val();
@@ -58,7 +59,8 @@ $('#tablaPersonas').on('click','#btnEliminarPersona', function() {
               data:{idPersona:idPersona,StatusFinal:StatusFinal},
               success: function(data) {
                 alert('Persona Marcada como "Inactiva"');
-                location.href=baseurl+"/cContactos";
+                // location.href=baseurl+"/cContactos";
+                mostrarPersonas();
               }
           });
           return true;

@@ -96,4 +96,13 @@
 #ModalEditarEmp div.easy-autocomplete{
     width: 100% !important;
 }
-
+  .pasive{
+    background-color: white;
+  }
+  .EnEdicion{
+    background: gray;
+    color:white !important;
+  }
+  .coments{
+    margin-left:60px; 
+  }

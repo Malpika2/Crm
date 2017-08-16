@@ -25,10 +25,7 @@ class cForo extends CI_Controller
 	$param['idUsuarioCrea'] = $this->input->post('idUsuarioCrea');
 
 	if($this->mForo->guardarTema($param)){
-		$this->load->view('crm/header');
-		$this->load->view('crm/menu');
-		$this->load->view('crm/vForo');
-		$this->load->view('crm/footer');
+		$this->index();
 			}
 
 	}
@@ -52,5 +49,18 @@ class cForo extends CI_Controller
 		$param['idUsuarioc'] = $this->input->post('idUsuarioc');
 		$param['idTema'] = $this->input->post('idTema');
 		$this->mForo->guardarComentario($param);
+	}
+	public function ActualizarComentario(){
+		$idComentario = $this->input->post('valor');
+		$comentario = $this->input->post('comentario');
+		$this->mForo->ActualizarComentario($idComentario,$comentario);
+		return true;
+	}
+	public function verTemaForo($idTema){
+	$datos['row_TemaForo']	= $this->mForo->getTema($idTema);
+		$this->load->view('crm/header');
+		$this->load->view('crm/menu');
+		$this->load->view('crm/vVerTemaForo',$datos);
+		$this->load->view('crm/footer');
 	}
 }

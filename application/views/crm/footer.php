@@ -241,11 +241,42 @@
 <script>
   $(function () {
     $('#example2').DataTable({
+      "info": false,
       "paging": true,
       "lengthChange": false,
       "searching": true,
       "ordering": true,
-      "info": false,
+      "autoWidth": true,
+          oLanguage: {
+            "sProcessing":     "Procesando...",
+            "sLengthMenu":     "Mostrar _MENU_ registros",
+            "sZeroRecords":    "No se encontraron resultados",
+            "sEmptyTable":     "Ningún dato disponible en esta tabla",
+            "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix":    "",
+            "sSearch":         "Buscar:",
+            "sUrl":            "",
+            "sInfoThousands":  ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":     "Último",
+            "sNext":     "Siguiente",
+            "sPrevious": "Anterior"
+            }}
+    });
+  });
+</script>
+<script>
+  $(function () {
+    $('#tablaForos').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "binfo": true,
       "autoWidth": true,
           oLanguage: {
             "sProcessing":     "Procesando...",

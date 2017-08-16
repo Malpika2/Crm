@@ -1,13 +1,9 @@
-    <section class="content-header">
+<section class="content-header">
       <ol class="breadcrumb">
         <li><a href="cLogin"><i class="fa fa-map-signs"></i>Inicio</a></li>
         <li class="active"></li>
       </ol>
     </section>
-
-<style type="text/css">
-  
-</style>
     <!-- Main content -->
     <section class="content" id="Seguimiento">
     <div class="container-fluid">
@@ -16,6 +12,22 @@
       <span class="h2">SEGUIMIENTO CRM</span>
       <div class="box-tools pull-right" data-toggle="tooltip" title="Agregar Tema">
         <button id="btnAgregarTemaForo" type="button" class="btn btn-default" data-toggle="modal" data-target="#ModalAgregarTema"><i class="fa fa-plus-square text-red"></i></button>
+      </div>
+      <div class="col-md-12" id="divTablaForo">
+      <table class="table table-responsive table-hover" style="background-color: #f9f8eb" >
+            <thead style="background-color: #7a9eb1;">
+            <tr>
+              <th></th>
+              <th>Tema</th>
+              <th>Seccion</th>
+              <th>Status</th>
+              <th>Fecha creacion</th>
+            </tr>
+            </thead>
+            <tbody id="bodyTablaForo" class="text-left">
+            </tbody>
+        </table>
+        
       </div>
           <div class="col-md-12" id="TemasForo" name="TemasForo">
           </div>

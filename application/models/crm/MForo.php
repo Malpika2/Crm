@@ -54,4 +54,18 @@ class mForo extends CI_Model
 				return false;
 			}
 	}
-}
+	public function ActualizarComentario($idComentario,$comentario){
+		$data = array(
+				'Comentario' => $comentario);
+			$this->db->where('idComentario',$idComentario);
+			$this->db->update('Comentarios',$data);
+			return true;
+	}
+	public function getTema($idTema){
+		$this->db->select('*');
+		$this->db->from('TemasForo');
+		$this->db->where('idTemasForo',$idTema);
+		$r = $this->db->get();
+		return $r->row();
+	}
+	}
