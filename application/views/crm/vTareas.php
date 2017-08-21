@@ -344,12 +344,13 @@
         <div class="row">
         <div class="col-md-12">
         <label>Dictamen Final de la Tarea:</label>
-          <textarea id="StatusFinal" class="col-md-12 text-black"></textarea>
+          <textarea id="StatusFinal" class="form-control col-md-12 text-black"></textarea>
         </div>
         </div>
       </div>
       <div class="modal-footer">
-        <button id="btn_CerrarModalCancelar" type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button id="btn_AceptarModalCancelar" type="button" class="btn btn-default">Aceptar</button>
+        <button id="btn_CerrarModalCancelar" type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
       </div>
     </div>
   </div>

@@ -14,12 +14,18 @@ class cContactos extends CI_Controller
 	}
 
 	public function index(){
-		$data['Persona'] = $this->mGetPersonas->getPersonas();
-		$data['Empresa'] = $this->mGetEmpresas->getEmpresas(1); 
-		
-		$this->load->view('crm/header');
-		$this->load->view('crm/menu');
-		$this->load->view('crm/vContactos',$data);
-		$this->load->view('crm/footer');
+		if($this->session->userdata('s_login')==1){
+			$data['Persona'] = $this->mGetPersonas->getPersonas();
+			$data['Empresa'] = $this->mGetEmpresas->getEmpresas(1); 
+			
+			$this->load->view('crm/header');
+			$this->load->view('crm/menu');
+			$this->load->view('crm/vContactos',$data);
+			$this->load->view('crm/footer');
+		}
+		else
+		{
+			redirect(base_url().cLogin);
+		}
 	}
 }

@@ -21,10 +21,13 @@ class cPersona extends CI_Controller
 	}
 
 	public function index(){
-		$this->load->view('crm/header');
-		$this->load->view('crm/menu');
-		$this->load->view('crm/vNuevaPersona');
-		$this->load->view('crm/footer');
+		if($this->session->userdata('s_login')==1){
+			$this->load->view('crm/header');
+			$this->load->view('crm/menu');
+			$this->load->view('crm/vNuevaPersona');
+			$this->load->view('crm/footer');
+		}
+		else{redirect(base_url().cLogin);}
 
 	}
 	public function guardar(){

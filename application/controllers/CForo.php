@@ -12,11 +12,13 @@ class cForo extends CI_Controller
 		$this->load->helper('date');
 	}
 	public function index(){
-
-		$this->load->view('crm/header');
-		$this->load->view('crm/menu');
-		$this->load->view('crm/vForo');
-		$this->load->view('crm/footer');
+		if($this->session->userdata('s_login')==1){
+			$this->load->view('crm/header');
+			$this->load->view('crm/menu');
+			$this->load->view('crm/vForo');
+			$this->load->view('crm/footer');
+		}
+		else{redirect(base_url().cLogin);}
 	}
 	public function guardarTema(){
 	$param['TituloTema'] = $this->input->post('TituloTema');

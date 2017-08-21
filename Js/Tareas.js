@@ -2,14 +2,50 @@
  // mostrarTareaPersonas();
  //Mostrar Tareas de las Empresas============================>
  // function mostrarTareaEmpresa(){
+//Mostrar Tareas grupales de las Empresas============================>
+  $.post(baseurl+'cTareas/getTareas_deEmpresas_PorUsuarioGrupales',
+  {
+    idUsuarioActivo:idUsuarioActivo
+  },
+  function(data){
+    var emp = JSON.parse(data);
+    $.each(emp,function(i,item){
+      if (item.Prioridad=='Alta') {
+          var clase="bg-red";
+        }else if (item.Prioridad=='Media') {
+          var clase="bg-yellow";
+        }else if (item.Prioridad=='Baja') {
+          var clase="bg-green";
+        }else {
+          var clase="";
+        }
+    if (item.StatusTarea=='Activa') {
+            $('#ListaTareas').append(
+                '<li class="'+clase+'" id="tarea'+item.idTarea+'">'+
+                  '<span class="handle">'+
+                    '<i class="fa fa-ellipsis-v"></i>'+
+                    '<i class="fa fa-ellipsis-v"></i>'+
+                  '</span>'+
+                  '<input onclick="ActualizarTarea('+item.idTarea+')"  id="checkRealizada" type="checkbox" value="'+item.idTarea+'">'+
+                  '<span class="text LinkTarea">Tarea: &nbsp;<a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
+                  '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cEmpresa/verEmpresa/'+item.idEmpresa+'">'+item.NombreEmpresa+'</a>&nbsp;...</span>'+
+                  '<div class="tools pull-right">'+
+                    '<label class="text-verde pull-right">'+item.Categoria+'</label>'+
+                  '</div>'+
+                '</li>')}
+      else
+      {
+        agregarTareaRealizadaEmpresa(clase,item.idTarea,item.TituloTarea,item.idEmpresa,item.NombreEmpresa,item.Categoria,'0');
+      } 
+    }); 
+  });
+
   $.post(baseurl+"cTareas/getTareas_deEmpresas_PorUsuario",
   {
     idUsuarioActivo:idUsuarioActivo
   },
   function(data){
     var emp = JSON.parse(data);
-    $('#ListaTareas').empty();
-      $('#ListaTareasRealizadasEmp').empty();
     $.each(emp,function(i,item){
       if (item.Prioridad=='Alta') {
           var clase="bg-red";
@@ -54,65 +90,24 @@
                 )
           }  
       }
-      if (item.StatusTarea=='Realizada')
+      else
       {
         agregarTareaRealizadaEmpresa(clase,item.idTarea,item.TituloTarea,item.idEmpresa,item.NombreEmpresa,item.Categoria,item.idNegociacion);
       } 
     }); 
   });
 
-//Mostrar Tareas grupales de las Empresas============================>
-  $.post(baseurl+"cTareas/getTareas_deEmpresas_PorUsuarioGrupales",
-  {
-    idUsuarioActivo:idUsuarioActivo
-  },
-  function(data){
-    var emp = JSON.parse(data);
-    $.each(emp,function(i,item){
-      if (item.Prioridad=='Alta') {
-          var clase="bg-red";
-        }else if (item.Prioridad=='Media') {
-          var clase="bg-yellow";
-        }else if (item.Prioridad=='Baja') {
-          var clase="bg-green";
-        }else {
-          var clase="";
-        }
-    if (item.Activa==1) {
-            $('#ListaTareas').append(
-                '<li class="'+clase+'" id="tarea'+item.idTarea+'">'+
-                  '<span class="handle">'+
-                    '<i class="fa fa-ellipsis-v"></i>'+
-                    '<i class="fa fa-ellipsis-v"></i>'+
-                  '</span>'+
-                  '<input onclick="ActualizarTarea('+item.idTarea+')"  id="checkRealizada" type="checkbox" value="'+item.idTarea+'">'+
-                  '<span class="text LinkTarea">Tarea: &nbsp;<a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'">'+item.TituloTarea+'</a></span>'+
-                  '&nbsp;<small>con</small><span class="text linkContacto"><a href="'+baseurl+'cEmpresa/verEmpresa/'+item.idEmpresa+'">'+item.NombreEmpresa+'</a>&nbsp;...</span>'+
-                  '<div class="tools pull-right">'+
-                    '<label class="text-verde pull-right">'+item.Categoria+'</label>'+
-                  '</div>'+
-                '</li>'
-        )
-      }
-      else
-      {
-        agregarTareaRealizadaEmpresa(clase,item.idTarea,item.TituloTarea,item.idEmpresa,item.NombreEmpresa,item.Categoria,'0');
-      } 
-    }); 
-  });
 // }//fin mostrar tarea empresa
 
-function recargar(){
-$('#ListaTareas').empty();
-$('#ListaTareasRealizadasEmp').empty();
+function recargar(){//Recarga las tareas de las empresas
+  $('#ListaTareas').empty();
+  $('#ListaTareasRealizadasEmp').empty();
   $.post(baseurl+"cTareas/getTareas_deEmpresas_PorUsuario",
   {
     idUsuarioActivo:idUsuarioActivo
   },
   function(data){
     var emp = JSON.parse(data);
-    $('#ListaTareas').empty();
-      $('#ListaTareasRealizadasEmp').empty();
     $.each(emp,function(i,item){
       if (item.Prioridad=='Alta') {
           var clase="bg-red";
@@ -123,7 +118,7 @@ $('#ListaTareasRealizadasEmp').empty();
         }else {
           var clase="";
         }
-    if (item.Activa==1) {
+    if (item.StatusTarea=='Activa') {
           if (item.idNegociacion>0) {
           $('#ListaTareas').append(
                 '<li class="'+clase+'" id="tarea'+item.idTarea+'">'+
@@ -157,8 +152,7 @@ $('#ListaTareasRealizadasEmp').empty();
                 )
           }  
       }
-      else
-      {
+      else {
         agregarTareaRealizadaEmpresa(clase,item.idTarea,item.TituloTarea,item.idEmpresa,item.NombreEmpresa,item.Categoria,item.idNegociacion);
       } 
     }); 
@@ -181,7 +175,7 @@ $('#ListaTareasRealizadasEmp').empty();
         }else {
           var clase="";
         }
-    if (item.Activa==1) {
+    if (item.StatusTarea=='Activa') {
             $('#ListaTareas').append(
                 '<li class="'+clase+'" id="tarea'+item.idTarea+'">'+
                   '<span class="handle">'+
@@ -194,18 +188,16 @@ $('#ListaTareasRealizadasEmp').empty();
                   '<div class="tools pull-right">'+
                     '<label class="text-verde pull-right">'+item.Categoria+'</label>'+
                   '</div>'+
-                '</li>'
-        )
-      }
+                '</li>')}
       else
       {
         agregarTareaRealizadaEmpresa(clase,item.idTarea,item.TituloTarea,item.idEmpresa,item.NombreEmpresa,item.Categoria,'0');
       } 
     }); 
   });
-}
+}// Fin recargar
 
-//=======Agrega las tareas marcadas como realizadas a la lista "realizadas".
+//=======Agrega las tareas de empresas marcadas como realizadas a la lista "realizadas".
 function agregarTareaRealizadaEmpresa(clase,idTarea,TituloTarea,idEmpresa,NombreEmpresa,Categoria,idNegociacion){
   if (idNegociacion>0){
           $('#ListaTareasRealizadasEmp').append(
@@ -239,33 +231,31 @@ function agregarTareaRealizadaEmpresa(clase,idTarea,TituloTarea,idEmpresa,Nombre
                   '</div>'+
                 '</li>')}
     }
+
 function ActualizarTarea(index){
+  var tareaid = index;
         $("#ModalCancelar").modal();
-        $("#ModalCancelar").on('hidden.bs.modal', function () {
-            var StatusFinal = $('#StatusFinal').val();
-              $.ajax({
-              type: 'POST',
-              url: baseurl+"cPersona/tareaRealizada" ,
-              data:{Tareaid:index,StatusFinal:StatusFinal},
-              success: function(data) { 
-                $("#tarea" + index).remove();
-                // $('#ListaTareas').empty();
-                // mostrarTareaEmpresa();
-                recargar2();
-                recargar();
-                location.href = baseurl+"cTareas";
-              }
-          });              
-              return false;
+        $("#ModalCancelar").on('click','#btn_AceptarModalCancelar',function(){
+          var control=0;
+          var StatusFinal = $('#StatusFinal').val();
+          $.post(baseurl+"cPersona/tareaRealizada",
+          {
+            Tareaid:tareaid,
+            StatusFinal:StatusFinal
+          },
+          function(data){
+          document.location.href = baseurl+'cTareas';
+            // $("#tarea"+tareaid).remove();
+            // recargar2();
+            // recargar();
+
+          });
+          $('#btn_CerrarModalCancelar').click();
         });
-  }
+}
 
 function ActualizarTareaR(index){
-  var Tareaid = index;
-                $('#ListaTareas').empty();
-                $('#ListaTareasPersonas').empty();
-                $('#ListaTareasRealizadasPersonas').empty();
-                $('#ListaTareasRealizadasEmp').empty();
+              var Tareaid = index;
               $.ajax({
               type: 'POST',
               url: baseurl+"cPersona/tareaNoRealizada" ,
@@ -274,14 +264,13 @@ function ActualizarTareaR(index){
                 $("#tarea" + index).remove();
                 recargar2();
                 recargar();
-
               }
           });
             return false;
   }
 
 //=================================PERSONAS=====================================
-$('#form, #fat, #formTareaEmpresas').submit(function() {
+$('#form, #fat, #formTareaEmpresas').submit(function() {//form personas
           $.ajax({
               type: 'POST',
               url: $(this).attr('action'),
@@ -312,9 +301,6 @@ $('#form, #fat, #formTareaEmpresas2').submit(function() {
           return false;
       });
 
-
-
-
 // function mostrarTareaPersonas(){
 $.post(baseurl+"cTareas/getTareas_dePersonas_PorUsuario",
   {
@@ -332,7 +318,7 @@ $.post(baseurl+"cTareas/getTareas_dePersonas_PorUsuario",
         }else {
           var clase="";
         }
-    if (item.Activa==1) {
+    if (item.StatusTarea=='Activa') {
         if (item.idNegociacion>0){
           $('#ListaTareasPersonas').append(
                 '<li class="'+clase+'" id="tarea'+item.idTarea+'">'+
@@ -362,13 +348,12 @@ $.post(baseurl+"cTareas/getTareas_dePersonas_PorUsuario",
                   '<div class="tools pull-right">'+
                     '<label class="text-verde pull-right">'+item.Categoria+'</label>'+
                   '</div>'+
-                '</li>'
-        )}
-    }
-    else{
+                '</li>')}
+      }
+      else{
                   agregarTareaRealizadaPersona(clase,item.idTarea,item.TituloTarea,item.idPersona,item.Nombre,item.Categoria,item.idNegociacion);
-    }
-          }); 
+          }
+    }); 
   });
 $.post(baseurl+"cTareas/getTareas_dePersonasGrupales_PorUsuario",
   {
@@ -386,7 +371,7 @@ $.post(baseurl+"cTareas/getTareas_dePersonasGrupales_PorUsuario",
         }else {
           var clase="";
         }
-    if (item.Activa==1) {
+    if (item.StatusTarea=='Activa') {
       $('#ListaTareasPersonas').append(
                 '<li class="'+clase+'">'+
                   '<span class="handle">'+
@@ -409,7 +394,7 @@ $.post(baseurl+"cTareas/getTareas_dePersonasGrupales_PorUsuario",
   });
 // }
 function recargar2(){
-  $('#ListaTareasPersonas').empty();
+$('#ListaTareasPersonas').empty();
 $('#ListaTareasRealizadasPersonas').empty();
 $.post(baseurl+"cTareas/getTareas_dePersonas_PorUsuario",
   {
@@ -427,7 +412,7 @@ $.post(baseurl+"cTareas/getTareas_dePersonas_PorUsuario",
         }else {
           var clase="";
         }
-    if (item.Activa==1) {
+    if (item.StatusTarea=='Activa') {
         if (item.idNegociacion>0) {
           $('#ListaTareasPersonas').append(
                 '<li class="'+clase+'" id="tarea'+item.idTarea+'">'+
@@ -482,7 +467,7 @@ $.post(baseurl+"cTareas/getTareas_dePersonasGrupales_PorUsuario",
         }else {
           var clase="";
         }
-    if (item.Activa==1) {
+    if (item.StatusTarea=='Activa') {
       $('#ListaTareasPersonas').append(
                 '<li class="'+clase+'">'+
                   '<span class="handle">'+

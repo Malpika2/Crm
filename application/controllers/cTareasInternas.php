@@ -13,11 +13,14 @@ class cTareasInternas extends CI_Controller
 		// $this->load->model('crm/mMailer');
 	}
 	public function index(){
-		$data['Tareas'] = $this->mTareas->getTareasInternas();
-		$this->load->view('crm/header');
-		$this->load->view('crm/menu');
-		$this->load->view('crm/vObjetivos',$data);
-		$this->load->view('crm/footer');
+		if($this->session->userdata('s_login')==1){
+			$data['Tareas'] = $this->mTareas->getTareasInternas();
+			$this->load->view('crm/header');
+			$this->load->view('crm/menu');
+			$this->load->view('crm/vObjetivos',$data);
+			$this->load->view('crm/footer');
+		}
+		else{redirect(base_url().cLogin);}
 	}
 
 	public function getTareasInternas(){

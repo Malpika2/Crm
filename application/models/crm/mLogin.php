@@ -15,7 +15,8 @@ class mLogin extends CI_Model
 				's_idUsuario' => $r->idUsuario,
 				's_Puesto' => $r->Puesto,
 				's_Foto' => $r->url_foto,
-				's_Usuario' => $r->Nombre." ".$r->Paterno
+				's_Usuario' => $r->Nombre." ".$r->Paterno,
+				's_login' => 1
 				);
 			$this->session->set_userdata($s_usuario);
 			return 1;
@@ -30,8 +31,8 @@ class mLogin extends CI_Model
 				's_idUsuario' => '',
 				's_Puesto' => '',
 				's_Foto' => '',
-				's_Usuario' => ''
-				);
+				's_Usuario' => '',
+				's_login' => 0);
 		$this->session->sess_destroy();
 	}
 }

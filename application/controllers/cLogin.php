@@ -28,8 +28,8 @@ class cLogin extends CI_Controller
 		}
 	}
 	public function cerrarSession(){
-		$data['mensaje'] = "";
-		$this->load->view('crm/vLogin',$data);
+		$this->mLogin->cerrarSession();
+		redirect(base_url().cLogin);
 	}
 
 }

@@ -186,7 +186,7 @@ $.post(baseurl+"cTareas/getTareas_deObjetivos",
     $.each(emp,function(i,item){
       var texto = $('#idUsuarioc').val();
       var cadena = item.Asignados;
-      if (cadena.indexOf(texto) != -1) {
+      // if (cadena.indexOf(texto) != -1) {
     if(item.Activa==1){
       if(item.StatusTarea=='Activa'){Activa++;}
         if(item.StatusTarea=='Cancelada'){Cancelada++;}
@@ -214,7 +214,7 @@ $.post(baseurl+"cTareas/getTareas_deObjetivos",
                   '<li>'+
                   '</li>'
                   )}
-    }
+    // }
       });
       $('#TareasActivas').html('Activas: '+Activa);
       $('#TareasCanceladas').html('Canceladas: '+Cancelada);

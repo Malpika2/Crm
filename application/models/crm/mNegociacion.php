@@ -113,6 +113,12 @@ class mNegociacion extends CI_Model
 		return true;
 	}
 	public function ActualizarAvance(){
+		$data = array(
+        'TareasRealizada' => 0,
+        'TareasCancelada' => 0,
+        'TareasActiva' =>0);
+		$this->db->update('Negociaciones', $data);
+		
 		$this->db->select('count(idTarea) as cont , idNegociacion , StatusTarea');
 		$this->db->from('Tareas');
 		$this->db->group_by(array('idNegociacion','StatusTarea'));

@@ -89,14 +89,14 @@ class mTareas extends CI_Model
 
 		public function tareaRealizada($s,$StatusFinal){
 			$data = array(
-				'Activa' => '0','StatusFinal' =>$StatusFinal);
+				'StatusTarea' => 'Realizada','StatusFinal' =>$StatusFinal);
 			$this->db->where('idTarea',$s);
 			$this->db->update('Tareas',$data);
 			return true;
 		}
 public function tareaNoRealizada($s){
 			$data = array(
-				'Activa' => '1');
+				'StatusTarea' => 'Activa','StatusFinal' => '');
 			$this->db->where('idTarea',$s);
 			$this->db->update('Tareas',$data);
 			return true;
