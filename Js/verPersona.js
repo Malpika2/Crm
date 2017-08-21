@@ -10,7 +10,7 @@ $.post(baseurl+"cGetComentarios/getComentarios_Por_Persona",
         '<div class="box box-info collapsed-box bg-info">'+
             '<div class="box-header with-border bg-info">'+
                   '<div class="user-block">'+
-                    '<img class="img-circle img-bordered-sm" src="'+baseurl+'assets/dist/img/'+item.url_foto+'" alt="">'+
+                    // '<img class="img-circle img-bordered-sm" src="'+baseurl+'assets/dist/img/'+item.url_foto+'" alt="">'+
                         '<span class="username">'+
                           '<a>'+item.Nombre+' '+item.Paterno+'</a>'+
                         '</span>'+
@@ -56,7 +56,7 @@ function Recargar(idPersona){
         '<div class="box box-info collapsed-box bg-info">'+
             '<div class="box-header with-border bg-info">'+
                   '<div class="user-block">'+
-                    '<img class="img-circle img-bordered-sm" src="'+baseurl+'assets/dist/img/'+item.url_foto+'" alt="">'+
+                    // '<img class="img-circle img-bordered-sm" src="'+baseurl+'assets/dist/img/'+item.url_foto+'" alt="">'+
                         '<span class="username">'+
                           '<a>'+item.Nombre+' '+item.Paterno+'</a>'+
                         '</span>'+
@@ -103,7 +103,7 @@ function ComentarioPorComentario(idComentario){
         '<div class="box box-danger collapsed-box">'+
             '<div class="box-header with-border bg-info">'+
                   '<div class="user-block">'+
-                    '<img class="img-circle img-bordered-sm" src="'+baseurl+'assets/dist/img/'+item.url_foto+'" alt="">'+
+                    // '<img class="img-circle img-bordered-sm" src="'+baseurl+'assets/dist/img/'+item.url_foto+'" alt="">'+
                         '<span class="username">'+
                           '<a href="#">'+item.Nombre+' '+item.Paterno+'</a>'+
                         '</span>'+

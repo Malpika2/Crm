@@ -28,8 +28,13 @@ $.post(baseurl+"cGetPersonas/getRepresentantes",
 
 $(document).ready(function() {
 $('#ListaEmpresas').on('click','#btnRealizadaEmpresas', function() {
-	
       var Empresaid = $(this).val();
+          $.confirm({
+        title: 'Eliminar Empresa!',
+        content: 'La Empresa será marcada como inactiva, ¿Desea continuar?',
+        buttons: {
+            Continuar: function () {
+                // $.alert('Confirmed!');
               $.ajax({
               type: 'POST',
               url: baseurl+"cEmpresa/EliminarEmpresa" ,
@@ -39,6 +44,11 @@ $('#ListaEmpresas').on('click','#btnRealizadaEmpresas', function() {
               }
           });
           return true;
+            },
+            Cancelar: function () {
+            }
+        }
+    });
     });
 });
 

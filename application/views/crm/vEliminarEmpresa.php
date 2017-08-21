@@ -36,7 +36,7 @@
                     if ($Empresa->sitReg==1) {
                       echo '<tr>
                               <td align="left">
-                                '.$Empresa->RazonSocial.'
+                                '.$Empresa->NombreEmpresa.'
                               </td>
                               <td align="left">
                                 '.$Empresa->Tipo.'

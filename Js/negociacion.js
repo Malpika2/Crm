@@ -85,6 +85,12 @@ $('#EmpresaNegociacion').change(function(){
 $(document).ready(function() {
 $('#ListaNegociaciones').on('click','#btnRealizadaNegociacion', function() {
       var Negociacionid = $(this).val();
+          $.confirm({
+        title: 'Eliminar Objetivo!',
+        content: 'El objetivo será marcado como inactivo, ¿Desea continuar?',
+        buttons: {
+            Continuar: function () {
+                // $.alert('Confirmed!');
               $.ajax({
               type: 'POST',
               url: baseurl+"cNegociacion/EliminarNegociacion" ,
@@ -94,6 +100,11 @@ $('#ListaNegociaciones').on('click','#btnRealizadaNegociacion', function() {
               }
           });
           return true;
+            },
+            Cancelar: function () {
+            }
+        }
+    });
     });
 });
 $(document).ready(function(){

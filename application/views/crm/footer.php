@@ -295,19 +295,7 @@ $('#linkMenuUsuarios').removeClass('active');
       $('#linkMenuUsuarios').addClass('active');
      </script>
 <?php } ?>
-
-<!-- <script>
-  $(document).ready(function(){
-    $('#Menu').on('click','#linkMenu', function() {
-      alert('entromenu');
-            var botones = document.getElementsByClassName("treeview");
-            for (var i = 0; i<botones.length; i++) {
-               botones[i].classList.remove("active");
-            }
-            // $(this).toggleClass('active');
-});
-});
-</script> -->
+<script src="<?php echo base_url();?>Js/jquery-confirm.min.js"></script>
 <script>
   $(function () {
     $('#example1').DataTable({

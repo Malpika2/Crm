@@ -12,16 +12,28 @@ $.post(baseurl+"cGetEmpresas/getEmpresas",
 $(document).ready(function() {
 $('#ListaPersonas').on('click','#btnRealizadaPersonas', function() {
 			var Personaid = $(this).val();
+
+
+    $.confirm({
+        title: 'Eliminar Persona!',
+        content: 'La persona será marcada como inactiva, ¿Desea continuar?',
+        buttons: {
+            Continuar: function () {
+                // $.alert('Confirmed!');
               $.ajax({
               type: 'POST',
               url: baseurl+"cPersona/eliminarPersona" ,
               data:{Personaid:Personaid},
               success: function(data) {
-              	alert('Persona Eliminada');
-              	location.reload(true);
+                location.reload(true);
               }
           });
           return true;
+            },
+            Cancelar: function () {
+            }
+        }
+    });
     });
 });
 
