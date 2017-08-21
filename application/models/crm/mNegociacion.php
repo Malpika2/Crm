@@ -116,21 +116,22 @@ class mNegociacion extends CI_Model
 		$this->db->select('count(idTarea) as cont , idNegociacion , StatusTarea');
 		$this->db->from('Tareas');
 		$this->db->group_by(array('idNegociacion','StatusTarea'));
+		$this->db->where('idNegociacion >',0);
 		$query = $this->db->get();
 		return $query->result();
 	}
 	public function ActualizarRealizada($idNeg,$cont){
-		$this->db->set('StatusTarea',$cont);
+		$this->db->set('TareasRealizada',$cont);
 		$this->db->where('idNegociacion',$idNeg);
 		$this->db->update('Negociaciones');
 	}
 	public function ActualizarCancelada($idNeg,$cont){
-		$this->db->set('StatusTarea',$cont);
+		$this->db->set('TareasCancelada',$cont);
 		$this->db->where('idNegociacion',$idNeg);
 		$this->db->update('Negociaciones');
 	}
 	public function ActualizarActiva($idNeg,$cont){
-		$this->db->set('StatusTarea',$cont);
+		$this->db->set('TareasActiva',$cont);
 		$this->db->where('idNegociacion',$idNeg);
 		$this->db->update('Negociaciones');
 	}

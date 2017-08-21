@@ -297,13 +297,15 @@
                             $activa = $Negociaciones->TareasActiva;
                             $R = $Negociaciones->TareasRealizada;
                             $C = $Negociaciones->TareasCancelada;
-                            $t=$activa+$R+$C;
+                            $t= $activa+$R+$C;
                             if ($t!=0) {
-                            $Av = $activa/$t;
-                            echo $Av;
+                            $Av= ($R/$t)*100;
+                            echo round($Av,2)."%";
                             }
-
-                            ?>%</span>
+                            else{
+                              echo "Sin Tareas";
+                            }
+                            ?></span>
                           </td>
                         </tr>
                         <?php }

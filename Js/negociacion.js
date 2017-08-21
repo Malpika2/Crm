@@ -111,6 +111,7 @@ $(document).ready(function(){
 $.post(baseurl+"cNegociacion/ActualizarAvance",
 	function(data){
 		var tar = JSON.parse(data);
+		// alert(data);
 		$.each(tar,function(i,item){
 			var idNeg = item.idNegociacion;
 			var cont = item.cont;

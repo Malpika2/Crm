@@ -101,18 +101,18 @@ class cNegociacion extends CI_Controller
 	public function ActualizarRealizada(){
 		$idNeg = $this->input->post('idNeg');
 		$cont = $this->input->post('cont');
-		$result= $this->db->mNegociacion->ActualizarRealizada($idNeg,$cont);
+		$this->mNegociacion->ActualizarRealizada($idNeg,$cont);
 	}
 	public function ActualizarCancelada(){
 		$idNeg = $this->input->post('idNeg');	
 		$cont = $this->input->post('cont');
-		$result= $this->db->mNegociacion->ActualizarCancelada($idNeg,$cont);
+		$this->mNegociacion->ActualizarCancelada($idNeg,$cont);
 
 	}
 	public function ActualizarActiva(){
 		$idNeg = $this->input->post('idNeg');
 		$cont = $this->input->post('cont');
-		$result= $this->db->mNegociacion->ActualizarActiva($idNeg,$cont);
+		$this->mNegociacion->ActualizarActiva($idNeg,$cont);
 	}
 }
 
