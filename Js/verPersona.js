@@ -10,7 +10,7 @@ $.post(baseurl+"cGetComentarios/getComentarios_Por_Persona",
         '<div class="box box-info collapsed-box bg-info">'+
             '<div class="box-header with-border bg-info">'+
                   '<div class="user-block">'+
-                    '<img class="img-circle img-bordered-sm" src="'+baseurl+'assets/dist/img/'+item.url_foto+'" alt="User Image">'+
+                    '<img class="img-circle img-bordered-sm" src="'+baseurl+'assets/dist/img/'+item.url_foto+'" alt="">'+
                         '<span class="username">'+
                           '<a>'+item.Nombre+' '+item.Paterno+'</a>'+
                         '</span>'+
@@ -56,7 +56,7 @@ function Recargar(idPersona){
         '<div class="box box-info collapsed-box bg-info">'+
             '<div class="box-header with-border bg-info">'+
                   '<div class="user-block">'+
-                    '<img class="img-circle img-bordered-sm" src="'+baseurl+'assets/dist/img/'+item.url_foto+'" alt="User Image">'+
+                    '<img class="img-circle img-bordered-sm" src="'+baseurl+'assets/dist/img/'+item.url_foto+'" alt="">'+
                         '<span class="username">'+
                           '<a>'+item.Nombre+' '+item.Paterno+'</a>'+
                         '</span>'+
@@ -103,7 +103,7 @@ function ComentarioPorComentario(idComentario){
         '<div class="box box-danger collapsed-box">'+
             '<div class="box-header with-border bg-info">'+
                   '<div class="user-block">'+
-                    '<img class="img-circle img-bordered-sm" src="'+baseurl+'assets/dist/img/'+item.url_foto+'" alt="User Image">'+
+                    '<img class="img-circle img-bordered-sm" src="'+baseurl+'assets/dist/img/'+item.url_foto+'" alt="">'+
                         '<span class="username">'+
                           '<a href="#">'+item.Nombre+' '+item.Paterno+'</a>'+
                         '</span>'+
@@ -196,7 +196,7 @@ $.post(baseurl+"cPersona/getTareas",
     $.each(emp,function(i,item){
       var texto = $('#idUsuarioc').val();
       var cadena = item.Asignados;
-      if (cadena.indexOf(texto) != -1) {
+      // if (cadena.indexOf(texto) != -1) {
             if(item.Activa==1){
       $('#LineaTareas').append(                     
                   '<li class="time-label">'+
@@ -214,14 +214,14 @@ $.post(baseurl+"cPersona/getTareas",
                       '</div>'+
                       '<div class="timeline-footer">'+
                       '<b>Categoria: </b>'+item.Categoria+''+
-                      '<button class="btn btn-danger btn-xs pull-right" id="btnRealizada" name="btnRealizada" value="'+item.idTarea+'">Realizada</button>'+
+                      // '<button class="btn btn-danger btn-xs pull-right" id="btnRealizada" name="btnRealizada" value="'+item.idTarea+'">Realizada</button>'+
                       '</div>'+
                     '</div>'+
                   '</li>'+
                   '<li>'+
                   '</li>'
                   )}
-    }
+    // }
       });
 
     $('#LineaTareas').append(
@@ -240,7 +240,7 @@ $.post(baseurl+"cPersona/getTareas",
     $.each(emp,function(i,item){
       var texto = $('#idUsuarioc').val();
       var cadena = item.Asignados;
-      if (cadena.indexOf(texto) != -1) {
+      // if (cadena.indexOf(texto) != -1) {
             if(item.Activa==1){
       $('#LineaTareas').append(                  
                   '<li class="time-label">'+
@@ -258,14 +258,15 @@ $.post(baseurl+"cPersona/getTareas",
                       '</div>'+
                       '<div class="timeline-footer">'+
                       '<b>Categoria: </b>'+item.Categoria+''+
-                      '<button class="btn btn-danger btn-xs pull-right" id="btnRealizada" name="btnRealizada" value="'+item.idTarea+'">Realizada</button>'+
+                      // '<button class="btn btn-danger btn-xs pull-right" id="btnRealizada" name="btnRealizada" value="'+item.idTarea+'">Realizada</button>'+
                       '</div>'+
                     '</div>'+
                   '</li>'+
                   '<li>'+
                   '</li>'
                   )
-    }}
+    // }
+  }
       }); 
 
     $('#LineaTareas').append(
@@ -335,7 +336,7 @@ $.post(baseurl+"cPersona/getNegociaciones",
 
     $.each(emp,function(i,item){
             if(item.Activa==1){
-            if(item.PersonaCargo==UsuarioActivo){
+            // if(item.PersonaCargo==UsuarioActivo){
       $('#LineaNegociaciones').append(                  
           '<li class="time-label">'+
             '<div class="callout callout-primary bg-success" style="border-left: 5px solid #00a65a;">'+
@@ -350,11 +351,12 @@ $.post(baseurl+"cPersona/getNegociaciones",
 
               '<p>Detalles: '+item.Detalles+'</p>'+
               '<p>Persona a cargo: '+item.Nombre+' '+item.Paterno+'</p>'+
-              '<button class="btn btn-danger btn-sm pull-right" id="btnEliminar" name="btnEliminar" value="'+item.idNegociacion+'">Cancelar</button>'+
+              // '<button class="btn btn-danger btn-sm pull-right" id="btnEliminar" name="btnEliminar" value="'+item.idNegociacion+'">Cancelar</button>'+
             '</div>'+
           '</li>'
         )
-    }}
+    // }
+  }
       });
     $('#LineaNegociaciones').append(
     '<li>'+                  
@@ -373,7 +375,7 @@ function recargarNegociaciones(){
 
     $.each(emp,function(i,item){
             if(item.Activa==1){
-            if(item.PersonaCargo==UsuarioActivo){
+            // if(item.PersonaCargo==UsuarioActivo){
       $('#LineaNegociaciones').append(                  
           '<li class="time-label">'+
             '<div class="callout callout-primary bg-success" style="border-left: 5px solid #00a65a;">'+
@@ -388,11 +390,11 @@ function recargarNegociaciones(){
 
               '<p>Detalles: '+item.Detalles+'</p>'+
               '<p>Persona a cargo: '+item.Nombre+' '+item.Paterno+'</p>'+
-              '<button class="btn btn-danger btn-sm pull-right" id="btnEliminar" name="btnEliminar" value="'+item.idNegociacion+'">Cancelar</button>'+
+              // '<button class="btn btn-danger btn-sm pull-right" id="btnEliminar" name="btnEliminar" value="'+item.idNegociacion+'">Cancelar</button>'+
             '</div>'+
           '</li>'
         )
-      }
+      // }
       }
       });
 
@@ -422,3 +424,65 @@ $('#LineaNegociaciones').on('click','#btnEliminar', function() {
     });
 });//Fin Ocultar Negociaciones realizadas
 
+GuardarEditPersona = function(){
+  var idPersonaE = idPersona;
+  var NombrePersona = $('#mNombrePersona').val();
+  var Cargo = $('#mCargo').val();
+  var Puesto = $('#mPuesto').val();
+  var Telefono1 = $('#mTelefono1').val();
+  var Telefono2 = $('#mTelefono2').val();
+  var Correo1 = $('#mCorreo1').val();
+  var Correo2 = $('#mCorreo2').val();
+  var Skype = $('#mSkype').val();
+  var Direccion = $('#mDireccion').val();
+  var Estado = $('#mEstado').val();
+  var Pais   = $('#mPais').val();
+$.post(baseurl+"cPersona/updatePersona/",
+  {   idPersonaE:idPersonaE,
+      NombrePersona:NombrePersona,
+      Cargo:Cargo,
+      Puesto:Puesto,
+      Telefono1:Telefono1,
+      Telefono2:Telefono2,
+      Correo1:Correo1,
+      Correo2:Correo2,
+      Skype:Skype,
+      Direccion:Direccion,
+      Estado:Estado,
+      Pais:Pais
+  },
+  function(data){
+    location.reload();
+  });
+}
+// GuardarEditPersona = function(){
+//   var idPersona = idPersona;
+//   var NombrePersona = $('#NombrePersona').val();
+//   var Cargo = $('#Cargo').val();
+//   var Puesto = $('#Puesto').val();
+//   var Telefono1 = $('#Telefono1').val();
+//   var Telefono2 = $('#Telefono2').val();
+//   var Correo1 = $('#Correo1').val();
+//   var Correo2 = $('#Correo2').val();
+//   var Skype = $('#Skype').val();
+//   var Direccion = $('#Direccion').val();
+//   var Estado = $('#Estado').val();
+//   var Pais   = $('#Pais').val();
+//   $.post(baseurl+"cPersona/updatePersona/",
+//     {
+//       NombrePersona:NombrePersona,
+//       Carg:Cargo,
+//       Puest:Puesto,
+//       Telefono:Telefono1,
+//       Telefono:Telefono2,
+//       Correo:Correo1,
+//       Correo:Correo2,
+//       Skyp:Skype,
+//       Direccio:Direccion,
+//       Estad:Estado,
+//       Pais:Pais
+//     },
+//     function(data){
+//       location.reload();
+//     });
+//   }

@@ -41,7 +41,7 @@ $.post(baseurl+"cGetComentarios/getComentarios_Por_Negociacion",
         '<div class="box box-info collapsed-box bg-info">'+
             '<div class="box-header with-border bg-info">'+
                   '<div class="user-block">'+
-                    '<img class="img-circle img-bordered-sm" src="'+baseurl+'assets/dist/img/'+item.url_foto+'" alt="User Image">'+
+                    '<img class="img-circle img-bordered-sm" src="'+baseurl+'assets/dist/img/'+item.url_foto+'" alt="">'+
                         '<span class="username">'+
                           '<a>'+item.Nombre+' '+item.Paterno+'</a>'+
                         '</span>'+
@@ -87,7 +87,7 @@ function ComentarioPorComentario(idComentario){
         '<div class="box box-danger collapsed-box" style="padding:0px; margin:0px;">'+
             '<div class="box-header with-border bg-info">'+
                   '<div class="user-block">'+
-                    '<img class="img-circle img-bordered-sm" src="'+baseurl+'assets/dist/img/'+item.url_foto+'" alt="User Image">'+
+                    '<img class="img-circle img-bordered-sm" src="'+baseurl+'assets/dist/img/'+item.url_foto+'" alt="">'+
                         '<span class="username">'+
                           '<a href="#">'+item.Nombre+' '+item.Paterno+'</a>'+
                         '</span>'+
@@ -112,7 +112,7 @@ $.post(baseurl+"cGetComentarios/getComentarios_Por_Negociacion",
                 '<div class="box box-info collapsed-box bg-info">'+
             '<div class="box-header with-border bg-info">'+
                   '<div class="user-block">'+
-                    '<img class="img-circle img-bordered-sm" src="'+baseurl+'assets/dist/img/'+item.url_foto+'" alt="User Image">'+
+                    '<img class="img-circle img-bordered-sm" src="'+baseurl+'assets/dist/img/'+item.url_foto+'" alt="">'+
                         '<span class="username">'+
                           '<a>'+item.Nombre+' '+item.Paterno+'</a>'+
                         '</span>'+
@@ -216,16 +216,14 @@ $.post(baseurl+"cTareas/getTareas_deObjetivos",
                   )}
     }
       });
-    $('#TareasActivas').html('Activas: '+Activa);
-    $('#TareasCanceladas').html('Canceladas: '+Cancelada);
-    $('#TareasRealizadas').html('Realizadas: '+Realizada);
-    var Avance = Activa+Realizada+Cancelada;
-    Avance = (Realizada/Avance)*100;
-    if (Avance>0) {
-    $('#Avance').html(Avance+'%');  
-    }
-    
-
+      $('#TareasActivas').html('Activas: '+Activa);
+      $('#TareasCanceladas').html('Canceladas: '+Cancelada);
+      $('#TareasRealizadas').html('Realizadas: '+Realizada);
+      var Avance = Activa+Realizada+Cancelada;
+      Avance = (Realizada/Avance)*100;
+      if (Avance>0) {
+      $('#Avance').html(Avance+'%');  
+      }
     $('#LineaTareasOb').append(
     '<li>'+                  
       '<i class="fa fa-clock-o bg-gray"></i>'+

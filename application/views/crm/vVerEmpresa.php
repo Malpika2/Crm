@@ -1,4 +1,4 @@
-    <section class="content-header">
+<section class="content-header">
       <h1>
       <br>
       </h1>
@@ -163,13 +163,13 @@
         <div class="col-md-6 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>Nombre Empresa</b></span>
-                <input type="text" class="formsNP" id="NombreEmpresa" name="NombreEmpresa" style="border:1px solid #d2d6de;" value=" <? echo $row_Empresas->NombreEmpresa; ?>" disabled>
+                <input class="form-control" type="text" class="formsNP" id="NombreEmpresa" name="NombreEmpresa" style="border:1px solid #d2d6de;" value=" <? echo $row_Empresas->NombreEmpresa; ?>" disabled>
               </div>
         </div>
        <div class="col-md-3 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>SPP<br><small>(Opcional)</small></b></span>
-                <input type="text" class="formsNP" id="SPP" name="SPP" value="<?php echo $row_Empresas->spp;?>">
+                <input type="text" class="form-control formsNP" id="SPP" name="SPP" value="<?php echo $row_Empresas->spp;?>">
               </div>
         </div>
         <div class="col-md-3 divsNP">
@@ -217,7 +217,7 @@
           <div class="col-md-12 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>Skype</b></span>
-                <input type="text" class="formsNP" id="Skype" name="Skype" value="<?php echo $row_Empresas->Skype;?>" style="color:black;">
+                <input type="text" class="form-control formsNP" id="Skype" name="Skype" value="<?php echo $row_Empresas->Skype;?>" style="color:black;">
               </div>
           </div>
           <div class="col-md-12 divsNP">
@@ -232,7 +232,7 @@
               <div class="col-md-6 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>1º Telefono</b></span>
-                <input type="text" class="formsNP" id="Telefono1" name="Telefono1" value="<?php echo $row_Telefonos->Telefono1 ; ?>" style="color:black;">
+                <input type="text" class="form-control formsNP" id="Telefono1" name="Telefono1" value="<?php echo $row_Telefonos->Telefono1 ; ?>" style="color:black;">
                 <select class="select2 form-control formsNP selectpicker" id="TipoTelefono1" name="TipoTelefono1">
                   <option selected="true" disabled="true">Tipo</option>
                   <option value="Trabajo">Trabajo</option>
@@ -254,7 +254,7 @@
             <div class="col-md-6 divsNP">
                   <div class="input-group">
                     <span class="input-group-addon"><b>1º Email</b></span>
-                    <input type="text" class="formsNP" id="Correo1" name="Correo1" value="<?php echo $row_Correos->Correo1; ?>" style="color:black;">
+                    <input type="text" class="form-control formsNP" id="Correo1" name="Correo1" value="<?php echo $row_Correos->Correo1; ?>" style="color:black;">
                     <select class="select2 form-control formsNP selectpicker" id="TipoCorreo1" name="TipoCorreo1">
                       <option selected="true" disabled="true">Tipo</option>
                       <option value="Trabajo">Trabajo</option>
@@ -277,18 +277,18 @@
         <div class="col-md-12 divsNP">
               <div class="input-group">
               <span class="input-group-addon"><b>Datos Fiscales</b></span>
-                <textarea type="text" class="col-md-12 formsNP2" id="DatosFiscales" name="DatosFiscales" value="<?php echo $row_Empresas->DatosFiscales;?>" style="color:black;"></textarea> 
+                <textarea type="text" class="form-control col-md-12 formsNP2" id="DatosFiscales" name="DatosFiscales" value="<?php echo $row_Empresas->DatosFiscales;?>" style="color:black;"></textarea> 
               </div>
         </div>
         <div class="col-md-12 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>Direccion</b></span>
-                <input type="text" class="col-md-12 formsNP2" id="DireccionOficina" name="DireccionOficina" value="<?php echo $row_Empresas->DireccionOficina; ?>" style="color:black;">
-                <input type="text" class="col-md-12 formsNP2" id="DireccionFiscal" name="DireccionFiscal" placeholder="Direccion Fiscal" value="<?php echo $row_Empresas->DireccionFiscal; ?>" style="color:black;">
+                <input type="text" class="form-control col-md-12 formsNP2" id="DireccionOficina" name="DireccionOficina" value="<?php echo $row_Empresas->DireccionOficina; ?>" style="color:black;">
+                <input type="text" class="form-control col-md-12 formsNP2" id="DireccionFiscal" name="DireccionFiscal" placeholder="Direccion Fiscal" value="<?php echo $row_Empresas->DireccionFiscal; ?>" style="color:black;">
 
 
-                <input type="text" class="col-md-6 formsNP2" id="Ciudad" name="Ciudad" value="<?php echo $row_Empresas->Ciudad; ?>" style="color:black;">
-                <input type="text" class="col-md-6 formsNP2" id="Pais" name="Pais" value="<?php echo $row_Empresas->Pais; ?>" style="color:black;">
+                <input type="text" class="form-control col-md-6 formsNP2" id="Ciudad" name="Ciudad" value="<?php echo $row_Empresas->Ciudad; ?>" style="color:black;">
+                <input type="text" class="form-control col-md-6 formsNP2" id="Pais" name="Pais" value="<?php echo $row_Empresas->Pais; ?>" style="color:black;">
                 <input type="hidden" class="col-md-6 formsNP2" id="idEmpresa"  value="<?php echo $row_Empresas->idEmpresa; ?>" style="color:black;">
               </div>
               <input onclick="GuardarEditEmpresa();" type="submit" id="btn_GuardarEditar" class="divsNP formsNP btn btn-primary btn-block" value="Guardar" data-dismiss="modal">
@@ -314,7 +314,7 @@
         <div class="row">
         <div class="col-md-12">
         <label>Cual Fue la razón?</label>
-          <textarea id="StatusFinal" class="col-md-12 text-black"></textarea>
+          <textarea id="StatusFinal" class="form-control col-md-12 text-black"></textarea>
         </div>
         </div>
       </div>
@@ -336,7 +336,7 @@
         <div class="row">
         <div class="col-md-12">
         <label>Cual Fue la razón?</label>
-          <textarea id="StatusFinalNg" class="col-md-12 text-black"></textarea>
+          <textarea id="StatusFinalNg" class="form-control col-md-12 text-black"></textarea>
         </div>
         </div>
       </div>
@@ -451,7 +451,7 @@
                     <div class="input-group-addon">
                       <span>Titulo</span>
                     </div>
-                    <input class="col-md-12" type="text" name="TituloTarea" id="TituloTarea" required />
+                    <input class="form-control col-md-12" type="text" name="TituloTarea" id="TituloTarea" required />
                   </div>
                </div>
                 <div class="col-md-6">
@@ -494,7 +494,7 @@
                       <div class="input-group-addon">
                         <span>Descripcion</span>
                       </div>
-                      <textarea name="Descripcion" id="Descripcion" placeholder="Detalles de la tarea" rows="4" ></textarea>
+                      <textarea name="Descripcion" id="Descripcion" placeholder="Detalles de la tarea" rows="4" class="form-control" ></textarea>
                     </div>
                   </div>
                 </div>

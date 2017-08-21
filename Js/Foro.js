@@ -118,7 +118,6 @@ function funcionclick(valor){
   $('#Comentario'+valor).addClass('EnEdicion');
   $('#Comentario'+valor).focus();
 }
-
 $(document).ready(function(){
 $('#ComentariosTemaForo').on('submit','#formComentarioTema',function(){
           $.ajax({

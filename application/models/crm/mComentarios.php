@@ -39,7 +39,7 @@ class mComentarios extends CI_Model
 		$campos = array(
 			'idUsuarioc' => $param['idUsuarioc'],
 			'Comentario' => $param['Comentario'],
-			'Fecha_Creacion' => $param['Fecha_Creacion'],
+			// 'Fecha_Creacion' => $param['Fecha_Creacion'],
 			'idPersona' => $param['idPersona'],
 			'idEmpresa' => $param['idEmpresa'],
 			'idNegociacion' => $param['idNegociacion'],

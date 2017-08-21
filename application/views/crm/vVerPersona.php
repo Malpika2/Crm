@@ -41,7 +41,7 @@
                   </li>  
                 <?php endif ?>
                 </ul>
-                <a href="#" class="btn btn-primary btn-block"><b>Editar</b></a>
+                  <button id="btn_Editar" class="btn btn-primary btn-block " data-toggle="modal" data-target="#ModalEditarPersona">Editar</button>
               </div><!-- /.box-body -->
             </div><!-- /.box PROFILE -->
 
@@ -57,8 +57,8 @@
                   </p>
                   <hr>
                 <strong><i class="fa fa-map-marker margin-r-5"></i> Direccion</strong>
-                <p class="text-muted"> <?php /*echo " ".$row_Direccion->Calle." #".$row_Direccion->Numero.", ".$row_Direccion->Colonia.", ".$row_Direccion->Municipio.", ".$row_Direccion->Estado.", ".$row_Direccion->Cp.", ".$row_Direccion->Pais."."; */?>
-                </p>  
+                <p class="text-muted"> <?php echo $row_Persona->Direccion;?>, 
+<?php echo $row_Persona->Ciudad;?>, <?php echo $row_Persona->Pais; ?></p>  
                 <hr>
                 <strong><i class="fa fa-pencil margin-r-5"></i>Telefonos</strong>
                 <ul>
@@ -136,7 +136,7 @@
         <div class="row">
         <div class="col-md-12">
         <label>Cual Fue la razón?</label>
-          <textarea id="StatusFinal" class="col-md-12 text-black"></textarea>
+          <textarea id="StatusFinal" class="form-control col-md-12 text-black"></textarea>
         </div>
         </div>
       </div>
@@ -158,7 +158,7 @@
         <div class="row">
         <div class="col-md-12">
         <label>Cual Fue la razón?</label>
-          <textarea id="StatusFinalNg" class="col-md-12 text-black"></textarea>
+          <textarea id="StatusFinalNg" class="form-control col-md-12 text-black"></textarea>
         </div>
         </div>
       </div>
@@ -185,7 +185,7 @@
                     <div class="input-group-addon">
                       <span>Titulo</span>
                     </div>
-                    <input class="col-md-12" type="text" name="TituloTarea" id="TituloTarea" required />
+                    <input class="form-control col-md-12" type="text" name="TituloTarea" id="TituloTarea" required />
                   </div>
                </div>
                 <div class="col-md-6">
@@ -360,6 +360,101 @@
     </div>
   </div>
 </div><!-- FIN MODAL  -->
+
+<!-- Modal -->
+<div id="ModalEditarPersona" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Editar Persona</h4>
+      </div>
+      <div class="modal-body">
+      <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h3>EDITAR PERSONA</h3>
+        </div>
+        <form id="formPersona" method="POST" action="<?php echo base_url();?>cPersona/guardar2">
+        <div class="col-md-12 divsNP">
+              <div class="input-group">
+                <span class="input-group-addon"><b>Nombre Completo</b></span>
+                <input type="text" class="form-control formsNP" id="mNombrePersona" name="mNombrePersona" value="<?php echo $row_Persona->Nombre; ?>" style="border:1px solid #d2d6de;" disabled />
+              </div>
+        </div>
+        <div class="col-md-6 divsNP">
+              <div class="input-group">
+                <span class="input-group-addon"><b>Cargo</b></span>
+                <select class="form-control formsNP" id="mCargo" name="mCargo" required>
+                  <option value="Representante" <?php if ($row_Persona->Cargo=='Representante') {?> selected="true"<?php } ?> >Representante</option>
+                  <option <?php if ($row_Persona->Cargo=='Contacto') {?> selected="true"<?php } ?> value="Contacto">Contacto</option>
+                </select>
+              </div>
+        </div>
+        <div class="col-md-6 " style="padding: 0px;">
+        <div class="col-md-12 divsNP">
+              <div class="input-group">
+                <span class="input-group-addon"><b>Puesto</b></span>
+                <input type="text" class="form-control Puesto  formsNP" id="mPuesto" name="mPuesto" value="<?php echo $row_Persona->Puesto ?>">
+              </div>
+        </div>
+        </div>
+        <div class="col-md-3 divsNP">
+              <div class="input-group">
+                <span class="input-group-addon"><b>1º Telefono</b></span>
+                <input type="text" class="form-control Telefono1 formsNP" id="mTelefono1" name="mTelefono1" value="<?php echo $row_Persona->Telefono1  ?>">
+                <input type="text" class="form-control formsNP text-center" disabled="true" name="" value="Personal">
+
+              </div>
+        </div>
+        <div class="col-md-3 divsNP">
+              <div class="input-group">
+                <span class="input-group-addon"><b>2º Telefono</b></span>
+                <input type="text" class="form-control Telefono2  formsNP" id="mTelefono2" name="mTelefono2" value="<?php echo $row_Persona->Telefono2; ?>">
+                <input type="text" class="form-control formsNP text-center" disabled="true" name="" value="Trabajo">
+
+              </div>
+        </div>
+        <div class="col-md-3 divsNP">
+              <div class="input-group">
+                <span class="input-group-addon"><b>1º Email</b></span>
+                <input type="text" class="Correo1 form-control formsNP" id="mCorreo1" name="mCorreo1" value="<?php echo $row_Persona->Correo1; ?>">
+                <input type="text" class="form-control formsNP text-center" disabled="true" name="" value="Personal">
+              </div>
+        </div>
+        <div class="col-md-3 divsNP">
+              <div class="input-group">
+                <span class="input-group-addon"><b>2º Email</b></span>
+                <input type="text" class="Correo2 form-control formsNP" id="mCorreo2" name="mCorreo2" value="<?php echo $row_Persona->Correo2; ?>">
+                <input type="text" class="form-control formsNP text-center" disabled="true" name="" value="Trabajo">
+              </div>
+        </div>
+        <div class="col-md-12 divsNP">
+              <div class="input-group">
+                <span class="input-group-addon"><b>Skype</b></span>
+                <input type="text" class="form-control formsNP" id="mSkype" name="mSkype" value="<?php echo $row_Persona->Skype; ?>">
+              </div>
+        </div>
+        <div class="col-md-12 divsNP">
+              <div class="input-group">
+                <span class="input-group-addon"><b>Direccion</b></span>
+                <input type="text" class="form-control Calle col-md-12 formsNP2" id="mDireccion" name="mDireccion" value="<?php echo $row_Persona->Direccion; ?>">
+                <input type="text" class="form-control col-md-6 formsNP2" id="mEstado" name="mEstado" value="<?php  echo $row_Persona->Ciudad; ?>">
+                <input type="text" class="form-control Pais col-md-6 formsNP2" id="mPais" name="mPais" value="<?php echo $row_Persona->Pais; ?>" >
+              </div>
+              <input onclick="GuardarEditPersona();" type="submit" id="btn_GuardarEditarP" class="divsNP formsNP btn btn-primary btn-block" value="Guardar cambios" data-dismiss="modal">
+        </div>
+        </form>
+        </div> <!-- row -->
+      </div>
+      </div><!--  modal-bod7 -->
+      <div class="modal-footer">
+        <button id="btnCerrarModal" type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
 <script type="text/javascript">
   var baseurl = "<?php echo base_url();?>";
   var idPersona = "<?php echo $row_Persona->idPersona; ?>";

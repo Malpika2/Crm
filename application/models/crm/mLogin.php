@@ -24,4 +24,14 @@ class mLogin extends CI_Model
 			return 0;
 		}
 	}
+	public function cerrarSession(){
+			$s_usuario = array(
+				's_Nombre' => '',
+				's_idUsuario' => '',
+				's_Puesto' => '',
+				's_Foto' => '',
+				's_Usuario' => ''
+				);
+		$this->session->sess_destroy();
+	}
 }

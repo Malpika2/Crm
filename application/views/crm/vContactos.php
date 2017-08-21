@@ -208,7 +208,7 @@
         <div class="row">
         <div class="col-md-12">
         <label>Cual Fue la razón?</label>
-          <textarea id="StatusFinal" class="col-md-12 text-black"></textarea>
+          <textarea id="StatusFinal" class="col-md-12 text-black form-control"></textarea>
         </div>
         </div>
       </div>

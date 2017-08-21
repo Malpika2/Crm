@@ -113,7 +113,7 @@ public function tareaNoRealizada($s){
 			$this->db->from('Participantes_Tareas');
 			$this->db->join('Tareas','Tareas.idTarea=Participantes_Tareas.idTarea');
 			$this->db->join('Empresas','Empresas.idEmpresa=Tareas.idEmpresa');
-			$this->db->where('Participantes_Tareas.idUsuario',$s);
+			// $this->db->where('Participantes_Tareas.idUsuario',$s);
 			$this->db->group_by('Tareas.idTarea');
 			$this->db->order_by('Tareas.FechaFin','DESC');
 			$s = $this->db->get();
@@ -124,7 +124,7 @@ public function tareaNoRealizada($s){
 			$this->db->from('Participantes_Tareas');
 			$this->db->join('Tareas','Tareas.idTarea=Participantes_Tareas.idTarea');
 			$this->db->join('Personas','Personas.idPersona=Tareas.idPersona');
-			$this->db->where('Participantes_Tareas.idUsuario',$s);
+			// $this->db->where('Participantes_Tareas.idUsuario',$s);
 			$this->db->group_by('Tareas.idTarea');
 			$this->db->order_by('Tareas.FechaFin','DESC');
 			$s = $this->db->get();
@@ -136,7 +136,7 @@ public function tareaNoRealizada($s){
 			$this->db->from('Participantes_Tareas');
 			$this->db->join('Tareas','Tareas.idTarea=Participantes_Tareas.idTarea');
 			$this->db->join('Empresas','Empresas.idEmpresa=Participantes_Tareas.idEmpresa');
-			$this->db->like('Tareas.Asignados',$s);
+			// $this->db->like('Tareas.Asignados',$s);
 			$this->db->where('Tareas.idEmpresa',NULL);
 			$this->db->where('Tareas.idPersona',NULL);
 			$this->db->group_by('Tareas.TituloTarea');
@@ -152,7 +152,7 @@ public function tareaNoRealizada($s){
 			$this->db->from('Participantes_Tareas');
 			$this->db->join('Tareas','Tareas.idTarea=Participantes_Tareas.idTarea');
 			$this->db->join('Personas','Personas.idPersona=Participantes_Tareas.idPersona');
-			$this->db->like('Tareas.Asignados',$s);
+			// $this->db->like('Tareas.Asignados',$s);
 			$this->db->where('Tareas.idEmpresa',NULL);
 			$this->db->where('Tareas.idPersona',NULL);
 			$this->db->group_by('Tareas.TituloTarea');
@@ -201,6 +201,14 @@ public function tareaNoRealizada($s){
 	 	$this->db->select('*');
 	 	$this->db->from('Tareas');
 	  	$this->db->where('idNegociacion',$s);
+	 	$s = $this->db->get();
+	 	return $s->result();
+	 }
+	public function getTareas_deObjetivosAll()
+	 {	$s=0;
+	 	$this->db->select('*');
+	 	$this->db->from('Tareas');
+	  	$this->db->where('idNegociacion !=',$s);
 	 	$s = $this->db->get();
 	 	return $s->result();
 	 }

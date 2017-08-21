@@ -83,7 +83,7 @@
         <div class="row">
         <div class="col-md-12">
         <label>Dictamen Final:</label>
-          <textarea id="StatusFinal" class="col-md-12 text-black"></textarea>
+          <textarea id="StatusFinal" class="form-control col-md-12 text-black"></textarea>
         </div>
         </div>
       </div>
@@ -107,7 +107,7 @@
         <div class="row">
         <div class="col-md-12">
         <label>Dictamen Final:</label>
-          <textarea id="StatusFinalCancelada" class="col-md-12 text-black"></textarea>
+          <textarea id="StatusFinalCancelada" class="form-control col-md-12 text-black"></textarea>
         </div>
         </div>
       </div>

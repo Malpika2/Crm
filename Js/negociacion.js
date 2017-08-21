@@ -96,4 +96,22 @@ $('#ListaNegociaciones').on('click','#btnRealizadaNegociacion', function() {
           return true;
     });
 });
+$(document).ready(function(){
+$.post(baseurl+"cNegociacion/ActualizarAvance",
+	function(data){
+		var tar = JSON.parse(data);
+		$.each(tar,function(i,item){
+			var idNeg = item.idNegociacion;
+			var cont = item.cont;
+			var Status = item.StatusTarea;
+			$.ajax({
+				type:'POST',
+				url:baseurl+"cNegociacion/Actualizar"+Status,
+				data:{idNeg:idNeg,cont:cont},
+				success:function(data){
 
+				}
+			});
+		});
+	});
+});

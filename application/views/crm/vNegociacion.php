@@ -87,7 +87,7 @@
                         }
                   }
             ?>
-            <div class="col-md-2">
+   <!--          <div class="col-md-2">
                 <i class="fa fa-play fa-3x"></i>
             </div>
             <div class="col-md-10">
@@ -97,10 +97,10 @@
               <div class="col-md-12">
                 <p>Negociaciones en estado Avanzado</p>
               </div>
-            </div>
+            </div> -->
             </div>
           </div>
-          <div class="col-md-3" style="color: red">
+  <!--         <div class="col-md-3" style="color: red">
             <div clas="row">
               <div class="col-md-2">
                 <i class="fa fa-thumbs-o-down fa-3x"></i>
@@ -210,7 +210,7 @@
                 </div>
               </div>
             </div>
-          </div> 
+          </div> --> 
         </div>
         <hr>
         <div class="row" id="NGdesc">
@@ -293,7 +293,17 @@
                             <span style="color:gray" class="pull-right"><?php echo $Negociaciones->FechaLimite;?></span>
                           </td>
                           <td>
-                          %
+                            <span style="color:gray" class="pull-right"><?php 
+                            $activa = $Negociaciones->TareasActiva;
+                            $R = $Negociaciones->TareasRealizada;
+                            $C = $Negociaciones->TareasCancelada;
+                            $t=$activa+$R+$C;
+                            if ($t!=0) {
+                            $Av = $activa/$t;
+                            echo $Av;
+                            }
+
+                            ?>%</span>
                           </td>
                         </tr>
                         <?php }

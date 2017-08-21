@@ -62,7 +62,7 @@
                     <div class="input-group-addon">
                       <span>Titulo</span>
                     </div>
-                    <input class="col-md-12" type="text" name="TituloMeta" id="TituloMeta" required />
+                    <input class="form-control col-md-12" type="text" name="TituloMeta" id="TituloMeta" required />
                   </div>
                </div>
                 <div class="col-md-6">
@@ -96,7 +96,7 @@
                       <div class="input-group-addon">
                         <span>Descripcion</span>
                       </div>
-                      <textarea name="Descripcion" id="Descripcion" placeholder="Descripcion" rows="4" ></textarea>
+                      <textarea class="form-control" name="Descripcion" id="Descripcion" placeholder="Descripcion" rows="4" ></textarea>
                     </div>
                   </div>
             </div>

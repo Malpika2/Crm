@@ -20,7 +20,7 @@
         }else {
           var clase="";
         }
-    if (item.Activa==1) {
+    if (item.StatusTarea=='Activa') {
           if (item.idNegociacion>0) {
           $('#ListaTareas').append(
                 '<li class="'+clase+'" id="tarea'+item.idTarea+'">'+
@@ -54,7 +54,7 @@
                 )
           }  
       }
-      else
+      if (item.StatusTarea=='Realizada')
       {
         agregarTareaRealizadaEmpresa(clase,item.idTarea,item.TituloTarea,item.idEmpresa,item.NombreEmpresa,item.Categoria,item.idNegociacion);
       } 

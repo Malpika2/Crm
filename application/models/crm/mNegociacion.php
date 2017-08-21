@@ -87,7 +87,7 @@ class mNegociacion extends CI_Model
 
 	}
 	public function getNegociacionPorUsuario($s){
-		$this->db->select('idNegociacion, NombreNegociacion,Negociaciones.idEmpresa,Negociaciones.idPersona,Motivo,Prioridad,Negociaciones.Status as NegStatus,PersonaCargo,FechaLimite,Detalles,CreadaPor,Activa,Empresas.NombreEmpresa,Personas.Nombre,Personas.Paterno');
+		$this->db->select('idNegociacion, NombreNegociacion,Negociaciones.idEmpresa,Negociaciones.idPersona,Motivo,Prioridad,Negociaciones.Status as NegStatus,Negociaciones.TareasActiva,Negociaciones.TareasCancelada,Negociaciones.TareasRealizada,PersonaCargo,FechaLimite,Detalles,CreadaPor,Activa,Empresas.NombreEmpresa,Personas.Nombre,Personas.Paterno');
 		$this->db->from('Negociaciones');
 		$this->db->join('Personas','Negociaciones.idPersona = Personas.idPersona','left');
 		$this->db->join('Empresas','Negociaciones.idEmpresa = Empresas.idEmpresa','left');
@@ -105,12 +105,34 @@ class mNegociacion extends CI_Model
 	}
 		public function EliminarNegociacion($s){
 		// $this->db->delete('Empresas', array('idEmpresa'=>$s));
-$this->db->set('Status','Inactivo');
-$this->db->where('idNegociacion',$s);
-$this->db->update('Negociaciones'); 
-// $this->db->where('idEmpresas',$s);
-// $this->db->delete('Empresas');
+		$this->db->set('Status','Inactivo');
+		$this->db->where('idNegociacion',$s);
+		$this->db->update('Negociaciones'); 
+		// $this->db->where('idEmpresas',$s);
+		// $this->db->delete('Empresas');
 		return true;
+	}
+	public function ActualizarAvance(){
+		$this->db->select('count(idTarea) as cont , idNegociacion , StatusTarea');
+		$this->db->from('Tareas');
+		$this->db->group_by(array('idNegociacion','StatusTarea'));
+		$query = $this->db->get();
+		return $query->result();
+	}
+	public function ActualizarRealizada($idNeg,$cont){
+		$this->db->set('StatusTarea',$cont);
+		$this->db->where('idNegociacion',$idNeg);
+		$this->db->update('Negociaciones');
+	}
+	public function ActualizarCancelada($idNeg,$cont){
+		$this->db->set('StatusTarea',$cont);
+		$this->db->where('idNegociacion',$idNeg);
+		$this->db->update('Negociaciones');
+	}
+	public function ActualizarActiva($idNeg,$cont){
+		$this->db->set('StatusTarea',$cont);
+		$this->db->where('idNegociacion',$idNeg);
+		$this->db->update('Negociaciones');
 	}
 
 }

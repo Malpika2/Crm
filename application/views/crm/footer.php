@@ -164,20 +164,118 @@
 <?php
  if ($this->uri->segment(1)=='cInicio'){ ?>
  <script src="<?php echo base_url();?>Js/Inicio.js"></script>
+ <script>
+$('#linkMenuInicio').addClass('active');
+$('#linkMenuContactos').removeClass('active');
+$('#linkMenuNegociacion').removeClass('active');
+$('#linkMenuTareas').removeClass('active');
+$('#linkMenuObjetivos').removeClass('active');
+$('#linkMenuForo').removeClass('active');
+$('#linkMenuUsuarios').removeClass('active');
+ </script>
+<?php } ?>
+<?php if ($this->uri->segment(1)==='cEmpresa') {?>
+  <script src="<?php echo base_url();?>Js/empresa.js"></script>
+  <script src="<?php echo base_url();?>Js/verEmpresa.js"></script>
+  <script src="<?php echo base_url();?>Js/negociacion.js"></script>
+     <script>
+      $('#linkMenuInicio').removeClass('active');
+      $('#linkMenuInicio').removeClass('active');
+      $('#linkMenuContactos').addClass('active');
+      $('#linkMenuNegociacion').removeClass('active');
+      $('#linkMenuTareas').removeClass('active');
+      $('#linkMenuObjetivos').removeClass('active');
+      $('#linkMenuForo').removeClass('active');
+      $('#linkMenuUsuarios').removeClass('active');
+     </script>
+<?php } ?>
+<?php if ($this->uri->segment(1)==='cNegociacion') {?>
+  <script src="<?php echo base_url();?>Js/negociacion.js"></script>
+     <script>
+      $('#linkMenuInicio').removeClass('active');
+      $('#linkMenuInicio').removeClass('active');
+      $('#linkMenuContactos').removeClass('active');
+      $('#linkMenuNegociacion').addClass('active');
+      $('#linkMenuTareas').removeClass('active');
+      $('#linkMenuObjetivos').removeClass('active');
+      $('#linkMenuForo').removeClass('active');
+      $('#linkMenuUsuarios').removeClass('active');
+     </script>
+<?php } ?>
+<?php if ($this->uri->segment(1)==='cContactos') {?>
+  <script src="<?php echo base_url();?>Js/contactos.js"></script>
+   <script>
+    $('#linkMenuInicio').removeClass('active');
+    $('#linkMenuContactos').addClass('active');
+    $('#linkMenuNegociacion').removeClass('active');
+    $('#linkMenuTareas').removeClass('active');
+    $('#linkMenuObjetivos').removeClass('active');
+    $('#linkMenuForo').removeClass('active');
+    $('#linkMenuUsuarios').removeClass('active');
+ </script>
+<?php } ?>
+<?php if ($this->uri->segment(1)==='cTareas') {?>
+  <script src="<?php echo base_url();?>Js/Tareas.js"></script>
+     <script>
+      $('#linkMenuInicio').removeClass('active');
+      $('#linkMenuInicio').removeClass('active');
+      $('#linkMenuContactos').removeClass('active');
+      $('#linkMenuNegociacion').removeClass('active');
+      $('#linkMenuTareas').addClass('active');
+      $('#linkMenuObjetivos').removeClass('active');
+      $('#linkMenuForo').removeClass('active');
+      $('#linkMenuUsuarios').removeClass('active');
+     </script>
+<?php } ?>
+<?php if($this->uri->segment(1)==='cTareasInternas'){?>
+  <script src="<?php echo base_url();?>Js/TareasInternas.js"></script>
+<?php } ?>
+<?php if($this->uri->segment(1)==='CObjetivos'){?>
+  <script src="<?php echo base_url();?>Js/Objetivos.js"></script>
+   <script>
+      $('#linkMenuInicio').removeClass('active');
+      $('#linkMenuInicio').removeClass('active');
+      $('#linkMenuContactos').removeClass('active');
+      $('#linkMenuNegociacion').removeClass('active');
+      $('#linkMenuTareas').removeClass('active');
+      $('#linkMenuObjetivos').addClass('active');
+      $('#linkMenuForo').removeClass('active');
+      $('#linkMenuUsuarios').removeClass('active');
+   </script>
 <?php } ?>
 <?php if ($this->uri->segment(1)==='cForo') {?>
   <script src="<?php echo base_url();?>Js/Foro.js"></script>
+     <script>
+      $('#linkMenuInicio').removeClass('active');
+      $('#linkMenuInicio').removeClass('active');
+      $('#linkMenuContactos').removeClass('active');
+      $('#linkMenuNegociacion').removeClass('active');
+      $('#linkMenuTareas').removeClass('active');
+      $('#linkMenuObjetivos').removeClass('active');
+      $('#linkMenuForo').addClass('active');
+      $('#linkMenuUsuarios').removeClass('active');
+     </script>
 <?php } ?>
 <?php if ($this->uri->segment(1)=='cPersona') {?>
- <script src="<?php echo base_url();?>Js/persona.js"></script>
-  <script src="<?php echo base_url();?>Js/negociacion.js"></script>
+    <script src="<?php echo base_url();?>Js/persona.js"></script>
+    <script src="<?php echo base_url();?>Js/negociacion.js"></script>
+     <script>
+      $('#linkMenuInicio').removeClass('active');
+      $('#linkMenuInicio').removeClass('active');
+      $('#linkMenuContactos').addClass('active');
+      $('#linkMenuNegociacion').removeClass('active');
+      $('#linkMenuTareas').removeClass('active');
+      $('#linkMenuObjetivos').removeClass('active');
+      $('#linkMenuForo').removeClass('active');
+      $('#linkMenuUsuarios').removeClass('active');
+     </script>
+<?php } ?>
 <?php if ($this->uri->segment(2)=='VerNegociacion') {?>
   <script src="<?php echo base_url();?>Js/verNegociacion.js"></script>
 <?php } ?>
-<?php } ?>
 <?php if ($this->uri->segment(2)==='verTarea') {?>
   <script src="<?php echo base_url();?>Js/verTarea.js"></script>
-<?php  }?>
+<?php }?>
 
 <?php if ($this->uri->segment(2)==='verNegociacion') {?>
   <script src="<?php echo base_url();?>Js/verNegociacion.js"></script>
@@ -185,28 +283,31 @@
 <?php if ($this->uri->segment(2)==='verPersona') {?>
   <script src="<?php echo base_url();?>Js/verPersona.js"></script>
 <?php } ?>
-<?php if ($this->uri->segment(1)==='cEmpresa') {?>
-  <script src="<?php echo base_url();?>Js/empresa.js"></script>
-  <script src="<?php echo base_url();?>Js/verEmpresa.js"></script>
-  <script src="<?php echo base_url();?>Js/negociacion.js"></script>
+<?php if ($this->uri->segment(1)==='cUsuario') {?>
+     <script>
+      $('#linkMenuInicio').removeClass('active');
+      $('#linkMenuInicio').removeClass('active');
+      $('#linkMenuContactos').removeClass('active');
+      $('#linkMenuNegociacion').removeClass('active');
+      $('#linkMenuTareas').removeClass('active');
+      $('#linkMenuObjetivos').removeClass('active');
+      $('#linkMenuForo').removeClass('active');
+      $('#linkMenuUsuarios').addClass('active');
+     </script>
 <?php } ?>
 
-<?php if ($this->uri->segment(1)==='cNegociacion') {?>
-  <script src="<?php echo base_url();?>Js/negociacion.js"></script>
-<?php } ?>
-
-<?php if ($this->uri->segment(1)==='cContactos') {?>
-  <script src="<?php echo base_url();?>Js/contactos.js"></script>
-<?php } ?>
-<?php if ($this->uri->segment(1)==='cTareas') {?>
-  <script src="<?php echo base_url();?>Js/Tareas.js"></script>
-<?php } ?>
-<?php if($this->uri->segment(1)==='cTareasInternas'){?>
-  <script src="<?php echo base_url();?>Js/TareasInternas.js"></script>
-<?php } ?>
-<?php if($this->uri->segment(1)==='CObjetivos'){?>
-  <script src="<?php echo base_url();?>Js/Objetivos.js"></script>
-<?php } ?>
+<!-- <script>
+  $(document).ready(function(){
+    $('#Menu').on('click','#linkMenu', function() {
+      alert('entromenu');
+            var botones = document.getElementsByClassName("treeview");
+            for (var i = 0; i<botones.length; i++) {
+               botones[i].classList.remove("active");
+            }
+            // $(this).toggleClass('active');
+});
+});
+</script> -->
 <script>
   $(function () {
     $('#example1').DataTable({

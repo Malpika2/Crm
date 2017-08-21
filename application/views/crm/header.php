@@ -164,7 +164,7 @@
                   <a href="#" class="btn btn-default btn-flat">Editar Datos</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Cerrar Sesión</a>
+                  <a href="<?php echo base_url();?>/cLogin/cerrarSession" class="btn btn-default btn-flat">Cerrar Sesión</a>
                 </div>
               </li>
             </ul>

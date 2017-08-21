@@ -42,8 +42,8 @@
     				<form action="<?php echo base_url(); ?>cLogin/ingresar" method="POST" name="formLogin" id="formLogin">
       				<img src="<?php echo base_url(); ?>assets/dist/img/silueta_user.png">
               <p><?php echo $mensaje ?></p>
-      				<input class="col-md-12 imp_login" type="text" name="usuario" placeholder="Usuario" />
-      				<input class="col-md-12 imp_login" type="password" name="password" placeholder="Contraseña" />
+      				<input class="col-md-12 imp_login form-control" type="text" name="usuario" placeholder="Usuario" />
+      				<input class="col-md-12 imp_login form-control" type="password" name="password" placeholder="Contraseña" />
       				<input class="btn btn-primary btn-block imp_login" type="submit" name="btnLogin" value="Iniciar">
     				</form>
   				</div>

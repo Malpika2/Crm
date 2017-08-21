@@ -36,7 +36,7 @@
                   <div class="col-md-6 divsNP">
                     <div class="input-group">
                       <span class="input-group-addon"><b>¿Con quien es el objetivo?</b></span>
-                      <select class=" form-control formsNP selectpicker" id="EmpresaNegociacion" name="EmpresaNegociacion" required="true">
+                      <select class="select2 form-control formsNP selectpicker" id="EmpresaNegociacion" name="EmpresaNegociacion" required="true">
                         <option selected="true" disabled="true">Empresa</option>
                       </select>              
                     </div>
@@ -44,7 +44,7 @@
                   <div class="col-md-6 divsNP">
                         <div class="input-group">
                           <span class="input-group-addon"><b>Persona de contacto</b></span>
-                          <select class=" form-control formsNP selectpicker" id="PersonaContacto" name="PersonaContacto" required>
+                          <select class="select2 form-control formsNP selectpicker" id="PersonaContacto" name="PersonaContacto" required>
                             <option selected="true" disabled="true">Contacto/Representante</option>
                         </select>              
                         </div>
@@ -58,7 +58,7 @@
                   <div class="col-md-6 divsNP">
                         <div class="input-group">
                           <span class="input-group-addon"><b>Prioridad</b></span>
-                          <select class=" form-control formsNP selectpicker" id="Prioridad" name="Prioridad" required>
+                          <select class="select2 form-control formsNP selectpicker" id="Prioridad" name="Prioridad" required>
                             <option selected="true" disabled="true">Prioridad</option>
                             <option value="Baja">Baja</option>
                             <option value="Media">Media</option>
@@ -66,26 +66,10 @@
                         </select>              
                         </div>
                   </div>
-<!--                 <div class="col-md-3 divsNP">
-                  <div class="input-group">
-                    <span class="input-group-addon"><b>Status</b></span>
-                    <select class=" form-control formsNP selectpicker" id="Status" name="Status" required>
-                      <option selected="true" disabled="true">Status</option>
-                      <option value="Avanzado">Avanzado</option>
-                      <option value="Cancelado">Cancelado</option>
-                      <option value="En proceso">En proceso</option>
-                      <option value="Incorporado">Incorporado</option>
-                      <option value="No iniciado">No iniciado</option>
-                      <option value="Suspendido">Suspendido</option>
-                      <option value="Interes sin compromiso">Interes sin compromiso</option>
-                      <option value="Interes en participar confirmado">Interes en participar confirmado</option>
-                    </select>              
-                  </div>
-                </div> -->
                 <div class="col-md-6 divsNP">
                       <div class="input-group">
                         <span class="input-group-addon"><b>Persona a cargo</b></span>
-                        <select class=" form-control formsNP selectpicker" id="PersonaCargo" name="PersonaCargo" required>
+                        <select class="select2 form-control formsNP selectpicker" id="PersonaCargo" name="PersonaCargo" required>
                           <option selected="true" disabled="true">Usuario</option>
                         </select>              
                       </div>
@@ -101,7 +85,7 @@
                         <span class="input-group-addon"><b>Detalles</b></span>
                         <textarea class="form-control formsNP" id="Detalles" name="Detalles" required></textarea>
                       </div>
-                      <input type="submit" name="registrarPersona" class="divsNP formsNP btn btn-primary btn-block" value="Registrar Negociación">
+                      <input type="submit" name="registrarPersona" class="form-control divsNP formsNP btn btn-primary btn-block" value="Registrar Negociación">
 
                 </div>
                 </form>
@@ -118,7 +102,7 @@
                   <div class="col-md-6 divsNP">
                     <div class="input-group">
                       <span class="input-group-addon"><b>¿Con quien es el objetivo?</b></span>
-                      <select class=" form-control formsNP selectpicker" id="PersonaNegociacion2" name="PersonaNegociacion2" required>
+                      <select class="select2 form-control formsNP selectpicker" id="PersonaNegociacion2" name="PersonaNegociacion2" required>
                         <option selected="true" disabled="true">Persona</option>
                       </select>              
                     </div>
@@ -132,7 +116,7 @@
                   <div class="col-md-6 divsNP">
                     <div class="input-group">
                       <span class="input-group-addon"><b>Prioridad</b></span>
-                      <select class=" form-control formsNP selectpicker" id="PrioridadP" name="PrioridadP">
+                      <select class="select2 form-control formsNP selectpicker" id="PrioridadP" name="PrioridadP">
                         <option selected="true" disabled="true">Prioridad</option>
                         <option value="Baja">Baja</option>
                         <option value="Media">Media</option>
@@ -140,26 +124,10 @@
                       </select>              
                     </div>
                   </div>
-<!--                   <div class="col-md-6 divsNP">
-                    <div class="input-group">
-                      <span class="input-group-addon"><b>Status</b></span>
-                      <select class=" form-control formsNP selectpicker" id="StatusP" name="StatusP">
-                        <option selected="true" disabled="true">Status</option>
-                        <option value="Avanzado">Avanzado</option>
-                        <option value="Cancelado">Cancelado</option>
-                        <option value="En proceso">En proceso</option>
-                        <option value="Incorporado">Incorporado</option>
-                        <option value="No iniciado">No iniciado</option>
-                        <option value="Suspendido">Suspendido</option>
-                        <option value="Interes sin compromiso">Interes sin compromiso</option>
-                        <option value="Interes en participar confirmado">Interes en participar confirmado</option>
-                      </select>              
-                    </div>
-                  </div> -->
                 <div class="col-md-6 divsNP">
                   <div class="input-group">
                     <span class="input-group-addon"><b>Persona a cargo</b></span>
-                    <select class=" form-control formsNP selectpicker" id="PersonaCargoP" name="PersonaCargoP" required>
+                    <select class="select2 form-control formsNP selectpicker" id="PersonaCargoP" name="PersonaCargoP" required>
                       <option selected="true" disabled="true">Usuario</option>
                     </select>              
                   </div>
@@ -175,7 +143,7 @@
                     <span class="input-group-addon"><b>Detalles</b></span>
                     <textarea class="form-control formsNP" id="DetallesP" name="DetallesP"></textarea>
                   </div>
-                  <input type="submit" name="registrarPersona" class="divsNP formsNP btn btn-primary btn-block" value="Registrar Negociación">
+                  <input type="submit" name="registrarPersona" class="form-control divsNP formsNP btn btn-primary btn-block" value="Registrar Negociación">
                 </div> 
                 </form>
               </div><!-- /.tab-pane tab2 -->

@@ -63,7 +63,7 @@ $.post(baseurl+"cEmpresa/updateEmpresa/",
         '<div class="box box-info collapsed-box bg-info">'+
             '<div class="box-header with-border bg-info">'+
                   '<div class="user-block">'+
-                    '<img class="img-circle img-bordered-sm" src="'+baseurl+'assets/dist/img/'+item.url_foto+'" alt="User Image">'+
+                    '<img class="img-circle img-bordered-sm" src="'+baseurl+'assets/dist/img/'+item.url_foto+'" alt="">'+
                         '<span class="username">'+
                           '<a>'+item.Nombre+' '+item.Paterno+'</a>'+
                         '</span>'+
@@ -111,7 +111,7 @@ $.post(baseurl+"cGetComentarios/getComentarios_Por_Empresa",
                 '<div class="box box-info collapsed-box bg-info">'+
             '<div class="box-header with-border bg-info">'+
                   '<div class="user-block">'+
-                    '<img class="img-circle img-bordered-sm" src="'+baseurl+'assets/dist/img/'+item.url_foto+'" alt="User Image">'+
+                    '<img class="img-circle img-bordered-sm" src="'+baseurl+'assets/dist/img/'+item.url_foto+'" alt="">'+
                         '<span class="username">'+
                           '<a>'+item.Nombre+' '+item.Paterno+'</a>'+
                         '</span>'+
@@ -158,7 +158,7 @@ function ComentarioPorComentario(idComentario){
         '<div class="box box-danger collapsed-box">'+
             '<div class="box-header with-border bg-info">'+
                   '<div class="user-block">'+
-                    '<img class="img-circle img-bordered-sm" src="'+baseurl+'assets/dist/img/'+item.url_foto+'" alt="User Image">'+
+                    '<img class="img-circle img-bordered-sm" src="'+baseurl+'assets/dist/img/'+item.url_foto+'" alt="">'+
                         '<span class="username">'+
                           '<a href="#">'+item.Nombre+' '+item.Paterno+'</a>'+
                         '</span>'+
@@ -249,7 +249,7 @@ $.post(baseurl+"cEmpresa/getTareas",
     $.each(emp,function(i,item){
       var texto = $('#idUsuarioc').val();
       var cadena = item.Asignados;
-      if (cadena.indexOf(texto) != -1) {
+      // if (cadena.indexOf(texto) != -1) { filtro
     if(item.Activa==1){
       $('#LineaTareas').append(                  
                   '<li class="time-label">'+
@@ -267,14 +267,14 @@ $.post(baseurl+"cEmpresa/getTareas",
                       '</div>'+
                       '<div class="timeline-footer">'+
                       '<b>Categoria: </b>'+item.Categoria+''+
-                      '<button class="btn btn-danger btn-xs pull-right" id="btnRealizada" name="btnRealizada" value="'+item.idTarea+'">Realizada</button>'+
+                      // '<button class="btn btn-danger btn-xs pull-right" id="btnRealizada" name="btnRealizada" value="'+item.idTarea+'">Realizada</button>'+
                       '</div>'+
                     '</div>'+
                   '</li>'+
                   '<li>'+
                   '</li>'
                   )}
-    }
+    // }
       });
 
     $('#LineaTareas').append(
@@ -295,7 +295,7 @@ $.post(baseurl+"cEmpresa/getTareas",
     $.each(emp,function(i,item){
       var texto = $('#idUsuarioc').val();
       var cadena = item.Asignados;
-      if (cadena.indexOf(texto) != -1) {
+      // if (cadena.indexOf(texto) != -1) {
     if(item.Activa==1){
       $('#LineaTareas').append(                  
                   '<li class="time-label">'+
@@ -313,14 +313,14 @@ $.post(baseurl+"cEmpresa/getTareas",
                       '</div>'+
                       '<div class="timeline-footer">'+
                       '<b>Categoria: </b>'+item.Categoria+''+
-                      '<button class="btn btn-danger btn-xs pull-right" id="btnRealizada" name="btnRealizada" value="'+item.idTarea+'">Realizada</button>'+
+                      // '<button class="btn btn-danger btn-xs pull-right" id="btnRealizada" name="btnRealizada" value="'+item.idTarea+'">Realizada</button>'+
                       '</div>'+
                     '</div>'+
                   '</li>'+
                   '<li>'+
                   '</li>'
                   )}
-      }
+      // }
       });
     $('#LineaTareas').append(
     '<li>'+                  
@@ -377,7 +377,7 @@ $.post(baseurl+"cEmpresa/getNegociaciones",
     var UsuarioActivo = $('#idUsuarioc').val();
     $.each(emp,function(i,item){
             if(item.Activa==1){
-            if(item.PersonaCargo==UsuarioActivo){
+            // if(item.PersonaCargo==UsuarioActivo){
       $('#LineaNegociaciones').append(                  
           '<li class="time-label">'+
             '<div class="callout callout-primary bg-success" style="border-left: 5px solid #00a65a;">'+
@@ -392,11 +392,12 @@ $.post(baseurl+"cEmpresa/getNegociaciones",
 
               '<p>Detalles: '+item.Detalles+'</p>'+
               '<p>Persona a cargo: '+item.Nombre+' '+item.Paterno+'</p>'+
-              '<button class="btn btn-danger btn-sm pull-right" id="btnEliminar" name="btnEliminar" value="'+item.idNegociacion+'">Cancelar</button>'+
+              // '<button class="btn btn-danger btn-sm pull-right" id="btnEliminar" name="btnEliminar" value="'+item.idNegociacion+'">Cancelar</button>'+
             '</div>'+
           '</li>'
         )
-    }}
+    // }
+  }
       });
     $('#LineaNegociaciones').append(
     '<li>'+                  
@@ -413,7 +414,7 @@ function recargarNegociaciones(){$.post(baseurl+"cEmpresa/getNegociaciones",
     var UsuarioActivo = $('#idUsuarioc').val();
     $.each(emp,function(i,item){
             if(item.Activa==1){
-            if(item.PersonaCargo==UsuarioActivo){
+            // if(item.PersonaCargo==UsuarioActivo){
       $('#LineaNegociaciones').append(                  
           '<li class="time-label">'+
             '<div class="callout callout-primary bg-success" style="border-left: 5px solid #00a65a;">'+
@@ -428,11 +429,12 @@ function recargarNegociaciones(){$.post(baseurl+"cEmpresa/getNegociaciones",
 
               '<p>Detalles: '+item.Detalles+'</p>'+
               '<p>Persona a cargo: '+item.Nombre+' '+item.Paterno+'</p>'+
-              '<button class="btn btn-danger btn-sm pull-right" id="btnEliminar" name="btnEliminar" value="'+item.idNegociacion+'">Cancelar</button>'+
+              // '<button class="btn btn-danger btn-sm pull-right" id="btnEliminar" name="btnEliminar" value="'+item.idNegociacion+'">Cancelar</button>'+
             '</div>'+
           '</li>'
         )
-    }}
+    // }
+  }
       });
     $('#LineaNegociaciones').append(
     '<li>'+                  

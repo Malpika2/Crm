@@ -92,7 +92,7 @@
                     <div class="input-group-addon">
                       <span>Titulo</span>
                     </div>
-                    <input class="col-md-12" type="text" name="TituloObjetivo" id="TituloObjetivo" required />
+                    <input class="form-control col-md-12" type="text" name="TituloObjetivo" id="TituloObjetivo" required />
                   </div>
                </div>
                 <div class="col-md-6">
@@ -126,7 +126,7 @@
                       <div class="input-group-addon">
                         <span>Origen</span>
                       </div>
-                      <textarea name="Origen" id="Origen" placeholder="Origen del Objetivo" rows="4" ></textarea>
+                      <textarea class="form-control" name="Origen" id="Origen" placeholder="Origen del Objetivo" rows="4" ></textarea>
                     </div>
                   </div>
             </div>

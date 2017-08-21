@@ -52,6 +52,10 @@ class cTareas extends CI_Controller
 		$status = $this->input->post('StatusFinal');
 		$resultado = $this->mTareas->StatusCancelar($id,$status);
 	}
+	public function getTareas(){
+		$tareas = $this->mTareas->getTareas_deObjetivosAll();
+		echo json_encode($tareas);
+	}
 	
 
 }

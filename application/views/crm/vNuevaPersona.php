@@ -18,7 +18,7 @@
         <div class="col-md-12 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>Nombre Completo</b></span>
-                <input type="text" class="formsNP" id="Nombre" name="Nombre" placeholder="Nombre(s) Apellidos">
+                <input type="text" class="formsNP form-control" id="Nombre" name="Nombre" placeholder="Nombre(s) Apellidos">
               </div>
         </div>
 <!--         <div class="col-md-6 divsNP">
@@ -45,7 +45,7 @@
         <div class="col-md-6 divsNP">
             <div class="input-group">
               <span class="input-group-addon"><b>Puesto</b></span>
-              <input type="text" class=" formsNP" id="Puesto" name="Puesto">
+              <input type="text" class="form-control formsNP" id="Puesto" name="Puesto">
             </div>
         </div>
 <!--         <div class="col-md-6 divsNP">
@@ -77,29 +77,29 @@
         <div class="col-md-3 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>1º Telefono</b></span>
-                <input type="text" class="formsNP" id="Telefono1" name="Telefono1">
-                <input type="text" class="text-center formsNP" disabled="true" name="" value="Personal">
+                <input type="text" class=" form-control formsNP" id="Telefono1" name="Telefono1">
+                <input type="text" class="form-control text-center formsNP" disabled="true" name="" value="Personal">
               </div>
         </div>
         <div class="col-md-3 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>2º Telefono</b></span>
-                <input type="text" class=" formsNP" id="Telefono2" name="Telefono2">
-                <input type="text" class="text-center formsNP" disabled="true" name="" value="Trabajo">
+                <input type="text" class="form-control formsNP" id="Telefono2" name="Telefono2">
+                <input type="text" class="form-control text-center formsNP" disabled="true" name="" value="Trabajo">
               </div>
         </div>
         <div class="col-md-3 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>1º Email</b></span>
                 <input type="text" class="form-control formsNP" id="Correo1" name="Correo1">
-                <input type="text" class="text-center formsNP" disabled="true" name="" value="Personal">
+                <input type="text" class="form-control text-center formsNP" disabled="true" name="" value="Personal">
               </div>
         </div>
         <div class="col-md-3 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>2º Email</b></span>
                 <input type="text" class="form-control formsNP" id="Correo2" name="Correo2">
-                <input type="text" class="text-center formsNP" disabled="true" name="" value="Trabajo">
+                <input type="text" class="form-control text-center formsNP" disabled="true" name="" value="Trabajo">
               </div>
         </div>
         <div class="col-md-12 divsNP">
@@ -111,14 +111,14 @@
         <div class="col-md-12 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>Direccion</b></span>
-                <input type="text" class="col-md-12 formsNP2" id="Calle" name="Calle" placeholder="Dirección">
-                <input type="hidden" class="col-md-4 formsNP2" id="Numero" name="Numero" placeholder="Número">
-                <input type="hidden" class="col-md-4 formsNP2" id="Colonia" name="Colonia" placeholder="Colonia" value="">
+                <input type="text" class="form-control col-md-12 formsNP2" id="Calle" name="Calle" placeholder="Dirección">
+                <input type="hidden" class="form-control col-md-4 formsNP2" id="Numero" name="Numero" placeholder="Número">
+                <input type="hidden" class="form-control col-md-4 formsNP2" id="Colonia" name="Colonia" placeholder="Colonia" value="">
 
-                <input type="hidden" class="col-md-4 formsNP2" id="Municipio" name="Municipio" placeholder="Municipio" value="">
-                <input type="text" class="col-md-6 formsNP2" id="Estado" name="Estado" placeholder="Ciudad">
-                <input type="hidden" class="col-md-4 formsNP2" id="Cp" name="Cp" placeholder="C.P:">
-                <input type="text" class="col-md-6 formsNP2" id="Pais" name="Pais" placeholder="Pais:">
+                <input type="hidden" class="form-control col-md-4 formsNP2" id="Municipio" name="Municipio" placeholder="Municipio" value="">
+                <input type="text" class="form-control col-md-6 formsNP2" id="Estado" name="Estado" placeholder="Ciudad">
+                <input type="hidden" class="form-control col-md-4 formsNP2" id="Cp" name="Cp" placeholder="C.P:">
+                <input type="text" class="form-control col-md-6 formsNP2" id="Pais" name="Pais" placeholder="Pais:">
               </div>
               <input type="submit" name="registrarPersona" class="divsNP formsNP btn btn-primary btn-block" value="Registrar Persona">
         </div>

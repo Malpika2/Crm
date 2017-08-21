@@ -14,7 +14,7 @@
         <button id="btnAgregarTemaForo" type="button" class="btn btn-default" data-toggle="modal" data-target="#ModalAgregarTema"><i class="fa fa-plus-square text-red"></i></button>
       </div>
       <div class="col-md-12" id="divTablaForo">
-      <table class="table table-responsive table-hover" style="background-color: #f9f8eb" >
+      <table class="table table-responsive table-hover" style="background-color:#f9f8eb;" >
             <thead style="background-color: #7a9eb1;">
             <tr>
               <th></th>
@@ -24,14 +24,9 @@
               <th>Fecha creacion</th>
             </tr>
             </thead>
-            <tbody id="bodyTablaForo" class="text-left">
+            <tbody id="bodyTablaForo" class="text-left" style="max-height:100px; overflow:scroll;">
             </tbody>
         </table>
-        
-      </div>
-          <div class="col-md-12" id="TemasForo" name="TemasForo">
-          </div>
-      </div>
     </div>
     </section>
 
@@ -50,20 +45,20 @@
             <div class="input-group-addon">
               <span>Titulo</span>
             </div>
-            <input style="color:black" class="col-md-12" type="text" id="TituloTema" name="TituloTema" required>
+            <input style="color:black" class="col-md-12 form-control" type="text" id="TituloTema" name="TituloTema" required>
           </div>
           <div class="input-group col-sm-12 divsNP">
             <div class="input-group-addon">
               <span>Sección</span>
             </div>
-            <input style="color:black" class="col-md-12" type="text" name="seccion" name="seccion" id="seccion" required />
+            <input style="color:black" class="col-md-12 form-control" type="text" name="seccion" name="seccion" id="seccion" required />
           </div>
 
           <div class="input-group col-md-12 divsNP">
             <div class="input-group-addon">
               <span>Asunto</span>
             </div>
-            <textarea style="color:black" class="col-md-12" type="text" id="AsuntoTema" name="AsuntoTema" required></textarea>
+            <textarea style="color:black" class="col-md-12 form-control" type="text" id="AsuntoTema" name="AsuntoTema" required></textarea>
           </div>
 
           <input type="hidden" name="idUsuarioCrea" id="idUsuarioCrea" value="<?php echo $this->session->userdata('s_idUsuario');?>">

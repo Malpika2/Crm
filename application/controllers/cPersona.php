@@ -281,5 +281,21 @@ class cPersona extends CI_Controller
 		$StatusFinal = $this->input->post('StatusFinal');
 		$result=$this->mPersona->PersonaInactiva($idPersona,$StatusFinal);
 	}
+	public function updatePersona(){
+		$param['idPersona'] = $this->input->post('idPersonaE');
+		$param['NombrePersona'] = $this->input->post('NombrePersona');
+		$param['Cargo'] = $this->input->post('Cargo');
+		$param['Puesto'] = $this->input->post('Puesto');
+		$param['Telefono1'] = $this->input->post('Telefono1');
+		$param['Telefono2'] = $this->input->post('Telefono2');
+		$param['Correo1'] = $this->input->post('Correo1');
+		$param['Correo2'] = $this->input->post('Correo2');
+		$param['Skype'] = $this->input->post('Skype');
+		$param['Direccion'] = $this->input->post('Direccion');
+		$param['Estado'] = $this->input->post('Estado');
+		$param['Pais'] = $this->input->post('Pais');
+		$ultimaPersona = $this->mPersona->updatePersona($param);
+		return $ultimaPersona;
+	}
 
 }

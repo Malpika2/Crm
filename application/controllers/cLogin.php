@@ -27,4 +27,9 @@ class cLogin extends CI_Controller
 			$this->load->view('crm/vLogin',$data);
 		}
 	}
+	public function cerrarSession(){
+		$data['mensaje'] = "";
+		$this->load->view('crm/vLogin',$data);
+	}
+
 }

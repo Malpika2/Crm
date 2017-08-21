@@ -88,6 +88,32 @@ class cNegociacion extends CI_Controller
 		$s = $this->input->post('Negociacionid');
 		$result = $this->mNegociacion->EliminarNegociacion($s);
 	}
+	public function getNegociaciones(){
+		$result = $this->mNegociacion->getNegociaciones();
+		echo json_encode($result);
+	}
+	public function ActualizarAvance(){
+		// $idNegociacion = $this->input->post('idNegociacion');
+		// $Status = $this->input->post('Status');
+		$result = $this->mNegociacion->ActualizarAvance();
+		echo json_encode($result);
+	}
+	public function ActualizarRealizada(){
+		$idNeg = $this->input->post('idNeg');
+		$cont = $this->input->post('cont');
+		$result= $this->db->mNegociacion->ActualizarRealizada($idNeg,$cont);
+	}
+	public function ActualizarCancelada(){
+		$idNeg = $this->input->post('idNeg');	
+		$cont = $this->input->post('cont');
+		$result= $this->db->mNegociacion->ActualizarCancelada($idNeg,$cont);
+
+	}
+	public function ActualizarActiva(){
+		$idNeg = $this->input->post('idNeg');
+		$cont = $this->input->post('cont');
+		$result= $this->db->mNegociacion->ActualizarActiva($idNeg,$cont);
+	}
 }
 
 ?>

@@ -110,7 +110,7 @@
                     <div class="input-group-addon">
                       <span>Titulo</span>
                     </div>
-                    <input class="col-md-12" type="text" name="TituloTarea" id="TituloTarea" required />
+                    <input class="form-control col-md-12" type="text" name="TituloTarea" id="TituloTarea" required />
                   </div>
                </div>
                 <div class="col-md-6">
@@ -154,7 +154,7 @@
                       <div class="input-group-addon">
                         <span>Descripcion</span>
                       </div>
-                      <textarea name="Descripcion" id="Descripcion" placeholder="Detalles de la tarea" rows="4" ></textarea>
+                      <textarea name="Descripcion" id="Descripcion" placeholder="Detalles de la tarea" rows="4" class="form-control" ></textarea>
                     </div>
                   </div>
                 </div>
@@ -200,7 +200,7 @@
         <div class="row">
         <div class="col-md-12">
         <label>Cual Fue la razón?</label>
-          <textarea id="StatusFinal" class="col-md-12 text-black"></textarea>
+          <textarea id="StatusFinal" class="form-control col-md-12 text-black"></textarea>
         </div>
         </div>
       </div>
