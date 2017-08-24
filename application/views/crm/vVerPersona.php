@@ -34,12 +34,18 @@
                   <li class="list-group-item">
                     <b>Cargo: </b><?php echo $row_Persona->Cargo; ?>
                   </li>
+                  <?php if (isset($row_Empresas->NombreEmpresa)): ?>
+                    <li class="list-group-item">
+                      <b>Nombre Empresa:</b>
+                      <a href="<?php echo base_url();?>cEmpresa/verEmpresa/<?php echo $row_Empresas->idEmpresa; ?>"><?php echo $row_Empresas->NombreEmpresa; ?></a>
+                    </li>
+                  <?php endif ?> 
                   <?php if ($row_Persona->Status=='Inactivo'): ?>
                   <li class="list-group-item">
                     <b>Justificacion de Inactividad:</b>
                     <?php echo $row_Persona->StatusFinal; ?>
-                  </li>  
-                <?php endif ?>
+                  </li> 
+                  <?php endif ?>
                 </ul>
                   <button id="btn_Editar" class="btn btn-primary btn-block " data-toggle="modal" data-target="#ModalEditarPersona">Editar</button>
               </div><!-- /.box-body -->

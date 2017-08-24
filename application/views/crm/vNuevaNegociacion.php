@@ -102,7 +102,7 @@
                   <div class="col-md-6 divsNP">
                     <div class="input-group">
                       <span class="input-group-addon"><b>¿Con quien es el objetivo?</b></span>
-                      <select class="select2 form-control formsNP selectpicker" id="PersonaNegociacion2" name="PersonaNegociacion2" required>
+                      <select class="form-control formsNP selectpicker" id="PersonaNegociacion2" name="PersonaNegociacion2" required>
                         <option selected="true" disabled="true">Persona</option>
                       </select>              
                     </div>

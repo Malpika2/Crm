@@ -58,14 +58,14 @@ var options = {
       callback: function() {}
     },    
     onSelectItemEvent: function() {
-var Nombre = utf8_decode($("#Nombre").getSelectedItemData().nombre);
-var Puesto = utf8_decode($("#Nombre").getSelectedItemData().cargo);
-var Telefono1 = utf8_decode($("#Nombre").getSelectedItemData().telefono1);
-var Telefono2 = utf8_decode($("#Nombre").getSelectedItemData().telefono2);
-var Correo1 = utf8_decode($("#Nombre").getSelectedItemData().email1);
-var Correo2 = utf8_decode($("#Nombre").getSelectedItemData().email2);
-var Calle = utf8_decode($("#Nombre").getSelectedItemData().direccion);
-var Pais = utf8_decode($("#Nombre").getSelectedItemData().pais);
+var Nombre = $("#Nombre").getSelectedItemData().nombre;
+var Puesto = $("#Nombre").getSelectedItemData().cargo;
+var Telefono1 = $("#Nombre").getSelectedItemData().telefono1;
+var Telefono2 = $("#Nombre").getSelectedItemData().telefono2;
+var Correo1 = $("#Nombre").getSelectedItemData().email1;
+var Correo2 = $("#Nombre").getSelectedItemData().email2;
+var Calle = $("#Nombre").getSelectedItemData().direccion;
+var Pais = $("#Nombre").getSelectedItemData().pais;
 
       $('#Nombre').val(Nombre).trigger("change");
 

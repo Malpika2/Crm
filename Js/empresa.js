@@ -75,22 +75,20 @@ var options = {
 			callback: function() {}
 		},		
 		onSelectItemEvent: function() {
-			var nombre = utf8_decode($('#NombreEmpresa').getSelectedItemData().nombre);
-
-			var abreviacion = utf8_decode($("#NombreEmpresa").getSelectedItemData().abreviacion);
-			var SPP = utf8_decode($('#NombreEmpresa').getSelectedItemData().spp);
-			var SitioWeb = utf8_decode($('#NombreEmpresa').getSelectedItemData().sitio_web);
-			var Telefono1 = utf8_decode($('#NombreEmpresa').getSelectedItemData().telefono);
-			var Correo1 = utf8_decode($('#NombreEmpresa').getSelectedItemData().email);
-			var DatosFiscales = utf8_decode($('#NombreEmpresa').getSelectedItemData().rfc);
+			var nombre = $('#NombreEmpresa').getSelectedItemData().nombre;
+			var abreviacion = $("#NombreEmpresa").getSelectedItemData().abreviacion;
+			var SPP = $('#NombreEmpresa').getSelectedItemData().spp;
+			var SitioWeb = $('#NombreEmpresa').getSelectedItemData().sitio_web;
+			var Telefono1 = $('#NombreEmpresa').getSelectedItemData().telefono;
+			var Correo1 = $('#NombreEmpresa').getSelectedItemData().email;
+			var DatosFiscales = $('#NombreEmpresa').getSelectedItemData().rfc;
 			if (DatosFiscales==null){
-				var DatosFiscales = utf8_decode($('#NombreEmpresa').getSelectedItemData().ruc);
+				var DatosFiscales = $('#NombreEmpresa').getSelectedItemData().ruc;
 			}
-			var DireccionOficina = utf8_decode($('#NombreEmpresa').getSelectedItemData().direccion_oficina);
-			var DireccionFiscal = utf8_decode($('#NombreEmpresa').getSelectedItemData().direccion_fiscal);
-			var Ciudad = utf8_decode($('#NombreEmpresa').getSelectedItemData().ciudad);
-			var Pais = utf8_decode($('#NombreEmpresa').getSelectedItemData().pais);
-			DireccionFiscal = utf8_decode(DireccionFiscal);
+			var DireccionOficina = $('#NombreEmpresa').getSelectedItemData().direccion_oficina;
+			var DireccionFiscal = $('#NombreEmpresa').getSelectedItemData().direccion_fiscal;
+			var Ciudad = $('#NombreEmpresa').getSelectedItemData().ciudad;
+			var Pais = $('#NombreEmpresa').getSelectedItemData().pais;
 
 			$("#NombreEmpresa").val(nombre).trigger("change");
 
@@ -132,19 +130,19 @@ var options = {
 			callback: function() {}
 		},		
 		onSelectItemEvent: function() {
-			var abreviacion = utf8_decode($('#SPP').getSelectedItemData().abreviacion);
-			var nombre = utf8_decode($('#SPP').getSelectedItemData().nombre);
-			var SitioWeb = utf8_decode($('#SPP').getSelectedItemData().sitio_web);
-			var Telefono1 = utf8_decode($('#SPP').getSelectedItemData().telefono);
-			var Correo1 = utf8_decode($('#SPP').getSelectedItemData().email);
-			var DatosFiscales = utf8_decode($('#SPP').getSelectedItemData().rfc);
+			var abreviacion = $('#SPP').getSelectedItemData().abreviacion;
+			var nombre = $('#SPP').getSelectedItemData().nombre;
+			var SitioWeb = $('#SPP').getSelectedItemData().sitio_web;
+			var Telefono1 = $('#SPP').getSelectedItemData().telefono;
+			var Correo1 = $('#SPP').getSelectedItemData().email;
+			var DatosFiscales = $('#SPP').getSelectedItemData().rfc;
 			if (DatosFiscales==null){
-				var DatosFiscales = utf8_decode($('#SPP').getSelectedItemData().ruc);
+				var DatosFiscales = $('#SPP').getSelectedItemData().ruc;
 			}
-			var DireccionOficina = utf8_decode($('#SPP').getSelectedItemData().direccion_oficina);
-			var DireccionFiscal = utf8_decode($('#SPP').getSelectedItemData().direccion_fiscal);
-			var Ciudad = utf8_decode($('#SPP').getSelectedItemData().ciudad);
-			var Pais = utf8_decode($('#SPP').getSelectedItemData().pais);
+			var DireccionOficina = $('#SPP').getSelectedItemData().direccion_oficina;
+			var DireccionFiscal = $('#SPP').getSelectedItemData().direccion_fiscal;
+			var Ciudad = $('#SPP').getSelectedItemData().ciudad;
+			var Pais = $('#SPP').getSelectedItemData().pais;
 
 
 			$("#Abreviacion").val(abreviacion).trigger("change");
@@ -196,14 +194,14 @@ var options = {
       callback: function() {}
     },    
     onSelectItemEvent: function() {
-var Nombre = utf8_decode($("#Nombre").getSelectedItemData().nombre);
-var Puesto = utf8_decode($("#Nombre").getSelectedItemData().cargo);
-var Telefono1 = utf8_decode($("#Nombre").getSelectedItemData().telefono1);
-var Telefono2 = utf8_decode($("#Nombre").getSelectedItemData().telefono2);
-var Correo1 = utf8_decode($("#Nombre").getSelectedItemData().email1);
-var Correo2 = utf8_decode($("#Nombre").getSelectedItemData().email2);
-var Calle = utf8_decode($("#Nombre").getSelectedItemData().direccion);
-var Pais = utf8_decode($("#Nombre").getSelectedItemData().pais);
+var Nombre = $("#Nombre").getSelectedItemData().nombre;
+var Puesto = $("#Nombre").getSelectedItemData().cargo;
+var Telefono1 = $("#Nombre").getSelectedItemData().telefono1;
+var Telefono2 = $("#Nombre").getSelectedItemData().telefono2;
+var Correo1 = $("#Nombre").getSelectedItemData().email1;
+var Correo2 = $("#Nombre").getSelectedItemData().email2;
+var Calle = $("#Nombre").getSelectedItemData().direccion;
+var Pais = $("#Nombre").getSelectedItemData().pais;
 var Cargo = "Representante";
 var Status = "Incorporado";
       

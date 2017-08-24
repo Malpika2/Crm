@@ -20,7 +20,6 @@
 <script>
   $.widget.bridge('uibutton', $.ui.button);
 </script>
-<script src="<?php echo base_url();?>Js/EasyAutocomplete/jquery.easy-autocomplete.min.js"></script> 
 <!-- Bootstrap 3.3.6 -->
 <script src="<?php echo base_url();?>assets/bootstrap/js/bootstrap.min.js"></script>
 <!-- Morris.js charts -->
@@ -65,6 +64,8 @@
 <script src="<?php echo base_url();?>assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 
 <!-- AdminLTE for demo purposes -->
+<script src="<?php echo base_url();?>Js/EasyAutocomplete/jquery.easy-autocomplete.min.js"></script> 
+
 <!-- Page script -->
 <script>
   $(function () {

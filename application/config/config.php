@@ -90,6 +90,7 @@ $config['language']	= 'english';
 |
 */
 $config['charset'] = 'UTF-8';
+// $db['d-spp']['dbcollat'] = 'utf8_general_ci';
 
 /*
 |--------------------------------------------------------------------------

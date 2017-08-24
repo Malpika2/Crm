@@ -31,9 +31,6 @@ class cEmpresa extends CI_Controller
 
 	public function guardar(){
 		//Empresa
-		$format = 'DATE_RFC822';
-		$time = time();
-		$fechaActual = standard_date($format, $time);
 
 		$param['NombreEmpresa'] = $this->input->post('NombreEmpresa');
 		$param['Tipo'] = $this->input->post('Tipo');
@@ -42,7 +39,6 @@ class cEmpresa extends CI_Controller
 		// $param['Contacto'] = $this->input->post('ContactoEmp');
 		$param['Skype'] = $this->input->post('Skype');
 		$param['SitioWeb'] = $this->input->post('SitioWeb');
-		$param['FechaRegistro'] = $fechaActual;
 		$param['idUsuarioRegistro'] = $this->session->userdata('s_idUsuario');
 		$param['DireccionOficina'] = $this->input->post('DireccionOficina');
 		$param['DireccionFiscal'] = $this->input->post('DireccionFiscal');
@@ -61,64 +57,29 @@ class cEmpresa extends CI_Controller
 			$param['Contacto'] = $contactos_value.','.$param['Contacto'];
 			}
 		}
-//Telefonos
-		$paramTel['Telefono1'] = $this->input->post('Telefono1');
-		$paramTel['TipoTelefono1'] = $this->input->post('TipoTelefono1');
-		$paramTel['Telefono2'] = $this->input->post('Telefono2');
-		$paramTel['TipoTelefono2'] = $this->input->post('TipoTelefono2');
-
-
-//correos
-
-		$paramCor['Correo1'] = $this->input->post('Correo1');
-		$paramCor['TipoCorreo1'] = $this->input->post('TipoCorreo1');
-		$paramCor['Correo2'] = $this->input->post('Correo2');
-		$paramCor['TipoCorreo2'] = $this->input->post('TipoCorreo2');
-
-//Direccion
-		$paramDir['Calle'] = $this->input->post('Calle');
-		$paramDir['Calle'] = $this->input->post('DireccionOficina');
-		$paramDir['Numero'] = $this->input->post('Numero');
-		$paramDir['Colonia'] = $this->input->post('Colonia');
-		$paramDir['Municipio'] = $this->input->post('Municipio');
-		$paramDir['Estado'] = $this->input->post('Ciudad');
-		$paramDir['Cp'] = $this->input->post('Cp');
-		$paramDir['Pais'] = $this->input->post('Pais');
 
 		$ultimaPersona=$this->mEmpresa->guardar($param);
-
+		$param['ultimaEmpresa'] = $ultimaPersona;
+		if(isset($_POST['ContactoEmp'])){
+			foreach ($_POST['ContactoEmp'] as $contactos_value){
+				$this->mEmpresa->guardarContactos($contactos_value,$param);
+				}
+			}
 		if ($ultimaPersona>0) {
-
-			$paramTel['idPersona'] = NULL;
-			$paramCor['idPersona'] = NULL;
-			$paramDir['idPersona'] = NULL;
-
-			$paramTel['idUsuario'] = NULL;
-			$paramCor['idUsuario'] = NULL;
-			$paramDir['idUsuario'] = NULL;
-
-			$paramTel['idEmpresa'] = $ultimaPersona;
-			$paramCor['idEmpresa'] = $ultimaPersona;
-			$paramDir['idEmpresa'] = $ultimaPersona;
-
-			$this->mTelefono->guardar($paramTel);
-			$this->mCorreo->guardar($paramCor);
-			if($this->mDireccion->guardar($paramDir)){
-
 				$this->load->view('crm/header');
 				$this->load->view('crm/menu');
 				$this->load->view('crm/vNuevaEmpresa');
 				$this->load->view('crm/footer');
-			}
 		}
 
 	}
-	public function verEmpresa($idPersona){
-		$data['row_Empresas'] = $this->mGetEmpresas->getEmpresaPorId($idPersona);
-		$data['row_Persona'] = $this->mGetPersonas->getPersonasPorEmpresa2($idPersona);
-		$data['row_Direccion'] = $this->mGetEmpresas->getDireccion($idPersona);
-		$data['row_Telefonos'] = $this->mGetEmpresas->getTelefonos($idPersona);
-		$data['row_Correos'] = $this->mGetEmpresas->getCorreos($idPersona);
+	public function verEmpresa($idEmpresa){
+		$data['row_Contactos'] = $this->mGetEmpresas->getContactos($idEmpresa);
+		$data['row_Empresas'] = $this->mGetEmpresas->getEmpresaPorId($idEmpresa);
+		$data['row_Persona'] = $this->mGetPersonas->getPersonasPorEmpresa2($idEmpresa);
+		$data['row_Direccion'] = $this->mGetEmpresas->getDireccion($idEmpresa);
+		$data['row_Telefonos'] = $this->mGetEmpresas->getTelefonos($idEmpresa);
+		$data['row_Correos'] = $this->mGetEmpresas->getCorreos($idEmpresa);
 
 				$this->load->view('crm/header');
 				$this->load->view('crm/menu');

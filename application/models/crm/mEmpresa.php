@@ -80,4 +80,15 @@ $this->db->update('Empresas');
 			$this->db->update('Empresas',$campos);
 			return 1;
 	 }
+	 public function guardarContactos($s,$param){
+		$campos = array(
+			// 'idTarea' => null,
+			'idEmpresa' => $param['ultimaEmpresa'],
+			'idUsuario' =>null,
+			'idPersona' => $s);//Personas a participar
+		$this->db->insert('Participantes_Tareas',$campos);
+		if($this->db->affected_rows()>0){
+			return true;
+		}else {return false;}
+	 }
 }

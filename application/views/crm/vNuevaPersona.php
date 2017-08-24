@@ -18,7 +18,7 @@
         <div class="col-md-12 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>Nombre Completo</b></span>
-                <input type="text" class="formsNP form-control" id="Nombre" name="Nombre" placeholder="Nombre(s) Apellidos">
+                <input type="text" class="formsNP " id="Nombre" name="Nombre" placeholder="Nombre(s) Apellidos">
               </div>
         </div>
 <!--         <div class="col-md-6 divsNP">

@@ -31,8 +31,8 @@
             <?php if ($row_EmpParticipantes!=null) {?>
             <label class="h4">Participantes:</label>&nbsp;&nbsp;<label class="h5"><?php foreach($row_EmpParticipantes as $Participantes){ echo $Participantes->RazonSocial."<br>"; }?></label><br><hr><?php } ?>
             <?php if ($row_PersonasParticipantes!=null) {?>
-            <label class="h4">Participantes:</label>&nbsp;&nbsp;<label class="h5"><?php foreach($row_PersonasParticipantes as $PersParticipantes){ echo $PersParticipantes->Nombre."&nbsp;".$PersParticipantes->Paterno."<br>"; }?></label><br><hr><?php } ?>
-
+            <label class="h4">Participantes:</label>&nbsp;&nbsp;<label class="h5"><?php foreach($row_PersonasParticipantes as $PersParticipantes){ echo $PersParticipantes->Nombre."&nbsp;".$PersParticipantes->Paterno."<br>"; }?></label><br><hr>
+            <?php } ?>
             <label class="h4">Descripcion:</label>&nbsp;&nbsp;<label class="h5"><?php echo $row_Tareas->Descripcion?></label><br><hr>
             <label class="h4">Fecha Vencimiento:</label>&nbsp;&nbsp;<label class="h5"><?php echo $row_Tareas->FechaFin?></label><br><hr>
             <?php if ($row_Tareas->Activa==0): ?>

@@ -75,7 +75,7 @@ class mGetPersonas extends CI_Model
 		return $query->row();
 	}
 	public function getPersonasAutoComplete(){
-			$s = $this->DBSPP->get('contactos');
+			$s = $this->db->get('contactos');
 			return $s->result();
 	}
 	public function getPersonaPorId2($idPersona){

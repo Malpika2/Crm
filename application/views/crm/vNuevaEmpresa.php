@@ -1,3 +1,16 @@
+﻿<style type="text/css">
+.select2 {
+  /*box-sizing: border-box;*/
+  display: initial;
+  /*margin: 0;*/
+  /*position: relative;*/
+  /*vertical-align: middle;*/
+}
+.easy-autocomplete {
+  position: relative;
+  display: contents;
+}
+</style>
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="<?php echo base_url();?>cInicio"><i class="fa fa-map-signs"></i>Inicio</a></li>
@@ -20,13 +33,13 @@
             <div class="col-md-12 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>Nombre Empresa</b></span>
-                <input type="text" class="form-control formsNP" id="NombreEmpresa" name="NombreEmpresa">
+                <input type="text" class="formsNP" id="NombreEmpresa" name="NombreEmpresa">
               </div>
             </div>
             <div class="col-md-12 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>SPP<br><small>(Opcional)</small></b></span>
-                <input type="text" class="form-control formsNP" id="SPP" name="SPP">
+                <input type="text" class="formsNP" id="SPP" name="SPP">
               </div>
             </div>
             <div class="col-md-12 divsNP">
@@ -38,7 +51,7 @@
             <div class="col-md-12 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>Tipo</b></span>
-                <select class=" select2 form-control formsNP" id="Tipo" name="Tipo" required="">
+                <select class="form-control formsNP select2" id="Tipo" name="Tipo" required="">
                   <option selected="true" disabled="false" value="">Tipo</option>
                   <option value="Comprador final">Comprador Final</option>
                   <option value="Intermediario">Intermediario</option>
@@ -92,9 +105,9 @@
                     <button style="padding: 0px" type="button" data-toggle="modal" data-target="#ModalNPersona" id="btnAgregarNuevoCont" class="btn col-md-2" data-toggle="tooltip" title="AGREGAR NUEVO"><i class="fa fa-plus-square fa-2x"></i></button>
                     <label class="col-md-8 h4 text-center">CONTACTO</label>
                     <button style="padding: 0px" type="button" id="btnBuscarExistenteCont" class="btn col-md-2" data-toggle="tooltip" title="BUSCAR EXISTENTE"><i class="fa fa-search fa-2x"></i></button>
-                    <div class="input-group">
+                    <div class="input-group" style="width: 100%">
                       <span class="input-group-addon"><b>Contacto</b></span>
-                      <select class="js-example-programmatic-multi select2 form-control" id="ContactoEmp" name="ContactoEmp[]" multiple="multiple" maximumSelectionLength="2">
+                      <select class="js-example-programmatic-multi form-control select2" id="ContactoEmp" name="ContactoEmp[]" multiple="multiple" maximumSelectionLength="2">
                       </select>
                       <select class="hidden form-control formsNP js-example-programmatic-multi" id="Contacto" name="Contacto" required>
                         <option selected="true" disabled="true" value="0">Lista de Contactos</option>
@@ -181,7 +194,7 @@
         <div class="col-md-12 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>Nombre Completo</b></span>
-                <input type="text" class="form-control formsNP" id="Nombre" name="Nombre" placeholder="Nombre(s) Apellidos"/>
+                <input type="text" class="formsNP" id="Nombre" name="Nombre" placeholder="Nombre(s) Apellidos"/>
               </div>
         </div>
         <div class="col-md-6 divsNP">

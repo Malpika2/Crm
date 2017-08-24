@@ -32,8 +32,22 @@
                 <li class="list-group-item">
                 <b>Representante: </b>
                 <?php if (isset($row_Persona->Nombre)){?>
-                  <a href="<?php echo base_url();?>/cPersona/verPersona/<?php echo $row_Persona->idPersona ?>"><?php echo $row_Persona->Nombre; }?>
+                  <a href="<?php echo base_url();?>/cPersona/verPersona/<?php echo $row_Persona->idPersona ?>"><?php echo $row_Persona->Nombre;?>
                   </a>
+                <?php } ?>
+                <?php if ($row_Contactos) {?>
+                  <li class="list-group-item">
+                  <b>Contactos</b>
+                  <ul>
+                <?php foreach($row_Contactos as $Contacto){ ?>
+                    <li><a href="<?php echo base_url();?>cPersona/verPersona/<?php echo $Contacto->idPersona;?>">
+                    <?php echo $Contacto->Nombre; ?>
+                    </a></li>
+                    <?php  }
+                } else{echo "Sin Contactos";}
+                ?></ul></li>
+
+
                 <?php if (isset($row_Persona->idPersona)){} else {echo "";}?>
                 </li>
 
@@ -77,15 +91,15 @@
 
               <strong><i class="fa fa-pencil margin-r-5"></i>Telefonos</strong>
                 <ul>
-                  <li><?php echo $row_Telefonos->Telefono1." ".$row_Telefonos->TipoTelefono1; ?></li>
-                  <li><?php echo $row_Telefonos->Telefono2." ".$row_Telefonos->TipoTelefono2; ?></li>
+                  <li><?php echo $row_Empresas->Telefono?></li>
+                  <li><?php echo $row_Empresas->Telefono2?></li>
                 </ul>
               <hr>
 
               <strong><i class="fa fa-file-text-o margin-r-5"></i> Correos</strong>
               <ul>
-                <li><?php echo $row_Correos->Correo1." ".$row_Correos->TipoCorreo1;?></li>
-                <li><?php echo $row_Correos->Correo2." ".$row_Correos->TipoCorreo2;?></li>
+                <li><?php echo $row_Empresas->Email?></li>
+                <li><?php echo $row_Empresas->Email2?></li>
               </ul>
 
             </div>
