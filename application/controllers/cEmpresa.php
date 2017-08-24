@@ -2,6 +2,7 @@
 <?php
 class cEmpresa extends CI_Controller
 {
+
 		function __construct()
 	{
 		parent::__construct();
@@ -74,6 +75,10 @@ class cEmpresa extends CI_Controller
 
 	}
 	public function verEmpresa($idEmpresa){
+
+				if($this->session->userdata('s_login')!=1){
+					redirect(base_url().cLogin);
+				}
 		$data['row_Contactos'] = $this->mGetEmpresas->getContactos($idEmpresa);
 		$data['row_Empresas'] = $this->mGetEmpresas->getEmpresaPorId($idEmpresa);
 		$data['row_Persona'] = $this->mGetPersonas->getPersonasPorEmpresa2($idEmpresa);

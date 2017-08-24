@@ -162,6 +162,7 @@
 </script>
 <!-- Scripts del proyecto -->
 <script src="<?php echo base_url();?>Js/typeahead.js"></script>
+<script src="<?php echo base_url();?>Js/Global.js"></script>
 <?php
  if ($this->uri->segment(1)=='cInicio'){ ?>
  <script src="<?php echo base_url();?>Js/Inicio.js"></script>

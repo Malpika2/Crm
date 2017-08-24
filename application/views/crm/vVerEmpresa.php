@@ -35,6 +35,7 @@
                   <a href="<?php echo base_url();?>/cPersona/verPersona/<?php echo $row_Persona->idPersona ?>"><?php echo $row_Persona->Nombre;?>
                   </a>
                 <?php } ?>
+
                 <?php if ($row_Contactos) {?>
                   <li class="list-group-item">
                   <b>Contactos</b>
@@ -44,7 +45,9 @@
                     <?php echo $Contacto->Nombre; ?>
                     </a></li>
                     <?php  }
-                } else{echo "Sin Contactos";}
+                } else{echo "<li class=\"list-group-item\"><label class=\"text-muted\"> Sin Contactos</label>
+                  
+                </li>";}
                 ?></ul></li>
 
 

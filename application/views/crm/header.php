@@ -1,3 +1,46 @@
+<style type="text/css">
+/*.easy-autocomplete {
+  position: absolute;
+  display: block;
+  z-index: 2000;
+}
+.easy-autocomplete-container {
+position: absolute;
+display: contents;
+}*/
+#BuscadorHeader{
+width: 100%;
+padding: 0px !important;
+font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif !important;
+}
+#BuscadorHeaderP{
+  width: 100%;
+padding: 0px !important;
+font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif !important;
+
+}
+/*.addon2P{
+  padding: 0px !important;
+  margin: 0px !important;
+  border-radius: 10px 1px 1px 10px !important;
+  background-color: #f0f0f0 !important;
+
+}
+.addon2E{
+  padding: 0px !important;
+  margin: 0px !important;
+  border-radius: 1px 10px 10px 1px !important;
+  background-color: #f0f0f0 !important ;
+
+}
+.btn-Emp{
+  border-radius: 1px 10px 10px 1px !important;
+
+}
+.btn-Per{
+  border-radius: 10px 1px 1px 10px !important;
+}*/
+</style>
 <!DOCTYPE html>
 <html>
 <?php ob_start(); ?>
@@ -67,21 +110,17 @@
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+  <!--     <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
         <span class="sr-only">Toggle navigation</span>
-      </a>
-      <div class="col-md-9">
-      <!-- search form -->
-      <form action="#" method="get" class="sidebar-form" style="margin: 10px 10px; border:none">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Buscar( Personas o Empresas)...  ">
-              <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
+      </a> -->
+      <div class="col-md-10 col-sm-12 DivsNP">
+        <div class="col-md-6">
+          <input id="BuscadorHeaderP" class="form-control col-md-12" type="text" />
         </div>
-      </form>
-      <!-- /.search form -->
+
+        <div class="col-md-6">          
+            <input type="text" class="form-control col-md-12" name="BuscadorHeader" id="BuscadorHeader" placeholder="Buscar Empresas">
+        </div>
       </div>
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">

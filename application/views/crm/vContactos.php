@@ -154,7 +154,7 @@
                     }else{
                       echo '<tr>
                               <td align="left">
-                                <a href="'.base_url().'/cEmpresa/verEmpresa/'.$Empresa->idEmpresa.'">
+                                <a href="'.base_url().'cEmpresa/verEmpresa/'.$Empresa->idEmpresa.'">
                                 '.$Empresa->NombreEmpresa.'</a>
                               </td>
                               <td align="left">
