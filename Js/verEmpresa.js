@@ -1,44 +1,56 @@
+$('#form, #fat, #formTarea').submit(function() {
+          $.ajax({
+              type: 'POST',
+              url: $(this).attr('action'),
+              data: $(this).serialize(),
+              success: function(data) { 
+            $("#formTarea")[0].reset();
+            $("#ModalTarea").modal("hide");
+            $("#Asignados").val(null).trigger("change");
+            $('#LineaTareas').empty();
+            recargarTareas();
+              }
+          });
+          
+          return false;
+      });
+
+
 GuardarEditEmpresa = function(){
 var idEmpresa = $("#idEmpresa").val();
+var ContactoEmp = $("#ContactoEmp").val();
 var NombreEmpresa = $("#NombreEmpresa").val();
 var SPP = $("#SPP").val();
 var Abreviacion = $("#Abreviacion").val();
 var Tipo = $("#Tipo").val();
 var Representante = $("#Representante").val();
-var Contacto = $("#Contacto").val();
 var Skype = $("#Skype").val();
 var SitioWeb = $("#SitioWeb").val();
 var Telefono1 = $("#Telefono1").val();
-var TipoTelefono1 = $("#TipoTelefono1").val();
 var Telefono2 = $("#Telefono2").val();
-var TipoTelefono2 = $("#TipoTelefono2").val();
 var Correo1 = $("#Correo1").val();
-var TipoCorreo1 = $("#TipoCorreo1").val();
 var Correo2 = $("#Correo2").val();
-var TipoCorreo2 = $("#TipoCorreo2").val();
 var DatosFiscales = $("#DatosFiscales").val();
 var DireccionOficina = $("#DireccionOficina").val();
 var DireccionFiscal = $("#DireccionFiscal").val();
 var Ciudad = $("#Ciudad").val();
 var Pais = $("#Pais").val();
-$.post(baseurl+"cEmpresa/updateEmpresa/",
-  { idEmpresa:idEmpresa,
+  
+  $.post(baseurl+"cEmpresa/updateEmpresa/",
+  {  
+    idEmpresa:idEmpresa,
+    ContactoEmp:ContactoEmp,
     NombreEmpresa:NombreEmpresa,
     SPP:SPP,
     Abreviacion:Abreviacion,
     Tipo:Tipo,
     Representante:Representante,
-    Contacto:Contacto,
     Skype:Skype,
     SitioWeb:SitioWeb,
     Telefono1:Telefono1,
-    TipoTelefono1:TipoTelefono1,
     Telefono2:Telefono2,
-    TipoTelefono2:TipoTelefono2,
     Correo1:Correo1,
-    TipoCorreo1:TipoCorreo1,
     Correo2:Correo2,
-    TipoCorreo2:TipoCorreo2,
     DatosFiscales:DatosFiscales,
     DireccionOficina:DireccionOficina,
     DireccionFiscal:DireccionFiscal,

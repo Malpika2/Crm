@@ -155,16 +155,7 @@
                 <input type="text" class="form-control col-md-6 formsNP2" id="Ciudad" name="Ciudad" placeholder="Ciudad">
                 <input type="text" class="form-control col-md-6 formsNP2" id="Pais" name="Pais" placeholder="Pais:">
               </div>
-<!--               <div class="input-group">
-                <span class="input-group-addon"><b>Direccion<br>Fiscal</b></span>
-                <input type="text" class="col-md-8 formsNP2" id="Calle" name="Calle" placeholder="Calle">
-                <input type="text" class="col-md-4 formsNP2" id="Numero" name="Numero" placeholder="Número">
-                <input type="hidden" class="col-md-4 formsNP2" id="Colonia" name="Colonia" placeholder="Colonia" value="">
-                <input type="hidden" class="col-md-4 formsNP2" id="Municipio" name="Municipio" placeholder="Municipio" value="">
-                <input type="text" class="col-md-4 formsNP2" id="Estado" name="Estado" placeholder="Estado">
-                <input type="text" class="col-md-4 formsNP2" id="Cp" name="Cp" placeholder="C.P:">
-                <input type="text" class="col-md-4 formsNP2" id="Pais" name="Pais" placeholder="Pais:">
-              </div> -->
+
               <input type="submit" name="registrarEmpresa" class="divsNP formsNP btn btn-primary btn-block" value="Registrar Empresa">
         </div>
         </form>

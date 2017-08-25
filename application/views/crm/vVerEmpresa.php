@@ -62,7 +62,7 @@
                 <?php endif ?>
 
               </ul>
-                <button id="btn_Editar" class="btn btn-primary btn-block " data-toggle="modal" data-target="#ModalEditarEmp">Editar</button>
+                <button id="btn_Editar" class="btn btn-primary btn-block " data-toggle="modal" data-target="#ModalEditarEmp2">Editar</button>
             </div>
             <!-- /.box-body -->
           </div>
@@ -163,6 +163,164 @@
         </div>
       </div>
     </section>
+
+
+
+<div id="ModalEditarEmp2" class="modal modal-default fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content modal-lg">
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Editar Empresa</h4>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+              <div class="row">
+                  <div class="col-md-6">
+                    <div class="col-md-12 divsNP">
+                      <div class="input-group">
+                        <span class="input-group-addon"><b>Nombre Empresa</b></span>
+                        <input class="form-control" type="text" class="formsNP" id="NombreEmpresa" name="NombreEmpresa" style="border:1px solid #d2d6de;" value=" <? echo $row_Empresas->NombreEmpresa; ?>" disabled>
+                      </div>
+                    </div>
+                    <div class="col-md-12 divsNP">
+                      <div class="input-group">
+                        <span class="input-group-addon"><b>SPP<br><small>(Opcional)</small></b></span>
+                        <input type="text" class="form-control formsNP" id="SPP" name="SPP" value="<?php echo $row_Empresas->spp;?>">
+                      </div>
+                    </div>
+                    <div class="col-md-12 divsNP">
+                      <div class="input-group">
+                        <span class="input-group-addon"><b>Abreviación</b></span>
+                        <input type="text" class="form-control formsNP" id="Abreviacion" name="Abreviacion" value="<?php echo $row_Empresas->Abreviacion;?>">
+                      </div>
+                    </div>
+                    <div class="col-md-12 divsNP">
+                      <div class="input-group">
+                        <span class="input-group-addon"><b>Tipo</b></span>
+                        <select class=" select2 form-control formsNP" id="Tipo" name="Tipo" required="">
+                          <option selected="true" disabled="false" value="<?php echo $row_Empresas->Tipo;?>"><?php echo $row_Empresas->Tipo;?></option>
+                          <option value="Comprador final">Comprador Final</option>
+                          <option value="Intermediario">Intermediario</option>
+                          <option value="Maquilador">Maquilador</option>
+                          <option value="Organizador de Pequeños Productores">Organizador de Pequeños Productores</option>
+                          <option value="Organismo de Certificacion">Organismo de Certificacion</option>
+                      </select>              
+                      </div>
+                    </div>
+                    <div class="col-md-12" style="margin: 0px; padding: 0px;">
+                      <div class="col-md-12 divsNP">
+                         <div class="input-group">
+                          <span class="input-group-addon"><b>Skype</b></span>
+                          <input type="text" class="form-control formsNP" id="Skype" name="Skype" value="<?php echo $row_Empresas->Skype;?>" style="color:black;">
+                        </div>
+                      </div>
+                      <div class="col-md-12 divsNP">
+                        <div class="input-group">
+                          <span class="input-group-addon"><b>Sitio Web</b></span>
+                          <input type="text" class="form-control formsNP" id="SitioWeb" name="SitioWeb" value="<?php echo $row_Empresas->SitioWeb;?>">
+                        </div>
+                      </div>
+                      <div class="col-md-12 divsNP">
+                        <div class="input-group">
+                        <span class="input-group-addon"><b>Datos Fiscales</b></span>
+                          <textarea type="text" class="form-control col-md-12 formsNP2" id="DatosFiscales" name="DatosFiscales" style="color:black;"><?php echo $row_Empresas->DatosFiscales;?></textarea> 
+                        </div>
+                      </div>
+                    </div>
+                </div><!--fincol-md-12 -->
+
+                <div class="col-md-6">
+                    <div class="col-md-12 divsNP" style="border:.5px solid #d2d6de; padding-bottom: 1em;">
+                        <div class="col-md-12 divsNP">
+                            <button style="padding: 0px" type="button" data-toggle="modal" data-target="#ModalNPersona" id="btnAgregarNuevo" class="btn col-md-2" data-toggle="tooltip" title="AGREGAR NUEVO"><i class="fa fa-plus-square fa-2x"></i></button>
+                            <label class="col-md-8 h4 text-center">REPRESENTANTE</label>
+                            <button style="padding: 0px" type="button" id="btnBuscarExistente" class="btn col-md-2" data-toggle="tooltip" title="BUSCAR EXISTENTE"><i class="fa fa-search fa-2x"></i></button>
+                        </div>
+                        <div class="col-md-12 divsNP">
+                            <div class="input-group">
+                               <span class="input-group-addon">
+                                <b>Representante</b></span>
+                              <input type="text" class="col-md-12 form-control" id="RepresentanteEmp" autocomplete="off" value="<?php echo $row_Persona->Nombre ?>">
+                              <input type="hidden" class="col-md-12 form-control" id="idRepresentanteEmp" name="idRepresentanteEmp" value="<?php echo $row_Persona->idPersona; ?>">
+                              <select class="hidden form-control formsNP selectpicker" id="Representante" name="Representante" required>
+                                <option selected="true" disabled="true" value="0">Lista de Representantes</option>
+                              </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12 divsNP">
+                            <button style="padding: 0px" type="button" data-toggle="modal" data-target="#ModalNPersona" id="btnAgregarNuevoCont" class="btn col-md-2" data-toggle="tooltip" title="AGREGAR NUEVO"><i class="fa fa-plus-square fa-2x"></i></button>
+                            <label class="col-md-8 h4 text-center">CONTACTO</label>
+                            <button style="padding: 0px" type="button" id="btnBuscarExistenteCont" class="btn col-md-2" data-toggle="tooltip" title="BUSCAR EXISTENTE"><i class="fa fa-search fa-2x"></i></button>
+                            <div class="input-group" style="width: 100%">
+                              <span class="input-group-addon"><b>Contacto</b></span>
+                              <select class="js-example-programmatic-multi form-control select2" id="ContactoEmp" name="ContactoEmp[]" multiple="multiple" maximumSelectionLength="2">
+                                <?php foreach($row_Contactos as $Contacto){ ?>
+                                  <option selected="true" value="<?php echo $Contacto->idPersona ?>">
+                                    <?php echo $Contacto->Nombre; ?>
+                                  </option>
+                              <?php  }?>
+                              </select>
+
+
+                              <select class="hidden form-control formsNP js-example-programmatic-multi" id="Contacto" name="Contacto" required>
+                                <option selected="true" disabled="true" value="0">Lista de Contactos</option>
+                              </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-6 divsNP">
+                          <div class="input-group">
+                            <span class="input-group-addon"><b>1º Telefono</b></span>
+                            <input type="text" class="form-control formsNP" id="Telefono1" name="Telefono1" value="<?php echo $row_Empresas->Telefono;?>">
+                            <input type="text" class="form-control text-center" disabled="true" name="" value="Personal">
+                          </div>
+                        </div>
+                        <div class="col-md-6 divsNP">
+                              <div class="input-group">
+                                <span class="input-group-addon"><b>2º Telefono</b></span>
+                                <input type="text" class="form-control formsNP" id="Telefono2" name="Telefono2" value="<?php echo $row_Empresas->Telefono2;?>">
+                                <input type="text" class="form-control text-center" disabled="true" name="" value="Trabajo">
+                              </div>
+                        </div>
+                        <div class="col-md-6 divsNP">
+                              <div class="input-group">
+                                <span class="input-group-addon"><b>1º Email</b></span>
+                                <input type="text" class="form-control formsNP" id="Correo1" name="Correo1" value="<?php echo $row_Empresas->Email;?>">
+                                <input type="text" class="form-control text-center" disabled="true" name="" value="Personal">
+                              </div>
+                        </div>
+                        <div class="col-md-6 divsNP">
+                              <div class="input-group">
+                                <span class="input-group-addon"><b>2º Email</b></span>
+                                <input type="text" class="form-control formsNP" id="Correo2" name="Correo2" value="<?php echo $row_Empresas->Email2;?>">
+                                <input type="text" class="form-control text-center" disabled="true" name="" value="Trabajo">
+                              </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 divsNP">
+                      <div class="input-group">
+                        <span class="input-group-addon"><b>Direccion</b></span>
+                        <input type="text" class="form-control col-md-12 formsNP2" id="DireccionOficina" name="DireccionOficina" placeholder="Direccion Oficina" 
+                        value="<?php echo $row_Empresas->DireccionOficina;?>">
+                        <input type="text" class="form-control col-md-12 formsNP2" id="DireccionFiscal" name="DireccionFiscal" placeholder="Direccion Fiscal" value="<?php echo $row_Empresas->DireccionFiscal;?>">
+
+                        <input type="text" class="form-control col-md-6 formsNP2" id="Ciudad" name="Ciudad" placeholder="Ciudad" value="<?php echo $row_Empresas->Ciudad;?>">
+                        <input type="text" class="form-control col-md-6 formsNP2" id="Pais" name="Pais" placeholder="Pais:" value="<?php echo $row_Empresas->Pais;?>">
+                        <input type="hidden" class="col-md-6 formsNP2" id="idEmpresa"  value="<?php echo $row_Empresas->idEmpresa; ?>" style="color:black;">
+
+                      </div>
+                      <input onclick="GuardarEditEmpresa();" type="submit" id="btn_GuardarEditar" class="divsNP formsNP btn btn-primary btn-block" value="Guardar" data-dismiss="modal">
+                </div>
+                      </div>
+                  </div>
+        </div> <!-- modal-body -->
+    </div>
+  </div>
+</div>
+
 <div id="ModalEditarEmp" class="modal modal-success fade" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->
@@ -308,7 +466,7 @@
                 <input type="text" class="form-control col-md-6 formsNP2" id="Pais" name="Pais" value="<?php echo $row_Empresas->Pais; ?>" style="color:black;">
                 <input type="hidden" class="col-md-6 formsNP2" id="idEmpresa"  value="<?php echo $row_Empresas->idEmpresa; ?>" style="color:black;">
               </div>
-              <input onclick="GuardarEditEmpresa();" type="submit" id="btn_GuardarEditar" class="divsNP formsNP btn btn-primary btn-block" value="Guardar" data-dismiss="modal">
+              <input onclick="GuardarEditEmpresa2();" type="submit" id="btn_GuardarEditar" class="divsNP formsNP btn btn-primary btn-block" value="Guardar" data-dismiss="modal">
         </div>
       </div>
       </div>
@@ -319,6 +477,7 @@
     </div>
   </div>
 </div>
+
 <div id="ModalCancelar" class="modal modal-success fade" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->
@@ -341,6 +500,7 @@
     </div>
   </div>
 </div>
+
 <div id="ModalCancelarNg" class="modal modal-success fade" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->
@@ -536,6 +696,109 @@
         <button type="submit" class="btn btn-outline">Guardar Tarea</button>
       </div>
     </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="ModalNPersona" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Registrar Empresa > Registrar Persona</h4>
+      </div>
+      <div class="modal-body">
+      <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <button type="button" class="btn btn-app pull-left" onclick="limpiarFormularioPersona()">
+            <i class="glyphicon glyphicon-erase"></i>Limpiar
+          </button> 
+          <h3>REGISTRAR PERSONA</h3>
+        </div>
+        <form id="formPersona" method="POST" action="<?php echo base_url();?>cPersona/guardar2">
+        <div class="col-md-12 divsNP">
+              <div class="input-group">
+                <span class="input-group-addon"><b>Nombre Completo</b></span>
+                <input type="text" class="formsNP" id="Nombre" name="Nombre" placeholder="Nombre(s) Apellidos"/>
+              </div>
+        </div>
+        <div class="col-md-6 divsNP">
+              <div class="input-group">
+                <span class="input-group-addon"><b>Cargo</b></span>
+                <select class="form-control Cargo select2 formsNP" id="Cargo" name="Cargo">
+                  <option selected="true" value="Representante">Representante</option>
+                  <option selected="true" value="Contacto">Contacto</option>
+                </select>
+              </div>
+        </div>
+        <div class="col-md-6 " style="padding: 0px;">
+        <div class="col-md-12 divsNP">
+              <div class="input-group">
+                <span class="input-group-addon"><b>Puesto</b></span>
+                <input type="text" class="form-control Puesto formsNP" id="Puesto" name="Puesto">
+              </div>
+        </div>
+        </div>
+        <div class="col-md-3 divsNP">
+              <div class="input-group">
+                <span class="input-group-addon"><b>1º Telefono</b></span>
+                <input type="text" class="form-control Telefono1 formsNP" id="Telefono1" name="Telefono1">
+                <input type="text" class="form-control form-control formsNP text-center" disabled="true" name="" value="Personal">
+
+              </div>
+        </div>
+        <div class="col-md-3 divsNP">
+              <div class="input-group">
+                <span class="input-group-addon"><b>2º Telefono</b></span>
+                <input type="text" class="form-control Telefono2  formsNP" id="Telefono2" name="Telefono2">
+                <input type="text" class="form-control formsNP text-center" disabled="true" name="" value="Trabajo">
+
+              </div>
+        </div>
+        <div class="col-md-3 divsNP">
+              <div class="input-group">
+                <span class="input-group-addon"><b>1º Email</b></span>
+                <input type="text" class="Correo1 form-control formsNP" id="Correo1" name="Correo1">
+                <input type="text" class="form-control formsNP text-center" disabled="true" name="" value="Personal">
+              </div>
+        </div>
+        <div class="col-md-3 divsNP">
+              <div class="input-group">
+                <span class="input-group-addon"><b>2º Email</b></span>
+                <input type="text" class="Correo2 form-control formsNP" id="Correo2" name="Correo2">
+                <input type="text" class="form-control formsNP text-center" disabled="true" name="" value="Trabajo">
+              </div>
+        </div>
+        <div class="col-md-12 divsNP">
+              <div class="input-group">
+                <span class="input-group-addon"><b>Skype</b></span>
+                <input type="text" class="form-control formsNP" id="Skype" name="Skype">
+              </div>
+        </div>
+        <div class="col-md-12 divsNP">
+              <div class="input-group">
+                <span class="input-group-addon"><b>Direccion</b></span>
+                <input type="text" class=" form-control Calle col-md-12 formsNP2" id="Calle" name="Calle" placeholder="Dirección">
+                <input type="hidden" class="form-control col-md-4 formsNP2" id="Numero" name="Numero" placeholder="Número">
+                <input type="hidden" class="form-control col-md-4 formsNP2" id="Colonia" name="Colonia" placeholder="Colonia" value="">
+
+                <input type="hidden" class="form-control col-md-4 formsNP2" id="Municipio" name="Municipio" placeholder="Municipio" value="">
+                <input type="text" class=" form-control col-md-6 formsNP2" id="Estado" name="Estado" placeholder="Ciudad">
+                <input type="hidden" class="form-control col-md-4 formsNP2" id="Cp" name="Cp" placeholder="C.P:">
+                <input type="text" class=" form-control Pais col-md-6 formsNP2" id="Pais" name="Pais" placeholder="Pais:">
+              </div>
+              <input type="submit" id="registrarPersona" name="registrarPersona" class="divsNP formsNP btn btn-primary btn-block" value="Registrar Persona">
+        </div>
+        </form>
+        </div> <!-- row -->
+      </div>
+      </div><!--  modal-bod7 -->
+      <div class="modal-footer">
+        <button id="btnCerrarModal" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
     </div>
   </div>
 </div>

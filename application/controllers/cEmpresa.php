@@ -220,59 +220,96 @@ class cEmpresa extends CI_Controller
 		$result=$this->mEmpresa->EmpresaInactiva($idEmpresa,$StatusFinalE);
 	}
 	public function updateEmpresa(){
-$param['idEmpresa'] = $this->input->post('idEmpresa');
-$param['NombreEmpresa'] = $this->input->post('NombreEmpresa');
-$param['SPP'] = $this->input->post('SPP');
-$param['Abreviacion'] = $this->input->post('Abreviacion');
-$param['Tipo'] = $this->input->post('Tipo');
-$param['Representante'] = $this->input->post('Representante');
-$param['Contacto'] = $this->input->post('Contacto');
-$param['Skype'] = $this->input->post('Skype');
-$param['SitioWeb'] = $this->input->post('SitioWeb');
-$param['Telefono1'] = $this->input->post('Telefono1');
-$param['TipoTelefono1'] = $this->input->post('TipoTelefono1');
-$param['Telefono2'] = $this->input->post('Telefono2');
-$param['TipoTelefono2'] = $this->input->post('TipoTelefono2');
-$param['Correo1'] = $this->input->post('Correo1');
-$param['TipoCorreo1'] = $this->input->post('TipoCorreo1');
-$param['Correo2'] = $this->input->post('Correo2');
-$param['TipoCorreo2'] = $this->input->post('TipoCorreo2');
-$param['DatosFiscales'] = $this->input->post('DatosFiscales');
-$param['DireccionOficina'] = $this->input->post('DireccionOficina');
-$param['DireccionFiscal'] = $this->input->post('DireccionFiscal');
-$param['Ciudad'] = $this->input->post('Ciudad');
-$param['Pais'] = $this->input->post('Pais');
-$param['Telefono2'] = $this->input->post('Telefono2');
-$param['Email2'] = $this->input->post('Correo2');
 
-$paramTel['Telefono1'] = $this->input->post('Telefono1');
-$paramTel['TipoTelefono1'] = $this->input->post('TipoTelefono1');
-$paramTel['Telefono2'] = $this->input->post('Telefono2');
-$paramTel['TipoTelefono2'] = $this->input->post('TipoTelefono2');
 
-$paramCor['Correo1'] = $this->input->post('Correo1');
-$paramCor['TipoCorreo1'] = $this->input->post('TipoCorreo1');
-$paramCor['Correo2'] = $this->input->post('Correo2');
-$paramCor['TipoCorreo2'] = $this->input->post('TipoCorreo2');
+		$param['NombreEmpresa'] = $this->input->post('NombreEmpresa');
+		$param['Tipo'] = $this->input->post('Tipo');
+		$param['Representante'] =$this->input->post('Representante');
+		$param['Skype'] = $this->input->post('Skype');
+		$param['SitioWeb'] = $this->input->post('SitioWeb');
+		$param['DireccionOficina'] = $this->input->post('DireccionOficina');
+		$param['DireccionFiscal'] = $this->input->post('DireccionFiscal');
+		$param['Pais'] = $this->input->post('Pais');
+		$param['Ciudad'] = $this->input->post('Ciudad');
+		$param['DatosFiscales'] = $this->input->post('DatosFiscales');
+		$param['SPP'] = $this->input->post('SPP');
+		$param['Abreviacion'] = $this->input->post('Abreviacion');
+		$param['Email'] = $this->input->post('Correo1');
+		$param['Telefono'] = $this->input->post('Telefono1');
+		$param['Telefono2'] = $this->input->post('Telefono2');
+		$param['Email2'] = $this->input->post('Correo2');
+		$param['idEmpresa'] = $this->input->post('idEmpresa');
 
-$ultimaEmpresa=$this->mEmpresa->updateEmpresa($param);
-
-		if ($ultimaEmpresa>0) {
-
-			$paramTel['idPersona'] = NULL;
-			$paramCor['idPersona'] = NULL;
-
-			$paramTel['idUsuario'] = NULL;
-			$paramCor['idUsuario'] = NULL;
-
-			$paramTel['idEmpresa'] = $this->input->post('idEmpresa');
-			$paramCor['idEmpresa'] = $this->input->post('idEmpresa');
-
-			// $this->mTelefono->updateTelefono($paramTel);
-			// $this->mCorreo->updateCorreo($paramCor);
+		if(isset($_POST['ContactoEmp'])){
+		foreach ($_POST['ContactoEmp'] as $contactos_value){
+			$param['Contacto'] = $contactos_value.','.$param['Contacto'];
+			}
 		}
-return $ultimaEmpresa;
 
-	}
+		$updateEmpresa=$this->mEmpresa->updateEmpresa($param);
+
+		if(isset($_POST['ContactoEmp'])){
+			$this->mEmpresa->UpdateBorrarContactos($contactos_value,$param);
+			foreach ($_POST['ContactoEmp'] as $contactos_value){
+				$this->mEmpresa->UpdateContactos($contactos_value,$param);
+				}
+			}
+
+		}
+
+// $param['idEmpresa'] = $this->input->post('idEmpresa');
+// $param['NombreEmpresa'] = $this->input->post('NombreEmpresa');
+// $param['SPP'] = $this->input->post('SPP');
+// $param['Abreviacion'] = $this->input->post('Abreviacion');
+// $param['Tipo'] = $this->input->post('Tipo');
+// $param['Representante'] = $this->input->post('Representante');
+// $param['Contacto'] = $this->input->post('Contacto');
+// $param['Skype'] = $this->input->post('Skype');
+// $param['SitioWeb'] = $this->input->post('SitioWeb');
+// $param['Telefono1'] = $this->input->post('Telefono1');
+// $param['TipoTelefono1'] = $this->input->post('TipoTelefono1');
+// $param['Telefono2'] = $this->input->post('Telefono2');
+// $param['TipoTelefono2'] = $this->input->post('TipoTelefono2');
+// $param['Correo1'] = $this->input->post('Correo1');
+// $param['TipoCorreo1'] = $this->input->post('TipoCorreo1');
+// $param['Correo2'] = $this->input->post('Correo2');
+// $param['TipoCorreo2'] = $this->input->post('TipoCorreo2');
+// $param['DatosFiscales'] = $this->input->post('DatosFiscales');
+// $param['DireccionOficina'] = $this->input->post('DireccionOficina');
+// $param['DireccionFiscal'] = $this->input->post('DireccionFiscal');
+// $param['Ciudad'] = $this->input->post('Ciudad');
+// $param['Pais'] = $this->input->post('Pais');
+// $param['Telefono2'] = $this->input->post('Telefono2');
+// $param['Email2'] = $this->input->post('Correo2');
+
+// $paramTel['Telefono1'] = $this->input->post('Telefono1');
+// $paramTel['TipoTelefono1'] = $this->input->post('TipoTelefono1');
+// $paramTel['Telefono2'] = $this->input->post('Telefono2');
+// $paramTel['TipoTelefono2'] = $this->input->post('TipoTelefono2');
+
+// $paramCor['Correo1'] = $this->input->post('Correo1');
+// $paramCor['TipoCorreo1'] = $this->input->post('TipoCorreo1');
+// $paramCor['Correo2'] = $this->input->post('Correo2');
+// $paramCor['TipoCorreo2'] = $this->input->post('TipoCorreo2');
+
+// $ultimaEmpresa=$this->mEmpresa->updateEmpresa($param);
+
+// 		if ($ultimaEmpresa>0) {
+
+// 			$paramTel['idPersona'] = NULL;
+// 			$paramCor['idPersona'] = NULL;
+
+// 			$paramTel['idUsuario'] = NULL;
+// 			$paramCor['idUsuario'] = NULL;
+
+// 			$paramTel['idEmpresa'] = $this->input->post('idEmpresa');
+// 			$paramCor['idEmpresa'] = $this->input->post('idEmpresa');
+
+// 			// $this->mTelefono->updateTelefono($paramTel);
+// 			// $this->mCorreo->updateCorreo($paramCor);
+// 		}
+// return $ultimaEmpresa;
+
+// 	}
 
 }

@@ -82,7 +82,7 @@ $this->db->update('Empresas');
 	 }
 	 public function guardarContactos($s,$param){
 		$campos = array(
-			// 'idTarea' => null,
+			'idTarea' => null,
 			'idEmpresa' => $param['ultimaEmpresa'],
 			'idUsuario' =>null,
 			'idPersona' => $s);//Personas a participar
@@ -90,5 +90,41 @@ $this->db->update('Empresas');
 		if($this->db->affected_rows()>0){
 			return true;
 		}else {return false;}
+	 }
+	 public function UpdateBorrarContactos($s,$param){
+	 		 	$camposD = array(
+	 		'idEmpresa'=>0,
+	 		'idTarea' =>0,
+	 		'idPersona' =>0,
+	 		'idUsuario'=>0);
+	 	$this->db->where('idEmpresa',$param['idEmpresa']);
+	 	$this->db->where('idTarea',0);
+	 	$this->db->where('idUsuario',NULL);
+	 	$this->db->update('Participantes_Tareas',$camposD);
+
+	 	try {
+	 	$this->db->where('idEmpresa',$param['idEmpresa']);
+	 	$this->db->where('idTarea',null);
+	 	$this->db->where('idEmpresa',null);
+	 	$this->db->where('idUsuario',null);
+	 	$this->db->where('idPersona',null);
+	 	$this->db->delete('Participantes_Tareas');
+	 	} catch (Exception $e) {
+	 		
+	 	}
+	 }
+	 public function UpdateContactos($s,$param){
+	 	$campos = array(
+				'idEmpresa' => $param['idEmpresa'],
+				'idPersona' => $s);
+	 	$this->db->insert('Participantes_Tareas',$campos);
+	 	if($this->db->affected_rows()>0){
+			return true;
+		}else {return false;}
+
+	 	// $campos = array(
+	 	// 	'idEmpresa' =>$param['idEmpresa'],
+	 	// 	'idPersona' => $s);
+	 	// $this->db->where('idEmpresa',$param['idEmpresa']);
 	 }
 }
