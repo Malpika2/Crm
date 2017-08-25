@@ -8,6 +8,7 @@ class cGetEmpresas extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('crm/mGetEmpresas');
+		$this->load->model('crm/mAutoCompletado');
 		$this->load->helper('text');
 	}
 	public function getEmpresas(){
@@ -17,6 +18,16 @@ class cGetEmpresas extends CI_Controller
 	}
 	public function getEmpresasAutoComplete(){
 		$resultado = $this->mGetEmpresas->getEmpresasAutoComplete();
+		$resultado = json_encode($resultado);
+		echo $resultado;
+	}
+		public function autoCompletado(){
+		$resultado = $this->mAutoCompletado->buscador();
+		$resultado = json_encode($resultado);
+		echo $resultado;
+	}
+	public function autoCompletadoPersonas(){
+		$resultado = $this->mAutoCompletado->buscadorP();
 		$resultado = json_encode($resultado);
 		echo $resultado;
 	}

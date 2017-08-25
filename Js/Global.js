@@ -1,7 +1,7 @@
 $(document).ready(function() {
 var options = {
-	url: baseurl+"cAutoCompletado/AutoCompletado",
-	getValue:"NombreEmpresa",
+	url: baseurl+"cGetEmpresas/autoCompletado/",
+	getValue:"Nombre",
 	list: {
 		maxNumberOfElements: 5,
 		match: {
@@ -29,7 +29,7 @@ $("#BuscadorHeader").easyAutocomplete(options);
 
 $(document).ready(function() {
 var options = {
-	url: baseurl+"cAutoCompletado/AutoCompletadoPersonas",
+	url: baseurl+"cGetEmpresas/autoCompletadoPersonas/",
 	getValue:"Nombre",
 	list: {
 		maxNumberOfElements: 5,

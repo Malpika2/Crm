@@ -6,6 +6,7 @@ class mAutoCompletado extends CI_Model
 	function __construct()
 	{
 		parent::__construct();
+		$this->load->database();
 	}	
 	public function buscador(){
 			$s = $this->db->get('Empresas');

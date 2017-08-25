@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <?php
 
 class cAutoCompletado extends CI_Controller
@@ -9,12 +10,12 @@ class cAutoCompletado extends CI_Controller
 		$this->load->model('crm/mAutoCompletado');
 		$this->load->helper('text');
 	}
-	public function AutoCompletado(){
+	public function autoCompletado(){
 		$resultado = $this->mAutoCompletado->buscador();
 		$resultado = json_encode($resultado);
 		echo $resultado;
 	}
-	public function AutoCompletadoPersonas(){
+	public function autoCompletadoPersonas(){
 		$resultado = $this->mAutoCompletado->buscadorP();
 		$resultado = json_encode($resultado);
 		echo $resultado;

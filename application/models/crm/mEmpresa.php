@@ -72,7 +72,7 @@ $this->db->update('Empresas');
 			'DatosFiscales' => $param['DatosFiscales'],
 			'Abreviacion' => $param['Abreviacion'],
 			'Email' => $param['Email'],
-			'Telefono' => $param['Telefono1'],
+			'Telefono' => $param['Telefono'],
 			'Email2' => $param['Email2'],
 			'Telefono2' => $param['Telefono2']);
 
@@ -82,7 +82,7 @@ $this->db->update('Empresas');
 	 }
 	 public function guardarContactos($s,$param){
 		$campos = array(
-			'idTarea' => null,
+			'idTarea' => 0,
 			'idEmpresa' => $param['ultimaEmpresa'],
 			'idUsuario' =>null,
 			'idPersona' => $s);//Personas a participar

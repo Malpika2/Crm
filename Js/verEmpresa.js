@@ -1,29 +1,12 @@
-$('#form, #fat, #formTarea').submit(function() {
-          $.ajax({
-              type: 'POST',
-              url: $(this).attr('action'),
-              data: $(this).serialize(),
-              success: function(data) { 
-            $("#formTarea")[0].reset();
-            $("#ModalTarea").modal("hide");
-            $("#Asignados").val(null).trigger("change");
-            $('#LineaTareas').empty();
-            recargarTareas();
-              }
-          });
-          
-          return false;
-      });
-
-
 GuardarEditEmpresa = function(){
 var idEmpresa = $("#idEmpresa").val();
 var ContactoEmp = $("#ContactoEmp").val();
 var NombreEmpresa = $("#NombreEmpresa").val();
 var SPP = $("#SPP").val();
 var Abreviacion = $("#Abreviacion").val();
-var Tipo = $("#Tipo").val();
-var Representante = $("#Representante").val();
+// var Tipo = $("#Tipo").val();
+var Tipo = $('#Tipo').val();
+var Representante = $("#idRepresentanteEmp").val();
 var Skype = $("#Skype").val();
 var SitioWeb = $("#SitioWeb").val();
 var Telefono1 = $("#Telefono1").val();
