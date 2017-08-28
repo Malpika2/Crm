@@ -1,5 +1,5 @@
 .skin-blue .main-header .navbar {
-    background-color: #7a9eb1;
+    background-color: #2a99d5;
 }
 .skin-blue .sidebar-form input[type="text"], .skin-blue .sidebar-form .btn {
     box-shadow: none;
@@ -12,7 +12,7 @@
 	border-radius: 0px 15px 15px 0px;
 }
 .skin-blue .main-header .logo {
-    background-color: #7a9eb1;
+    background-color: #2a99d5;
     color: #fff;
     border-bottom: 0 solid transparent;
 }
@@ -23,32 +23,32 @@
     background-color:#628597;
 }
 .skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
-    background-color: #0e2d3e00;
+    background-color:#2181b5;
     border:1px solid #7a9eb1;
 }
 .skin-blue .sidebar-menu > li.header {
     color: #4b646f;
-    background: #7a9eb1 ;
+    background: #00cb7b ;
 }
 .skin-blue .sidebar a {
-    color: #50c8dc;
+    color: #fff;
 }
 .user-panel {
     position: relative;
     width: 100%;
     padding: 10px;
     overflow: hidden;
-    background-color: #7a9eb1;
+    background-color: #2a99d5;
 }
 .skin-blue .sidebar-menu > li:hover > a, .skin-blue .sidebar-menu > li.active > a {
-    color: #50c8dc;
-    background: #f9f8eb;
+    color: #2181b5;
+    background: #fff;
     border-left-color: #ff8d68;
     border-bottom: 2px solid #7a9eb1;
     border-top:2px solid #7a9eb1;
 }
 #cuerpo{
-	background-color: #fffdec33;
+	background-color: #fff;
 }
 /*vLogin*/
 .centrado {
@@ -61,12 +61,17 @@
 }
 .imp_login{
 	border-radius: 10px;
-	margin: 10px;
-	height: 40px;
+	height: 47px;
+  padding: 13px;
+  margin: 15px 10px 15px 10px;
+
 }
 /*Nueva Persona*/
       .divsNP{
         margin-top: 15px;
+      }
+     .divsNP2{
+        margin-top: .5%;
       }
       .formsNP{
         height: 40px;

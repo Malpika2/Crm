@@ -19,27 +19,17 @@ padding: 0px !important;
 font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif !important;
 
 }
-/*.addon2P{
-  padding: 0px !important;
-  margin: 0px !important;
-  border-radius: 10px 1px 1px 10px !important;
-  background-color: #f0f0f0 !important;
-
+.select2 {
+  /*box-sizing: border-box;*/
+  display: initial;
+  /*margin: 0;*/
+  /*position: relative;*/
+  /*vertical-align: middle;*/
 }
-.addon2E{
-  padding: 0px !important;
-  margin: 0px !important;
-  border-radius: 1px 10px 10px 1px !important;
-  background-color: #f0f0f0 !important ;
-
+.easy-autocomplete {
+  position: relative;
+  display: contents;
 }
-.btn-Emp{
-  border-radius: 1px 10px 10px 1px !important;
-
-}
-.btn-Per{
-  border-radius: 10px 1px 1px 10px !important;
-}*/
 </style>
 <!DOCTYPE html>
 <html>
@@ -113,94 +103,95 @@ font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif !impo
   <!--     <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
         <span class="sr-only">Toggle navigation</span>
       </a> -->
-      <div class="col-md-10 col-sm-12 DivsNP">
-        <div class="col-md-6">
-          <input id="BuscadorHeaderP" class="form-control col-md-12" type="text" />
+      <div class="col-md-9 text-center DivsNP2">
+        <div class="col-md-6 DivsNP2">
+          <input id="BuscadorHeaderP" class="form-control col-md-12" type="text" placeholder="Buscar Persona" />
         </div>
 
-        <div class="col-md-6">          
+        <div class="col-md-6 DivsNP2">          
             <input type="text" class="form-control col-md-12" name="BuscadorHeader" id="BuscadorHeader" placeholder="Buscar Empresas">
         </div>
       </div>
-      <div class="navbar-custom-menu">
+      <div class="col-md-3 DivsNP2">
+      <div class="navbar-custom-menu DivsNP2" style="float: left; padding: 0% 0px 0px 0px;">
         <ul class="nav navbar-nav">
           <!-- Notifications: style can be found in dropdown.less -->
-          <li class="dropdown notifications-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa  fa-plus-square fa-2x"></i>
-            </a>
-            <ul class="dropdown-menu" style="height: auto">
-              <li class="header">Crear Nuevo</li>
-              <li>
-                <!-- inner menu: contains the actual data -->
-                <ul class="menu">
+
+              <li class="dropdown notifications-menu">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" style="border-radius: 10px; margin:0px 10px 0px 0px; ">Crear
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
                   <li>
                     <a href="<?php echo base_url();?>cPersona">
                       <i class="fa fa-user-plus text-aqua"></i>Persona
                     </a>
                   </li>
+                    <li class="divider"></li>
                   <li>
                     <a href="<?php echo base_url();?>cEmpresa">
                       <i class="fa fa-university text-yellow"></i>Empresa
                     </a>
                   </li>
+                    <li class="divider"></li>
                   <li>
                     <a href="<?php echo base_url();?>cNegociacion/nuevaNegociacion">
                       <i class="fa fa-briefcase text-red"></i>Objetivo
                     </a>
                   </li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <!-- Tasks: style can be found in dropdown.less -->
-          <li class="dropdown notifications-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa  fa-minus-square fa-2x"></i>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">Eliminar</li>
-              <li>
-                <!-- inner menu: contains the actual data -->
-                <ul class="menu">
+                  </ul>
+                </div>
+              </li>              
+              <li class="dropdown notifications-menu">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-danger dropdown-toggle btn-menuHeader" data-toggle="dropdown" style="border-radius: 10px; margin: 0px 5px;">Eliminar
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
                   <li>
                     <a href="<?php echo base_url();?>cPersona/verEliminarPersona">
                       <i class="fa  fa-user-times text-aqua"></i>Persona
                     </a>
                   </li>
+                    <li class="divider"></li>
                   <li>
                     <a href="<?php echo base_url();?>cEmpresa/verEliminarEmpresa">
                       <i class="fa  fa-university text-yellow"></i>Empresa
                     </a>
                   </li>
+                    <li class="divider"></li>
                   <li>
                     <a href="<?php echo base_url();?>cNegociacion/verEliminarNegociacion">
                       <i class="fa fa-briefcase text-red"></i>Objetivo
                     </a>
                   </li>
-                </ul>
+                  </ul>
+                </div>
               </li>
-            </ul>
-          </li>
-
-          <!-- User Account: style can be found in dropdown.less -->
-          <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="<?php echo base_url();?>assets/dist/img/avatar04.png" class="user-image" alt="User Image">
+   <!--        <!-- User Account: style can be found in dropdown.less -->
+          <!-- <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding: 4px 0px 0px 0px; margin: 0px 5px 0px 5px;"> -->
+<!--               <img src="<?php echo base_url();?>assets/dist/img/avatar04.png" class="user-image" alt="User Image">
+ -->
+              <!-- &nbsp;<i class="fa fa-user fa-2x"></i>
               <span class="hidden-xs"></span>
             </a>
             <ul class="dropdown-menu">
-              <!-- User image -->
-              <li class="user-header">
-                <img src="<?php echo base_url();?>assets/dist/img/avatar04.png" class="img-circle" alt="User Image">
+ -->              <!-- User image -->
+              <!-- <li class="user-header"> -->
+<!--                 <img src="<?php echo base_url();?>assets/dist/img/avatar04.png" class="img-circle" alt="User Image"> -->
+<!--           &nbsp;<i class="fa fa-user fa-3x" style="color:white"></i>
 
                 <p>
                   <?php echo $this->session->userdata('s_Usuario');?>
                   <small><?php echo $this->session->userdata('s_Puesto');?></small>
                 </p>
-              </li>
+              </li> -->
               <!-- Menu Footer-->
-              <li class="user-footer" style="background-color: black">
+<!--               <li class="user-footer" style="background-color: black">
                 <div class="pull-left">
                   <a href="#" class="btn btn-default btn-flat">Editar Datos</a>
                 </div>
@@ -209,8 +200,9 @@ font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif !impo
                 </div>
               </li>
             </ul>
-          </li>
+          </li> -->
         </ul>
+      </div>
       </div>
     </nav>
   </header>

@@ -55,69 +55,11 @@ class cPersona extends CI_Controller
 			$this->load->view('crm/vNuevaPersona');
 			$this->load->view('crm/footer');
 
-	// $format = 'DATE_RFC822';
-	// $time = time();
-	// $fecha = standard_date($format, $time);
-	// $param['FechaRegistro'] = $fecha;
-
-
-
-	// if ($param['idEmpresa']==0) {
-	// 	$param['idEmpresa']=Null;
-	// }
-//Telefonos
-		// $paramTel['Telefono1'] = $this->input->post('Telefono1');
-		// $paramTel['TipoTelefono1'] = $this->input->post('TipoTelefono1');
-		// $paramTel['Telefono2'] = $this->input->post('Telefono2');
-		// $paramTel['TipoTelefono2'] = $this->input->post('TipoTelefono2');
-
-
-//correos
-
-		// $paramCor['Correo1'] = $this->input->post('Correo1');
-		// $paramCor['TipoCorreo1'] = $this->input->post('TipoCorreo1');
-		// $paramCor['Correo2'] = $this->input->post('Correo2');
-		// $paramCor['TipoCorreo2'] = $this->input->post('TipoCorreo2');
-
-//Direccion
-		// $paramDir['Calle'] = $this->input->post('Calle');
-		// $paramDir['Numero'] = $this->input->post('Numero');
-		// $paramDir['Colonia'] = $this->input->post('Colonia');
-		// $paramDir['Municipio'] = $this->input->post('Municipio');
-		// $paramDir['Estado'] = $this->input->post('Estado');
-		// $paramDir['Cp'] = $this->input->post('Cp');
-		// $paramDir['Pais'] = $this->input->post('Pais');
-		
-		// $ultimaPersona=$this->mPersona->guardar($param);
-
-		// if($ultimaPersona>0){
-		// 	$paramTel['idPersona'] = $ultimaPersona;
-		// 	$paramCor['idPersona'] = $ultimaPersona;
-		// 	$paramDir['idPersona'] = $ultimaPersona;
-
-		// 	$paramTel['idUsuario'] = NULL;
-		// 	$paramCor['idUsuario'] = NULL;
-		// 	$paramDir['idUsuario'] = NULL;
-
-		// 	$paramTel['idEmpresa'] = NULL;
-		// 	$paramCor['idEmpresa'] = NULL;
-		// 	$paramDir['idEmpresa'] = NULL;
-
-		// 	$this->mTelefono->guardar($paramTel);
-		// 	$this->mCorreo->guardar($paramCor);
-		// 	if($this->mDireccion->guardar($paramDir)){
-		// 	$this->load->view('crm/header');
-		// 	$this->load->view('crm/menu');
-		// 	$this->load->view('crm/vNuevaPersona');
-		// 	$this->load->view('crm/footer');
-		// 	}
-
-
-		// }
-
-
 	}
 	public function verTarea($idTarea){
+
+		if($this->session->userdata('s_login')==1){
+
 		$data['row_Tareas'] = $this->mTareas->getTarea($idTarea);
 		$data['row_Asignados'] = $this->mTareas->getAsignados($idTarea);
 		$data['row_EmpParticipantes']= $this->mTareas->getEmp_Participantes($idTarea);
@@ -127,9 +69,14 @@ class cPersona extends CI_Controller
 		$this->load->view('crm/header');
 		$this->load->view('crm/menu');
 		$this->load->view('crm/vVerTarea',$data);
-		$this->load->view('crm/footer');
+		$this->load->view('crm/footer');}
+		else{redirect(base_url().cLogin);}
+
 	}
 	public function verPersona($idPersona){
+
+		if($this->session->userdata('s_login')==1){
+
 		$data['row_Persona'] = $this->mGetPersonas->getPersonaPorId($idPersona);
 		$data['row_Direccion'] = $this->mGetPersonas->getDireccion($idPersona);
 		$data['row_Telefonos'] = $this->mGetPersonas->getTelefonos($idPersona);
@@ -139,7 +86,9 @@ class cPersona extends CI_Controller
 				$this->load->view('crm/header');
 				$this->load->view('crm/menu');
 				$this->load->view('crm/vVerPersona',$data);
-				$this->load->view('crm/footer');
+				$this->load->view('crm/footer');}
+		else{redirect(base_url().cLogin);}
+
 
 	}
 	public function guardar2(){
@@ -257,23 +206,29 @@ class cPersona extends CI_Controller
 		$resultado = $this->mNegociacion->NegociacionEliminada($s,$StatusFinalNG);
 	}
 	public function verNegociacion($idNegociacion){
+		if($this->session->userdata('s_login')==1){
 		$data['row_Negociacion'] = $this->mNegociacion->getNegociacionyEmpresa($idNegociacion);
 		// $data['row_Empresa'] = $this->mNegociacion->getNegociacionyEmpresa($idNegociacion);
 		$this->load->view('crm/header');
 		$this->load->view('crm/menu');
 		$this->load->view('crm/vVerNegociacion',$data);
-		$this->load->view('crm/footer');
+		$this->load->view('crm/footer');}
+		else{redirect(base_url().cLogin);}
+
 	}
 	public function EliminarNegociacio(){
 		$s = $this->input->post('idNegociacion');
 		$resultado = $this->mNegociacion->EliminarNegociacio($s);
 	}
 	public function verEliminarPersona(){
+		if($this->session->userdata('s_login')==1){
 		$data['Persona'] = $this->mGetPersonas->getPersonas();
 		$this->load->view('crm/header');
 		$this->load->view('crm/menu');
 		$this->load->view('crm/vEliminarPersona',$data);
-		$this->load->view('crm/footer');
+		$this->load->view('crm/footer');}
+		else{redirect(base_url().cLogin);}
+
 	}
 	public function eliminarPersona(){
 		$s = $this->input->post('Personaid');

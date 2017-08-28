@@ -1,7 +1,7 @@
 $(document).ready(function() {
 var options = {
 	url: baseurl+"cGetEmpresas/autoCompletado/",
-	getValue:"Nombre",
+	getValue:"NombreEmpresa",
 	list: {
 		maxNumberOfElements: 5,
 		match: {

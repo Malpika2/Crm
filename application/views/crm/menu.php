@@ -4,9 +4,10 @@
     <section class="sidebar">
       <!-- Sidebar user panel -->
       <div class="user-panel">
-        <div class="pull-left image">
-          <img src="<?php echo base_url();?>assets/dist/img/avatar04.png" class="img-circle" alt="User Image">
-        </div>
+        <div class="pull-left image ">
+<!--           <img src="<?php echo base_url();?>assets/dist/img/avatar04.png" class="img-circle" alt="User Image"> -->  
+          &nbsp;<i class="fa fa-user fa-2x" style="color:white"></i>      
+      </div>
         <div class="pull-left info">
           <p class="h5"></p><?php echo $this->session->userdata('s_Usuario');?> 
         </div>
@@ -16,8 +17,8 @@
         <li class="header" style="color:white">General</li>
         <li id="linkMenuInicio" class="treeview">
           <a href="<?php echo base_url();?>cInicio">
-            <i class="fa  fa-map-signs"></i> 
-            <span>Bienvenido</span>
+            <i class="fa  fa-home"></i> 
+            <span>Inicio</span>
             <span class="pull-right-container">
             </span>
           </a>
@@ -32,7 +33,7 @@
         </li>
         <li id="linkMenuNegociacion" class="treeview">
           <a id="" href="<?php echo base_url();?>cNegociacion">
-            <i class="fa fa-briefcase"></i>
+            <i class="fa fa-calendar"></i>
             <span>Objetivos</span>
             <span class="pull-right-container">
               <span class="label label-primary pull-right"></span>
@@ -41,7 +42,7 @@
         </li>
         <li id="linkMenuTareas" class="treeview">
           <a id="" href="<?php echo base_url();?>cTareas">
-            <i class="fa fa-calendar-check-o"></i> <span>Tareas</span>
+            <i class="fa  fa-file-text-o"></i> <span>Tareas</span>
             <span class="pull-right-container">
             <span class="label label-primary pull-right"></span>
             </span>
@@ -51,7 +52,7 @@
         <li id="linkMenuObjetivos" class="treeview">
           <a id="" href="<?php echo base_url();?>CObjetivos">
             <i class="fa fa-calendar-check-o"></i>
-            <span>Objetivos Internos</span>
+            <span>Objetivos internos</span>
           </a>
         </li>
       <!--   <li class="treeview">
@@ -62,14 +63,14 @@
         </li> -->
         <li id="linkMenuForo" class="treeview">
           <a id="" href="<?php echo base_url();?>cForo">
-            <i class="fa fa-comments-o"></i>
-            <span>Seguimiento CRM</span>
+            <i class="fa fa-comment"></i>
+            <span>Foro</span>
           </a>
         </li>
         <li id="linkMenuUsuarios" class="treeview">
-          <a id="" href="<?php echo base_url();?>cUsuario">
-            <i class="fa fa-male"></i>
-            <span>Agregar Usuario</span>
+          <a id="" href="<?php echo base_url();?>cLogin/cerrarSession">
+            <i class="fa  fa-clock-o"></i>
+            <span>Cerrar sesión</span>
           </a>
         </li>
       </ul>

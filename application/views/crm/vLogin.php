@@ -1,3 +1,9 @@
+<style type="text/css">
+.container-full {
+  margin: 0 auto;
+  width: 100%;
+}
+</style>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,25 +37,34 @@
   <link rel="stylesheet" href="<?php echo base_url();?>assets/dist/css/personalizado/style.css">
 </head>
 	<body>
+  <div class="container-full">
+<!--     <div class="navbar navbar-default">
+      
+    </div> -->
 		<div class="row centrado">
 			<div class="col-md-12">
   			<div class="row">
-  				<div class="col-md-12">
-  					<h1>CRM D-SPP </h1>
+  				<div class="col-md-12 text-center">
+  					<h1>CRM D-SPP </h1><br>
   				</div>
-          <div class="col-md-3 col-sm-0"></div>
-  				<div class="col-md-6">
+          <div class="col-md-4"></div>
+  				<div class="col-md-4 text-center">
+            <div class="container-fluid">
     				<form action="<?php echo base_url(); ?>cLogin/ingresar" method="POST" name="formLogin" id="formLogin">
-      				<img src="<?php echo base_url(); ?>assets/dist/img/silueta_user.png">
-              <p><?php echo $mensaje ?></p>
+      				<div class="col-md-12 text-center"><img class="img-responsive" src="<?php echo base_url(); ?>assets/dist/img/FUNDEPPO.jpg" style="max-height: 200px; display: inline-block;">
+              <p class="text-red"><?php echo $mensaje ?></p></div>
+              <br>
       				<input class="col-md-12 imp_login form-control" type="text" name="usuario" placeholder="Usuario" />
       				<input class="col-md-12 imp_login form-control" type="password" name="password" placeholder="Contraseña" />
-      				<input class="btn btn-primary btn-block imp_login" type="submit" name="btnLogin" value="Iniciar">
+      				<input class="btn btn-success btn-block imp_login" type="submit" name="btnLogin" value="Iniciar">
     				</form>
+            </div>
   				</div>
+          <div class="col-md-4"></div>
 			   </div>
 			</div>
 		</div>
+    </div>
 
 <!-- jQuery 2.2.3 -->
 <script src="<?php echo base_url();?>assets/plugins/jQuery/jquery-2.2.3.min.js"></script>

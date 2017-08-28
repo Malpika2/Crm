@@ -1,4 +1,15 @@
 <style type="text/css">
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+  color: white;
+  cursor: default;
+  background-color: #00a65a;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+}
+a{
+  color:black;
+}
   #listaEmpresas,
   #listaPersonas {
     padding: 1px;
@@ -6,13 +17,22 @@
   #tablaPersonas a{
     color:#3c8dbc;
     text-decoration-style: none;
-        text-decoration: none;
-
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
   }
-  #tablaEmpreas a{
-    color:#3c8dbc;
+  #tablaEmpresas a{
+    color:#2181b5;
     text-decoration-style: none;
     text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  #tablaEmpresas td{
+    max-width: 250px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
   .box-listasE{
     margin-top: 4px;
@@ -46,39 +66,38 @@
       <div class="row">
 
         <div class="nav-tabs-custom">
-          <div class="text-center bg-black" style="padding: 1px; margin: 10px 15px 0px 15px; border-radius: 20px">
+          <div class="text-center bg-white" style="padding: 1px; margin: 10px 15px 0px 15px; border-radius: 20px">
            <ul class="nav nav-tabs">
             <li class="active col-md-2 text-center">
-              <a class="btn" href="#Empresas" data-toggle="tab">
-                <i class="fa fa-briefcase fa-3x"></i><br>Empresas
+              <a class="btn" href="#Empresas" data-toggle="tab" style="border-radius: 10px; margin-bottom: 3px;">
+                <i class="fa fa-list "></i>&nbsp;Empresas
               </a>
             </li>
-            <li class="col-md-8 text-center"><h2>CONTACTOS</h2></li>
-            <li class="pull-right col-md-2">
-              <a class="btn text-center" href="#Personas" data-toggle="tab">
-                <i class="fa fa-user fa-3x"></i><br>Personas
+            <li class="col-md-2">
+              <a class="btn text-center" href="#Personas" data-toggle="tab" style="border-radius: 10px; margin-bottom: 3px;">
+                <i class="fa fa-list"></i>&nbsp;Personas
               </a>
             </li>
           </ul>          
           </div>
           <div class="tab-content">
             <div class="tab-pane" id="Personas"> 
-                  <div class="callout callout-default">
-            <div class="box">                    
-            <div class="box-header">
-              <h3 class="box-title">LISTADO COMPLETO DE PERSONAS</h3>
+                  <div class="">
+            <div class="">                    
+            <div class="box-header" style="padding-bottom: 0px;">
+              <h3 class="box-title">LISTADO DE PERSONAS</h3>
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
+            <div class="box-body table table-responsive" style="padding-bottom: 0px;">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
-                <tr>
+                <tr style="color:#00c8d9;">
                   <th>Nombre</th>
                   <th>Cargo</th>
                   <th>Skype</th>
                   <th>Status</th>
                   <th>Fecha Registro</th>
-                  <th>Eliminar</th>
+                  <th>Acciones</th>
                 </tr>
                 </thead>
                 <tbody id="tablaPersonas">
@@ -106,7 +125,8 @@
                                 '.$Persona->FechaRegistro.'
                               </td>
                               <td align="center">
-                                <button class="btn btn-danger btn-xs" id="btnEliminarPersona" name="btnRealizadaPersonas" value="'.$Persona->idPersona.'"><i class="fa fa-trash"></i></button>
+                                <button class="btn btn-danger" id="btnEliminarPersona" name="btnRealizadaPersonas" value="'.$Persona->idPersona.'"><i class="fa fa-trash"></i></button>
+                                <button class="btn btn-warning" id="btnEliminarPersona" name="btnRealizadaPersonas" value="'.$Persona->idPersona.'"><i class="fa fa-edit"></i></button>
                               </td>
                             </tr>';
                             }
@@ -128,25 +148,25 @@
           </div>
           </div><!-- // fin PErsonas -->
             <div class="tab-pane active" id="Empresas"> 
-            <div class="callout callout-default">
-            <div class="box">                    
-            <div class="box-header">
-              <h3 class="box-title">LISTADO COMPLETO DE EMPRESAS</h3>
+            <div class="">
+            <div class="">                    
+            <div class="box-header" style="padding-bottom: 0px;">
+              <h3 class="box-title">LISTADO DE EMPRESAS</h3>
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
+            <div class="box-body table table-responsive" style="padding-top: 0px;">
               <table id="example2" class="table table-bordered table-striped">
                 <thead>
-                <tr>
+                <tr  style="color:#00c8d9;"">
                   <th>Nombre Empresa</th>
                   <th>Tipo</th>
                   <th>Skype</th>
                   <th>Sitio Web</th>
                   <th>Fecha Registro</th>
-                  <th>Eliminar</th>
+                  <th>Accione</th>
                 </tr>
                 </thead>
-                <tbody id="tablaEmpreas">
+                <tbody id="tablaEmpresas">
                 <?php
                   foreach ($Empresa as $Empresa) {
                     if ($Empresa->sitReg!='1') {
@@ -170,7 +190,9 @@
                                 '.$Empresa->FechaRegistro.'
                               </td>
                               <td align="center">
-                                <button class="btn btn-danger btn-xs" id="btnEliminarEmpresa" name="btnRealizadaPersonas" value="'.$Empresa->idEmpresa.'"><i class="fa fa-trash"></i></button>
+                                <button class="btn btn-danger" id="btnEliminarEmpresa" name="btnRealizadaPersonas" value="'.$Empresa->idEmpresa.'"><i class="fa fa-trash"></i></button>
+                                <button class="btn btn-warning " id="btnEliminarPersona" name="btnRealizadaPersonas" value="'.$Persona->idPersona.'"><i class="fa fa-edit"></i></button>
+
                               </td>
                             </tr>';
                             }

@@ -36,10 +36,9 @@
 			<div class="col-md-12">
 			<div class="row">
 				<div class="col-md-12">
-					<h1>CRM D-SPP </h1>
+					<h1>CRM D-SPPss </h1>
 				</div>
-				<div class="col-md-3"></div>
-				<div class="col-md-6">
+				<div class="col-md-12 text-center">
 				<form action="cInicio" method="POST" name="formLogin" id="formLogin">
 				<img src="<?php echo base_url(); ?>assets/dist/img/silueta_user.png">
 				<input class="col-md-12 imp_login" type="text" name="usuario" placeholder="Usuario" />
@@ -47,7 +46,6 @@
 				<input class="btn btn-primary btn-block imp_login" type="submit" name="btnLogin" value="Iniciar">
 				</form>
 				</div>
-				<div class="col-md-3"></div>
 			</div>
 			</div>
 		</div>
