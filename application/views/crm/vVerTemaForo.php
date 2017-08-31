@@ -24,7 +24,7 @@
         <form name="formComentarioTema" id="formComentarioTema" method="POST" action="">
             <div class="box-footer">
               <div class="input-group">
-                <input type="text" id="Comentario" name="Comentario" class="form-control" placeholder="Type message...">
+                <input type="text" id="Comentario" name="Comentario" class="form-control" placeholder="Comentario">
                 <input type="hidden" id="idUsuarioc" name="idUsuarioc" value="<?php echo $this->session->userdata('s_idUsuario'); ?>">
                 <input type="hidden" id="idTema" name="idTema" value="<?php echo $row_TemaForo->idTemasForo; ?>">
                 <div class="input-group-btn">

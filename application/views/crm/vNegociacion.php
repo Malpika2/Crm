@@ -40,13 +40,19 @@
 .Default{
   color: black;
 }
+#example1 a{
+  color:#2181b5;
+  text-decoration-style: none;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+}
 
 </style>
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-          <h1>Objetivos</h1>
-          <hr>
+        <h3 class="box-title">LISTADO DE OBJETIVOS</h3>
         <div class="row" id="statusNG">
           <div class="col-md-3" style="color: #638ccc"">
           <div class="row">
@@ -87,132 +93,9 @@
                         }
                   }
             ?>
-   <!--          <div class="col-md-2">
-                <i class="fa fa-play fa-3x"></i>
-            </div>
-            <div class="col-md-10">
-              <div class="col-md-12">
-                <label><?php echo $Avanzado?></label>
-              </div>
-              <div class="col-md-12">
-                <p>Negociaciones en estado Avanzado</p>
-              </div>
-            </div> -->
             </div>
           </div>
-  <!--         <div class="col-md-3" style="color: red">
-            <div clas="row">
-              <div class="col-md-2">
-                <i class="fa fa-thumbs-o-down fa-3x"></i>
-              </div>
-            <div class="col-md-10">
-              <div class="col-md-12">
-                <label><?php echo $Cancelado ?></label>
-              </div>
-              <div class="col-md-12">
-                <p>Negociaciones Canceladas</p>
-              </div>
-            </div>
-            </div>
-          </div>
-          <div class="col-md-3" style="color: #c000f5">
-            <div clas="row">
-              <div class="col-md-2">
-                <i class="fa fa-spinner fa-3x"></i>
-              </div>
-              <div class="col-md-10">
-                <div class="col-md-12">
-                  <label><?php echo $Enproceso ?></label>
-                </div>
-                <div class="col-md-12">
-                  <p>Negociaciones en Proceso</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-3"  style="color: #ef5ed7">
-            <div clas="row">
-              <div class="col-md-2">
-                <i class="fa fa-download fa-3x"></i>
-              </div>
-              <div class="col-md-10">
-                <div class="col-md-12">
-                  <label><?php echo $Incorporado ?></label>
-                </div>
-                <div class="col-md-12">
-                  <p>Negociaciones Incorporadas</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-3" style="color: #23c8cb">
-            <div clas="row">
-              <div class="col-md-2">
-                <i class="fa  fa-stop fa-3x"></i>
-              </div>
-              <div class="col-md-10">
-                <div class="col-md-12">
-                  <label><?php echo $Noiniciado ?></label>
-                </div>
-                <div class="col-md-12">
-                  <p>Negociaciones No Iniciadas</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-3" style="color: #ffaa05">
-            <div clas="row">
-              <div class="col-md-2">
-                <i class="fa  fa-hourglass fa-3x"></i>
-              </div>
-              <div class="col-md-10">
-                <div class="col-md-12">
-                  <label><?php echo $Suspendido ?></label>
-                </div>
-                <div class="col-md-12">
-                  <p>Negociaciones Suspendidas</p>
-                </div>
-              </div>
-            </div>
-          </div> 
-
-          <div class="col-md-3" style="color: #05bef5">
-            <div clas="row">
-              <div class="col-md-2">
-                <i class="fa  fa-meh-o fa-3x"></i>
-              </div>
-              <div class="col-md-10">
-                <div class="col-md-12">
-                  <label><?php echo $sinCompromiso ?></label>
-                </div>
-                <div class="col-md-12">
-                  <p>Negociaciones sin Compromiso</p>
-                </div>
-              </div>
-            </div>
-          </div> 
-
-
-          <div class="col-md-3" style="color: #24c631">
-            <div clas="row">
-              <div class="col-md-2">
-                <i class="fa  fa-thumbs-o-up fa-3x"></i>
-              </div>
-              <div class="col-md-10">
-                <div class="col-md-12">
-                  <label><?php echo $Confirmado ?></label>
-                </div>
-                <div class="col-md-12">
-                  <p>Negociaciones Confirmadas</p>
-                </div>
-              </div>
-            </div>
-          </div> --> 
         </div>
-        <hr>
         <div class="row" id="NGdesc">
           <div class="col-md-12">
           <div class="row">
@@ -222,7 +105,7 @@
             <div class="tab-pane active" id="TodasNegociaciones"> 
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
-                <tr>
+                <tr style="color:#00c8d9;">
                   <th>Titulo</th>
                   <th>Persona/Empresa</th>
                   <th>Prioridad</th>
@@ -284,10 +167,10 @@
                                 </p>
                           </td>
                           <td>
-                          <span style="color:gray">Prioridad: <?php echo $Negociaciones->Prioridad; ?></span>
+                          <span style="color:gray"><?php echo $Negociaciones->Prioridad; ?></span>
                           </td>
                           <td>
-                              <span class="h5"> <?php echo $Negociaciones->Motivo;?> </span>
+                          <span style="color:gray"> <?php echo $Negociaciones->Motivo;?> </span>
                           </td>
                           <td>
                             <span style="color:gray" class="pull-right"><?php echo $Negociaciones->FechaLimite;?></span>

@@ -1,3 +1,12 @@
+<style type="text/css">
+  #ListaTareasInternas a{
+  color:#2181b5;
+  text-decoration-style: none;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  }
+</style>
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="cLogin"><i class="fa fa-map-signs"></i>Inicio</a></li>
@@ -21,13 +30,13 @@
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
-                <tr>
+                <tr style="color:#00c8d9;">
                   <th>Titulo/Asunto</th>
                   <th>Prioridad</th>
                   <th>Status</th>
                   <th>% Desarrollo</th>
                   <th>Fecha Creacion</th>
-                  <th>Eliminar</th>
+                  <!-- <th>Acciones</th> -->
                 </tr>
                 </thead>
                 <tbody id="ListaTareasInternas">
@@ -35,7 +44,7 @@
                   foreach ($Objetivo as $Objetivo) {
                       echo '<tr>
                               <td align="left"><b>
-                                <a style="color:blue; text-decoration:none;" href="'.base_url().'CObjetivos/verObjetivo/'.$Objetivo->idObjetivos.'">
+                                <a style=" text-decoration:none;" href="'.base_url().'CObjetivos/verObjetivo/'.$Objetivo->idObjetivos.'">
                                 '.$Objetivo->Titulo.'
                                 </a></b>
                               </td>
@@ -51,9 +60,9 @@
                               <td align="center">
                                 '.$Objetivo->FechaCreacion.'
                               </td>
-                              <td align="center">
+                            <!--  <td align="center">
                                 <button class="btn btn-danger btn-xs" id="btnRealizada" name="btnRealizada" value="'.$Objetivo->idObjetivos.'"><i class="fa fa-trash"></i></button>            
-                              </td>
+                              </td> -->
                             </tr>';
                   }
                 ?>

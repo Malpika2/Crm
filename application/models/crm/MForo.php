@@ -30,7 +30,7 @@ class mForo extends CI_Model
 		$this->db->from('Comentarios c');
 		$this->db->join('Usuarios u','u.idUsuario = c.idUsuarioc');
 		$this->db->where('c.idTemaForo',$s);
-		$this->db->order_by('Fecha_Creacion','DESC');
+		$this->db->order_by('Fecha_Creacion','ASC');
 		$s = $this->db->get();
 		return $s->result();
 	}
@@ -38,7 +38,6 @@ class mForo extends CI_Model
 		$campos = array(
 			'idUsuarioc' => $param['idUsuarioc'],
 			'Comentario' => $param['Comentario'],
-			'Fecha_Creacion' => $param['Fecha_Creacion'],
 			'idPersona' => null,
 			'idEmpresa' => null,
 			'idNegociacion' => null,

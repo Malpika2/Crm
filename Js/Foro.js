@@ -118,7 +118,8 @@ function funcionclick(valor){
   $('#Comentario'+valor).addClass('EnEdicion');
   $('#Comentario'+valor).focus();
 }
-$(document).ready(function(){
+
+$(document).ready(function(){//Guarda comentarios
 $('#ComentariosTemaForo').on('submit','#formComentarioTema',function(){
           $.ajax({
               type:'POST',
@@ -128,6 +129,7 @@ $('#ComentariosTemaForo').on('submit','#formComentarioTema',function(){
               	$('#ListaComentariosTema'+idTemasForo).empty();
                //  Recargar();
                comentariosPorTema();
+               $('#Comentario').val('');
               }
           });
           

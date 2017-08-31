@@ -43,11 +43,7 @@ class cForo extends CI_Controller
 		echo $resultado;
 	}
 	public function guardarComentario(){
-		$format = 'DATE_RFC822';
-		$time = time();
-		$fechaActual = standard_date($format, $time);
 		$param['Comentario'] = $this->input->post('Comentario');
-		$param['Fecha_Creacion'] = $fechaActual;
 		$param['idUsuarioc'] = $this->input->post('idUsuarioc');
 		$param['idTema'] = $this->input->post('idTema');
 		$this->mForo->guardarComentario($param);
