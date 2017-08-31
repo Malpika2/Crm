@@ -466,3 +466,8 @@
   var idPersona = "<?php echo $row_Persona->idPersona; ?>";
   var idUsuarioCrea = "<?php echo $this->session->userdata('s_idUsuario');?>";
 </script>
+<!-- <?php if (isset($row_control)==1): ?>
+    <script type="text/javascript">
+      var controlEdit=1;
+    </script>
+<?php endif ?> -->

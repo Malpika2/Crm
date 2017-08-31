@@ -649,3 +649,8 @@
   var idEmpresa = "<?php echo $row_Empresas->idEmpresa; ?>";
   var idUsuarioCrea = "<?php echo $this->session->userdata('s_idUsuario');?>";
 </script>
+<?php if (isset($row_control)==1): ?>
+    <script type="text/javascript">
+      var controlEdit=1;
+    </script>
+<?php endif ?>

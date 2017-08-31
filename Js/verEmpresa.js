@@ -41,7 +41,7 @@ var Pais = $("#Pais").val();
     Pais:Pais
   },
   function(data){
-    location.reload();
+    window.location.href = baseurl+"cEmpresa/verEmpresa/"+idEmpresa;              
   });
 }
 
@@ -458,4 +458,11 @@ $('#LineaNegociaciones').on('click','#btnEliminar', function() {
           });
     });
 });//Fin Ocultar Negociaciones realizadas
+
+$(document).ready(function(){
+  if (controlEdit==1){
+    $('#btn_Editar').click();
+
+  }
+});
 

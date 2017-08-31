@@ -1,8 +1,5 @@
 <?php ob_start(); ?>
 <?php
-/**
-* 
-*/
 class cContactos extends CI_Controller
 {
 	

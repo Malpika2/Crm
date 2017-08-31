@@ -12,8 +12,6 @@ $.post(baseurl+"cGetEmpresas/getEmpresas",
 $(document).ready(function() {
 $('#ListaPersonas').on('click','#btnRealizadaPersonas', function() {
 			var Personaid = $(this).val();
-
-
     $.confirm({
         title: 'Eliminar Persona!',
         content: 'La persona será marcada como inactiva, ¿Desea continuar?',
@@ -91,6 +89,11 @@ function limpiarFormularioPersona(){
       }
   });
 }
+
+//   if (controlEdit==1){
+// $('#btn_Editar').click();
+//   }
+
 function utf8_decode (strData) {
   var tmpArr = []
   var i = 0

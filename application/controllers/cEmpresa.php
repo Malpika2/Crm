@@ -255,4 +255,34 @@ class cEmpresa extends CI_Controller
 
 		}
 
+			public function verEmpresaEdit($idEmpresa){
+		if($this->session->userdata('s_login')==1){
+		$data['row_Contactos'] = $this->mGetEmpresas->getContactos($idEmpresa);
+		$data['row_Empresas'] = $this->mGetEmpresas->getEmpresaPorId($idEmpresa);
+		$data['row_Persona'] = $this->mGetPersonas->getPersonasPorEmpresa2($idEmpresa);
+		$data['row_control']=1;
+				$this->load->view('crm/header');
+				$this->load->view('crm/menu');
+				$this->load->view('crm/vVerEmpresa',$data);
+				$this->load->view('crm/footer');
+
+				}
+		else{redirect(base_url().cLogin);}
+	}
+	public function getContactos(){
+		$idEmpresa = $this->input->post('idEmpresa');
+			$result=$this->mGetEmpresas->getContactos($idEmpresa);
+		echo json_encode($result);
+	}
+	public function getDatosEmpresa(){
+		$idEmpresa = $this->input->post('idEmpresa');
+		$result = $this->mGetEmpresas->getEmpresaPorId($idEmpresa);
+		echo json_encode($result);
+	}
+	public function getPersonas(){
+		$idEmpresa = $this->input->post('idEmpresa');		
+		$result = $this->mGetPersonas->getPersonasPorEmpresa2($idEmpresa);
+		echo json_encode($result);
+	}
+
 }

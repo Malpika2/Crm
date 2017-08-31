@@ -29,6 +29,7 @@ font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif !impo
 .easy-autocomplete {
   position: relative;
   display: contents;
+  text-align: left;
 }
 </style>
 <!DOCTYPE html>

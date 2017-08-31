@@ -74,23 +74,34 @@ class cPersona extends CI_Controller
 
 	}
 	public function verPersona($idPersona){
-
 		if($this->session->userdata('s_login')==1){
+			$data['row_Persona'] = $this->mGetPersonas->getPersonaPorId($idPersona);
+			$data['row_Direccion'] = $this->mGetPersonas->getDireccion($idPersona);
+			$data['row_Telefonos'] = $this->mGetPersonas->getTelefonos($idPersona);
+			$data['row_Correos'] = $this->mGetPersonas->getCorreos($idPersona);
+			$data['row_Empresas'] = $this->mGetEmpresas->getEmpresaPorUsuario($idPersona);
 
-		$data['row_Persona'] = $this->mGetPersonas->getPersonaPorId($idPersona);
-		$data['row_Direccion'] = $this->mGetPersonas->getDireccion($idPersona);
-		$data['row_Telefonos'] = $this->mGetPersonas->getTelefonos($idPersona);
-		$data['row_Correos'] = $this->mGetPersonas->getCorreos($idPersona);
-		$data['row_Empresas'] = $this->mGetEmpresas->getEmpresaPorUsuario($idPersona);
-
-				$this->load->view('crm/header');
-				$this->load->view('crm/menu');
-				$this->load->view('crm/vVerPersona',$data);
-				$this->load->view('crm/footer');}
+					$this->load->view('crm/header');
+					$this->load->view('crm/menu');
+					$this->load->view('crm/vVerPersona',$data);
+					$this->load->view('crm/footer');}
 		else{redirect(base_url().cLogin);}
-
-
 	}
+	// public function verPersonaEdit($idPersona){
+	// 	if($this->session->userdata('s_login')==1){
+	// 		$data['row_Persona'] = $this->mGetPersonas->getPersonaPorId($idPersona);
+	// 		$data['row_Direccion'] = $this->mGetPersonas->getDireccion($idPersona);
+	// 		$data['row_Telefonos'] = $this->mGetPersonas->getTelefonos($idPersona);
+	// 		$data['row_Correos'] = $this->mGetPersonas->getCorreos($idPersona);
+	// 		$data['row_Empresas'] = $this->mGetEmpresas->getEmpresaPorUsuario($idPersona);
+	// 		$data['row_control']=1;
+
+	// 				$this->load->view('crm/header');
+	// 				$this->load->view('crm/menu');
+	// 				$this->load->view('crm/vVerPersona',$data);
+	// 				$this->load->view('crm/footer');}
+	// 	else{redirect(base_url().cLogin);}
+	// }
 	public function guardar2(){
 	$param['Nombre'] = $this->input->post('Nombre');
 	$param['Paterno'] = $this->input->post('ApPaterno');
