@@ -141,5 +141,17 @@ class mNegociacion extends CI_Model
 		$this->db->where('idNegociacion',$idNeg);
 		$this->db->update('Negociaciones');
 	}
+	public function updateNegociacion($param){
+		$data = array(
+			'Motivo' => $param['Motivo'],
+			'Prioridad' => $param['Prioridad'],
+			'Status' => $param['Estatus'],
+			'Detalles' => $param['Detalles'],
+			'FechaLimite' => $param['FechaVencimiento']);
+		$this->db->where('idNegociacion',$param['idObjetivo']);
+		$this->db->update('Negociaciones',$data);
+
+
+	}
 
 }

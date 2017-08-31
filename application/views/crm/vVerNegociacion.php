@@ -1,3 +1,10 @@
+<style type="text/css">
+  .form-control[disabled]{
+  cursor: not-allowed;
+  background: transparent;
+  border: none;
+}
+</style>
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="cLogin"><i class="fa fa-map-signs"></i>Inicio</a></li>
@@ -13,21 +20,34 @@
         </div>
         <div class="col-md-6">
           <div class="box box-info bg-info">
-            <div class="box-header with-border bg-success">
-              <label class="h3"></label>&nbsp;&nbsp;<label class="h3 text-info"><?php echo $row_Negociacion->NombreNegociacion; ?></label>
-                <span class="h3 text-info pull-right" id="Avance" name="Avance"></span>
+              <div class="box-header with-border bg-success">
+              <label class="h3"></label>&nbsp;&nbsp;<label class="h3 text-info"><?php echo $row_Negociacion->NombreNegociacion; ?></label> 
+              <button id="btn_EditarObjetivo" onClick="EditarObjetivo(<?php echo $row_Negociacion->idNegociacion ?>);" class="btn btn-link pull-right text-yellow" data-toggle="tooltip" title="Editar"><i class="fa fa-edit fa-2x"></i></button>
+
+              <button id="btn_Guardarbjetivo" onClick="UpdateObjetivo(<?php echo $row_Negociacion->idNegociacion ?>);" class="btn btn-link pull-right text-green hidden" data-toggle="tooltip" title="Gaurdar Cambios"><i class="fa fa-check-square-o fa-2x"></i></button>
+
+              <label class="text-info pull-right">Avance:<span class="h3 text-info pull-right" id="Avance" name="Avance"></span></label>
             </div>
             <!-- /.box-header -->
             <div class="box-body bg-info">
-            <label class="">Motivo:</label>&nbsp;&nbsp;<p class=""><?php echo 
-            $row_Negociacion->Motivo; ?></p><hr>
-            <label class="">Prioridad:</label>&nbsp;&nbsp;<p class=""><?php echo $row_Negociacion->Prioridad; ?></p><hr>
-            <label class="">Estatus:</label>&nbsp;&nbsp;<p class=""><?php echo $row_Negociacion->NegStatus; ?></p><hr>
-            <label class="">Detalles:</label>&nbsp;&nbsp;<p class=""><?php echo $row_Negociacion->Detalles; ?></p><hr>
-            <label class="">Fecha Vencimiento:</label>&nbsp;&nbsp;<p class=""><?php echo $row_Negociacion->FechaLimite; ?></p><hr>
+            <label class="">Motivo:</label>&nbsp;&nbsp;<input class="form-control"  type="text" name="Motivo" id="Motivo" value="<?php echo $row_Negociacion->Motivo; ?>" disabled>
+<hr>
+            <label class="">Prioridad:</label>&nbsp;&nbsp;
+              <input type="text" id="Prioridad" name="Prioridad" class="form-control" disabled value="<?php echo $row_Negociacion->Prioridad; ?>">
+<hr>
+            <label class="">Estatus:</label>&nbsp;&nbsp;
+              <input type="text" id="Estatus" name="Estatus" class="form-control" disabled value="<?php echo $row_Negociacion->NegStatus; ?>">
+<hr>
+            <label class="">Detalles:</label>&nbsp;&nbsp;
+              <input type="text" id="Detalles" name="Detalles" class="form-control" disabled value="<?php echo $row_Negociacion->Detalles; ?>">
+<hr>
+            <label class="">Fecha Vencimiento:</label>&nbsp;&nbsp;
+              <input type="text" id="FechaVencimiento" name="FechaVencimiento" class="form-control" disabled value="<?php echo $row_Negociacion->FechaLimite; ?>">
+<hr>
 
             <?php if ($row_Negociacion->idEmpresa>0) { ?>
-            <label class="">Empresa:</label>&nbsp;&nbsp;<p class=""><a href="<?php echo base_url().'cEmpresa/verEmpresa/'.$row_Negociacion->idEmpresa.''; ?>"><?php echo $row_Negociacion->NombreEmpresa; ?></a></p><hr>
+            <label class="">Empresa:</label>&nbsp;&nbsp;
+              <p class=""><a href="<?php echo base_url().'cEmpresa/verEmpresa/'.$row_Negociacion->idEmpresa.''; ?>"><?php echo $row_Negociacion->NombreEmpresa; ?></a></p><hr>
             <?php }
             else{?>
             <label class="">Persona:</label>&nbsp;&nbsp;<p class=""><a href="<?php echo base_url().'cPersona/verPersona/'.$row_Negociacion->idPersona.''; ?>"><?php echo $row_Negociacion->Nombre; ?></a></p><hr>

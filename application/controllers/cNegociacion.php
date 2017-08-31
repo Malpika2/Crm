@@ -116,6 +116,15 @@ class cNegociacion extends CI_Controller
 		$cont = $this->input->post('cont');
 		$this->mNegociacion->ActualizarActiva($idNeg,$cont);
 	}
+	public function updateNegociacion(){
+$param['FechaVencimiento'] = $this->input->post('FechaVencimiento');
+$param['Motivo'] = $this->input->post('Motivo');
+$param['Prioridad'] = $this->input->post('Prioridad');
+$param['Estatus'] = $this->input->post('Estatus');
+$param['Detalles'] = $this->input->post('Detalles');
+$param['idObjetivo'] = $this->input->post('idObjetivo');
+		$this->mNegociacion->updateNegociacion($param);
+	}
 }
 
 ?>

@@ -213,7 +213,7 @@ $.post(baseurl+"cTareas/getTareas_deObjetivos",
                   '</li>'+
                   '<li>'+
                   '</li>'
-                  )}
+                  )}EditarObjetivo
     // }
       });
       $('#TareasActivas').html('Activas: '+Activa);
@@ -249,3 +249,41 @@ $('#LineaTareasOb').on('click','#btnRealizada', function() {
         });
     });
 });//Fin Ocultar tareas realizadas
+
+EditarObjetivo = function($idObjetivo){
+  $('#FechaVencimiento').prop('disabled',false);
+$('#Motivo').prop('disabled',false);
+$('#Prioridad').prop('disabled',false);
+$('#Estatus').prop('disabled',false);
+$('#Detalles').prop('disabled',false);
+$('#btn_EditarObjetivo').addClass('hidden');
+$('#btn_Guardarbjetivo').removeClass('hidden');
+};
+
+UpdateObjetivo = function($idObjetivo){
+  var FechaVencimiento = $('#FechaVencimiento').val();
+  var Motivo = $('#Motivo').val();
+  var Prioridad = $('#Prioridad').val();
+  var Estatus = $('#Estatus').val();
+  var Detalles = $('#Detalles').val();
+  var idObjetivo=$idObjetivo;
+
+  $.post(baseurl+"cNegociacion/updateNegociacion",
+    {
+      FechaVencimiento:FechaVencimiento,
+      Motivo:Motivo,
+      Prioridad:Prioridad,
+      Estatus:Estatus,
+      Detalles:Detalles,
+      idObjetivo:idObjetivo
+    },
+    function(data){
+        $('#FechaVencimiento').prop('disabled',true);
+      $('#Motivo').prop('disabled',true);
+      $('#Prioridad').prop('disabled',true);
+      $('#Estatus').prop('disabled',true);
+      $('#Detalles').prop('disabled',true);
+      $('#btn_EditarObjetivo').removeClass('hidden');
+      $('#btn_Guardarbjetivo').addClass('hidden');
+    });
+};
