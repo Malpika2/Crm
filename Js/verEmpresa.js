@@ -459,10 +459,3 @@ $('#LineaNegociaciones').on('click','#btnEliminar', function() {
     });
 });//Fin Ocultar Negociaciones realizadas
 
-$(document).ready(function(){
-  if (controlEdit==1){
-    $('#btn_Editar').click();
-
-  }
-});
-

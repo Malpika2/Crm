@@ -222,7 +222,8 @@ $.post(baseurl+"cTareas/getTareas_deObjetivos",
       var Avance = Activa+Realizada+Cancelada;
       Avance = (Realizada/Avance)*100;
       if (Avance>0) {
-      $('#Avance').html(Avance+'%');  
+
+      $('#Avance').html(Math.round(Avance)+'%');  
       }
     $('#LineaTareasOb').append(
     '<li>'+                  

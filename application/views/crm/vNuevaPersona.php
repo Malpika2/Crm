@@ -36,7 +36,7 @@
         <div class="col-md-6 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>Cargo</b></span>
-                <select class="form-control select2 formsNP selectpicker" title="Selecciona un cargo..." id="Cargo" name="Cargo">
+                <select class="form-control formsNP selectpicker" title="Selecciona un cargo..." id="Cargo" name="Cargo">
                   <option value="Contacto">Contacto</option>
                   <option value="Representante">Representante</option>
                 </select>

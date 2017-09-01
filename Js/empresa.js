@@ -56,6 +56,7 @@ $('#ListaEmpresas').on('click','#btnRealizadaEmpresas', function() {
 
 //Autocomplete
 $(document).ready(function() {
+	var control=0;
 var options = {
 	url: baseurl+"cGetEmpresas/getEmpresasAutoComplete",
 	getValue: "nombre",
@@ -70,11 +71,12 @@ var options = {
 			callback: function() {}
 		},
 		hideAnimation: {
-			type: "slide", //normal|slide|fade
+			type: "normal", //normal|slide|fade
 			time: 100,
 			callback: function() {}
 		},		
 		onSelectItemEvent: function() {
+			control=0;
 			var nombre = $('#NombreEmpresa').getSelectedItemData().nombre;
 			var abreviacion = $("#NombreEmpresa").getSelectedItemData().abreviacion;
 			var SPP = $('#NombreEmpresa').getSelectedItemData().spp;
@@ -89,9 +91,7 @@ var options = {
 			var DireccionFiscal = $('#NombreEmpresa').getSelectedItemData().direccion_fiscal;
 			var Ciudad = $('#NombreEmpresa').getSelectedItemData().ciudad;
 			var Pais = $('#NombreEmpresa').getSelectedItemData().pais;
-
 			$("#NombreEmpresa").val(nombre).trigger("change");
-
 			$("#Abreviacion").val(abreviacion).trigger("change");
 			$("#SPP").val(SPP).trigger("change");
 			$("#SitioWeb").val(SitioWeb).trigger("change");
@@ -102,15 +102,46 @@ var options = {
 			$("#DireccionFiscal").val(DireccionFiscal);
 			$("#Ciudad").val(Ciudad).trigger("change");
 			$("#Pais").val(Pais).trigger("change");
+		},
+		onClickEvent: function(){
+			control=2;
+		},
+		onMouseOutEvent: function(){
+			if (control===0){
+			$("#Abreviacion").val('').trigger("change");
+			$("#SPP").val('').trigger("change");
+			$("#SitioWeb").val('').trigger("change");
+			$("#Telefono1").val('').trigger("change");
+			$("#Correo1").val('').trigger("change");
+			$("#DatosFiscales").val('').trigger("change");
+			$("#DireccionOficina").val('').trigger("change");
+			$("#DireccionFiscal").val('');
+			$("#Ciudad").val('').trigger("change");
+			$("#Pais").val('').trigger("change");
+			}
+		},
+		onHideListEvent:function(){
+			if(control==0){
+			$("#Abreviacion").val('').trigger("change");
+			$("#SPP").val('').trigger("change");
+			$("#SitioWeb").val('').trigger("change");
+			$("#Telefono1").val('').trigger("change");
+			$("#Correo1").val('').trigger("change");
+			$("#DatosFiscales").val('').trigger("change");
+			$("#DireccionOficina").val('').trigger("change");
+			$("#DireccionFiscal").val('');
+			$("#Ciudad").val('').trigger("change");
+			$("#Pais").val('').trigger("change");}	
 		}
 	}
 };
 
-$("#NombreEmpresa").easyAutocomplete(options); 
+$("#NombreEmpresa").easyAutocomplete(options);
 });
 
 //Autocomplete SPP
 $(document).ready(function() {
+	var control2=0;
 var options = {
 	url: baseurl+"cGetEmpresas/getEmpresasAutoComplete",
 	getValue: "spp",
@@ -130,6 +161,7 @@ var options = {
 			callback: function() {}
 		},		
 		onSelectItemEvent: function() {
+			control2=0;
 			var abreviacion = $('#SPP').getSelectedItemData().abreviacion;
 			var nombre = $('#SPP').getSelectedItemData().nombre;
 			var SitioWeb = $('#SPP').getSelectedItemData().sitio_web;
@@ -155,6 +187,38 @@ var options = {
 			$("#DireccionFiscal").val(DireccionFiscal).trigger("change");
 			$("#Ciudad").val(Ciudad).trigger("change");
 			$("#Pais").val(Pais).trigger("change");
+		},
+		onClickEvent: function(){
+			control2=2;
+		},
+		onMouseOutEvent: function(){
+			if (control2===0){
+			$("#NombreEmpresa").val('').trigger("change");
+			$("#Abreviacion").val('').trigger("change");
+			// $("#SPP").val('').trigger("change");
+			$("#SitioWeb").val('').trigger("change");
+			$("#Telefono1").val('').trigger("change");
+			$("#Correo1").val('').trigger("change");
+			$("#DatosFiscales").val('').trigger("change");
+			$("#DireccionOficina").val('').trigger("change");
+			$("#DireccionFiscal").val('');
+			$("#Ciudad").val('').trigger("change");
+			$("#Pais").val('').trigger("change");
+			}
+		},
+		onHideListEvent:function(){
+			if(control2==0){
+			$("#NombreEmpresa").val('').trigger("change");
+			$("#Abreviacion").val('').trigger("change");
+			// $("#SPP").val('').trigger("change");
+			$("#SitioWeb").val('').trigger("change");
+			$("#Telefono1").val('').trigger("change");
+			$("#Correo1").val('').trigger("change");
+			$("#DatosFiscales").val('').trigger("change");
+			$("#DireccionOficina").val('').trigger("change");
+			$("#DireccionFiscal").val('');
+			$("#Ciudad").val('').trigger("change");
+			$("#Pais").val('').trigger("change");}	
 		}
 	}
 };
@@ -175,6 +239,7 @@ function limpiarFormularioEmpresa(){
 
 //Autocomplete modal agregar persona
 $(document).ready(function() {
+	var control3=0;
 var options = {
   url: baseurl+"cGetPersonas/getPersonasAutoComplete",
   getValue: "nombre",
@@ -194,18 +259,19 @@ var options = {
       callback: function() {}
     },    
     onSelectItemEvent: function() {
-var Nombre = $("#Nombre").getSelectedItemData().nombre;
-var Puesto = $("#Nombre").getSelectedItemData().cargo;
-var Telefono1 = $("#Nombre").getSelectedItemData().telefono1;
-var Telefono2 = $("#Nombre").getSelectedItemData().telefono2;
-var Correo1 = $("#Nombre").getSelectedItemData().email1;
-var Correo2 = $("#Nombre").getSelectedItemData().email2;
-var Calle = $("#Nombre").getSelectedItemData().direccion;
-var Pais = $("#Nombre").getSelectedItemData().pais;
-var Cargo = "Representante";
-var Status = "Incorporado";
+    	control3=0;
+	var Nombre = $("#Nombre").getSelectedItemData().nombre;
+	var Puesto = $("#Nombre").getSelectedItemData().cargo;
+	var Telefono1 = $("#Nombre").getSelectedItemData().telefono1;
+	var Telefono2 = $("#Nombre").getSelectedItemData().telefono2;
+	var Correo1 = $("#Nombre").getSelectedItemData().email1;
+	var Correo2 = $("#Nombre").getSelectedItemData().email2;
+	var Calle = $("#Nombre").getSelectedItemData().direccion;
+	var Pais = $("#Nombre").getSelectedItemData().pais;
+	var Cargo = "Representante";
+	var Status = "Incorporado";
       
-      $('#Nombre').val(Nombre).trigger("change");
+      // $('#Nombre').val(Nombre).trigger("change");
       $(".Puesto").val(Puesto).trigger("change");
       $(".Telefono1").val(Telefono1).trigger("change");
       $(".Telefono2").val(Telefono2).trigger("change");
@@ -215,7 +281,37 @@ var Status = "Incorporado";
       $(".Pais").val(Pais).trigger("change");
       // $(".Cargo").val(Cargo).trigger("change");
       $(".Status").val(Status).trigger("change");
-    }
+    },
+		onClickEvent: function(){
+			control3=2;
+		},
+		onMouseOutEvent: function(){
+			if (control3===0){
+			  // $('#Nombre').val('').trigger("change");
+		      $(".Puesto").val('').trigger("change");
+		      $(".Telefono1").val('').trigger("change");
+		      $(".Telefono2").val('').trigger("change");
+		      $(".Correo1").val('').trigger("change");
+		      $(".Correo2").val('').trigger("change");
+		      $(".Calle").val('').trigger("change");
+		      $(".Pais").val('').trigger("change");
+		      $(".Status").val('').trigger("change");
+			}
+		},
+		onHideListEvent:function(){
+			if(control3==0){
+			  // $('#Nombre').val('').trigger("change");
+		      $(".Puesto").val('').trigger("change");
+		      $(".Telefono1").val('').trigger("change");
+		      $(".Telefono2").val('').trigger("change");
+		      $(".Correo1").val('').trigger("change");
+		      $(".Correo2").val('').trigger("change");
+		      $(".Calle").val('').trigger("change");
+		      $(".Pais").val('').trigger("change");
+		      $(".Status").val('').trigger("change");
+			}	
+		}
+
   }
 };
 
@@ -364,6 +460,23 @@ $('#btnAgregarNuevoCont').click(function(){
 	$('#Contacto').removeClass('select2');
 	var Cargo = 'Contacto';
 	$(".Cargo").val(Cargo).trigger("change");
+
+});
+
+$('#form, #fat, #formEmpresa').submit(function() {
+	$.ajax({
+          type: 'POST',
+          url: $(this).attr('action'),
+          data: $(this).serialize(),
+          success: function(data) {
+          	limpiarFormularioEmpresa();
+			$.alert({
+		        title: 'Guardar Empresa!',
+		        content: 'Empresa guardada correctamente!',
+		    });
+          }
+		});
+	     return false;
 });
 
 function utf8_decode (strData) {

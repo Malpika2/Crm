@@ -37,6 +37,7 @@ $('#ListaPersonas').on('click','#btnRealizadaPersonas', function() {
 
 //Autocomplete
 $(document).ready(function() {
+  var control3=0;
 var options = {
   url: baseurl+"cGetPersonas/getPersonasAutoComplete",
   getValue: "nombre",
@@ -56,6 +57,7 @@ var options = {
       callback: function() {}
     },    
     onSelectItemEvent: function() {
+      control3=0;
 var Nombre = $("#Nombre").getSelectedItemData().nombre;
 var Puesto = $("#Nombre").getSelectedItemData().cargo;
 var Telefono1 = $("#Nombre").getSelectedItemData().telefono1;
@@ -74,6 +76,31 @@ var Pais = $("#Nombre").getSelectedItemData().pais;
       $("#Correo2").val(Correo2).trigger("change");
       $("#Calle").val(Calle).trigger("change");
       $("#Pais").val(Pais).trigger("change");
+    },
+    onClickEvent: function(){
+      control3=2;
+    },
+    onMouseOutEvent: function(){
+      if (control3===0){
+      $("#Puesto").val('').trigger("change");
+      $("#Telefono1").val('').trigger("change");
+      $("#Telefono2").val('').trigger("change");
+      $("#Correo1").val('').trigger("change");
+      $("#Correo2").val('').trigger("change");
+      $("#Calle").val('').trigger("change");
+      $("#Pais").val('').trigger("change");
+      }
+    },
+    onHideListEvent:function(){
+      if(control3==0){
+      $("#Puesto").val('').trigger("change");
+      $("#Telefono1").val('').trigger("change");
+      $("#Telefono2").val('').trigger("change");
+      $("#Correo1").val('').trigger("change");
+      $("#Correo2").val('').trigger("change");
+      $("#Calle").val('').trigger("change");
+      $("#Pais").val('').trigger("change");
+      } 
     }
   }
 };
@@ -90,6 +117,21 @@ function limpiarFormularioPersona(){
   });
 }
 
+$('#form, #fat, #formPersona').submit(function() {
+  $.ajax({
+          type: 'POST',
+          url: $(this).attr('action'),
+          data: $(this).serialize(),
+          success: function(data) {
+            limpiarFormularioPersona();
+      $.alert({
+            title: 'Guardar Persona!',
+            content: 'Persona guardada correctamente!',
+        });
+          }
+    });
+       return false;
+});
 //   if (controlEdit==1){
 // $('#btn_Editar').click();
 //   }

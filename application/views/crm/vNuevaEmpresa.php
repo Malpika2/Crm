@@ -51,7 +51,7 @@
             <div class="col-md-12 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>Tipo</b></span>
-                <select class="form-control formsNP select2" id="Tipo" name="Tipo" required="">
+                <select class="form-control formsNP " id="Tipo" name="Tipo" required="">
                   <option selected="true" disabled="false" value="">Tipo</option>
                   <option value="Comprador final">Comprador Final</option>
                   <option value="Intermediario">Intermediario</option>
@@ -156,7 +156,7 @@
                 <input type="text" class="form-control col-md-6 formsNP2" id="Pais" name="Pais" placeholder="Pais:">
               </div>
 
-              <input type="submit" name="registrarEmpresa" class="divsNP formsNP btn btn-primary btn-block" value="Registrar Empresa">
+              <input type="submit" id="registrarEmpresa" name="registrarEmpresa" class="divsNP formsNP btn btn-primary btn-block" value="Registrar Empresa">
         </div>
         </form>
       </div>
@@ -191,7 +191,8 @@
         <div class="col-md-6 divsNP">
               <div class="input-group">
                 <span class="input-group-addon"><b>Cargo</b></span>
-                <select class="form-control Cargo select2 formsNP" id="Cargo" name="Cargo">
+                <input type="text" id="Cargo2" name="Cargo2" class="form-control Cargo" disabled>
+           <select class="form-control Cargo hidden  formsNP" id="Cargo" name="Cargo">
                   <option selected="true" value="Representante">Representante</option>
                   <option selected="true" value="Contacto">Contacto</option>
                 </select>
