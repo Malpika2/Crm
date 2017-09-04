@@ -91,7 +91,7 @@ class mNegociacion extends CI_Model
 		$this->db->from('Negociaciones');
 		$this->db->join('Personas','Negociaciones.idPersona = Personas.idPersona','left');
 		$this->db->join('Empresas','Negociaciones.idEmpresa = Empresas.idEmpresa','left');
-		$this->db->where('Negociaciones.PersonaCargo',$s);
+		// $this->db->where('Negociaciones.PersonaCargo',$s);
 		$s = $this->db->get();
 		return $s->result();
 
@@ -145,7 +145,7 @@ class mNegociacion extends CI_Model
 		$data = array(
 			'Motivo' => $param['Motivo'],
 			'Prioridad' => $param['Prioridad'],
-			'Status' => $param['Estatus'],
+			// 'Status' => $param['Estatus'],
 			'Detalles' => $param['Detalles'],
 			'FechaLimite' => $param['FechaVencimiento']);
 		$this->db->where('idNegociacion',$param['idObjetivo']);

@@ -56,27 +56,24 @@ var Pais = $("#Pais").val();
     $.each(emp,function(i,item){
       $('#activity').append(
         '<div class="box box-info collapsed-box bg-info">'+
-            '<div class="box-header with-border bg-info">'+
-                  '<div class="user-block">'+
-                    // '<img class="img-circle img-bordered-sm" src="'+baseurl+'assets/dist/img/'+item.url_foto+'" alt="">'+
-                        '<span class="username">'+
-                          '<a>'+item.Nombre+' '+item.Paterno+'</a>'+
-                        '</span>'+
-                    '<span class="description">'+item.Fecha_Creacion+'</span>'+
-                  '</div>'+
-              '<h4 class="">'+item.Comentario+'</h4>'+
-              '<div class="box-tools pull-right">'+
-                '<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>'+
+            '<div class="box-header with-border">'+
+              '<div class="box-tools col-md-12" style="position:inherit;">'+
+                '<button type="button" class="btn btn-box-tool pull-left" data-widget="collapse" data-toggle="tooltip" title="Respuestas"><i class="fa fa-sort-down fa-2x"></i>'+
+                '</button>'+
+                '<button id="btnResponder" name="btnResponder" type="button" class="btn btn-box-tool pull-right" data-toggle="tooltip" title="Responder" value="'+item.idComentario+'"><i class="fa fa-mail-reply text-green"></i>'+
                 '</button>'+
               '</div><!-- /.box-tools -->'+
-            '</div><!-- /.box-header -->'+
-            '<div class="box-body">'+
-            '<ul id="ListaComentariosComent'+item.idComentario+'" name="ListaComentariosComent">'+
-            '</ul>'+
-            '<div class="row">'+
-              '<form method="POST" action="'+baseurl+'cComentarios/guardarComentarioComentario" id="formComentariosComent" name="formComentariosComent">'+
+                  '<div class="user-block">'+
+                        '<span class="username col-md-11">'+
+                          '<b style="font-size:14px;">'+item.Nombre+'</b>'+
+                          '<span class="description pull-right">'+item.Fecha_Creacion+'</span>'+
+                        '</span>'+
+                  '</div>'+
+              '<h4 class="" style="margin:5px; padding-left:50px; font-size:14px;">'+item.Comentario+'</h4>'+
+            '<div class="row hidden" id="divResponder'+item.idComentario+'" name="divResponder'+item.idComentario+'" style="padding: 2px 50px 0px;">'+
+              '<form class="" method="POST" action="'+baseurl+'cComentarios/guardarComentarioComentario" id="formComentariosComent" name="formComentariosComent">'+
                 '<div class="col-sm-9">'+
-                    '<input type="text" name="Nota" id="Nota" class="form-control input-sm" placeholder="Responder">'+
+                    '<textarea type="text" name="Nota" id="Nota" class="form-control input-sm" placeholder="Responder"></textarea>'+
                 '</div>'+
                 '<div class="col-sm-3">'+
                   '<input type="hidden" id="idComent" name="idComent" value="'+item.idComentario+'">'+
@@ -85,6 +82,10 @@ var Pais = $("#Pais").val();
                 '</div>'+
               '</form>'+
             '</div>'+
+            '</div><!-- /.box-header -->'+
+            '<div class="box-body">'+
+            '<ul id="ListaComentariosComent'+item.idComentario+'" name="ListaComentariosComent">'+
+            '</ul>'+
             '</div><!-- /.box-body -->'+
           '</div><!-- /.box -->')
             ComentarioPorComentario(item.idComentario);
@@ -95,36 +96,33 @@ var Pais = $("#Pais").val();
 //Recargar los comentarios
 function Recargar(idEmpresa){
   limpiar();
-$.post(baseurl+"cGetComentarios/getComentarios_Por_Empresa",
-	{
-		idEmpresa:idEmpresa
-	},
-	function(data){
-		var emp = JSON.parse(data);
-		$.each(emp,function(i,item){
-			$('#activity').append(
-                '<div class="box box-info collapsed-box bg-info">'+
-            '<div class="box-header with-border bg-info">'+
-                  '<div class="user-block">'+
-                    // '<img class="img-circle img-bordered-sm" src="'+baseurl+'assets/dist/img/'+item.url_foto+'" alt="">'+
-                        '<span class="username">'+
-                          '<a>'+item.Nombre+' '+item.Paterno+'</a>'+
-                        '</span>'+
-                    '<span class="description">'+item.Fecha_Creacion+'</span>'+
-                  '</div>'+
-              '<h4 class="">'+item.Comentario+'</h4>'+
-              '<div class="box-tools pull-right">'+
-                '<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>'+
+  $.post(baseurl+"cGetComentarios/getComentarios_Por_Empresa",
+  {
+    idEmpresa:idEmpresa
+  },
+  function(data){
+    var emp = JSON.parse(data);
+    $.each(emp,function(i,item){
+      $('#activity').append(
+        '<div class="box box-info collapsed-box bg-info">'+
+            '<div class="box-header with-border">'+
+              '<div class="box-tools col-md-12" style="position:inherit;">'+
+                '<button type="button" class="btn btn-box-tool pull-left" data-widget="collapse" data-toggle="tooltip" title="Respuestas"><i class="fa fa-sort-down fa-2x"></i>'+
+                '</button>'+
+                '<button id="btnResponder" name="btnResponder" type="button" class="btn btn-box-tool pull-right" data-toggle="tooltip" title="Responder" value="'+item.idComentario+'"><i class="fa fa-mail-reply text-green"></i>'+
                 '</button>'+
               '</div><!-- /.box-tools -->'+
-            '</div><!-- /.box-header -->'+
-            '<div class="box-body">'+
-            '<ul id="ListaComentariosComent'+item.idComentario+'" name="ListaComentariosComent">'+
-            '</ul>'+
-            '<div class="row">'+
-              '<form method="POST" action="'+baseurl+'cComentarios/guardarComentarioComentario" id="formComentariosComent" name="formComentariosComent">'+
+                  '<div class="user-block">'+
+                        '<span class="username col-md-11">'+
+                          '<b style="font-size:14px;">'+item.Nombre+'</b>'+
+                          '<span class="description pull-right">'+item.Fecha_Creacion+'</span>'+
+                        '</span>'+
+                  '</div>'+
+              '<h4 class="" style="margin:5px; padding-left:50px; font-size:14px;">'+item.Comentario+'</h4>'+
+            '<div class="row hidden" id="divResponder'+item.idComentario+'" name="divResponder'+item.idComentario+'" style="padding: 2px 50px 0px;">'+
+              '<form class="" method="POST" action="'+baseurl+'cComentarios/guardarComentarioComentario" id="formComentariosComent" name="formComentariosComent">'+
                 '<div class="col-sm-9">'+
-                    '<input type="text" name="Nota" id="Nota" class="form-control input-sm" placeholder="Responder">'+
+                    '<textarea type="text" name="Nota" id="Nota" class="form-control input-sm" placeholder="Responder"></textarea>'+
                 '</div>'+
                 '<div class="col-sm-3">'+
                   '<input type="hidden" id="idComent" name="idComent" value="'+item.idComentario+'">'+
@@ -133,11 +131,15 @@ $.post(baseurl+"cGetComentarios/getComentarios_Por_Empresa",
                 '</div>'+
               '</form>'+
             '</div>'+
+            '</div><!-- /.box-header -->'+
+            '<div class="box-body">'+
+            '<ul id="ListaComentariosComent'+item.idComentario+'" name="ListaComentariosComent">'+
+            '</ul>'+
             '</div><!-- /.box-body -->'+
           '</div><!-- /.box -->')
             ComentarioPorComentario(item.idComentario);
-			});
-	});
+      });
+  });
 }
 //Mostrar Comentarios de los comentarios
 function ComentarioPorComentario(idComentario){
@@ -151,15 +153,15 @@ function ComentarioPorComentario(idComentario){
     $.each(emp1,function(i,item){
       $('#ListaComentariosComent'+idComentario+'').append(
         '<div class="box box-danger collapsed-box">'+
-            '<div class="box-header with-border bg-info">'+
+            '<div class="box-header with-border">'+
                   '<div class="user-block">'+
                     // '<img class="img-circle img-bordered-sm" src="'+baseurl+'assets/dist/img/'+item.url_foto+'" alt="">'+
                         '<span class="username">'+
-                          '<a href="#">'+item.Nombre+' '+item.Paterno+'</a>'+
+                          '<b style="font-size:14px;">'+item.Nombre+'</b>'+
+                    '<span class="description pull-right">'+item.Fecha_Creacion+'</span>'+
                         '</span>'+
-                    '<span class="description">'+item.Fecha_Creacion+'</span>'+
                   '</div>'+
-              '<h4 class="">'+item.Comentario+'</h4>'+
+              '<h4 class="" style="margin:0px; padding-left:50px; font-size:14px;">'+item.Comentario+'</h4>'+
             '</div><!-- /.box-header -->'+
           '</div><!-- /.box -->')
       });
@@ -200,6 +202,7 @@ $('#activity').on('submit','#formComentariosComent',function(){
                 ComentarioPorComentario(idComent);
                 var idEmpresa = $('#idEmpresa').val();
                 Recargar(idEmpresa);
+                $('#divResponder'+idComent).toggleClass('hidden');
               }
           });
           
@@ -459,3 +462,10 @@ $('#LineaNegociaciones').on('click','#btnEliminar', function() {
     });
 });//Fin Ocultar Negociaciones realizadas
 
+//Responder
+$(document).ready(function(){
+  $('#activity').on('click','#btnResponder',function(){
+      var idNegociacion = $(this).val();
+      $('#divResponder'+idNegociacion).toggleClass('hidden');
+  });
+});

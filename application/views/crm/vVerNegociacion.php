@@ -6,80 +6,71 @@
 }
 </style>
     <section class="content-header">
-      <ol class="breadcrumb">
-        <li><a href="cLogin"><i class="fa fa-map-signs"></i>Inicio</a></li>
-        <li class="active">Consultar Objetivo</li>
-      </ol>
+      <label class="h3">Objetivo:</label>&nbsp;&nbsp;<label class="h3 text-info text-red"><?php echo $row_Negociacion->NombreNegociacion; ?></label> 
     </section>
 
-    <!-- Main content -->
-    <section class="content">
-    <h1></h1>
-      <div class="row">
-        <div class="col-md-0">
-        </div>
-        <div class="col-md-6">
-          <div class="box box-info bg-info">
-              <div class="box-header with-border bg-success">
-              <label class="h3"></label>&nbsp;&nbsp;<label class="h3 text-info"><?php echo $row_Negociacion->NombreNegociacion; ?></label> 
-              <button id="btn_EditarObjetivo" onClick="EditarObjetivo(<?php echo $row_Negociacion->idNegociacion ?>);" class="btn btn-link pull-right text-yellow" data-toggle="tooltip" title="Editar"><i class="fa fa-edit fa-2x"></i></button>
+<section class="content">
+    <div class="box box-info">
+        <div class="box-body">
+          <div class="row">
+            <div class="col-md-6">
+              <button id="btn_EditarObjetivo" onClick="EditarObjetivo(<?php echo $row_Negociacion->idNegociacion ?>);" class="btn btn-default" data-toggle="tooltip" title="Editar"><i class="fa fa-edit"></i> Editar Información</button>
+              <button id="btn_Guardarbjetivo" onClick="UpdateObjetivo(<?php echo $row_Negociacion->idNegociacion ?>);" class="btn btn-default text-green hidden" data-toggle="tooltip" title="Gaurdar Cambios"><i class="fa fa-check-square-o"></i>Guardar Cambios</button>
 
-              <button id="btn_Guardarbjetivo" onClick="UpdateObjetivo(<?php echo $row_Negociacion->idNegociacion ?>);" class="btn btn-link pull-right text-green hidden" data-toggle="tooltip" title="Gaurdar Cambios"><i class="fa fa-check-square-o fa-2x"></i></button>
-
-              <label class="text-info pull-right">Avance:<span class="h3 text-info pull-right" id="Avance" name="Avance"></span></label>
+              <div class="col-md-12">
+                <div class="col-md-6">
+                  <div class="col-md-12"><label class="">Fecha Vencimiento:</label></div>
+                  <div class="col-md-12 text-center"><input type="text" id="FechaVencimiento" name="FechaVencimiento" class="form-control text-center" disabled value="<?php echo $row_Negociacion->FechaLimite; ?>"></div>
+                </div>
+                <div class="col-md-6">
+                  <div class="col-md-12"><label class="">Avance:</label></div>
+                  <div class="col-md-12 bg-yellow text-center"><span class="text-center" id="Avance" name="Avance"></span></div>
+                </div>
+                <div class="col-md-12">
+                  <?php if ($row_Negociacion->idEmpresa>0) { ?>
+                  <label class="">Empresa:</label>&nbsp;&nbsp;
+                    <p class=""><a href="<?php echo base_url().'cEmpresa/verEmpresa/'.$row_Negociacion->idEmpresa.''; ?>"><?php echo $row_Negociacion->NombreEmpresa; ?></a></p>
+                  <?php }
+                  else{?>
+                  <label class="">Persona:</label>&nbsp;&nbsp;<p class=""><a href="<?php echo base_url().'cPersona/verPersona/'.$row_Negociacion->idPersona.''; ?>"><?php echo $row_Negociacion->Nombre; ?></a></p>
+                  <?php } ?>
+                </div>
+                <div class="col-md-6">
+                  <label class="">Prioridad:</label>&nbsp;&nbsp;
+                  <input type="text" id="Prioridad" name="Prioridad" class="form-control text-center" disabled value="<?php echo $row_Negociacion->Prioridad; ?>">
+                </div>
+                <div class="col-md-6">
+                  <div class="col-md-12"><label class="">Estatus:</label></div>
+                  <div class="col-md-12 bg-yellow text-center">
+                  <span id="Estatus" name="Estatus" class="text-center" value="<?php echo $row_Negociacion->NegStatus; ?>"><?php echo $row_Negociacion->NegStatus; ?></span>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <label class="">Motivo:</label>
+                  <textarea class="form-control"  type="text" name="Motivo" id="Motivo" value="" disabled><?php echo $row_Negociacion->Motivo; ?></textarea>
+                </div>
+                <div class="col-md-12">
+                  <label class="">Detalles:</label>
+                  <textarea type="text" id="Detalles" name="Detalles" class="form-control" disabled value=""><?php echo $row_Negociacion->Detalles; ?></textarea>
+                </div>
+              </div>
             </div>
-            <!-- /.box-header -->
-            <div class="box-body bg-info">
-            <label class="">Motivo:</label>&nbsp;&nbsp;<input class="form-control"  type="text" name="Motivo" id="Motivo" value="<?php echo $row_Negociacion->Motivo; ?>" disabled>
-<hr>
-            <label class="">Prioridad:</label>&nbsp;&nbsp;
-              <input type="text" id="Prioridad" name="Prioridad" class="form-control" disabled value="<?php echo $row_Negociacion->Prioridad; ?>">
-<hr>
-            <label class="">Estatus:</label>&nbsp;&nbsp;
-              <input type="text" id="Estatus" name="Estatus" class="form-control" disabled value="<?php echo $row_Negociacion->NegStatus; ?>">
-<hr>
-            <label class="">Detalles:</label>&nbsp;&nbsp;
-              <input type="text" id="Detalles" name="Detalles" class="form-control" disabled value="<?php echo $row_Negociacion->Detalles; ?>">
-<hr>
-            <label class="">Fecha Vencimiento:</label>&nbsp;&nbsp;
-              <input type="text" id="FechaVencimiento" name="FechaVencimiento" class="form-control" disabled value="<?php echo $row_Negociacion->FechaLimite; ?>">
-<hr>
+            <div class="col-md-6">
 
-            <?php if ($row_Negociacion->idEmpresa>0) { ?>
-            <label class="">Empresa:</label>&nbsp;&nbsp;
-              <p class=""><a href="<?php echo base_url().'cEmpresa/verEmpresa/'.$row_Negociacion->idEmpresa.''; ?>"><?php echo $row_Negociacion->NombreEmpresa; ?></a></p><hr>
-            <?php }
-            else{?>
-            <label class="">Persona:</label>&nbsp;&nbsp;<p class=""><a href="<?php echo base_url().'cPersona/verPersona/'.$row_Negociacion->idPersona.''; ?>"><?php echo $row_Negociacion->Nombre; ?></a></p><hr>
-            <?php } ?>
-            <?php if ($row_Negociacion->StatusFinal!=NULL): ?>
-                  <li class="list-group-item">
-                    <b>Justificación de Cancelación:</b>
-                    <?php echo $row_Negociacion->StatusFinal; ?>
-                  </li>  
-          <?php endif ?>
-            </div><!-- /.box-body -->
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="box box-info bg-info">
             <div class="nav-tabs-custom">
-              <div class="box-header with-border bg-success">
+              <div class="box-header with-border">
                 <ul class="nav nav-tabs">
                   <li class="active"><a href="#Comentarios" data-toggle="tab">Comentarios</a></li>
                   <li class=""><a href="#TareasOb" data-toggle="tab">Tareas</a></li>
-                  <!-- <div class="btn btn-group"> -->
-                  <!-- <span id="TareasActivas" name="TareasActivas" class="badge bg-yellow"></span>
-                  <span id="TareasRealizadas" name="TareasRealizadas" class="badge bg-green"></span>
-                  <span id="TareasCanceladas" name="TareasCanceladas" class="badge bg-red"></span></div> -->
+                </ul>
               </div>
-                  <div class="box-body bg-info">
+                  <div class="box-body">
                     <div class="tab-content"><!-- Comentarios -->
                       <div class="active tab-pane" id="Comentarios">
                         <div class="row">
                             <form method="POST" action="<?php echo base_url();?>cComentarios/guardarComentario" id="formComentarios" name="formComentarios">
                               <div class="col-sm-9">
-                                <input type="text" name="Nota" id="Nota" class="form-control input-sm" placeholder="Agregar Nota">
+                                <textarea type="text" name="Nota" id="Nota" class="form-control input-sm" placeholder="Agregar Nota"></textarea>
                               </div>
                               <div class="col-sm-3">
                                 <input type="hidden" id="idNegociacion" name="idNegociacion" value="<?php echo $row_Negociacion->idNegociacion;?>">
@@ -91,29 +82,25 @@
                           </div>
                         </div> 
                       </div>
-
-                    <div class="tab-pane" id="TareasOb">
-                        <!-- The timeline -->
-                      <button id="btn_nTarea" class="btn btn-success " data-toggle="modal" data-target="#ModalTareOb"><i class="fa fa-plus fa-x2"></i> Nueva Tarea</button>
-                      <div class="btn btn-group">
-                  <span id="TareasActivas" name="TareasActivas" class="badge bg-yellow"></span>
-                  <span id="TareasRealizadas" name="TareasRealizadas" class="badge bg-green"></span>
-                  <span id="TareasCanceladas" name="TareasCanceladas" class="badge bg-red"></span></div>
-                      <hr>
-                      <ul class="timeline timeline-inverse" id="LineaTareasOb" style="height: 400px; overflow: scroll;">
-                      </ul>
+                      <div class="tab-pane" id="TareasOb">
+                        <button id="btn_nTarea" class="btn btn-success " data-toggle="modal" data-target="#ModalTareOb"><i class="fa fa-plus fa-x2"></i> Nueva Tarea</button>
+                        <div class="btn btn-group">
+                          <span id="TareasActivas" name="TareasActivas" class="badge bg-yellow"></span>
+                          <span id="TareasRealizadas" name="TareasRealizadas" class="badge bg-green"></span>
+                          <span id="TareasCanceladas" name="TareasCanceladas" class="badge bg-red"></span>
+                        </div>
+                        <ul class="timeline timeline-inverse" id="LineaTareasOb" style="height: 400px; overflow: scroll;">
+                        </ul>
+                      </div>
                     </div>
+                  </div>
+                </div> <!-- box-header -->
 
-                  </div>
-                  </div>
-                </ul>
-            </div> <!-- box-header -->
+            </div>
           </div>
         </div>
-      </div><!-- col -->
-      </div>
-    </section>
-
+    </div>
+</section>
 <div class="modal fade modal-info" id="ModalTareOb" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

@@ -3,78 +3,29 @@ $.post(baseurl+"cGetComentarios/getComentarios_Por_Persona",
 	{
 		idPersona:idPersona
 	},
-	function(data){
-		var emp = JSON.parse(data);
-		$.each(emp,function(i,item){
-			$('#activity').append(
-        '<div class="box box-info collapsed-box bg-info">'+
-            '<div class="box-header with-border bg-info">'+
-                  '<div class="user-block">'+
-                    // '<img class="img-circle img-bordered-sm" src="'+baseurl+'assets/dist/img/'+item.url_foto+'" alt="">'+
-                        '<span class="username">'+
-                          '<a>'+item.Nombre+' '+item.Paterno+'</a>'+
-                        '</span>'+
-                    '<span class="description">'+item.Fecha_Creacion+'</span>'+
-                  '</div>'+
-              '<h4 class="">'+item.Comentario+'</h4>'+
-              '<div class="box-tools pull-right">'+
-                '<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>'+
-                '</button>'+
-              '</div><!-- /.box-tools -->'+
-            '</div><!-- /.box-header -->'+
-            '<div class="box-body">'+
-            '<ul id="ListaComentariosComent'+item.idComentario+'" name="ListaComentariosComent">'+
-            '</ul>'+
-            '<div class="row">'+
-              '<form method="POST" action="'+baseurl+'cComentarios/guardarComentarioComentario" id="formComentariosComent" name="formComentariosComent">'+
-                '<div class="col-sm-9">'+
-                    '<input type="text" name="Nota" id="Nota" class="form-control input-sm" placeholder="Responder">'+
-                '</div>'+
-                '<div class="col-sm-3">'+
-                  '<input type="hidden" id="idComent" name="idComent" value="'+item.idComentario+'">'+
-                  '<input type="hidden" id="idUsuarioc" name="idUsuarioc" value="'+idUsuarioCrea+'">'+
-                  '<button id="btn_Coment" type="submit" class="btn btn-success pull-right btn-block btn-sm">Responder</button>'+
-                '</div>'+
-              '</form>'+
-            '</div>'+
-            '</div><!-- /.box-body -->'+
-          '</div><!-- /.box -->')
-            ComentarioPorComentario(item.idComentario);
-			});
-	});
-
-function Recargar(idPersona){
-  limpiar();
-  $.post(baseurl+"cGetComentarios/getComentarios_Por_Persona",
-  {
-    idPersona:idPersona
-  },
-  function(data){
+function(data){
     var emp = JSON.parse(data);
     $.each(emp,function(i,item){
       $('#activity').append(
         '<div class="box box-info collapsed-box bg-info">'+
-            '<div class="box-header with-border bg-info">'+
-                  '<div class="user-block">'+
-                    // '<img class="img-circle img-bordered-sm" src="'+baseurl+'assets/dist/img/'+item.url_foto+'" alt="">'+
-                        '<span class="username">'+
-                          '<a>'+item.Nombre+' '+item.Paterno+'</a>'+
-                        '</span>'+
-                    '<span class="description">'+item.Fecha_Creacion+'</span>'+
-                  '</div>'+
-              '<h4 class="">'+item.Comentario+'</h4>'+
-              '<div class="box-tools pull-right">'+
-                '<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>'+
+            '<div class="box-header with-border">'+
+              '<div class="box-tools col-md-12" style="position:inherit;">'+
+                '<button type="button" class="btn btn-box-tool pull-left" data-widget="collapse" data-toggle="tooltip" title="Respuestas"><i class="fa fa-sort-down fa-2x"></i>'+
+                '</button>'+
+                '<button id="btnResponder" name="btnResponder" type="button" class="btn btn-box-tool pull-right" data-toggle="tooltip" title="Responder" value="'+item.idComentario+'"><i class="fa fa-mail-reply text-green"></i>'+
                 '</button>'+
               '</div><!-- /.box-tools -->'+
-            '</div><!-- /.box-header -->'+
-            '<div class="box-body">'+
-            '<ul id="ListaComentariosComent'+item.idComentario+'" name="ListaComentariosComent">'+
-            '</ul>'+
-            '<div class="row">'+
-              '<form method="POST" action="'+baseurl+'cComentarios/guardarComentarioComentario" id="formComentariosComent" name="formComentariosComent">'+
+                  '<div class="user-block">'+
+                        '<span class="username col-md-11">'+
+                          '<b style="font-size:14px;">'+item.Nombre+'</b>'+
+                          '<span class="description pull-right">'+item.Fecha_Creacion+'</span>'+
+                        '</span>'+
+                  '</div>'+
+              '<h4 class="" style="margin:5px; padding-left:50px; font-size:14px;">'+item.Comentario+'</h4>'+
+            '<div class="row hidden" id="divResponder'+item.idComentario+'" name="divResponder'+item.idComentario+'" style="padding: 2px 50px 0px;">'+
+              '<form class="" method="POST" action="'+baseurl+'cComentarios/guardarComentarioComentario" id="formComentariosComent" name="formComentariosComent">'+
                 '<div class="col-sm-9">'+
-                    '<input type="text" name="Nota" id="Nota" class="form-control input-sm" placeholder="Responder">'+
+                    '<textarea type="text" name="Nota" id="Nota" class="form-control input-sm" placeholder="Responder"></textarea>'+
                 '</div>'+
                 '<div class="col-sm-3">'+
                   '<input type="hidden" id="idComent" name="idComent" value="'+item.idComentario+'">'+
@@ -83,6 +34,57 @@ function Recargar(idPersona){
                 '</div>'+
               '</form>'+
             '</div>'+
+            '</div><!-- /.box-header -->'+
+            '<div class="box-body">'+
+            '<ul id="ListaComentariosComent'+item.idComentario+'" name="ListaComentariosComent">'+
+            '</ul>'+
+            '</div><!-- /.box-body -->'+
+          '</div><!-- /.box -->')
+            ComentarioPorComentario(item.idComentario);
+      });
+  });
+
+function Recargar(idPersona){
+  limpiar();
+$.post(baseurl+"cGetComentarios/getComentarios_Por_Persona",
+  {
+    idPersona:idPersona
+  },
+function(data){
+    var emp = JSON.parse(data);
+    $.each(emp,function(i,item){
+      $('#activity').append(
+        '<div class="box box-info collapsed-box bg-info">'+
+            '<div class="box-header with-border">'+
+              '<div class="box-tools col-md-12" style="position:inherit;">'+
+                '<button type="button" class="btn btn-box-tool pull-left" data-widget="collapse" data-toggle="tooltip" title="Respuestas"><i class="fa fa-sort-down fa-2x"></i>'+
+                '</button>'+
+                '<button id="btnResponder" name="btnResponder" type="button" class="btn btn-box-tool pull-right" data-toggle="tooltip" title="Responder" value="'+item.idComentario+'"><i class="fa fa-mail-reply text-green"></i>'+
+                '</button>'+
+              '</div><!-- /.box-tools -->'+
+                  '<div class="user-block">'+
+                        '<span class="username col-md-11">'+
+                          '<b style="font-size:14px;">'+item.Nombre+'</b>'+
+                          '<span class="description pull-right">'+item.Fecha_Creacion+'</span>'+
+                        '</span>'+
+                  '</div>'+
+              '<h4 class="" style="margin:5px; padding-left:50px; font-size:14px;">'+item.Comentario+'</h4>'+
+            '<div class="row hidden" id="divResponder'+item.idComentario+'" name="divResponder'+item.idComentario+'" style="padding: 2px 50px 0px;">'+
+              '<form class="" method="POST" action="'+baseurl+'cComentarios/guardarComentarioComentario" id="formComentariosComent" name="formComentariosComent">'+
+                '<div class="col-sm-9">'+
+                    '<textarea type="text" name="Nota" id="Nota" class="form-control input-sm" placeholder="Responder"></textarea>'+
+                '</div>'+
+                '<div class="col-sm-3">'+
+                  '<input type="hidden" id="idComent" name="idComent" value="'+item.idComentario+'">'+
+                  '<input type="hidden" id="idUsuarioc" name="idUsuarioc" value="'+idUsuarioCrea+'">'+
+                  '<button id="btn_Coment" type="submit" class="btn btn-success pull-right btn-block btn-sm">Responder</button>'+
+                '</div>'+
+              '</form>'+
+            '</div>'+
+            '</div><!-- /.box-header -->'+
+            '<div class="box-body">'+
+            '<ul id="ListaComentariosComent'+item.idComentario+'" name="ListaComentariosComent">'+
+            '</ul>'+
             '</div><!-- /.box-body -->'+
           '</div><!-- /.box -->')
             ComentarioPorComentario(item.idComentario);
@@ -101,15 +103,14 @@ function ComentarioPorComentario(idComentario){
     $.each(emp1,function(i,item){
       $('#ListaComentariosComent'+idComentario+'').append(
         '<div class="box box-danger collapsed-box">'+
-            '<div class="box-header with-border bg-info">'+
+            '<div class="box-header with-border">'+
                   '<div class="user-block">'+
-                    // '<img class="img-circle img-bordered-sm" src="'+baseurl+'assets/dist/img/'+item.url_foto+'" alt="">'+
                         '<span class="username">'+
-                          '<a href="#">'+item.Nombre+' '+item.Paterno+'</a>'+
+                          '<b style="font-size:14px;">'+item.Nombre+'</b>'+
+                    '<span class="description pull-right">'+item.Fecha_Creacion+'</span>'+
                         '</span>'+
-                    '<span class="description">'+item.Fecha_Creacion+'</span>'+
                   '</div>'+
-              '<h4 class="">'+item.Comentario+'</h4>'+
+              '<h4 class="" style="margin:0px; padding-left:50px; font-size:14px;">'+item.Comentario+'</h4>'+
             '</div><!-- /.box-header -->'+
           '</div><!-- /.box -->')
       });
@@ -455,34 +456,11 @@ $.post(baseurl+"cPersona/updatePersona/",
     location.reload();
   });
 }
-// GuardarEditPersona = function(){
-//   var idPersona = idPersona;
-//   var NombrePersona = $('#NombrePersona').val();
-//   var Cargo = $('#Cargo').val();
-//   var Puesto = $('#Puesto').val();
-//   var Telefono1 = $('#Telefono1').val();
-//   var Telefono2 = $('#Telefono2').val();
-//   var Correo1 = $('#Correo1').val();
-//   var Correo2 = $('#Correo2').val();
-//   var Skype = $('#Skype').val();
-//   var Direccion = $('#Direccion').val();
-//   var Estado = $('#Estado').val();
-//   var Pais   = $('#Pais').val();
-//   $.post(baseurl+"cPersona/updatePersona/",
-//     {
-//       NombrePersona:NombrePersona,
-//       Carg:Cargo,
-//       Puest:Puesto,
-//       Telefono:Telefono1,
-//       Telefono:Telefono2,
-//       Correo:Correo1,
-//       Correo:Correo2,
-//       Skyp:Skype,
-//       Direccio:Direccion,
-//       Estad:Estado,
-//       Pais:Pais
-//     },
-//     function(data){
-//       location.reload();
-//     });
-//   }
+
+//Responder
+$(document).ready(function(){
+  $('#activity').on('click','#btnResponder',function(){
+      var idNegociacion = $(this).val();
+      $('#divResponder'+idNegociacion).toggleClass('hidden');
+  });
+});

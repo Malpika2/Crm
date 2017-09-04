@@ -7,15 +7,9 @@
   position: relative;
 }
 </style>
-    <section class="content-header">
-      <h1>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="cLogin"><i class="fa fa-map-signs"></i>Inicio</a></li>
-        <li class="active">Contactos</li>
-        <li class="active">Personas</li>
-      </ol>
-    </section>
+<section class="content-header">
+  <i class="fa fa-home fa-2x"><span class="profile-username">&nbsp;Ficha de la persona:&nbsp;&nbsp;</span><b class="profile-username text-red"><?php echo strtoupper($row_Persona->Nombre); ?></b></i>
+</section>
     <!-- Main content -->
     <section class="content">
     <h1></h1>
@@ -24,25 +18,22 @@
             <!-- Profile Image -->
             <div class="box box-primary">
               <div class="box-body box-profile">
-                <img class="profile-user-img img-responsive img-circle" src="<?php echo base_url();?>assets/dist/img/silueta_user.png" alt="User profile picture">
-                <h3 class="profile-username text-center"><?php echo $row_Persona->Nombre; ?></h3>
-                <p class="text-muted text-center"></p>
                 <ul class="list-group list-group-unbordered">
                   <li class="list-group-item">
-                    <b>Puesto: </b><?php echo $row_Persona->Puesto;?>
+                    <b>Puesto: </b><br><?php echo $row_Persona->Puesto;?>
                   </li>
                   <li class="list-group-item">
-                    <b>Cargo: </b><?php echo $row_Persona->Cargo; ?>
+                    <b>Cargo: </b><br><?php echo $row_Persona->Cargo; ?>
                   </li>
                   <?php if (isset($row_Empresas->NombreEmpresa)): ?>
                     <li class="list-group-item">
-                      <b>Nombre Empresa:</b>
+                      <b>Nombre Empresa:</b><br>
                       <a href="<?php echo base_url();?>cEmpresa/verEmpresa/<?php echo $row_Empresas->idEmpresa; ?>"><?php echo $row_Empresas->NombreEmpresa; ?></a>
                     </li>
                   <?php endif ?> 
                   <?php if ($row_Persona->Status=='Inactivo'): ?>
                   <li class="list-group-item">
-                    <b>Justificacion de Inactividad:</b>
+                    <b>Justificacion de Inactividad:</b><br>
                     <?php echo $row_Persona->StatusFinal; ?>
                   </li> 
                   <?php endif ?>
@@ -50,47 +41,58 @@
                   <button id="btn_Editar" class="btn btn-primary btn-block " data-toggle="modal" data-target="#ModalEditarPersona">Editar</button>
               </div><!-- /.box-body -->
             </div><!-- /.box PROFILE -->
-
-            <!-- About Me Box -->
-            <div class="box box-primary">
-              <div class="box-header with-border">
-                <h3 class="box-title">Datos:</h3>
-              </div><!-- /.box-header -->
-              <div class="box-body">
-                <strong><i class="fa fa-book margin-r-5"></i> Skype</strong>
-                  <p class="text-muted">
-                    <?php echo $row_Persona->Skype; ?>
-                  </p>
-                  <hr>
-                <strong><i class="fa fa-map-marker margin-r-5"></i> Direccion</strong>
-                <p class="text-muted"> <?php echo $row_Persona->Direccion;?>, 
-<?php echo $row_Persona->Ciudad;?>, <?php echo $row_Persona->Pais; ?></p>  
-                <hr>
-                <strong><i class="fa fa-pencil margin-r-5"></i>Telefonos</strong>
-                <ul>
-                  <li><b>Personal: </b><? echo $row_Persona->Telefono1; ?></li>
-                  <li><b>Trabajo: </b> <? echo $row_Persona->Telefono2; ?></li>
-                </ul>
-                <hr>
-                <strong><i class="fa fa-file-text-o margin-r-5"></i> Correos</strong>
-                <ul>
-                  <li><b>Personal: </b><? echo $row_Persona->Correo1; ?></li>
-                  <li><b>Trabajo: </b> <? echo $row_Persona->Correo2; ?></li>
-                </ul>
-              </div><!-- /.box-body -->
-            </div><!-- /.box primary datos-->
           </div><!-- /.col md3 -->
 
         <div class="col-md-9">
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="#Notas" data-toggle="tab">Notas</a></li>
-              <li><a href="#Tareas" data-toggle="tab">Tareas</a></li>
-              <li><a href="#Negociaciones" data-toggle="tab">Objetivo</a></li>
+              <li class="active"><a href="#Datos" data-toggle="tab"><b class="text-blue">Datos</b></a></li>
+              <li class=""><a href="#Notas" data-toggle="tab"><b class="text-blue">Notas</b></a></li>
+              <li><a href="#Tareas" data-toggle="tab"><b class="text-blue">Tareas</b></a></li>
+              <li><a href="#Negociaciones" data-toggle="tab"><b class="text-blue">Objetivo</b></a></li>
             </ul>
-            <div class="tab-content"><!-- Comentarios -->
+            <div class="tab-content">
+            <div class="tab-content">
+              <div class="active tab-pane" id="Datos">
+                  <div class="row">
+                  <div class="col-md-12">
+                    <table class="table table-bordered table-condensed">
+                      <tbody style="font-size: 14px;">
+                          <tr>
+                              <td><b>Correo Oficina</b></td>
+                              <td><?php echo $row_Persona->Correo1; ?></td>
+                          </tr>
+                          <tr>
+                              <td><b>Correo Personal</b></td>
+                              <td><?php echo $row_Persona->Correo2; ?></td>
+                          </tr>
+                          <tr>
+                              <td><b>Telefono Oficina</b></td>
+                              <td><?php echo $row_Persona->Telefono1; ?></td>
+                          </tr>
+                          <tr>
+                              <td><b>Telefono Personal</b></td>
+                              <td><?php echo $row_Persona->Telefono2; ?></td>
+                          </tr>
+                          <tr>
+                              <td><b>Skype</b></td>
+                              <td><?php echo $row_Persona->Skype; ?></td>
+                          </tr>
+                      </tbody>
+                    </table>
+                      <div class="col-md-12 bg-yellow">Datos Oficina:</div>
+                      <div class="col-md-12">
+                        <b>Dirección:</b>&nbsp;&nbsp;<?php echo $row_Persona->Direccion; ?><br>
+                        <b>Ciudad:</b>&nbsp;&nbsp;<?php echo $row_Persona->Ciudad; ?><br>
+                        <b>País:</b>&nbsp;&nbsp;<?php echo $row_Persona->Pais; ?><br>
+                      </div>
+                  </div>
+                  </div>
+              </div>
+              <!-- /.tab-pane -->
 
-              <div class="active tab-pane" id="Notas">
+            <!-- Comentarios -->
+              <div class="tab-pane" id="Notas">
                 <div class="post clearfix">
                   <div class="row">
                     <form method="POST" action="<?php echo base_url();?>cComentarios/guardarComentario" id="formComentarios" name="formComentarios">

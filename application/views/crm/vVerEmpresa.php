@@ -1,36 +1,22 @@
 <section class="content-header">
-      <h1>
-      <br>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="cLogin"><i class="fa fa-map-signs"></i>Inicio</a></li>
-        <li class="active">Consulta</li>
-      </ol>
-    </section>
+  <i class="fa fa-home fa-2x"><span class="profile-username">&nbsp;Ficha de la empresa:</span><b class="profile-username text-red"><?php echo strtoupper($row_Empresas->NombreEmpresa); ?></b></i>
+</section>
     <!-- Main content -->
     <section class="content">
       <div class="row">
           <div class="col-md-3">
-
-          <!-- Profile Image -->
           <div class="box box-primary">
             <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src="<?php echo base_url();?>assets/dist/img/silueta_user.png" alt="User profile picture">
-
-              <h3 class="profile-username text-center"><?php echo $row_Empresas->NombreEmpresa; ?></h3>
-
-              <p class="text-muted text-center"></p>
-
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
                   <b><?php echo $row_Empresas->Tipo; ?></b> <a class="pull-right"></a>
                 </li>
                 <li class="list-group-item">
-                  <b>Sitio Web: </b> 
+                  <b>Sitio Web:</b><br> 
                     <?php if(isset($row_Empresas->SitioWeb)){echo $row_Empresas->SitioWeb;} ?>
                 </li>
                 <li class="list-group-item">
-                <b>Representante: </b>
+                <b>Representante:</b><br>
                 <?php if (isset($row_Persona->Nombre)){?>
                   <a href="<?php echo base_url();?>/cPersona/verPersona/<?php echo $row_Persona->idPersona ?>"><?php echo $row_Persona->Nombre;?>
                   </a>
@@ -62,49 +48,7 @@
                 <?php endif ?>
 
               </ul>
-                <button id="btn_Editar" class="btn btn-primary btn-block " data-toggle="modal" data-target="#ModalEditarEmp2">Editar</button>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-
-          <!-- About Me Box -->
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Datos:</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <strong><i class="fa fa-book margin-r-5"></i> Skype</strong>
-
-              <p class="text-muted">
-                  <?php echo $row_Empresas->Skype; ?>
-              </p>
-
-              <hr>
-
-              <strong><i class="fa fa-map-marker margin-r-5"></i> Direccion</strong>
-
-              <p class="text-muted"><b>D. Oficina: </b> <?php echo $row_Empresas->DireccionOficina;?><p>
-              <p class="text-muted"><b>D. Fiscal: </b><?php echo $row_Empresas->DireccionFiscal;?><p>
-              <p class="text-muted"><b>Ciudad: </b><?php echo $row_Empresas->Ciudad;?><p>
-              <p class="text-muted"><b>Pais: </b><?php echo $row_Empresas->Pais;?><p>
-
-              <hr>
-
-              <strong><i class="fa fa-pencil margin-r-5"></i>Telefonos</strong>
-                <ul>
-                  <li><?php echo $row_Empresas->Telefono?></li>
-                  <li><?php echo $row_Empresas->Telefono2?></li>
-                </ul>
-              <hr>
-
-              <strong><i class="fa fa-file-text-o margin-r-5"></i> Correos</strong>
-              <ul>
-                <li><?php echo $row_Empresas->Email?></li>
-                <li><?php echo $row_Empresas->Email2?></li>
-              </ul>
-
+                <button id="btn_Editar" class="btn btn-primary btn-block " data-toggle="modal" data-target="#ModalEditarEmp2">Editar Información</button>
             </div>
             <!-- /.box-body -->
           </div>
@@ -114,22 +58,69 @@
         <div class="col-md-9">
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="#Notas" data-toggle="tab">Notas</a></li>
-              <li><a href="#Tareas" data-toggle="tab">Tareas</a></li>
-              <li><a href="#Negociaciones" data-toggle="tab">Objetivos</a></li>
+              <li class="active"><a href="#Datos" data-toggle="tab"><b class="text-blue">Datos</b></a></li>
+              <li><a href="#Notas" data-toggle="tab"><b class="text-blue">Notas</b></a></li>
+              <li><a href="#Tareas" data-toggle="tab"><b class="text-blue">Tareas</b></a></li>
+              <li><a href="#Negociaciones" data-toggle="tab"><b class="text-blue">Objetivos</b></a></li>
             </ul>
-            <div class="tab-content"><!-- Comentarios -->
-              <div class="active tab-pane" id="Notas">
-                <div class="post clearfix">
+            <div class="tab-content">
+              <div class="active tab-pane" id="Datos">
+                  <div class="row">
+                  <div class="col-md-12">
+                    <table class="table table-bordered table-condensed">
+                      <tbody style="font-size: 14px;">
+                          <tr>
+                              <td><b>Correo Oficina</b></td>
+                              <td><?php echo $row_Empresas->Email; ?></td>
+                          </tr>
+                          <tr>
+                              <td><b>Correo Personal</b></td>
+                              <td><?php echo $row_Empresas->Email2; ?></td>
+                          </tr>
+                          <tr>
+                              <td><b>Telefono Oficina</b></td>
+                              <td><?php echo $row_Empresas->Telefono; ?></td>
+                          </tr>
+                          <tr>
+                              <td><b>Telefono Personal</b></td>
+                              <td><?php echo $row_Empresas->Telefono2; ?></td>
+                          </tr>
+                          <tr>
+                              <td><b>Skype</b></td>
+                              <td><?php echo $row_Empresas->Skype; ?></td>
+                          </tr>
+                      </tbody>
+                    </table>
+                      <div class="col-md-12 bg-yellow">Dirección Oficina:</div>
+                      <div class="col-md-12">
+                        <b>Dirección:</b>&nbsp;&nbsp;<?php echo $row_Empresas->DireccionOficina; ?><br>
+                        <b>Ciudad:</b>&nbsp;&nbsp;<?php echo $row_Empresas->Ciudad; ?><br>
+                        <b>País:</b>&nbsp;&nbsp;<?php echo $row_Empresas->Pais; ?><br>
+                      </div>
+                      <div class="col-md-12 bg-yellow">Datos Fiscales:</div>
+                      <div class="col-md-12">
+                        <?php if (isset($row_Empresas->DireccionFiscal)): ?>
+                          <b>Dirección Fiscal:</b>&nbsp;&nbsp;<?php echo $row_Empresas->DireccionFiscal; ?><br>
+                        <?php endif ?>
+                        <b>Datos Fiscales:</b>&nbsp;&nbsp;<?php echo $row_Empresas->DatosFiscales; ?><br>
+                      </div>
+                  </div>
+                  </div>
+              </div>
+              <!-- /.tab-pane -->
+            <!-- Comentarios -->
+              <div class="tab-pane" id="Notas">
+                <div class="post clearfix" style="padding: 0px; margin: 3px;">
                   <div class="row">
                   <form method="POST" action="<?php echo base_url();?>cComentarios/guardarComentarioEmpresa" id="formComentarios" name="formComentarios">
-                  <div class="col-sm-9">
-                      <input type="text" name="Nota" id="Nota" class="form-control input-sm" placeholder="Agregar Nota">
-                  </div>
-                  <div class="col-sm-3">
+                  <div class="col-md-2">
                     <input type="hidden" id="idEmpresa" name="idEmpresa" value="<?php echo $row_Empresas->idEmpresa;?>">
                     <input type="hidden" id="idUsuarioc" name="idUsuarioc" value="<?php echo $this->session->userdata('s_idUsuario');?>">
-                    <button id="btn_Coment" type="submit" class="btn btn-success pull-right btn-block btn-sm">Guardar</button>
+                    <button id="btn_Coment" type="submit" class="btn btn-success btn-sm btn-block" style="border-radius: 10px; margin-bottom: 5px;"><i class="fa fa-plus pull-left"></i>Guardar</button>
+                  </div>
+                  <div class="col-md-12">
+                      <textarea class="form-control" rows="2" id="Nota" name="Nota" placeholder="Escribir Nota"></textarea>
+                      <!-- <input type="textArea" name="Nota" id="Nota" class="form-control input-sm" placeholder="Agregar Nota"> -->
                   </div>
                   </form>
                   </div>
