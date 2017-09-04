@@ -264,8 +264,10 @@ $('#LineaTareasOb').on('click','#btnRealizada', function() {
 });//Fin Ocultar tareas realizadas
 
 EditarObjetivo = function($idObjetivo){
-  $('#FechaVencimiento').prop('disabled',false);
+$('#FechaVencimiento').prop('disabled',false);
 $('#Motivo').prop('disabled',false);
+$('#PrioridadLbl').addClass('hidden');
+$('#Prioridad').removeClass('hidden');
 $('#Prioridad').prop('disabled',false);
 $('#Estatus').prop('disabled',false);
 $('#Detalles').prop('disabled',false);
@@ -291,7 +293,7 @@ UpdateObjetivo = function($idObjetivo){
       idObjetivo:idObjetivo
     },
     function(data){
-        $('#FechaVencimiento').prop('disabled',true);
+      $('#FechaVencimiento').prop('disabled',true);
       $('#Motivo').prop('disabled',true);
       $('#Prioridad').prop('disabled',true);
       $('#Estatus').prop('disabled',true);

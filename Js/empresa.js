@@ -7,6 +7,7 @@ $.post(baseurl+"cGetPersonas/getContactos",
 		$.each(emp,function(i,item){
 			if(item.Status=='Inactivo'){}
 			else {
+			$('#Representante').append('<option value="'+item.idPersona+'">'+item.Nombre+'</option>')
 			$('#Contacto').append('<option value="'+item.idPersona+'">'+item.Nombre+'</option>')}
 			});
 	});

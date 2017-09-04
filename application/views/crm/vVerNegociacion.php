@@ -37,7 +37,12 @@
                 </div>
                 <div class="col-md-6">
                   <label class="">Prioridad:</label>&nbsp;&nbsp;
-                  <input type="text" id="Prioridad" name="Prioridad" class="form-control text-center" disabled value="<?php echo $row_Negociacion->Prioridad; ?>">
+                  <input type="text" id="PrioridadLbl" name="PrioridadLbl" class="form-control text-center" disabled value="<?php echo $row_Negociacion->Prioridad; ?>">
+                  <select class="form-control hidden" id="Prioridad">
+                    <option value="Alta">Alta</option>
+                    <option value="Media">Media</option>
+                    <option value="Baja">Baja</option>
+                  </select>
                 </div>
                 <div class="col-md-6">
                   <div class="col-md-12"><label class="">Estatus:</label></div>
