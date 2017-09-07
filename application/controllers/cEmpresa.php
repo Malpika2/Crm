@@ -56,7 +56,7 @@ $param['Productos'] = $this->input->post('Productos');
 $param['PresupuestoPersona'] = $this->input->post('PresupuestoPersona');
 $param['InteresEmpresa'] = $this->input->post('InteresEmpresa');
 $param['ConfianzaEmpresa'] = $this->input->post('ConfianzaEmpresa');
-$param['Motivo'] = $this->input->post('Motivo');
+$param['MotivoEmpresa'] = $this->input->post('Motivo');
 $param['LugarContacto'] = $this->input->post('LugarContacto');
 
 

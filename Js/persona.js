@@ -5,7 +5,7 @@ $.post(baseurl+"cGetEmpresas/getEmpresas",
 	function(data){
 		var emp = JSON.parse(data);
 		$.each(emp,function(i,item){
-			$('#Empresa').append('<option value="'+item.idEmpresa+'">'+item.RazonSocial+'</option>')
+			$('#Empresa').append('<option value="'+item.idEmpresa+'">'+item.NombreEmpresa+'</option>')
 			});
 	});
 

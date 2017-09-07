@@ -18,7 +18,7 @@
     <section class="content">
     <div class="container-fluid">
       <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-12 text-center">
           <div class="nav-tabs-custom" style="margin-bottom: 0px;">
           <div class="text-center bg-white" style="padding: 1px; margin: 10px 15px 0px 15px; border-radius: 20px">
            <ul class="nav nav-tabs">

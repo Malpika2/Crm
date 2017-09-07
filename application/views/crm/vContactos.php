@@ -102,6 +102,7 @@ thead input {
                   <th>Nombre</th>
                   <th>Cargo</th>
                   <th>Skype</th>
+                  <th>Pais</th>
                   <th>Status</th>
                   <th>Fecha Registro</th>
                   <th>Acciones</th>
@@ -112,6 +113,7 @@ thead input {
                   <th>Nombre</th>
                   <th>Cargo</th>
                   <th>Skype</th>
+                  <th>Pais</th>
                   <th>Status</th>
                   <th>Fecha Registro</th>
                   <th>Acciones</th>
@@ -135,6 +137,9 @@ thead input {
                               </td>
                               <td align="left">
                                 '.$Persona->Skype.'
+                              </td>
+                              <td align="left">
+                                '.$Persona->Pais.'
                               </td>
                               <td align="center">
                                 '.$Persona->Status.'
@@ -171,12 +176,22 @@ thead input {
                 <tr  style="color:#00c8d9;"">
                   <th>Nombre Empresa</th>
                   <th>Tipo</th>
-                  <th>Skype</th>
+                  <th>Pais</th>
                   <th>Sitio Web</th>
                   <th>Fecha Registro</th>
                   <th>Accione</th>
                 </tr>
                 </thead>
+                <tfoot>
+                <tr style="color:#00c8d9;">
+                  <th>Nombre</th>
+                  <th>Tipo</th>
+                  <th>Pais</th>
+                  <th>Sitio Web</th>
+                  <th>Fecha Registro</th>
+                  <th>Acciones</th>
+                </tr>
+                </tfoot>
                 <tbody id="tablaEmpresas">
                 <?php
                   foreach ($Empresa as $Empresa) {
@@ -192,7 +207,7 @@ thead input {
                                 '.$Empresa->Tipo.'
                               </td>
                               <td align="left">
-                                '.$Empresa->Skype.'
+                                '.$Empresa->Pais.'
                               </td>
                               <td align="center">
                                 '.$Empresa->SitioWeb.'

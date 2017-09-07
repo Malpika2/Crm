@@ -35,7 +35,7 @@ class mEmpresa extends CI_Model
 'PresupuestoPersona' => $param['PresupuestoPersona'],
 'InteresEmpresa' => $param['InteresEmpresa'],
 'ConfianzaEmpresa' => $param['ConfianzaEmpresa'],
-'Motivo' => $param['Motivo'],
+'MotivoEmpresa' => $param['MotivoEmpresa'],
 'LugarContacto' => $param['LugarContacto']
 
 

@@ -24,14 +24,28 @@
           </a>
         </li>
         <li id="linkMenuContactos" class="treeview">
-          <a id="" href="<?php echo base_url();?>cContactos">
-            <i class="fa fa-users"></i> 
+          <a href="<?php echo base_url();?>cContactos">
+            <i class="fa fa-users"></i>
             <span>Contactos</span>
             <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
+          <ul class="treeview-menu">
+            <li id="linkMenuContactos2">
+              <a id="" href="<?php echo base_url();?>cContactos"><i class="fa fa-users"></i>Personas - Empresas</a>
+            </li>          
+            <li id="linkMenuNegociacion">
+              <a id="" href="<?php echo base_url();?>cNegociacion"><i class="fa fa-calendar"></i>Objetivos</a>
+            </li>
+            <li id="linkMenuTareas">
+                <a id="" href="<?php echo base_url();?>cTareas">
+                <i class="fa  fa-file-text-o"></i> <span>Tareas</span>
+                </a>
+            </li>
+          </ul>
         </li>
-        <li id="linkMenuNegociacion" class="treeview">
+<!--         <li id="linkMenuNegociacion" class="treeview">
           <a id="" href="<?php echo base_url();?>cNegociacion">
             <i class="fa fa-calendar"></i>
             <span>Objetivos</span>
@@ -47,7 +61,7 @@
             <span class="label label-primary pull-right"></span>
             </span>
           </a>
-        </li>
+        </li> -->
         <li class="header" style="color:white">Usuario</li>
         <li id="linkMenuObjetivos" class="treeview">
           <a id="" href="<?php echo base_url();?>CObjetivos">

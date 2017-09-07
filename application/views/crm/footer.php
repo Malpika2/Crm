@@ -220,7 +220,7 @@ $('#linkMenuUsuarios').removeClass('active');
      <script>
       $('#linkMenuInicio').removeClass('active');
       $('#linkMenuInicio').removeClass('active');
-      $('#linkMenuContactos').removeClass('active');
+      $('#linkMenuContactos').addClass('active');
       $('#linkMenuNegociacion').addClass('active');
       $('#linkMenuTareas').removeClass('active');
       $('#linkMenuObjetivos').removeClass('active');
@@ -233,6 +233,7 @@ $('#linkMenuUsuarios').removeClass('active');
    <script>
     $('#linkMenuInicio').removeClass('active');
     $('#linkMenuContactos').addClass('active');
+    $('#linkMenuContactos2').addClass('active');
     $('#linkMenuNegociacion').removeClass('active');
     $('#linkMenuTareas').removeClass('active');
     $('#linkMenuObjetivos').removeClass('active');
@@ -245,7 +246,7 @@ $('#linkMenuUsuarios').removeClass('active');
      <script>
       $('#linkMenuInicio').removeClass('active');
       $('#linkMenuInicio').removeClass('active');
-      $('#linkMenuContactos').removeClass('active');
+      $('#linkMenuContactos').addClass('active');
       $('#linkMenuNegociacion').removeClass('active');
       $('#linkMenuTareas').addClass('active');
       $('#linkMenuObjetivos').removeClass('active');
@@ -382,11 +383,20 @@ $('#linkMenuUsuarios').removeClass('active');
   $('#search_0').css('text-align', 'center');
 
   });
-
 </script>
 <script>
-  $(function () {
-    $('#example12').DataTable({
+  $(document).ready(function() {
+    // Setup - add a text input to each footer cell
+    $('#example2 tfoot th').each( function () {
+        var title = $(this).text();
+        if (title!='Acciones'){
+        $(this).html( '<input type="text" placeholder="Filtrar '+title+'" />' );}
+        else{
+          $(this).html( '' );}
+      });
+
+    // DataTable
+    var table = $('#example2').DataTable({
       "paging": true,
       "lengthChange": false,
       "searching": true,
@@ -413,16 +423,43 @@ $('#linkMenuUsuarios').removeClass('active');
             "sPrevious": "Anterior"
             }}
     });
+ 
+    // Apply the search
+    table.columns().every( function () {
+        var that = this;
+ 
+        $( 'input', this.footer() ).on( 'keyup change', function () {
+            if ( that.search() !== this.value ) {
+                that
+                    .search( this.value )
+                    .draw();
+            }
+        });
+    });
+  var r = $('#example2 tfoot tr');
+  r.find('th').each(function(){
+    $(this).css('padding', 8);
+  });
+  $('#example2 thead').append(r);
+  $('#search_0').css('text-align', 'center');
+
   });
 </script>
 <script>
-  $(function () {
-    $('#example2').DataTable({
-      "info": false,
+  $(document).ready(function() {
+    // Setup - add a text input to each footer cell
+    $('#tablaObEmpresas tfoot th').each( function () {
+        var title = $(this).text();
+        $(this).html( '<input type="text" placeholder="Filtrar '+title+'" />' );
+      });
+
+    // DataTable
+    var table = $('#tablaObEmpresas').DataTable({
       "paging": true,
       "lengthChange": false,
       "searching": true,
       "ordering": true,
+      "info": false,
       "autoWidth": true,
           oLanguage: {
             "sProcessing":     "Procesando...",
@@ -444,6 +481,85 @@ $('#linkMenuUsuarios').removeClass('active');
             "sPrevious": "Anterior"
             }}
     });
+ 
+    // Apply the search
+    table.columns().every( function () {
+        var that = this;
+ 
+        $( 'input', this.footer() ).on( 'keyup change', function () {
+            if ( that.search() !== this.value ) {
+                that
+                    .search( this.value )
+                    .draw();
+            }
+        });
+    });
+  var r = $('#tablaObEmpresas tfoot tr');
+  r.find('th').each(function(){
+    $(this).css('padding', 8);
+  });
+  $('#tablaObEmpresas thead').append(r);
+  $('#search_0').css('text-align', 'center');
+
+  });
+</script>
+<script>
+  $(document).ready(function() {
+    // Setup - add a text input to each footer cell
+    $('#tablaObPersonas tfoot th').each( function () {
+        var title = $(this).text();
+        $(this).html( '<input type="text" placeholder="Filtrar '+title+'" />' );
+
+      });
+
+    // DataTable
+    var table = $('#tablaObPersonas').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": false,
+      "autoWidth": true,
+          oLanguage: {
+            "sProcessing":     "Procesando...",
+            "sLengthMenu":     "Mostrar _MENU_ registros",
+            "sZeroRecords":    "No se encontraron resultados",
+            "sEmptyTable":     "Ningún dato disponible en esta tabla",
+            "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix":    "",
+            "sSearch":         "Buscar:",
+            "sUrl":            "",
+            "sInfoThousands":  ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":     "Último",
+            "sNext":     "Siguiente",
+            "sPrevious": "Anterior"
+            }}
+    });
+ 
+    // Apply the search
+    table.columns().every( function () {
+        var that = this;
+ 
+        $( 'input', this.footer() ).on( 'keyup change', function () {
+            if ( that.search() !== this.value ) {
+                that
+                    .search( this.value )
+                    .draw();
+            }
+        });
+    });
+  var r = $('#tablaObPersonas tfoot tr');
+  r.find('th').each(function(){
+    $(this).css('padding', 8);
+  });
+  $('#tablaObPersonas thead').append(r);
+  $('#search_0').css('text-align', 'center');
+
   });
 </script>
 <script>

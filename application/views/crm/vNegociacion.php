@@ -121,7 +121,7 @@
           <div class="tab-content">
             <!--TODAS NEGOCIACIONES-->
             <div class="tab-pane active" id="tab_Empresas"> 
-              <table id="example2" class="table table-bordered table-striped">
+              <table id="tablaObEmpresas" class="table table-bordered table-striped">
                 <thead>
                 <tr style="color:#00c8d9;">
                   <th>Titulo</th>
@@ -132,6 +132,16 @@
                   <th>Desarrollo</th>
                 </tr>
                 </thead>
+                <tfoot>
+                <tr style="color:#00c8d9;">
+                  <th>Titulo</th>
+                  <th>Empresa</th>
+                  <th>Prioridad</th>
+                  <th>Motivo</th>
+                  <th>Fecha Limite</th>
+                  <th>Desarrollo</th>
+                </tr>
+                </tfoot>
                 <tbody id="tablaAvanzado">
                 <?php foreach ($row_Negociaciones as $Negociaciones) {
                   $ClaseNeg="";
@@ -217,7 +227,7 @@
               </table>
             </div><!--Fin tabEmpresas-->
             <div class="tab-pane" id="tab_Personas"> 
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="tablaObPersonas" class="table table-responsive table-bordered table-striped">
                 <thead>
                 <tr style="color:#00c8d9;">
                   <th>Titulo</th>
@@ -228,6 +238,16 @@
                   <th>Desarrollo</th>
                 </tr>
                 </thead>
+                <tfoot>
+                <tr style="color:#00c8d9;">
+                  <th>Titulo</th>
+                  <th>Persona</th>
+                  <th>Prioridad</th>
+                  <th>Motivo</th>
+                  <th>Fecha Limite</th>
+                  <th>Desarrollo</th>
+                </tr>
+                </tfoot>
                 <tbody id="tablaAvanzado">
                 <?php foreach ($row_Negociaciones as $Negociaciones) {
                   $ClaseNeg="";
