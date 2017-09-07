@@ -4,6 +4,15 @@
   background: transparent;
   border: none;
 }
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
 </style>
     <section class="content-header">
       <label class="h3">Objetivo:</label>&nbsp;&nbsp;<label class="h3 text-info text-red"><?php echo $row_Negociacion->NombreNegociacion; ?></label> 
@@ -75,13 +84,17 @@
                         <div class="row">
                             <form method="POST" action="<?php echo base_url();?>cComentarios/guardarComentario" id="formComentarios" name="formComentarios">
                               <div class="col-sm-9">
-                                <textarea type="text" name="Nota" id="Nota" class="form-control input-sm" placeholder="Agregar Nota"></textarea>
+                                <textarea type="text" name="Nota" id="Nota" class="form-control input-sm" rows="4" placeholder="Agregar Nota"></textarea>
                               </div>
                               <div class="col-sm-3">
                                 <input type="hidden" id="idNegociacion" name="idNegociacion" value="<?php echo $row_Negociacion->idNegociacion;?>">
                                 <input type="hidden" id="idUsuarioc" name="idUsuarioc" value="<?php echo $this->session->userdata('s_idUsuario');?>">
                                 <button id="btn_Coment" type="submit" class="btn btn-success pull-right btn-block btn-sm">Guardar</button>
+                      <input type="file" name="file" id="file" class="inputfile inputfile-1" data-multiple-caption="{count} files selected" />
+                      <label class="btn btn-block" for="file" style="border-radius: 4px; margin-bottom: 5px; padding: 5px;"><span id="spanFile">Cargar Archivo&hellip;</span></label>
+
                               </div>
+
                             </form>
                           <div class="col-md-12" id="ListaTareasNG" style="height: 400px; overflow: scroll;">
                           </div>

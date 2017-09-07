@@ -106,8 +106,8 @@ function Recargar(idEmpresa){
   },
   function(data){
     var emp = JSON.parse(data);
-      if (item.NombreArchivo ===null){item.NombreArchivo='';}
     $.each(emp,function(i,item){
+      if (item.NombreArchivo ===null){item.NombreArchivo='';}
       $('#activity').append(
         '<div class="box box-info collapsed-box bg-info">'+
             '<div class="box-header with-border">'+
@@ -156,10 +156,10 @@ function ComentarioPorComentario(idComentario){
     idComentario:idComentario
   },
   function(data){
-  if (item.NombreArchivo ===null){item.NombreArchivo='';}
     $('#ListaComentariosComent'+idComentario+'').html("");
     var emp1 = JSON.parse(data);
     $.each(emp1,function(i,item){
+  if (item.NombreArchivo ===null){item.NombreArchivo='';}
       $('#ListaComentariosComent'+idComentario+'').append(
         '<div class="box box-danger collapsed-box">'+
             '<div class="box-header with-border">'+

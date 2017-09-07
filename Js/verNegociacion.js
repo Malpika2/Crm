@@ -1,16 +1,65 @@
 mostrarTareasObjetivos();
 
 $('#form, #fat, #formComentarios').submit(function() {
+
+
           $.ajax({
               type: 'POST',
               url: $(this).attr('action'),
               data: $(this).serialize(),
-              success: function(data) { 
-                $("#formComentarios")[0].reset();
-                $('#ListaTareasNG').empty();
-                 Recargar(idNegociacion);
+              success: function(data) {
+                var idNegociacion = $('#idNegociacion').val();
+                    var file_data = $('#file').prop('files')[0];
+                    if (file_data){
+                        var form_data = new FormData();
+                        form_data.append('file', file_data);
+                        $.ajax({
+                            url: baseurl+'ajaxupload/upload_file', 
+                            dataType: 'text', 
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            data:form_data,
+                            type: 'post',
+                            success: function (response) {
+                                $('#msg').html(response); // Exito
+                                $.post(baseurl+"ajaxupload/uploadBD",{
+                                  idNegociacion:idNegociacion,
+                                  idComentario:data,
+                                  nombreArchivo:file_data['name']},
+                                  function(data){
+                                    $("#formComentarios")[0].reset();
+                                    Recargar(idNegociacion);
+                                   $('#ListaTareasNG').empty();
+                                });
+                              $('#spanFile').html('Cargar Archivo&hellip;');
+                            },
+                            error: function (response) {
+                                $('#msg').html(response); // error
+                        }
+                    });
+                    } 
+                    else{
+                      $('#msg').html('');
+                      $('#spanFile').html('Cargar Archivo&hellip;');
+                    }
+                                    $("#formComentarios")[0].reset();
+                                    Recargar(idNegociacion);
+                                    $('#ListaTareasNG').empty();
+
               }
           });
+
+          // $.ajax({
+          //     type: 'POST',
+          //     url: $(this).attr('action'),
+          //     data: $(this).serialize(),
+          //     success: function(data) { 
+          //       $("#formComentarios")[0].reset();
+          //       $('#ListaTareasNG').empty();
+          //        Recargar(idNegociacion);
+          //     }
+          // });
           
           return false;
 });
@@ -37,6 +86,7 @@ $.post(baseurl+"cGetComentarios/getComentarios_Por_Negociacion",
   function(data){
     var emp = JSON.parse(data);
     $.each(emp,function(i,item){
+  if (item.NombreArchivo ===null){item.NombreArchivo='';}
       $('#ListaTareasNG').append(
         '<div class="box box-info collapsed-box bg-info">'+
             '<div class="box-header with-border">'+
@@ -53,15 +103,18 @@ $.post(baseurl+"cGetComentarios/getComentarios_Por_Negociacion",
                         '</span>'+
                   '</div>'+
               '<h4 class="" style="margin:5px; padding-left:50px; font-size:14px;">'+item.Comentario+'</h4>'+
+                '<a href="'+baseurl+'uploads/'+item.NombreArchivo+'">'+item.NombreArchivo+'</a>'+
             '<div class="row hidden" id="divResponder'+item.idComentario+'" name="divResponder'+item.idComentario+'" style="padding: 2px 50px 0px;">'+
               '<form class="" method="POST" action="'+baseurl+'cComentarios/guardarComentarioComentario" id="formComentariosComent" name="formComentariosComent">'+
                 '<div class="col-sm-9">'+
                     '<textarea type="text" name="Nota" id="Nota" class="form-control input-sm" placeholder="Responder"></textarea>'+
                 '</div>'+
                 '<div class="col-sm-3">'+
-                  '<input type="hidden" id="idComent" name="idComent" value="'+item.idComentario+'">'+
+                  '<input class="" type="hidden" id="idComent'+item.idComentario+'" name="idComent'+item.idComentario+'" value="">'+
+                  '<input class="" type="hidden" id="idComent" name="idComent"  value="'+item.idComentario+'">'+
                   '<input type="hidden" id="idUsuarioc" name="idUsuarioc" value="'+idUsuarioCrea+'">'+
-                  '<button id="btn_Coment" type="submit" class="btn btn-success pull-right btn-block btn-sm">Responder</button>'+
+                  '<input type="file" name="file'+item.idComentario+'" id="file'+item.idComentario+'"/>'+
+                  '<button id="btn_Coment" value="'+item.idComentario+'" type="submit" class="btn btn-success pull-right btn-block btn-sm">Responder</button>'+
                 '</div>'+
               '</form>'+
             '</div>'+
@@ -84,17 +137,18 @@ function ComentarioPorComentario(idComentario){
     $('#ListaComentariosComent'+idComentario+'').html("");
     var emp1 = JSON.parse(data);
     $.each(emp1,function(i,item){
+  if (item.NombreArchivo ===null){item.NombreArchivo='';}
       $('#ListaComentariosComent'+idComentario+'').append(
         '<div class="box box-danger collapsed-box">'+
             '<div class="box-header with-border">'+
                   '<div class="user-block">'+
-                    // '<img class="img-circle img-bordered-sm" src="'+baseurl+'assets/dist/img/'+item.url_foto+'" alt="">'+
                         '<span class="username">'+
                           '<b style="font-size:14px;">'+item.Nombre+'</b>'+
                     '<span class="description pull-right">'+item.Fecha_Creacion+'</span>'+
                         '</span>'+
                   '</div>'+
               '<h4 class="" style="margin:0px; padding-left:50px; font-size:14px;">'+item.Comentario+'</h4>'+
+              '<a href="'+baseurl+'uploads/'+item.NombreArchivo+'">'+item.NombreArchivo+'</a>'+
             '</div><!-- /.box-header -->'+
           '</div><!-- /.box -->')
       });
@@ -115,6 +169,7 @@ $.post(baseurl+"cGetComentarios/getComentarios_Por_Negociacion",
   function(data){
     var emp = JSON.parse(data);
     $.each(emp,function(i,item){
+  if (item.NombreArchivo ===null){item.NombreArchivo='';}
       $('#ListaTareasNG').append(
         '<div class="box box-info collapsed-box bg-info">'+
             '<div class="box-header with-border">'+
@@ -131,15 +186,18 @@ $.post(baseurl+"cGetComentarios/getComentarios_Por_Negociacion",
                         '</span>'+
                   '</div>'+
               '<h4 class="" style="margin:5px; padding-left:50px; font-size:14px;">'+item.Comentario+'</h4>'+
+                '<a href="'+baseurl+'uploads/'+item.NombreArchivo+'">'+item.NombreArchivo+'</a>'+
             '<div class="row hidden" id="divResponder'+item.idComentario+'" name="divResponder'+item.idComentario+'" style="padding: 2px 50px 0px;">'+
               '<form class="" method="POST" action="'+baseurl+'cComentarios/guardarComentarioComentario" id="formComentariosComent" name="formComentariosComent">'+
                 '<div class="col-sm-9">'+
                     '<textarea type="text" name="Nota" id="Nota" class="form-control input-sm" placeholder="Responder"></textarea>'+
                 '</div>'+
                 '<div class="col-sm-3">'+
-                  '<input type="hidden" id="idComent" name="idComent" value="'+item.idComentario+'">'+
+                  '<input class="" type="hidden" id="idComent'+item.idComentario+'" name="idComent'+item.idComentario+'" value="">'+
+                  '<input class="" type="hidden" id="idComent" name="idComent"  value="'+item.idComentario+'">'+
                   '<input type="hidden" id="idUsuarioc" name="idUsuarioc" value="'+idUsuarioCrea+'">'+
-                  '<button id="btn_Coment" type="submit" class="btn btn-success pull-right btn-block btn-sm">Responder</button>'+
+                  '<input type="file" name="file'+item.idComentario+'" id="file'+item.idComentario+'"/>'+
+                  '<button id="btn_Coment" value="'+item.idComentario+'" type="submit" class="btn btn-success pull-right btn-block btn-sm">Responder</button>'+
                 '</div>'+
               '</form>'+
             '</div>'+
@@ -155,23 +213,92 @@ $.post(baseurl+"cGetComentarios/getComentarios_Por_Negociacion",
 }
 $(document).ready(function(){//GuardarComentariosde Coments
 $('#ListaTareasNG').on('submit','#formComentariosComent',function(){
+
+  var conArchivo=0;
           $.ajax({
               type: 'POST',
               url: $(this).attr('action'),
               data: $(this).serialize(),
-              success: function(data) { 
-                $("#formComentariosComent")[0].reset();
-                var idComent2 = $('#idComent').val();
-                alert(idComent2);
-                $('#ListaComentariosComent'+idComent2).empty();
-                ComentarioPorComentario(idComent2);
-                var idNego = idNegociacion;
-                Recargar(idNegociacion);
-                $('#divResponder'+idComent2).addClass('hidden');
-                // Recargar();
+              success: function(data) {
+                conArchivo=1;
+              var idNegociacion = $('#idNegociacion').val();
+              var idComent = $('.idComent').val();
+              var file_data = $('#file'+idComent).prop('files')[0];
 
+              var idComentario = data;
+                    if (file_data){        
+                        var form_data = new FormData();
+                        form_data.append('file', file_data);
+
+                              $.post(baseurl+"ajaxupload/uploadBD",
+                                {
+                                  idNegociacion:idNegociacion,
+                                  idComentario:idComentario,
+                                  nombreArchivo:file_data['name']
+                                },
+                                  function(data2){
+                                        $.ajax({
+                                            url: baseurl+'ajaxupload/upload_file', 
+                                            dataType: 'text', 
+                                            cache: false,
+                                            contentType: false,
+                                            processData: false,
+                                            data:form_data,
+                                            type: 'post',
+                                            success: function (response) {
+                                                $('#msg').html(response); // Exito
+                                                $("#formComentariosComent")[0].reset();
+                                                $('#ListaComentariosComent'+idComent).empty();
+                                                ComentarioPorComentario(idComent);
+                                                Recargar(idNegociacion);
+                                                $('#divResponder'+idComent).toggleClass('hidden');
+                                            },
+                                            error: function (response) {
+                                                $('#msg').html(response); // error
+                                            }
+                                        });
+
+                                    });
+                    } 
+                    else{
+                      $('#msg').html('');
+                $("#formComentariosComent")[0].reset();
+                $('#ListaComentariosComent'+idComent).empty();
+                ComentarioPorComentario(idComent);
+                Recargar(idNegociacion);
+                $('#divResponder'+idComent).toggleClass('hidden');
+                    }
+              if (conArchivo<=0) {
+                $("#formComentariosComent")[0].reset();
+                $('#ListaComentariosComent'+idComent).empty();
+                ComentarioPorComentario(idComent);
+                Recargar(idNegociacion);
+                $('#divResponder'+idComent).toggleClass('hidden');
+                }
               }
           });
+
+
+
+
+
+          // $.ajax({
+          //     type: 'POST',
+          //     url: $(this).attr('action'),
+          //     data: $(this).serialize(),
+          //     success: function(data) { 
+          //       $("#formComentariosComent")[0].reset();
+          //       var idComent2 = $('#idComent').val();
+          //       alert(idComent2);
+          //       $('#ListaComentariosComent'+idComent2).empty();
+          //       ComentarioPorComentario(idComent2);
+          //       var idNego = idNegociacion;
+          //       Recargar(idNegociacion);
+          //       $('#divResponder'+idComent2).addClass('hidden');
+          //       // Recargar();
+
+          //     }
+          // });
           
           return false;
       });
@@ -308,5 +435,7 @@ $(document).ready(function(){
   $('#ListaTareasNG').on('click','#btnResponder',function(){
       var idNegociacion = $(this).val();
       $('#divResponder'+idNegociacion).toggleClass('hidden');
+      $('#idComent'+idNegociacion).toggleClass('idComent');
+      $('#idComent'+idNegociacion).val(idNegociacion);
   });
 });
