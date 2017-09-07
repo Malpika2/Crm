@@ -50,8 +50,12 @@ font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif !impo
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- daterange picker -->
   <!-- bootstrap datepicker -->
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/datepicker/datepicker3.css">
-  <!-- iCheck for checkboxes and radio inputs -->
+<!--   <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/datepicker/datepicker3.css">
+ -->  <!-- iCheck for checkboxes and radio inputs -->
+
+    <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url();?>assets/bootstrap-datetimepicker4/css/bootstrap-datetimepicker.min.css">
+
+
   <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/iCheck/all.css">
   <!-- Bootstrap Color Picker -->
   <link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/colorpicker/bootstrap-colorpicker.min.css">
@@ -74,7 +78,7 @@ font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif !impo
 <!-- Additional CSS Themes file - not required-->
 <link rel="stylesheet" href="<?php echo base_url();?>Js/EasyAutocomplete/easy-autocomplete.themes.min.css"> 
 <link rel="stylesheet" href="<?php echo base_url();?>assets/dist/css/personalizado/jquery-confirm.min.css"> 
-
+<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/dist/css/component.css" />
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

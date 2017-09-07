@@ -52,6 +52,13 @@ a{
     border-left:  1px solid #00a65a;
     border-bottom:  1px solid #00a65a;
   }
+thead input {
+        width: 100%;
+        padding: 3px;
+        box-sizing: border-box;
+        color: gray;
+        text-align: center;
+    }
 
 </style>
     <section class="content-header">
@@ -100,6 +107,16 @@ a{
                   <th>Acciones</th>
                 </tr>
                 </thead>
+                <tfoot>
+                <tr style="color:#00c8d9;">
+                  <th>Nombre</th>
+                  <th>Cargo</th>
+                  <th>Skype</th>
+                  <th>Status</th>
+                  <th>Fecha Registro</th>
+                  <th>Acciones</th>
+                </tr>
+                </tfoot>
                 <tbody id="tablaPersonas">
                 <?php
                   foreach ($Persona as $Persona) {
@@ -135,15 +152,6 @@ a{
                             }
                     }
                 ?>
-                <tr>
-
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
                 </tbody>
               </table>
             </div><!-- /.box-body -->

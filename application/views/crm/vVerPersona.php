@@ -6,6 +6,14 @@
   margin: 0px;
   position: relative;
 }
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
 </style>
 <section class="content-header">
   <i class="fa fa-home fa-2x"><span class="profile-username">&nbsp;Ficha de la persona:&nbsp;&nbsp;</span><b class="profile-username text-red"><?php echo strtoupper($row_Persona->Nombre); ?></b></i>
@@ -93,17 +101,26 @@
 
             <!-- Comentarios -->
               <div class="tab-pane" id="Notas">
-                <div class="post clearfix">
+                <div class="post clearfix" style="padding: 0px; margin: 3px;">
                   <div class="row">
-                    <form method="POST" action="<?php echo base_url();?>cComentarios/guardarComentario" id="formComentarios" name="formComentarios">
-                      <div class="col-sm-9">
-                          <input type="text" name="Nota" id="Nota" class="form-control input-sm" placeholder="Agregar Nota">
-                      </div>
-                      <div class="col-sm-3">
+                    <form method="POST" action="<?php echo base_url();?>cComentarios/guardarComentario" id="formComentarios" name="formComentarios" enctype="multipart/form-data">
+                    <div class="col-md-2">
                         <input type="hidden" id="idPersona" name="idPersona" value="<?php echo $row_Persona->idPersona;?>">
                         <input type="hidden" id="idUsuarioc" name="idUsuarioc" value="<?php echo $this->session->userdata('s_idUsuario');?>">
-                        <button id="btn_Coment" type="submit" class="btn btn-success pull-right btn-block btn-sm">Guardar</button>
+                    <button id="btn_Coment" type="submit" class="btn btn-success btn-sm btn-block" style="border-radius: 10px; margin-bottom: 5px;"><i class="fa fa-plus pull-left"></i>Guardar</button>
                       </div>
+                  <div class="col-md-3">
+                      <input type="file" name="file" id="file" class="inputfile inputfile-1" data-multiple-caption="{count} files selected" />
+                      <label for="file" style="border-radius: 10px; margin-bottom: 5px;"><span id="spanFile">Cargar Archivo&hellip;</span></label>
+                  </div>
+                  <div class="col-md-3">
+                      <p id="msg"></p>
+                  </div>
+                  
+                      <div class="col-sm-12">
+                          <input type="text" name="Nota" id="Nota" class="form-control input-sm" placeholder="Escribir Nota">
+                      </div>
+                      
                     </form>
                   </div>
                 </div>

@@ -1,3 +1,13 @@
+<style>
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+</style>
 <section class="content-header">
   <i class="fa fa-home fa-2x"><span class="profile-username">&nbsp;Ficha de la empresa:</span><b class="profile-username text-red"><?php echo strtoupper($row_Empresas->NombreEmpresa); ?></b></i>
 </section>
@@ -112,15 +122,22 @@
               <div class="tab-pane" id="Notas">
                 <div class="post clearfix" style="padding: 0px; margin: 3px;">
                   <div class="row">
-                  <form method="POST" action="<?php echo base_url();?>cComentarios/guardarComentarioEmpresa" id="formComentarios" name="formComentarios">
+                  <form method="POST" action="<?php echo base_url();?>cComentarios/guardarComentarioEmpresa" id="formComentarios" name="formComentarios" enctype="multipart/form-data">
                   <div class="col-md-2">
                     <input type="hidden" id="idEmpresa" name="idEmpresa" value="<?php echo $row_Empresas->idEmpresa;?>">
                     <input type="hidden" id="idUsuarioc" name="idUsuarioc" value="<?php echo $this->session->userdata('s_idUsuario');?>">
                     <button id="btn_Coment" type="submit" class="btn btn-success btn-sm btn-block" style="border-radius: 10px; margin-bottom: 5px;"><i class="fa fa-plus pull-left"></i>Guardar</button>
                   </div>
+                  <div class="col-md-3">
+                      <input type="file" name="file" id="file" class="inputfile inputfile-1" data-multiple-caption="{count} files selected" />
+                      <label for="file" style="border-radius: 10px; margin-bottom: 5px;"><span id="spanFile">Cargar Archivo&hellip;</span></label>
+                  </div>
+                  <div class="col-md-3">
+                      <p id="msg"></p>
+                  </div>
+
                   <div class="col-md-12">
                       <textarea class="form-control" rows="2" id="Nota" name="Nota" placeholder="Escribir Nota"></textarea>
-                      <!-- <input type="textArea" name="Nota" id="Nota" class="form-control input-sm" placeholder="Agregar Nota"> -->
                   </div>
                   </form>
                   </div>
@@ -396,12 +413,11 @@
                   <div class="col-md-12 divsNP">
                     <div class="input-group">
                       <span class="input-group-addon"><b>Status</b></span>
-                      <select class=" form-control formsNP selectpicker" id="Status" name="Status">
-                        <option selected="true" disabled="true">Status</option>
+                      <select disabled="true" class=" form-control formsNP selectpicker" id="Status" name="Status">
                         <option value="Avanzado">Avanzado</option>
                         <option value="Cancelado">Cancelado</option>
                         <option value="En proceso">En proceso</option>
-                        <option value="Incorporado">Incorporado</option>
+                        <option value="Incorporado" selected="true">Incorporado</option>
                         <option value="No iniciado">No iniciado</option>
                         <option value="Suspendido">Suspendido</option>
                         <option value="Interes sin compromiso">Interes sin compromiso</option>
@@ -421,9 +437,9 @@
                 <div class="col-md-6">
                   <div class="col-md-12 divsNP">
                     <div class="input-group date">
-                        <div id="datepicker" data-date="08/07/2017">
+                        <div id="datepicker">
+                          <input type="hidden" id="FechaLimite"  name="FechaLimite"/>
                         </div>
-                        <input type="hidden" id="FechaLimite"  name="FechaLimite" value="08/07/2017"/>
                     </div>
                   </div>
                 </div>
@@ -509,11 +525,11 @@
                   </div>
                 </div>
                 <div class="col-md-6">
-                  <div class="form-group col-md-12 text-center">
                     <label>¿CUANDO DEBE CUMPLIRSE?</label>
-                    <div class="input-group date">
-                      <div id="datepickerE" data-date="08/07/2017"></div>
-                      <input type="hidden" id="FechaFinE"  name="FechaFinE" value="08/07/2017">
+                    <div class="">
+                      <div id="calendario">
+                          <input type="hidden" id="FechaFinE"  name="FechaFinE" value="">
+                      </div>
                       <input type="hidden" id="idEmpresa" name="idEmpresa" value="<?php echo $row_Empresas->idEmpresa;?>">
                       <input type="hidden" id="idUsuarioc" name="idUsuarioc" 
                       value="<?php echo $this->session->userdata('s_idUsuario');?>">
@@ -532,7 +548,6 @@
     </div>
   </div>
 </div>
-
 <!-- Modal -->
 <div id="ModalNPersona" class="modal fade" role="dialog">
   <div class="modal-dialog modal-lg">

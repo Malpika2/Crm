@@ -213,8 +213,9 @@
                   <div class="form-group col-md-12 text-center">
                     <label>¿CUANDO DEBE CUMPLIRSE?</label>
                     <div class="input-group date">
-                      <div id="datepickerP" data-date="08/07/2017"></div>
-                      <input type="hidden" id="FechaFinP"  name="FechaFinP" value="08/07/2017">
+                      <div id="datepickerP">
+                          <input type="hidden" id="FechaFinP"  name="FechaFinP"/>
+                      </div>
                       <input type="hidden" id="idUsuarioc" name="idUsuarioc" 
                       value="<?php echo $this->session->userdata('s_idUsuario');?>">
                     </div>

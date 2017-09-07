@@ -42,11 +42,17 @@
 <script src="<?php echo base_url();?>assets/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
 <script src="<?php echo base_url();?>assets/plugins/input-mask/jquery.inputmask.extensions.js"></script>
 <!-- date-range-picker -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="<?php echo base_url();?>assets/plugins/daterangepicker/daterangepicker.js"></script>
-<!-- bootstrap datepicker -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+ -->
+<!--  <script src="<?php echo base_url();?>assets/plugins/daterangepicker/daterangepicker.js"></script>
+ --><!-- bootstrap datepicker -->
+    <script type="text/javascript" src="<?php echo base_url();?>assets/moment/moment.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>assets/moment/locale/es.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>assets/bootstrap-datetimepicker4/js/bootstrap-datetimepicker.min.js"></script>
+
+
 <script src="<?php echo base_url();?>assets/plugins/datepicker/bootstrap-datepicker.js"></script>
-<!-- bootstrap color picker -->
+<!-- bootstrap color picker-->
 <script src="<?php echo base_url();?>assets/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
 <!-- bootstrap time picker -->
 <script src="<?php echo base_url();?>assets/plugins/timepicker/bootstrap-timepicker.min.js"></script>
@@ -62,9 +68,12 @@
 
 <!-- Bootstrap WYSIHTML5 -->
 <script src="<?php echo base_url();?>assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<script>
+</script>
 
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url();?>Js/EasyAutocomplete/jquery.easy-autocomplete.min.js"></script> 
+<script src="<?php echo base_url();?>Js/custom-file-input.js"></script>
 
 <!-- Page script -->
 <script>
@@ -80,32 +89,32 @@
     $("[data-mask]").inputmask();
 
     //Date range picker
-    $('#reservation').daterangepicker();
-    //Date range picker with time picker
-    $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
-    //Date range as a button
-    $('#daterange-btn').daterangepicker(
-        {
-          ranges: {
-            'Today': [moment(), moment()],
-            'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-            'This Month': [moment().startOf('month'), moment().endOf('month')],
-            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-          },
-          startDate: moment().subtract(29, 'days'),
-          endDate: moment()
-        },
-        function (start, end) {
-          $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-        }
-    );
+    // $('#reservation').daterangepicker();
+    // //Date range picker with time picker
+    // $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
+    // //Date range as a button
+    // $('#daterange-btn').daterangepicker(
+    //     {
+    //       ranges: {
+    //         'Today': [moment(), moment()],
+    //         'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+    //         'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+    //         'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+    //         'This Month': [moment().startOf('month'), moment().endOf('month')],
+    //         'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+    //       },
+    //       startDate: moment().subtract(29, 'days'),
+    //       endDate: moment()
+    //     },
+    //     function (start, end) {
+    //       $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+    //     }
+    // );
 
-    //Date picker
-    $('#datepicker').datepicker({
-      autoclose: true
-    });
+    // //Date picker
+    // $('#datepicker').datepicker({
+    //   autoclose: true
+    // });
 
     //iCheck for checkbox and radio inputs
     $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
@@ -137,28 +146,43 @@
 
 <!-- Obtener fecha hacia un input "datepicker inline" -->
 <script type="text/javascript">
-  $('#datepicker').datepicker();
-  $('#datepicker').on('changeDate', function() {
-      $('#FechaFin').val(
-          $('#datepicker').datepicker('getFormattedDate')
-      );
-});
+    $(document).ready(function () {
+        $(function () {
+            $('#datepicker').datetimepicker({
+              locale:'es',
+                inline: true,
+                sideBySide: true,
+                format:'L',
+                format:"YYYY-MM-DD"
+            });
+        });
+    });
 </script>
 <script type="text/javascript">
-  $('#datepickerE').datepicker();
-  $('#datepickerE').on('changeDate', function() {
-      $('#FechaFinE').val(
-          $('#datepickerE').datepicker('getFormattedDate')
-      );
-});
+    $(document).ready(function () {
+        $(function () {
+            $('#calendario').datetimepicker({
+              locale:'es',
+                inline: true,
+                sideBySide: true,
+                // format:'L',
+                format:"YYYY-MM-DD"
+            });
+        });
+    });
 </script>
 <script type="text/javascript">
-  $('#datepickerP').datepicker();
-  $('#datepickerP').on('changeDate', function() {
-      $('#FechaLimiteP').val(
-          $('#datepickerP').datepicker('getFormattedDate')
-      );
-});
+    $(document).ready(function () {
+        $(function () {
+            $('#datepickerP').datetimepicker({
+              locale:'es',
+                inline: true,
+                sideBySide: true,
+                format:'L',
+                format:"YYYY-MM-DD"
+            });
+        });
+    });
 </script>
 <!-- Scripts del proyecto -->
 <script src="<?php echo base_url();?>Js/typeahead.js"></script>
@@ -299,8 +323,70 @@ $('#linkMenuUsuarios').removeClass('active');
 <?php } ?>
 <script src="<?php echo base_url();?>Js/jquery-confirm.min.js"></script>
 <script>
+  $(document).ready(function() {
+    // Setup - add a text input to each footer cell
+    $('#example1 tfoot th').each( function () {
+        var title = $(this).text();
+        if (title!='Acciones'){
+        $(this).html( '<input type="text" placeholder="Filtrar '+title+'" />' );}
+        else{
+          $(this).html( '' );}
+      });
+
+    // DataTable
+    var table = $('#example1').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": false,
+      "autoWidth": true,
+          oLanguage: {
+            "sProcessing":     "Procesando...",
+            "sLengthMenu":     "Mostrar _MENU_ registros",
+            "sZeroRecords":    "No se encontraron resultados",
+            "sEmptyTable":     "Ningún dato disponible en esta tabla",
+            "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix":    "",
+            "sSearch":         "Buscar:",
+            "sUrl":            "",
+            "sInfoThousands":  ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":     "Último",
+            "sNext":     "Siguiente",
+            "sPrevious": "Anterior"
+            }}
+    });
+ 
+    // Apply the search
+    table.columns().every( function () {
+        var that = this;
+ 
+        $( 'input', this.footer() ).on( 'keyup change', function () {
+            if ( that.search() !== this.value ) {
+                that
+                    .search( this.value )
+                    .draw();
+            }
+        });
+    });
+  var r = $('#example1 tfoot tr');
+  r.find('th').each(function(){
+    $(this).css('padding', 8);
+  });
+  $('#example1 thead').append(r);
+  $('#search_0').css('text-align', 'center');
+
+  });
+
+</script>
+<script>
   $(function () {
-    $('#example1').DataTable({
+    $('#example12').DataTable({
       "paging": true,
       "lengthChange": false,
       "searching": true,

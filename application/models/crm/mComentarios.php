@@ -11,6 +11,7 @@ class mComentarios extends CI_Model
 		$this->db->select('*');
 		$this->db->from('Comentarios c');
 		$this->db->join('Usuarios u','u.idUsuario = c.idUsuarioc');
+		$this->db->join('Archivos a','c.idComentario = a.idComentarioArchivo','left');
 		$this->db->where('c.idPersona',$s);
 		$this->db->order_by('Fecha_Creacion','DESC');
 		$s = $this->db->get();
@@ -20,6 +21,7 @@ class mComentarios extends CI_Model
 		$this->db->select('*');
 		$this->db->from('Comentarios c');
 		$this->db->join('Usuarios u','u.idUsuario = c.idUsuarioc');
+		$this->db->join('Archivos a','c.idComentario = a.idComentarioArchivo','left');
 		$this->db->where('c.idComent',$s);
 		$this->db->order_by('Fecha_Creacion','DESC');
 		$s = $this->db->get();
@@ -29,6 +31,7 @@ class mComentarios extends CI_Model
 		$this->db->select('*');
 		$this->db->from('Comentarios c');
 		$this->db->join('Usuarios u','u.idUsuario = c.idUsuarioc');
+		$this->db->join('Archivos a','c.idComentario = a.idComentarioArchivo','left');
 		$this->db->where('c.idEmpresa',$s);
 		$this->db->order_by('Fecha_Creacion','DESC');
 		$s = $this->db->get();
@@ -48,7 +51,7 @@ class mComentarios extends CI_Model
 			);
 			$this->db->insert("Comentarios",$campos);
 			if ($this->db->affected_rows() > 0) {
-				return true;
+					return $this->db->insert_id();
 			}
 			else{
 				return false;
@@ -58,6 +61,7 @@ class mComentarios extends CI_Model
 		$this->db->select('*');
 		$this->db->from('Comentarios c');
 		$this->db->join('Usuarios u','u.idUsuario = c.idUsuarioc');
+		$this->db->join('Archivos a','c.idComentario = a.idComentarioArchivo','left');
 		$this->db->where('c.idTarea',$s);
 		$this->db->order_by('Fecha_Creacion','DESC');
 		$s = $this->db->get();
@@ -67,6 +71,7 @@ class mComentarios extends CI_Model
 		$this->db->select('*');
 		$this->db->from('Comentarios c');
 		$this->db->join('Usuarios u','u.idUsuario = c.idUsuarioc');
+		$this->db->join('Archivos a','c.idComentario = a.idComentarioArchivo','left');
 		$this->db->where('c.idNegociacion',$s);
 		$this->db->order_by('Fecha_Creacion','DESC');
 		$s = $this->db->get();

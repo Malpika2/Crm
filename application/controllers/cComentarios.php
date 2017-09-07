@@ -47,7 +47,7 @@ class cComentarios extends CI_Controller
 			echo $resultado;
 		}
 	}
-		public function guardarComentarioEmpresa(){
+	public function guardarComentarioEmpresa(){
 		$format = 'DATE_RFC822';
 		$time = time();
 		$fechaActual = standard_date($format, $time);
@@ -58,8 +58,8 @@ class cComentarios extends CI_Controller
 		$param['idEmpresa'] = $this->input->post('idEmpresa');
 		$param['idNegociacion'] = NULL;
 		$param['idTarea'] = NULL;
+		$param['idComent']=NULL;
 		$resultado=$this->mComentarios->guardarComentario($param);
-
 		if($resultado>0){
 			echo $resultado;
 		}

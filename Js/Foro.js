@@ -83,7 +83,7 @@ function comentariosPorTema(){
 		                    ''+item.Nombre+'  '+item.Paterno+'' +
 		                  '</a>'+
                       '<div id="item'+item.idComentario+'">'+
-		                  '<input onblur="ActualizarComentario('+item.idComentario+');" id="Comentario'+item.idComentario+'" disabled class="pasive coments btn link" type="text" value="'+item.Comentario+'">'+
+		                  '<textarea  onblur="ActualizarComentario('+item.idComentario+');" id="Comentario'+item.idComentario+'" disabled class="pasive coments" type="text" style="resize:none; border:none" cols="50" rows="2">'+item.Comentario+'</textarea>'+
                        '</div>'+
 		                '</p>'+
 		              '</div>');
