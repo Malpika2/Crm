@@ -37,7 +37,6 @@ class cEmpresa extends CI_Controller
 		$param['Tipo'] = $this->input->post('Tipo');
 		$param['Representante'] =$this->input->post('idRepresentanteEmp');
 		$param['Contacto'] = null;
-		// $param['Contacto'] = $this->input->post('ContactoEmp');
 		$param['Skype'] = $this->input->post('Skype');
 		$param['SitioWeb'] = $this->input->post('SitioWeb');
 		$param['idUsuarioRegistro'] = $this->session->userdata('s_idUsuario');
@@ -52,6 +51,14 @@ class cEmpresa extends CI_Controller
 		$param['Telefono'] = $this->input->post('Telefono1');
 		$param['Telefono2'] = $this->input->post('Telefono2');
 		$param['Email2'] = $this->input->post('Correo2');
+
+$param['Productos'] = $this->input->post('Productos');
+$param['PresupuestoPersona'] = $this->input->post('PresupuestoPersona');
+$param['InteresEmpresa'] = $this->input->post('InteresEmpresa');
+$param['ConfianzaEmpresa'] = $this->input->post('ConfianzaEmpresa');
+$param['Motivo'] = $this->input->post('Motivo');
+$param['LugarContacto'] = $this->input->post('LugarContacto');
+
 
 		if(isset($_POST['ContactoEmp'])){
 		foreach ($_POST['ContactoEmp'] as $contactos_value){

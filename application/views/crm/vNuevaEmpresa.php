@@ -1,164 +1,216 @@
 ﻿<style type="text/css">
 .select2 {
-  /*box-sizing: border-box;*/
   display: initial;
-  /*margin: 0;*/
-  /*position: relative;*/
-  /*vertical-align: middle;*/
 }
 .easy-autocomplete {
   position: relative;
   display: contents;
 }
+#tablaFormularioEmpresa td,
+#tablaFormularioEmpresa th {
+  border: 2px solid #e0e0e0;
+}
 </style>
     <section class="content-header">
-      <ol class="breadcrumb">
-        <li><a href="<?php echo base_url();?>cInicio"><i class="fa fa-map-signs"></i>Inicio</a></li>
-        <li class="active">Registrar Empresa</li>
-      </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-12 text-center">
-          <button type="button" class="btn btn-app pull-left" onclick="limpiarFormularioEmpresa()">
-            <i class="glyphicon glyphicon-erase"></i>Limpiar
-          </button> 
-          <h2>Registrar Empresa<small> ó <a href="<?php echo base_url();?>cPersona">Registrar persona</a></small></h2>
-        </div>
-        <form method="POST" action="<?php echo base_url();?>cEmpresa/guardar" id="formEmpresa">
-        <div class="col-md-6">
-            <div class="col-md-12 divsNP">
-              <div class="input-group">
-                <span class="input-group-addon"><b>Nombre Empresa</b></span>
-                <input type="text" class="formsNP" id="NombreEmpresa" name="NombreEmpresa">
+      <div class="col-md-12">
+          <div class="nav-tabs-custom" style="margin-bottom: 0px;">
+          <div class="text-center bg-white" style="padding: 1px; margin: 10px 15px 0px 15px; border-radius: 20px">
+           <ul class="nav nav-tabs">
+            <li class="active col-md-3 text-center">
+              <a class="btn" href="#tab_Empresas" data-toggle="tab" style="border-radius: 10px; margin-bottom: 3px;">
+                  &nbsp;Registrar Empresas
+              </a>
+            </li>
+            <li class="col-md-3">
+              <a class="btn text-center" href="<?php echo base_url();?>cPersona" style="border-radius: 10px; margin-bottom: 3px;">
+                &nbsp;Registrar Personas
+              </a>
+            </li>
+          </ul>          
+          </div>
+          <div class="tab-content">
+              <div class="tab-pane active" id="tab_Empresas">
+                <button type="button" class="btn btn-default btn-sm pull-right" onclick="limpiarFormularioEmpresa()" style="border-radius: 10px">
+                  <i class="glyphicon glyphicon-erase"></i>Limpiar Campos
+                </button>
+                <form method="POST" action="<?php echo base_url();?>cEmpresa/guardar" id="formEmpresa">
+                <table class="table table-bordered table-responsive" id="tablaFormularioEmpresa">
+                  <thead>
+                    <tr style="background-color: #F0AD4E; color: white;">
+                      <th colspan="2" class="text-center"><b>Información General</b></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <span class="">Nombre Empresa</span>
+                        <input type="text" class="form-control" id="NombreEmpresa" name="NombreEmpresa" required="true">
+                      </td>
+                      <td>
+                        <span class="">Abreviación</span>
+                        <input type="text" class="form-control" id="Abreviacion" name="Abreviacion">
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="">SPP<small>(Opcional)</small></b></span>
+                        <input type="text" class="form-control" id="SPP" name="SPP">
+                      </td>
+                      <td>
+                        <div class="col-md-6">
+                            <span class="">Tipo de Empresa</span>
+                            <select class="form-control" id="Tipo" name="Tipo" required="">
+                              <option selected="true" disabled="false" value="">Tipo</option>
+                              <option value="Comprador final">Comprador Final</option>
+                              <option value="Intermediario">Intermediario</option>
+                              <option value="Maquilador">Maquilador</option>
+                              <option value="Organizador de Pequeños Productores">Organizador de Pequeños Productores</option>
+                              <option value="Organismo de Certificacion">Organismo de Certificacion</option>
+                          </select>              
+                        </div>
+                        <div class="col-md-6">
+                          <span class="">Pais</span>
+                          <input type="text" class="form-control" id="Pais" name="Pais" placeholder="Pais:" required="true">
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="">Productos que maneja</span>
+                        <textarea rows="2" cols="50" class="form-control" id="Productos" name="Productos" placeholder="Productos que maneja"></textarea>
+                      </td>
+                      <td>
+                          <span class="">Presupuesto por:</span>
+                          <input type="text" class="form-control" id="PresupuestoPersona" name="PresupuestoPersona" placeholder="Persona que recomienda el registro">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="">Nivel de Interés de la Empresa</span>
+                        <select class="form-control" id="InteresEmpresa" name="InteresEmpresa" required="true">
+                          <option selected="true" value="Bajo">Bajo</option>
+                          <option value="Medio">Medio</option>
+                          <option value="Alto">Alto</option>
+                        </select>
+                      </td>
+                      <td>
+                        <span class="">Nivel de Confianza</span>
+                        <select class="form-control" id="ConfianzaEmpresa" name="ConfianzaEmpresa" required="true">
+                          <option selected="true" value="1">1 (Bajo)</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5 (Alto)</option>
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="">Motivo o Razón</span>
+                        <textarea rows="2" cols="50" class="form-control" id="Motivo" name="Motivo" placeholder="Motivo de Registro"></textarea>
+                      </td>
+                      <td>
+                        <span class="">Contactado en</span>
+                        <textarea rows="2" cols="50" class="form-control" id="LugarContacto" name="LugarContacto" placeholder="Lugar donde se realizó el contacto"></textarea>
+                      </td>
+                    </tr>
+                    <tr >
+                      <td colspan="2" style="background-color: #F0AD4E; color: white;">
+                        <b>Datos de Contacto</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                         <span class="col-md-12">Representante</span>
+                        <div class="col-md-10" style="padding: 0px;">
+                        <input type="text" class="col-md-12 form-control" id="RepresentanteEmp">
+                        <input type="hidden" class="col-md-12 form-control" id="idRepresentanteEmp" name="idRepresentanteEmp" value="0">
+                          <select class="hidden form-control selectpicker" id="Representante" name="Representante" required>
+                            <option selected="true" disabled="true" value="0">Lista de Representantes</option>
+                          </select>                    
+                        </div>
+                        <div class="col-md-2 btn-group" style="padding: 0px;">
+                          <button style="padding: 0px" type="button" data-toggle="modal" data-target="#ModalNPersona" id="btnAgregarNuevo" class="btn bg-blue" data-toggle="tooltip" title="AGREGAR NUEVO"><i class="fa fa-plus-square fa-2x"></i></button>
+                          <button style="padding: 0px" type="button" id="btnBuscarExistente" class="btn bg-aqua" data-toggle="tooltip" title="BUSCAR EXISTENTE"><i class="fa fa-search fa-2x"></i></button>
+                        </div>
+                      </td>
+                      <td>
+                        <span class="col-md-12">Contacto</span>
+                        <div class="col-md-10" style="padding: 0px;">
+                          <select class="js-example-programmatic-multi form-control select2" id="ContactoEmp" name="ContactoEmp[]" multiple="multiple" maximumSelectionLength="2">
+                          </select>
+                          <select class="hidden form-control formsNP js-example-programmatic-multi" id="Contacto" name="Contacto" required>
+                            <option selected="true" disabled="true" value="0">Lista de Contactos</option>
+                          </select>
+                        </div>
+                        <div class="col-md-2" style="padding: 0px;">
+                          <button style="padding: 0px" type="button" data-toggle="modal" data-target="#ModalNPersona" id="btnAgregarNuevoCont" class="btn bg-blue" data-toggle="tooltip" title="AGREGAR NUEVO"><i class="fa fa-plus-square fa-2x"></i></button>
+                          <button style="padding: 0px" type="button" id="btnBuscarExistenteCont" class="btn bg-aqua" data-toggle="tooltip" title="BUSCAR EXISTENTE"><i class="fa fa-search fa-2x"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="">Skype</span>
+                        <input type="text" class="form-control" id="Skype" name="Skype">
+                      </td>
+                      <td>
+                        <span class="">Sitio Web</span>
+                        <input type="text" class="form-control" id="SitioWeb" name="SitioWeb">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="">1º Telefono</span>
+                        <input type="text" class="form-control" id="Telefono1" name="Telefono1" required="true">
+                      </td>
+                      <td>
+                        <span class="">2º Telefono</span>
+                        <input type="text" class="form-control " id="Telefono2" name="Telefono2">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="">1º Email</span>
+                        <input type="text" class="form-control" id="Correo1" name="Correo1" required="true">
+                      </td>
+                      <td>
+                        <span class="">2º Email</span>
+                        <input type="text" class="form-control" id="Correo2" name="Correo2">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="">Dirección Oficinas</span>
+                        <textarea rows="2" type="text" class="form-control" id="DireccionOficina" name="DireccionOficina" placeholder="Ciudad, Calle, Número"></textarea>
+                        <input type="hidden" class="form-control col-md-12 formsNP2" id="DireccionFiscal" name="DireccionFiscal" placeholder="Direccion Fiscal">
+                        <input type="hidden" class="form-control col-md-6 formsNP2" id="Ciudad" name="Ciudad" placeholder="Ciudad">
+                      </td>
+                      <td>
+                        <span>Datos Fiscales</span>
+                        <textarea rows="2" cols="50" class="form-control col-md-12" id="DatosFiscales" name="DatosFiscales" placeholder="Información referente a la facturación"></textarea> 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">
+                      <span class="col-md-2"></span>
+                        <input type="submit" id="registrarEmpresa" name="registrarEmpresa" class=" btn btn-success col-md-8" value="Registrar Empresa" style="border-radius: 10px;">
+                        <span class="col-md-2"></span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                </form>
               </div>
-            </div>
-            <div class="col-md-12 divsNP">
-              <div class="input-group">
-                <span class="input-group-addon"><b>SPP<br><small>(Opcional)</small></b></span>
-                <input type="text" class="formsNP" id="SPP" name="SPP">
-              </div>
-            </div>
-            <div class="col-md-12 divsNP">
-              <div class="input-group">
-                <span class="input-group-addon"><b>Abreviación</b></span>
-                <input type="text" class="form-control formsNP" id="Abreviacion" name="Abreviacion">
-              </div>
-            </div>
-            <div class="col-md-12 divsNP">
-              <div class="input-group">
-                <span class="input-group-addon"><b>Tipo</b></span>
-                <select class="form-control formsNP " id="Tipo" name="Tipo" required="">
-                  <option selected="true" disabled="false" value="">Tipo</option>
-                  <option value="Comprador final">Comprador Final</option>
-                  <option value="Intermediario">Intermediario</option>
-                  <option value="Maquilador">Maquilador</option>
-                  <option value="Organizador de Pequeños Productores">Organizador de Pequeños Productores</option>
-                  <option value="Organismo de Certificacion">Organismo de Certificacion</option>
-              </select>              
-              </div>
-            </div>
-            <div class="col-md-12" style="margin: 0px; padding: 0px;">
-              <div class="col-md-12 divsNP">
-                  <div class="input-group">
-                    <span class="input-group-addon"><b>Skype</b></span>
-                    <input type="text" class="form-control formsNP" id="Skype" name="Skype">
-                  </div>
-              </div>
-              <div class="col-md-12 divsNP">
-                    <div class="input-group">
-                      <span class="input-group-addon"><b>Sitio Web</b></span>
-                      <input type="text" class="form-control formsNP" id="SitioWeb" name="SitioWeb">
-                    </div>
-              </div>
-              <div class="col-md-12 divsNP">
-                    <div class="input-group">
-                    <span class="input-group-addon"><b>Datos Fiscales</b></span>
-                      <textarea rows="4" cols="50" class="form-control col-md-12" id="DatosFiscales" name="DatosFiscales" placeholder="Datos Fiscales"></textarea> 
-                    </div>
-              </div>
-            </div>
-        </div><!--fincol-md-12 -->
-
-        <div class="col-md-6">
-            <div class="col-md-12 divsNP" style="border:.5px solid #d2d6de; padding-bottom: 1em;">
-                <div class="col-md-12 divsNP">
-                    <button style="padding: 0px" type="button" data-toggle="modal" data-target="#ModalNPersona" id="btnAgregarNuevo" class="btn col-md-2" data-toggle="tooltip" title="AGREGAR NUEVO"><i class="fa fa-plus-square fa-2x"></i></button>
-                    <label class="col-md-8 h4 text-center">REPRESENTANTE</label>
-                    <button style="padding: 0px" type="button" id="btnBuscarExistente" class="btn col-md-2" data-toggle="tooltip" title="BUSCAR EXISTENTE"><i class="fa fa-search fa-2x"></i></button>
-                </div>
-                <div class="col-md-12 divsNP">
-                    <div class="input-group">
-                       <span class="input-group-addon">
-                        <b>Representante</b></span>
-                      <input type="text" class="col-md-12 form-control" id="RepresentanteEmp">
-                      <input type="hidden" class="col-md-12 form-control" id="idRepresentanteEmp" name="idRepresentanteEmp" value="0">
-                      <select class="hidden form-control formsNP selectpicker" id="Representante" name="Representante" required>
-                        <option selected="true" disabled="true" value="0">Lista de Representantes</option>
-                      </select>
-                    </div>
-                </div>
-                <div class="col-md-12 divsNP">
-                    <button style="padding: 0px" type="button" data-toggle="modal" data-target="#ModalNPersona" id="btnAgregarNuevoCont" class="btn col-md-2" data-toggle="tooltip" title="AGREGAR NUEVO"><i class="fa fa-plus-square fa-2x"></i></button>
-                    <label class="col-md-8 h4 text-center">CONTACTO</label>
-                    <button style="padding: 0px" type="button" id="btnBuscarExistenteCont" class="btn col-md-2" data-toggle="tooltip" title="BUSCAR EXISTENTE"><i class="fa fa-search fa-2x"></i></button>
-                    <div class="input-group" style="width: 100%">
-                      <span class="input-group-addon"><b>Contacto</b></span>
-                      <select class="js-example-programmatic-multi form-control select2" id="ContactoEmp" name="ContactoEmp[]" multiple="multiple" maximumSelectionLength="2">
-                      </select>
-                      <select class="hidden form-control formsNP js-example-programmatic-multi" id="Contacto" name="Contacto" required>
-                        <option selected="true" disabled="true" value="0">Lista de Contactos</option>
-                      </select>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="col-md-6 divsNP">
-                  <div class="input-group">
-                    <span class="input-group-addon"><b>1º Telefono</b></span>
-                    <input type="text" class="form-control formsNP" id="Telefono1" name="Telefono1">
-                    <input type="text" class="form-control text-center" disabled="true" name="" value="Personal">
-                  </div>
-                </div>
-                <div class="col-md-6 divsNP">
-                      <div class="input-group">
-                        <span class="input-group-addon"><b>2º Telefono</b></span>
-                        <input type="text" class="form-control formsNP" id="Telefono2" name="Telefono2">
-                        <input type="text" class="form-control text-center" disabled="true" name="" value="Trabajo">
-                      </div>
-                </div>
-                <div class="col-md-6 divsNP">
-                      <div class="input-group">
-                        <span class="input-group-addon"><b>1º Email</b></span>
-                        <input type="text" class="form-control formsNP" id="Correo1" name="Correo1">
-                        <input type="text" class="form-control text-center" disabled="true" name="" value="Personal">
-                      </div>
-                </div>
-                <div class="col-md-6 divsNP">
-                      <div class="input-group">
-                        <span class="input-group-addon"><b>2º Email</b></span>
-                        <input type="text" class="form-control formsNP" id="Correo2" name="Correo2">
-                        <input type="text" class="form-control text-center" disabled="true" name="" value="Trabajo">
-                      </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-12 divsNP">
-              <div class="input-group">
-                <span class="input-group-addon"><b>Direccion</b></span>
-                <input type="text" class="form-control col-md-12 formsNP2" id="DireccionOficina" name="DireccionOficina" placeholder="Direccion Oficina">
-                <input type="text" class="form-control col-md-12 formsNP2" id="DireccionFiscal" name="DireccionFiscal" placeholder="Direccion Fiscal">
-
-                <input type="text" class="form-control col-md-6 formsNP2" id="Ciudad" name="Ciudad" placeholder="Ciudad">
-                <input type="text" class="form-control col-md-6 formsNP2" id="Pais" name="Pais" placeholder="Pais:">
-              </div>
-
-              <input type="submit" id="registrarEmpresa" name="registrarEmpresa" class="divsNP formsNP btn btn-primary btn-block" value="Registrar Empresa">
-        </div>
-        </form>
+          </div>
+      </div>
       </div>
       </div>
     </section>

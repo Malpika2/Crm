@@ -19,7 +19,6 @@ class mEmpresa extends CI_Model
 			'Skype' => $param['Skype'],
 			'SitioWeb' => $param['SitioWeb'],
 			'idUsuarioRegistro' => $param['idUsuarioRegistro'],
-			// 'FechaRegistro' => $param['FechaRegistro'],
 			'spp' => $param['SPP'],
 			'DireccionOficina' => $param['DireccionOficina'],
 			'DireccionFiscal' => $param['DireccionFiscal'],
@@ -30,7 +29,18 @@ class mEmpresa extends CI_Model
 			'Email' => $param['Email'],
 			'Telefono' => $param['Telefono'],
 			'Email2' => $param['Email2'],
-			'Telefono2' => $param['Telefono2']);
+			'Telefono2' => $param['Telefono2'],
+
+'Productos' => $param['Productos'],
+'PresupuestoPersona' => $param['PresupuestoPersona'],
+'InteresEmpresa' => $param['InteresEmpresa'],
+'ConfianzaEmpresa' => $param['ConfianzaEmpresa'],
+'Motivo' => $param['Motivo'],
+'LugarContacto' => $param['LugarContacto']
+
+
+
+			);
 		$this->db->insert("Empresas",$campos);
 		if ($this->db->affected_rows()>0) {
 			return $this->db->insert_id();
