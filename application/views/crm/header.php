@@ -20,11 +20,8 @@ font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif !impo
 
 }
 .select2 {
-  /*box-sizing: border-box;*/
+
   display: initial;
-  /*margin: 0;*/
-  /*position: relative;*/
-  /*vertical-align: middle;*/
 }
 .easy-autocomplete {
   position: relative;
@@ -79,13 +76,8 @@ font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif !impo
 <link rel="stylesheet" href="<?php echo base_url();?>Js/EasyAutocomplete/easy-autocomplete.themes.min.css"> 
 <link rel="stylesheet" href="<?php echo base_url();?>assets/dist/css/personalizado/jquery-confirm.min.css"> 
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/dist/css/component.css" />
-
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
+<!-- jQuery 2.2.3 -->
+<script src="<?php echo base_url();?>assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">

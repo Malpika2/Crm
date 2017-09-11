@@ -74,7 +74,7 @@
                         <textarea rows="2" cols="50" class="form-control" id="Productos" name="Productos" placeholder="Productos que maneja"></textarea>
                       </td>
                       <td>
-                          <span class="">Presupuesto por:</span>
+                          <span class="">Propuesto por:</span>
                           <input type="text" class="form-control" id="PresupuestoPersona" name="PresupuestoPersona" placeholder="Persona que recomienda el registro">
                       </td>
                     </tr>
