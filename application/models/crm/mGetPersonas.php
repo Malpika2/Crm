@@ -85,4 +85,8 @@ class mGetPersonas extends CI_Model
 		$r = $this->db->get();			
 		return $r->result();
 	}
+	public function getPaises(){
+		$r = $this->db->get('paises');
+		return $r->result();
+	}
 }

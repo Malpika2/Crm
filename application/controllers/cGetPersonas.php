@@ -37,4 +37,8 @@ class cGetPersonas extends CI_Controller
 		$resultado = $this->mGetPersonas->getPersonaPorId2($idPersona);		
 		echo json_encode($resultado);
 	}
+	public function getPaises(){
+		$resultado = $this->mGetPersonas->getPaises();
+		echo json_encode($resultado);
+	}
 }?>

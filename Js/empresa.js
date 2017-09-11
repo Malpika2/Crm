@@ -11,7 +11,13 @@ $.post(baseurl+"cGetPersonas/getContactos",
 			$('#Contacto').append('<option value="'+item.idPersona+'">'+item.Nombre+'</option>')}
 			});
 	});
-
+$.post(baseurl+"cGetPersonas/getPaises",
+  function(data){
+    var emp= JSON.parse(data);
+    $.each(emp,function(i,item){
+      $('#Pais').append('<option value="'+item.nombre+'">'+item.nombre+'</option>')
+    });
+});
 $.post(baseurl+"cGetPersonas/getRepresentantes",
 	{
 		Cargo:'Representante'
@@ -228,7 +234,8 @@ $("#SPP").easyAutocomplete(options);
 });
 
 function limpiarFormularioEmpresa(){
- 	   $("#formEmpresa")[0].reset(); 
+ 	   $("#formEmpresa")[0].reset();
+ 	   $("#ContactoEmp").empty();
     	$('select').each(function(){
     if($(this).children().length > 0){
         $($(this).children()[0]).prop('selectedIndex',0);

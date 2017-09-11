@@ -77,7 +77,8 @@
                         </div>
                         <div class="col-md-6">
                           <span class="">Pais</span>
-                          <input type="text" class="form-control" id="Pais" name="Pais" placeholder="Pais:" required="true">
+                          <select class="form-control selectpicker select2" id="Pais" name="Pais" required="true">
+                        </select>
                         </div>
                       </td>
                     </tr>
