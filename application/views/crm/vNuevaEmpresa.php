@@ -236,103 +236,141 @@
         </div>
         <form id="formPersona" method="POST" action="<?php echo base_url();?>cPersona/guardar2">
         <div class="col-md-12 divsNP">
-              <div class="input-group">
-                <span class="input-group-addon"><b>Nombre Completo</b></span>
-                <input type="text" class="formsNP" id="Nombre" name="Nombre" placeholder="Nombre(s) Apellidos"/>
-              </div>
-        </div>
-        <div class="col-md-6 divsNP">
-              <div class="input-group">
-                <span class="input-group-addon"><b>Cargo</b></span>
-                <input type="text" id="Cargo2" name="Cargo2" class="form-control Cargo" disabled>
-           <select class="form-control Cargo hidden  formsNP" id="Cargo" name="Cargo">
-                  <option selected="true" value="Representante">Representante</option>
-                  <option selected="true" value="Contacto">Contacto</option>
-                </select>
-              </div>
-        </div>
-<!--         <div class="col-md-6 divsNP">
-              <div class="input-group">
-                <span class="input-group-addon"><b>Empresa</b></span>
-                <select class="form-control select2 formsNP selectpicker" title="Empresa..." id="Empresa" name="Empresa">
-                  <option value="0">Sin Empresa</option>
-                </select>
-              </div>
-        </div> -->
-        <div class="col-md-6 " style="padding: 0px;">
-        <div class="col-md-12 divsNP">
-              <div class="input-group">
-                <span class="input-group-addon"><b>Puesto</b></span>
-                <input type="text" class="form-control Puesto formsNP" id="Puesto" name="Puesto">
-              </div>
-        </div>
-<!--         <div class="col-md-6 divsNP">
-              <div class="input-group">
-                <span class="input-group-addon"><b>Status</b></span>
-                <select class=" Status form-control select2 formsNP selectpicker" id="Status" name="Status">
-                  <option selected="true" disabled="true">Status</option>
-                  <option value="Avanzado">Avanzado</option>
-                  <option value="Cancelado">Cancelado</option>
-                  <option value="En proceso">En proceso</option>
-                  <option value="Incorporado">Incorporado</option>
-                  <option value="No iniciado">No iniciado</option>
-                  <option value="Suspendido">Suspendido</option>
-                  <option value="Interes sin compromiso">Interes sin compromiso</option>
-                  <option value="Interes en participar confirmado">Interes en participar confirmado</option>
-              </select>              
-              </div>
-        </div> -->
-        </div>
-        <div class="col-md-3 divsNP">
-              <div class="input-group">
-                <span class="input-group-addon"><b>1º Telefono</b></span>
-                <input type="text" class="form-control Telefono1 formsNP" id="Telefono1" name="Telefono1">
-                <input type="text" class="form-control form-control formsNP text-center" disabled="true" name="" value="Personal">
+                <table class="table table-responsive table-bordered" id="tablaRegistroPersonas">
+                  <thead>
+                    <tr style="background-color: #F0AD4E; color: white;">
+                      <th colspan="2" class="text-center"><b>Información General</b></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <span class="">Nombre Completo</span>
+                        <input type="text" class="form-control " id="Nombre" name="Nombre" placeholder="Nombre(s) Apellidos" required="true">
+                      </td>
+                      <td>
+                        <span class="">Puesto</span>
+                        <input type="text" class="form-control Puesto formsNP" id="Puesto" name="Puesto">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="">Tipo de Persona</span>
+                        <input type="text" id="Cargo2" name="Cargo2" class="form-control Cargo" disabled>
+                        <select class="form-control Cargo hidden  formsNP" id="Cargo" name="Cargo">
+                          <option selected="true" value="Representante">Representante</option>
+                          <option selected="true" value="Contacto">Contacto</option>
+                        </select>
+                      </td>
+                      <td>
+                        <span>Pais</span>
+                        <select class="Pais form-control selectpicker select2" id="Pais" name="Pais" required="true">
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="">Productos que maneja</span>
+                        <textarea rows="2" cols="50" class="form-control" id="Productos" name="Productos" placeholder="Productos que maneja"></textarea>
+                      </td>
+                      <td>
+                          <span class="">Propuesto por:</span>
+                          <input type="text" class="form-control" id="PresupuestoPersona" name="PresupuestoPersona" placeholder="Persona que recomienda el registro">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="">Nivel de Interés de la Persona</span>
+                        <select class="form-control" id="InteresPersona" name="InteresPersona" required="true">
+                          <option selected="true" value="Bajo">Bajo</option>
+                          <option value="Medio">Medio</option>
+                          <option value="Alto">Alto</option>
+                        </select>
+                      </td>
+                      <td>
+                        <span class="">Nivel de Confianza</span>
+                        <select class="form-control" id="ConfianzaPersona" name="ConfianzaPersona" required="true">
+                          <option selected="true" value="1">1 (Bajo)</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5 (Alto)</option>
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="">Motivo o Razón</span>
+                        <textarea rows="2" cols="50" class="form-control" id="Motivo" name="Motivo" placeholder="Motivo de Registro"></textarea>
+                      </td>
+                      <td>
+                        <span class="">Contactado en</span>
+                        <textarea rows="2" cols="50" class="form-control" id="LugarContacto" name="LugarContacto" placeholder="Lugar donde se realizó el contacto"></textarea>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" style="background-color: #F0AD4E; color: white;">
+                        <b>Datos de Contacto</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="">Empresa</span>
+                        <select class="form-control select2 selectpicker" disabled="true" title="Empresa..." id="Empresa" name="Empresa">
+                          <option value="0">Sin Empresa</option>
+                        </select>
+                      </td>
+                      <td>
+                        <span class="">Skype</span>
+                        <input type="text" class="form-control" id="Skype" name="Skype">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class=""><b>1º Telefono</b></span>
+                        <input type="text" class="Telefono1 form-control" id="Telefono1" name="Telefono1" required="true">
+                      </td>
+                      <td>
+                        <span class="">2º Telefono</span>
+                        <input type="text" class="Telefono2 form-control " id="Telefono2" name="Telefono2">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="">1º Email</span>
+                        <input type="text" class="Correo1 form-control" id="Correo1" name="Correo1" required="true">
+                      </td>
+                      <td>
+                        <span class="">2º Email</span>
+                        <input type="text" class="Correo2 form-control" id="Correo2" name="Correo2">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="">Dirección</span>
+                        <input type="text" class="Calle form-control" id="Calle" name="Calle" placeholder="Ciudad, Calle, Número">
+                        <input type="hidden" class="form-control col-md-4 formsNP2" id="Numero" name="Numero" placeholder="Número">
+                        <input type="hidden" class="form-control col-md-4 formsNP2" id="Colonia" name="Colonia" placeholder="Colonia" value="">
 
-              </div>
-        </div>
-        <div class="col-md-3 divsNP">
-              <div class="input-group">
-                <span class="input-group-addon"><b>2º Telefono</b></span>
-                <input type="text" class="form-control Telefono2  formsNP" id="Telefono2" name="Telefono2">
-                <input type="text" class="form-control formsNP text-center" disabled="true" name="" value="Trabajo">
-
-              </div>
-        </div>
-        <div class="col-md-3 divsNP">
-              <div class="input-group">
-                <span class="input-group-addon"><b>1º Email</b></span>
-                <input type="text" class="Correo1 form-control formsNP" id="Correo1" name="Correo1">
-                <input type="text" class="form-control formsNP text-center" disabled="true" name="" value="Personal">
-              </div>
-        </div>
-        <div class="col-md-3 divsNP">
-              <div class="input-group">
-                <span class="input-group-addon"><b>2º Email</b></span>
-                <input type="text" class="Correo2 form-control formsNP" id="Correo2" name="Correo2">
-                <input type="text" class="form-control formsNP text-center" disabled="true" name="" value="Trabajo">
-              </div>
-        </div>
-        <div class="col-md-12 divsNP">
-              <div class="input-group">
-                <span class="input-group-addon"><b>Skype</b></span>
-                <input type="text" class="form-control formsNP" id="Skype" name="Skype">
-              </div>
-        </div>
-        <div class="col-md-12 divsNP">
-              <div class="input-group">
-                <span class="input-group-addon"><b>Direccion</b></span>
-                <input type="text" class=" form-control Calle col-md-12 formsNP2" id="Calle" name="Calle" placeholder="Dirección">
-                <input type="hidden" class="form-control col-md-4 formsNP2" id="Numero" name="Numero" placeholder="Número">
-                <input type="hidden" class="form-control col-md-4 formsNP2" id="Colonia" name="Colonia" placeholder="Colonia" value="">
-
-                <input type="hidden" class="form-control col-md-4 formsNP2" id="Municipio" name="Municipio" placeholder="Municipio" value="">
-                <input type="text" class=" form-control col-md-6 formsNP2" id="Estado" name="Estado" placeholder="Ciudad">
-                <input type="hidden" class="form-control col-md-4 formsNP2" id="Cp" name="Cp" placeholder="C.P:">
-                <input type="text" class=" form-control Pais col-md-6 formsNP2" id="Pais" name="Pais" placeholder="Pais:">
-              </div>
-              <input type="submit" id="registrarPersona" name="registrarPersona" class="divsNP formsNP btn btn-primary btn-block" value="Registrar Persona">
-        </div>
+                        <input type="hidden" class="form-control col-md-4 formsNP2" id="Municipio" name="Municipio" placeholder="Municipio" value="">
+                        <input type="hidden" class="form-control col-md-6 formsNP2" id="Estado" name="Estado" placeholder="Ciudad">
+                        <input type="hidden" class="form-control col-md-4 formsNP2" id="Cp" name="Cp" placeholder="C.P:">
+                      </td>
+                      <td>
+                        <span>Datos Fiscales</span>
+                        <textarea rows="2" cols="50" class="form-control col-md-12" id="DatosFiscalesPersona" name="DatosFiscalesPersona" placeholder="Información referente a la facturación"></textarea> 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">
+                      <span class="col-md-2"></span>
+                        <input type="submit" name="registrarPersona" id="registrarPersona" class=" btn btn-success col-md-8" value="Registrar Persona" style="border-radius: 10px;">
+                        <span class="col-md-2"></span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+        </div> 
         </form>
         </div> <!-- row -->
       </div>

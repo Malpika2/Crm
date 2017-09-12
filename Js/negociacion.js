@@ -6,6 +6,11 @@ $.post(baseurl+"cGetUsuarios/getUsuarios",
 			else {
 			$('#PersonaCargo').append('<option value="'+item.idUsuario+'">'+item.Nombre+'</option>')
 			$('#PersonaCargoP').append('<option value="'+item.idUsuario+'">'+item.Nombre+'</option>')}
+		if(item.idUsuario===idUsuarioActivo){
+        	$('#FiltroObjetivos').append('<option value="'+item.idUsuario+'">Mis Objetivos</option>');
+      		}
+      		else{
+      		$('#FiltroObjetivos').append('<option value="'+item.idUsuario+'">Objetivos de: '+item.Nombre+'</option>')}
 			});
 	});
 $.post(baseurl+"cGetPersonas/getPersonas",
@@ -127,3 +132,25 @@ $.post(baseurl+"cNegociacion/ActualizarAvance",
 		});
 	});
 });
+filtrarObjetivos = function(){
+  var FObjetivos = $('#FiltroObjetivos').val();
+  $('.Todas').addClass('hidden');
+
+	var x = document.getElementById("tab_Empresas");
+	var y = x.getElementsByClassName("trObjetivo"+FObjetivos);
+	var i;
+	for (i = 0; i < y.length; i++) {
+	  y[i].classList.remove('hidden');
+	}
+	var x = document.getElementById("tab_Personas");
+	var y = x.getElementsByClassName("trObjetivo"+FObjetivos);
+	var i;
+	for (i = 0; i < y.length; i++) {
+	  y[i].classList.remove('hidden');
+	}
+
+	if (FObjetivos==='Todas') {
+		$('.Todas').removeClass('hidden');
+	}
+	
+} 

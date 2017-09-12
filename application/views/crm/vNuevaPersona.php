@@ -66,7 +66,6 @@
                       <td>
                         <span>Pais</span>
                         <select class="form-control selectpicker select2" id="Pais" name="Pais" required="true">
-                          
                         </select>
                       </td>
                     </tr>

@@ -145,6 +145,20 @@
         });
     });
 </script>
+<script type="text/javascript">
+  $(function() {              
+     $('#FechaLimite').datetimepicker({
+           format: 'DD/MM/YYYY'
+     });
+  }); 
+</script>
+<script type="text/javascript">
+  $(function() {              
+     $('#FechaLimiteP').datetimepicker({
+           format: 'DD/MM/YYYY'
+     });
+  }); 
+</script>
 <!-- Scripts del proyecto -->
 <script src="<?php echo base_url();?>Js/typeahead.js"></script>
 <script src="<?php echo base_url();?>Js/Global.js"></script>

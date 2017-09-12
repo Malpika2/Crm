@@ -28,13 +28,13 @@ class mPersona extends CI_Model
 				'Direccion' => $param['Direccion'],
 				'Ciudad' => $param['Ciudad'],
 				'Pais' => $param['Pais'],
-'ProductosPersona' => $param['ProductosPersona'],
-'PresupuestoPersona' => $param['PresupuestoPersona'],
-'InteresPersona' => $param['InteresPersona'],
-'ConfianzaPersona' => $param['ConfianzaPersona'],
-'MotivoPersona' => $param['MotivoPersona'],
-'LugarContactoPersona' => $param['LugarContactoPersona'],
-'DatosFiscalesPersona' => $param['DatosFiscalesPersona']
+				'ProductosPersona' => $param['ProductosPersona'],
+				'PresupuestoPersona' => $param['PresupuestoPersona'],
+				'InteresPersona' => $param['InteresPersona'],
+				'ConfianzaPersona' => $param['ConfianzaPersona'],
+				'MotivoPersona' => $param['MotivoPersona'],
+				'LugarContactoPersona' => $param['LugarContactoPersona'],
+				'DatosFiscalesPersona' => $param['DatosFiscalesPersona']
 				);
 
 				$this->db->insert("Personas",$campos);

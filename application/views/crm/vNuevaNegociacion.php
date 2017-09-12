@@ -77,7 +77,7 @@
                 <div class="col-md-6 divsNP">
                       <div class="input-group">
                         <span class="input-group-addon"><b>Fecha limite aproximada</b></span>
-                          <input type="date" class="form-control pull-right" id="FechaLimite" name="FechaLimite" required>
+                          <input type='text' class="form-control" id='FechaLimite' name="FechaLimite" required="true" />
                       </div>
                 </div>
                 <div class="col-md-12 divsNP">
@@ -93,7 +93,7 @@
               <!-- /.tab-pane -->
               <div class="tab-pane" id="tab_2">
                 <form method="POST" action="<?php echo base_url();?>cNegociacion/guardarPersona">
-                  <div class="col-md-6 divsNP">
+                  <div class="col-md-12 divsNP">
                     <div class="input-group">
                       <span class="input-group-addon"><b>Nombre del objetivo</b></span>
                       <input type="text" class="form-control formsNP" id="NombreNegociacionP" name="NombreNegociacionP"/>
@@ -109,14 +109,8 @@
                   </div>
                   <div class="col-md-6 divsNP">
                     <div class="input-group">
-                      <span class="input-group-addon"><b>Motivo</b></span>
-                      <input type="text" class="form-control formsNP" id="MotivoP" name="MotivoP">
-                    </div>
-                  </div>
-                  <div class="col-md-6 divsNP">
-                    <div class="input-group">
                       <span class="input-group-addon"><b>Prioridad</b></span>
-                      <select class="select2 form-control formsNP selectpicker" id="PrioridadP" name="PrioridadP">
+                      <select class=" form-control formsNP selectpicker" id="PrioridadP" name="PrioridadP">
                         <option selected="true" disabled="true">Prioridad</option>
                         <option value="Baja">Baja</option>
                         <option value="Media">Media</option>
@@ -124,10 +118,16 @@
                       </select>              
                     </div>
                   </div>
+                  <div class="col-md-6 divsNP">
+                    <div class="input-group">
+                      <span class="input-group-addon"><b>Motivo</b></span>
+                      <textarea rows="5" type="text" class="form-control formsNP" id="MotivoP" name="MotivoP"></textarea>
+                    </div>
+                  </div>
                 <div class="col-md-6 divsNP">
                   <div class="input-group">
                     <span class="input-group-addon"><b>Persona a cargo</b></span>
-                    <select class="select2 form-control formsNP selectpicker" id="PersonaCargoP" name="PersonaCargoP" required>
+                    <select class="form-control formsNP selectpicker" id="PersonaCargoP" name="PersonaCargoP" required>
                       <option selected="true" disabled="true">Usuario</option>
                     </select>              
                   </div>
@@ -135,7 +135,7 @@
                 <div class="col-md-6 divsNP">
                       <div class="input-group">
                         <span class="input-group-addon"><b>Fecha limite aproximada</b></span>
-                        <input type="date" class="form-control pull-right" id="FechaLimiteP" name="FechaLimiteP"/>
+                        <input type='text' class="form-control" id='FechaLimiteP' name="FechaLimiteP" required="true"/>
                       </div>
                 </div>
                 <div class="col-md-12 divsNP">

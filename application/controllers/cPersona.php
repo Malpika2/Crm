@@ -129,6 +129,15 @@ $param['DatosFiscalesPersona'] = $this->input->post('DatosFiscalesPersona');
 	$param['Pais'] = $this->input->post('Pais');
 	$param['Direccion'] = $this->input->post('Calle');
 	$param['idUsuarioRegistro'] = $this->session->userdata('s_idUsuario');
+
+
+$param['ProductosPersona'] = $this->input->post('Productos');
+$param['PresupuestoPersona'] = $this->input->post('PresupuestoPersona');
+$param['InteresPersona'] = $this->input->post('InteresPersona');
+$param['ConfianzaPersona'] = $this->input->post('ConfianzaPersona');
+$param['MotivoPersona'] = $this->input->post('Motivo');
+$param['LugarContactoPersona'] = $this->input->post('LugarContacto');
+$param['DatosFiscalesPersona'] = $this->input->post('DatosFiscalesPersona');
 	$ultimaPersona=$this->mPersona->guardar($param);
 
 		if($ultimaPersona>0){

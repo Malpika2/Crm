@@ -48,9 +48,11 @@
   font-weight: bold;
   text-transform: uppercase;
 }
-
 </style>
 <section class="content-header">
+  <select id="FiltroObjetivos" name="FiltroObjetivos" class="btn-link" onchange="filtrarObjetivos()">
+      <option value="Todas" selected="true">Objetivos de todos los usuarios</option>
+  </select>
 </section>
     <!-- Main content -->
     <section class="content">
@@ -120,12 +122,13 @@
           </div>
           <div class="tab-content">
             <!--TODAS NEGOCIACIONES-->
-            <div class="tab-pane active" id="tab_Empresas"> 
+            <div class="tab-pane active table-responsive" id="tab_Empresas"> 
               <table id="tablaObEmpresas" class="table table-bordered table-striped">
                 <thead>
                 <tr style="color:#00c8d9;">
                   <th>Titulo</th>
                   <th>Empresa</th>
+                  <th>Administrador</th>
                   <th>Prioridad</th>
                   <th>Motivo</th>
                   <th>Fecha Limite</th>
@@ -136,6 +139,7 @@
                 <tr style="color:#00c8d9;">
                   <th>Titulo</th>
                   <th>Empresa</th>
+                  <th>Administrador</th>
                   <th>Prioridad</th>
                   <th>Motivo</th>
                   <th>Fecha Limite</th>
@@ -172,10 +176,10 @@
                         }
                     if ($Negociaciones->NegStatus=='Inactivo') {
                         $ClaseNeg='Inactivo';
-                    }               
+                    }
                     if ($Negociaciones->NegStatus!='Inactivo') {?>
                     <?php if ($Negociaciones->idEmpresa>='1'): ?>
-                        <tr>
+                        <tr id="trObjetivo<?php echo $Negociaciones->idUsuario?>" class="Todas trObjetivo<?php echo $Negociaciones->idUsuario?>">
                           <td>
                             <label>
                               <a class="<?php echo $ClaseNeg ;?> h5" href=" <?php echo base_url();?>cPersona/VerNegociacion/<?php echo $Negociaciones->idNegociacion;?>">
@@ -194,6 +198,9 @@
                                 ?></a>
                               <?php } ?>
                                 </p>
+                          </td>
+                          <td>
+                            <span style="color: gray"><?php echo $Negociaciones->Usuario ?></span>
                           </td>
                           <td>
                           <span style="color:gray"><?php echo $Negociaciones->Prioridad; ?></span>
@@ -226,12 +233,13 @@
                 </tbody>
               </table>
             </div><!--Fin tabEmpresas-->
-            <div class="tab-pane" id="tab_Personas"> 
+            <div class="tab-pane table-responsive" id="tab_Personas"> 
               <table id="tablaObPersonas" class="table table-responsive table-bordered table-striped">
                 <thead>
                 <tr style="color:#00c8d9;">
                   <th>Titulo</th>
                   <th>Persona</th>
+                  <th>Administrador</th>
                   <th>Prioridad</th>
                   <th>Motivo</th>
                   <th>Fecha Limite</th>
@@ -242,6 +250,7 @@
                 <tr style="color:#00c8d9;">
                   <th>Titulo</th>
                   <th>Persona</th>
+                  <th>Administrador</th>
                   <th>Prioridad</th>
                   <th>Motivo</th>
                   <th>Fecha Limite</th>
@@ -281,7 +290,7 @@
                     }               
                     if ($Negociaciones->NegStatus!='Inactivo') {?>
                       <?php if ($Negociaciones->idPersona>='1'): ?>
-                        <tr>
+                        <tr id="trObjetivo<?php echo $Negociaciones->idUsuario?>" class="Todas trObjetivo<?php echo $Negociaciones->idUsuario?>">
                           <td>
                             <label>
                               <a class="<?php echo $ClaseNeg ;?> h5" href=" <?php echo base_url();?>cPersona/VerNegociacion/<?php echo $Negociaciones->idNegociacion;?>">
@@ -300,6 +309,9 @@
                                 ?></a>
                               <?php } ?>
                                 </p>
+                          </td>
+                          <td>
+                            <span style="color: gray"><?php echo $Negociaciones->Usuario ?></span>
                           </td>
                           <td>
                           <span style="color:gray"><?php echo $Negociaciones->Prioridad; ?></span>
@@ -342,6 +354,7 @@
       </div>
     </section>
 <script type="text/javascript">
+  var idUsuarioActivo = "<?php echo $this->session->userdata('s_idUsuario');?>";
   var idUsuario = "<?php echo $this->session->userdata('s_idUsuario');?>";
   var baseurl = "<?php echo base_url();?>";
 </script>    </script>

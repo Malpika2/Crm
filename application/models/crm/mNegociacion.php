@@ -87,8 +87,9 @@ class mNegociacion extends CI_Model
 
 	}
 	public function getNegociacionPorUsuario($s){
-		$this->db->select('idNegociacion, NombreNegociacion,Negociaciones.idEmpresa,Negociaciones.idPersona,Motivo,Prioridad,Negociaciones.Status as NegStatus,Negociaciones.TareasActiva,Negociaciones.TareasCancelada,Negociaciones.TareasRealizada,PersonaCargo,FechaLimite,Detalles,CreadaPor,Activa,Empresas.NombreEmpresa,Personas.Nombre,Personas.Paterno');
+		$this->db->select('idNegociacion, NombreNegociacion,Negociaciones.idEmpresa,Negociaciones.idPersona,Motivo,Prioridad,Negociaciones.Status as NegStatus,Negociaciones.TareasActiva,Negociaciones.TareasCancelada,Negociaciones.TareasRealizada,PersonaCargo,FechaLimite,Detalles,CreadaPor,Activa,Empresas.NombreEmpresa,Personas.Nombre,Personas.Paterno,Usuarios.idUsuario,Usuarios.Usuario');
 		$this->db->from('Negociaciones');
+		$this->db->join('Usuarios','Negociaciones.PersonaCargo = Usuarios.idUsuario');
 		$this->db->join('Personas','Negociaciones.idPersona = Personas.idPersona','left');
 		$this->db->join('Empresas','Negociaciones.idEmpresa = Empresas.idEmpresa','left');
 		// $this->db->where('Negociaciones.PersonaCargo',$s);

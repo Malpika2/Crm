@@ -1,8 +1,5 @@
- // mostrarTareaEmpresa();
- // mostrarTareaPersonas();
- //Mostrar Tareas de las Empresas============================>
- // function mostrarTareaEmpresa(){
-//Mostrar Tareas grupales de las Empresas============================>
+var FTareas = $('#FiltroTareas').val();
+
   $.post(baseurl+'cTareas/getTareas_deEmpresas_PorUsuarioGrupales',
   {
     idUsuarioActivo:idUsuarioActivo
@@ -19,6 +16,14 @@
         }else {
           var clase="";
         }
+        FTareas=$('#FiltroTareas').val();
+      var propia = item.Asignados.indexOf(FTareas);
+          if (propia>=1){
+            clase= clase+' Propia';
+          }
+          else{
+            clase=clase+' NoPropia';
+          }
     if (item.StatusTarea=='Activa') {
             $('#ListaTareas').append(
                 '<li class="'+clase+'" id="tarea'+item.idTarea+'">'+
@@ -56,6 +61,14 @@
         }else {
           var clase="";
         }
+          FTareas=$('#FiltroTareas').val();
+          var propia = item.Asignados.indexOf(FTareas);
+          if (propia>=1){
+            clase= clase+' Propia';
+          }
+          else{
+            clase=clase+' NoPropia';
+          }
     if (item.StatusTarea=='Activa') {
           if (item.idNegociacion>0) {
           $('#ListaTareas').append(
@@ -118,6 +131,14 @@ function recargar(){//Recarga las tareas de las empresas
         }else {
           var clase="";
         }
+        FTareas=$('#FiltroTareas').val();
+      var propia = item.Asignados.indexOf(FTareas);
+          if (propia>=1){
+            clase= clase+' Propia';
+          }
+          else{
+            clase=clase+' NoPropia';
+          }
     if (item.StatusTarea=='Activa') {
           if (item.idNegociacion>0) {
           $('#ListaTareas').append(
@@ -154,7 +175,8 @@ function recargar(){//Recarga las tareas de las empresas
       }
       else {
         agregarTareaRealizadaEmpresa(clase,item.idTarea,item.TituloTarea,item.idEmpresa,item.NombreEmpresa,item.Categoria,item.idNegociacion);
-      } 
+      }
+      ocultarTareas(); 
     }); 
   });
 
@@ -175,6 +197,14 @@ function recargar(){//Recarga las tareas de las empresas
         }else {
           var clase="";
         }
+      FTareas=$('#FiltroTareas').val();
+      var propia = item.Asignados.indexOf(FTareas);
+          if (propia>=1){
+            clase = clase+' Propia';
+          }
+          else{
+            clase=clase+' NoPropia';
+          }
     if (item.StatusTarea=='Activa') {
             $('#ListaTareas').append(
                 '<li class="'+clase+'" id="tarea'+item.idTarea+'">'+
@@ -234,24 +264,29 @@ function agregarTareaRealizadaEmpresa(clase,idTarea,TituloTarea,idEmpresa,Nombre
 
 function ActualizarTarea(index){
   var tareaid = index;
+  var varcontrol=0;
+  if (varcontrol==0){
         $("#ModalCancelar").modal();
-        $("#ModalCancelar").on('click','#btn_AceptarModalCancelar',function(){
-          var control=0;
-          var StatusFinal = $('#StatusFinal').val();
-          $.post(baseurl+"cPersona/tareaRealizada",
-          {
-            Tareaid:tareaid,
-            StatusFinal:StatusFinal
-          },
-          function(data){
-          document.location.href = baseurl+'cTareas';
-            // $("#tarea"+tareaid).remove();
-            // recargar2();
-            // recargar();
-
-          });
-          $('#btn_CerrarModalCancelar').click();
-        });
+                  $('#btn_AceptarModalCancelar').click(function(){
+                    if (varcontrol==0){
+                    var StatusFinal = $('#StatusFinal').val();
+                    var StatusFinal = $('#StatusFinal').val();
+                    $.post(baseurl+"cPersona/tareaRealizada",
+                    {
+                      Tareaid:tareaid,
+                      StatusFinal:StatusFinal
+                    },
+                    function(data){
+                    // document.location.href = baseurl+'cTareas';
+                      $("#tarea"+tareaid).remove();
+                      recargar2();
+                      recargar();
+                      $('#btn_CerrarModalCancelar').click();
+                      varcontrol++;
+                    });
+                  }
+                  });
+  }
 }
 
 function ActualizarTareaR(index){
@@ -318,6 +353,14 @@ $.post(baseurl+"cTareas/getTareas_dePersonas_PorUsuario",
         }else {
           var clase="";
         }
+      FTareas=$('#FiltroTareas').val();
+      var propia = item.Asignados.indexOf(FTareas);
+          if (propia>=1){
+            clase= clase+' Propia';
+          }
+          else{
+            clase=clase+' NoPropia';
+          }
     if (item.StatusTarea=='Activa') {
         if (item.idNegociacion>0){
           $('#ListaTareasPersonas').append(
@@ -371,6 +414,14 @@ $.post(baseurl+"cTareas/getTareas_dePersonasGrupales_PorUsuario",
         }else {
           var clase="";
         }
+      FTareas=$('#FiltroTareas').val();
+      var propia = item.Asignados.indexOf(FTareas);
+          if (propia>=1){
+            clase= clase+' Propia';
+          }
+          else{
+            clase=clase+' NoPropia';
+          }
     if (item.StatusTarea=='Activa') {
       $('#ListaTareasPersonas').append(
                 '<li class="'+clase+'">'+
@@ -412,6 +463,14 @@ $.post(baseurl+"cTareas/getTareas_dePersonas_PorUsuario",
         }else {
           var clase="";
         }
+      FTareas=$('#FiltroTareas').val();
+      var propia = item.Asignados.indexOf(FTareas);
+          if (propia>=1){
+            clase= clase+' Propia';
+          }
+          else{
+            clase=clase+' NoPropia';
+          }
     if (item.StatusTarea=='Activa') {
         if (item.idNegociacion>0) {
           $('#ListaTareasPersonas').append(
@@ -449,6 +508,7 @@ $.post(baseurl+"cTareas/getTareas_dePersonas_PorUsuario",
     else{
                   agregarTareaRealizadaPersona(clase,item.idTarea,item.TituloTarea,item.idPersona,item.Nombre,item.Categoria,item.idNegociacion);
     }
+    ocultarTareas();
           }); 
   });
 $.post(baseurl+"cTareas/getTareas_dePersonasGrupales_PorUsuario",
@@ -467,6 +527,14 @@ $.post(baseurl+"cTareas/getTareas_dePersonasGrupales_PorUsuario",
         }else {
           var clase="";
         }
+      FTareas=$('#FiltroTareas').val();
+      var propia = item.Asignados.indexOf(FTareas);
+          if (propia>=1){
+            clase= clase+' Propia';
+          }
+          else{
+            clase=clase+' NoPropia';
+          }
     if (item.StatusTarea=='Activa') {
       $('#ListaTareasPersonas').append(
                 '<li class="'+clase+'">'+
@@ -540,7 +608,11 @@ $.post(baseurl+"cGetUsuarios/getUsuarios",
     var emp = JSON.parse(data);
     $.each(emp,function(i,item){
       $('#Asignados').append('<option value="'+item.idUsuario+'">'+item.Nombre+'</option>');
-      $('#Usuarios').append('<option value="'+item.idUsuario+'">'+item.Nombre+'</option>')
+      $('#Usuarios').append('<option value="'+item.idUsuario+'">'+item.Nombre+'</option>');
+      if(item.idUsuario===idUsuarioActivo){
+        $('#FiltroTareas').append('<option value="'+item.idUsuario+'">Mis Tareas</option>');
+      }else{
+      $('#FiltroTareas').append('<option value="'+item.idUsuario+'">Tareas de: '+item.Nombre+'</option>')}
       });
   });
 
@@ -555,3 +627,15 @@ $.post(baseurl+"cGetEmpresas/getEmpresas",
       });
   });
 
+filtrarTareas = function(){
+  var FTareas = $('#FiltroTareas').val();
+  recargar();
+  recargar2();
+}
+ocultarTareas = function(){
+  $(".NoPropia").addClass('hidden');
+  var FTareas = $('#FiltroTareas').val();
+  if (FTareas==='Todas'){
+    $(".NoPropia").removeClass('hidden');
+  }
+}

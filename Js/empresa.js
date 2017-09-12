@@ -16,7 +16,8 @@ $.post(baseurl+"cGetPersonas/getPaises",
     var emp= JSON.parse(data);
     $.each(emp,function(i,item){
       $('#Pais').append('<option value="'+item.nombre+'">'+item.nombre+'</option>')
-    });
+      $('.Pais').append('<option value="'+item.nombre+'">'+item.nombre+'</option>')
+          });
 });
 $.post(baseurl+"cGetPersonas/getRepresentantes",
 	{
@@ -371,6 +372,7 @@ function cargarPersonas(){
 }
 
 $('#registrarPersona').click(function(){
+
 var control='1';
 $('#form, #fat, #formPersona').submit(function() {
 	if(control=='1'){
