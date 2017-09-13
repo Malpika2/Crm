@@ -83,21 +83,21 @@
   .widget-user-2 .widget-user-header {
     padding-top: 10px 20px 20px 0px;
 }
-/*#ModalNPersona span.select2{
+#ModalNPersona span.select2{
     width: 100% !important;
-}*/
+}
 #ModalNPersona div.easy-autocomplete{
     width: 100% !important;
 }
-/*#ModalNPersonaCont span.select2{
+#ModalNPersonaCont span.select2{
     width: 100% !important;
-}*/
+}
 #ModalNPersonaCont div.easy-autocomplete{
     width: 100% !important;
 }
-/*#ModalEditarEmp span.select2{
+#ModalEditarEmp span.select2{
     width: 100% !important;
-}*/
+}
 #ModalEditarEmp div.easy-autocomplete{
     width: 100% !important;
 }

@@ -198,8 +198,10 @@
                     <label>¿CUANDO DEBE CUMPLIRSE?</label>
 
                     <div class="input-group date">
-                      <div id="datepicker" data-date="08/07/2017"></div>
-                      <input type="hidden" id="FechaFin"  name="FechaFin" value="08/07/2017">
+                      <div id="datepicker">
+                        <input type="hidden" id="FechaFin"  name="FechaFin">
+                      </div>
+                    </div>
                       <input type="hidden" id="idNegociacion" name="idNegociacion" value="<?php echo $row_Negociacion->idNegociacion;?>">
                       <input type="hidden" id="idEmpresa" name="idEmpresa" value="<?php echo $row_Negociacion->idEmpresa;?>">
                       <input type="hidden" id="idPersona" name="idPersona" value="<?php echo $row_Negociacion->idPersona;?>">
@@ -207,7 +209,6 @@
                       value="<?php echo $this->session->userdata('s_idUsuario');?>">
                       <input type="hidden" id="NombreUs" name="NombreUs" 
                       value="<?php echo $this->session->userdata('s_Nombre');?>">
-                    </div>
                   </div>
                 </div>
             </div>

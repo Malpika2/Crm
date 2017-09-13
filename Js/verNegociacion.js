@@ -1,8 +1,7 @@
 mostrarTareasObjetivos();
 
 $('#form, #fat, #formComentarios').submit(function() {
-
-
+  alert('koko');
           $.ajax({
               type: 'POST',
               url: $(this).attr('action'),
@@ -23,7 +22,7 @@ $('#form, #fat, #formComentarios').submit(function() {
                             type: 'post',
                             success: function (response) {
                                 $('#msg').html(response); // Exito
-                                $.post(baseurl+"ajaxupload/uploadBD",{
+                                $.post(baseurl+"ajaxupload/uploadBDObjetivos",{
                                   idNegociacion:idNegociacion,
                                   idComentario:data,
                                   nombreArchivo:file_data['name']},
@@ -213,7 +212,7 @@ $.post(baseurl+"cGetComentarios/getComentarios_Por_Negociacion",
 }
 $(document).ready(function(){//GuardarComentariosde Coments
 $('#ListaTareasNG').on('submit','#formComentariosComent',function(){
-
+  alert('poopppppp');
   var conArchivo=0;
           $.ajax({
               type: 'POST',
@@ -229,8 +228,7 @@ $('#ListaTareasNG').on('submit','#formComentariosComent',function(){
                     if (file_data){        
                         var form_data = new FormData();
                         form_data.append('file', file_data);
-
-                              $.post(baseurl+"ajaxupload/uploadBD",
+                              $.post(baseurl+"ajaxupload/uploadBDObjetivos",
                                 {
                                   idNegociacion:idNegociacion,
                                   idComentario:idComentario,
@@ -278,28 +276,6 @@ $('#ListaTareasNG').on('submit','#formComentariosComent',function(){
               }
           });
 
-
-
-
-
-          // $.ajax({
-          //     type: 'POST',
-          //     url: $(this).attr('action'),
-          //     data: $(this).serialize(),
-          //     success: function(data) { 
-          //       $("#formComentariosComent")[0].reset();
-          //       var idComent2 = $('#idComent').val();
-          //       alert(idComent2);
-          //       $('#ListaComentariosComent'+idComent2).empty();
-          //       ComentarioPorComentario(idComent2);
-          //       var idNego = idNegociacion;
-          //       Recargar(idNegociacion);
-          //       $('#divResponder'+idComent2).addClass('hidden');
-          //       // Recargar();
-
-          //     }
-          // });
-          
           return false;
       });
 });
@@ -439,3 +415,15 @@ $(document).ready(function(){
       $('#idComent'+idNegociacion).val(idNegociacion);
   });
 });
+
+
+$.post(baseurl+"ajaxupload/getArchivosNG",
+  {
+    idNegociacion:idNegociacion
+  },
+  function(data){
+    var arc = JSON.parse(data);
+    $.each(arc,function(i,item){
+      $('#ListaArchivos').append('<li><a target="_blank" href="'+baseurl+'uploads/'+item.NombreArchivo+'">'+item.NombreArchivo+'</a></li>');
+    });
+  });

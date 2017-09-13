@@ -148,91 +148,91 @@ $("#NombreEmpresa").easyAutocomplete(options);
 });
 
 //Autocomplete SPP
-$(document).ready(function() {
-	var control2=0;
-var options = {
-	url: baseurl+"cGetEmpresas/getEmpresasAutoComplete",
-	getValue: "spp",
-	list: {
-		maxNumberOfElements: 5,
-		match: {
-			enabled: true
-		},
-		showAnimation: {
-			type: "fade", //normal|slide|fade
-			time: 400,
-			callback: function() {}
-		},
-		hideAnimation: {
-			type: "slide", //normal|slide|fade
-			time: 100,
-			callback: function() {}
-		},		
-		onSelectItemEvent: function() {
-			control2=0;
-			var abreviacion = $('#SPP').getSelectedItemData().abreviacion;
-			var nombre = $('#SPP').getSelectedItemData().nombre;
-			var SitioWeb = $('#SPP').getSelectedItemData().sitio_web;
-			var Telefono1 = $('#SPP').getSelectedItemData().telefono;
-			var Correo1 = $('#SPP').getSelectedItemData().email;
-			var DatosFiscales = $('#SPP').getSelectedItemData().rfc;
-			if (DatosFiscales==null){
-				var DatosFiscales = $('#SPP').getSelectedItemData().ruc;
-			}
-			var DireccionOficina = $('#SPP').getSelectedItemData().direccion_oficina;
-			var DireccionFiscal = $('#SPP').getSelectedItemData().direccion_fiscal;
-			var Ciudad = $('#SPP').getSelectedItemData().ciudad;
-			var Pais = $('#SPP').getSelectedItemData().pais;
+// $(document).ready(function() {
+// 	var control2=0;
+// var options = {
+// 	url: baseurl+"cGetEmpresas/getEmpresasAutoComplete",
+// 	getValue: "spp",
+// 	list: {
+// 		maxNumberOfElements: 5,
+// 		match: {
+// 			enabled: true
+// 		},
+// 		showAnimation: {
+// 			type: "fade", //normal|slide|fade
+// 			time: 400,
+// 			callback: function() {}
+// 		},
+// 		hideAnimation: {
+// 			type: "slide", //normal|slide|fade
+// 			time: 100,
+// 			callback: function() {}
+// 		},		
+// 		onSelectItemEvent: function() {
+// 			control2=0;
+// 			var abreviacion = $('#SPP').getSelectedItemData().abreviacion;
+// 			var nombre = $('#SPP').getSelectedItemData().nombre;
+// 			var SitioWeb = $('#SPP').getSelectedItemData().sitio_web;
+// 			var Telefono1 = $('#SPP').getSelectedItemData().telefono;
+// 			var Correo1 = $('#SPP').getSelectedItemData().email;
+// 			var DatosFiscales = $('#SPP').getSelectedItemData().rfc;
+// 			if (DatosFiscales==null){
+// 				var DatosFiscales = $('#SPP').getSelectedItemData().ruc;
+// 			}
+// 			var DireccionOficina = $('#SPP').getSelectedItemData().direccion_oficina;
+// 			var DireccionFiscal = $('#SPP').getSelectedItemData().direccion_fiscal;
+// 			var Ciudad = $('#SPP').getSelectedItemData().ciudad;
+// 			var Pais = $('#SPP').getSelectedItemData().pais;
 
 
-			$("#Abreviacion").val(abreviacion).trigger("change");
-			$("#NombreEmpresa").val(nombre).trigger("change");
-			$("#SitioWeb").val(SitioWeb).trigger("change");
-			$("#Telefono1").val(Telefono1).trigger("change");
-			$("#Correo1").val(Correo1).trigger("change");
-			$("#DatosFiscales").val(DatosFiscales).trigger("change");
-			$("#DireccionOficina").val(DireccionOficina).trigger("change");
-			$("#DireccionFiscal").val(DireccionFiscal).trigger("change");
-			$("#Ciudad").val(Ciudad).trigger("change");
-			$("#Pais").val(Pais).trigger("change");
-		},
-		onClickEvent: function(){
-			control2=2;
-		},
-		onMouseOutEvent: function(){
-			if (control2===0){
-			$("#NombreEmpresa").val('').trigger("change");
-			$("#Abreviacion").val('').trigger("change");
-			// $("#SPP").val('').trigger("change");
-			$("#SitioWeb").val('').trigger("change");
-			$("#Telefono1").val('').trigger("change");
-			$("#Correo1").val('').trigger("change");
-			$("#DatosFiscales").val('').trigger("change");
-			$("#DireccionOficina").val('').trigger("change");
-			$("#DireccionFiscal").val('');
-			$("#Ciudad").val('').trigger("change");
-			$("#Pais").val('').trigger("change");
-			}
-		},
-		onHideListEvent:function(){
-			if(control2==0){
-			$("#NombreEmpresa").val('').trigger("change");
-			$("#Abreviacion").val('').trigger("change");
-			// $("#SPP").val('').trigger("change");
-			$("#SitioWeb").val('').trigger("change");
-			$("#Telefono1").val('').trigger("change");
-			$("#Correo1").val('').trigger("change");
-			$("#DatosFiscales").val('').trigger("change");
-			$("#DireccionOficina").val('').trigger("change");
-			$("#DireccionFiscal").val('');
-			$("#Ciudad").val('').trigger("change");
-			$("#Pais").val('').trigger("change");}	
-		}
-	}
-};
+// 			$("#Abreviacion").val(abreviacion).trigger("change");
+// 			$("#NombreEmpresa").val(nombre).trigger("change");
+// 			$("#SitioWeb").val(SitioWeb).trigger("change");
+// 			$("#Telefono1").val(Telefono1).trigger("change");
+// 			$("#Correo1").val(Correo1).trigger("change");
+// 			$("#DatosFiscales").val(DatosFiscales).trigger("change");
+// 			$("#DireccionOficina").val(DireccionOficina).trigger("change");
+// 			$("#DireccionFiscal").val(DireccionFiscal).trigger("change");
+// 			$("#Ciudad").val(Ciudad).trigger("change");
+// 			$("#Pais").val(Pais).trigger("change");
+// 		},
+// 		onClickEvent: function(){
+// 			control2=2;
+// 		},
+// 		onMouseOutEvent: function(){
+// 			if (control2===0){
+// 			$("#NombreEmpresa").val('').trigger("change");
+// 			$("#Abreviacion").val('').trigger("change");
+// 			// $("#SPP").val('').trigger("change");
+// 			$("#SitioWeb").val('').trigger("change");
+// 			$("#Telefono1").val('').trigger("change");
+// 			$("#Correo1").val('').trigger("change");
+// 			$("#DatosFiscales").val('').trigger("change");
+// 			$("#DireccionOficina").val('').trigger("change");
+// 			$("#DireccionFiscal").val('');
+// 			$("#Ciudad").val('').trigger("change");
+// 			$("#Pais").val('').trigger("change");
+// 			}
+// 		},
+// 		onHideListEvent:function(){
+// 			if(control2==0){
+// 			$("#NombreEmpresa").val('').trigger("change");
+// 			$("#Abreviacion").val('').trigger("change");
+// 			// $("#SPP").val('').trigger("change");
+// 			$("#SitioWeb").val('').trigger("change");
+// 			$("#Telefono1").val('').trigger("change");
+// 			$("#Correo1").val('').trigger("change");
+// 			$("#DatosFiscales").val('').trigger("change");
+// 			$("#DireccionOficina").val('').trigger("change");
+// 			$("#DireccionFiscal").val('');
+// 			$("#Ciudad").val('').trigger("change");
+// 			$("#Pais").val('').trigger("change");}	
+// 		}
+// 	}
+// };
 
-$("#SPP").easyAutocomplete(options); 
-});
+// $("#SPP").easyAutocomplete(options); 
+// });
 
 function limpiarFormularioEmpresa(){
  	   $("#formEmpresa")[0].reset();

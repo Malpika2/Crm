@@ -31,6 +31,16 @@ class mUpload extends CI_Model {
         // return $this->db->replace('Archivos'," ",'_');
         // UPDATE tabla SET campo = REPLACE(campo, "-", '_');
     }
+    function subirObjetivo($NombreArchivo,$idComentarioN,$idNegociacion)
+    {
+        $NombreArchivo=str_replace(" ","_",$NombreArchivo);
+        $data = array(
+            'NombreArchivo' => $NombreArchivo,
+            'idComentarioArchivo' => $idComentarioN,
+            'idObjetivoArchivo'=>$idNegociacion
+        );
+        $result= $this->db->insert('Archivos', $data);
+    }
     function getArchivos($s){
         $this->db->select('*');
         $this->db->from('Archivos');
@@ -42,6 +52,13 @@ class mUpload extends CI_Model {
         $this->db->select('*');
         $this->db->from('Archivos');
         $this->db->where('idPersonaArchivo',$s);
+        $query = $this->db->get();           
+        return $query->result();
+    }
+    function getArchivosNG($s){
+        $this->db->select('*');
+        $this->db->from('Archivos');
+        $this->db->where('idObjetivoArchivo',$s);
         $query = $this->db->get();           
         return $query->result();
     }

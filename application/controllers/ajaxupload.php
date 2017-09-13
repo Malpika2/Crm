@@ -22,6 +22,12 @@ class AjaxUpload extends CI_Controller {
     $nombreArchivo = $this->input->post('nombreArchivo');
     $this->mUpload->subirPersonas($nombreArchivo,$idComentarioN,$idPersona);
     }
+    public function uploadBDObjetivos(){
+    $idComentarioN = $this->input->post('idComentario');
+    $idNegociacion = $this->input->post('idNegociacion');
+    $nombreArchivo = $this->input->post('nombreArchivo');
+    $this->mUpload->subirObjetivo($nombreArchivo,$idComentarioN,$idNegociacion);
+    }
     function upload_file() {
     
         //upload file
@@ -60,6 +66,11 @@ class AjaxUpload extends CI_Controller {
         function getArchivosPersona(){
         $idEmpresa = $this->input->post('idPersona');
         $resultado = $this->mUpload->getArchivosPersona($idEmpresa);
+        echo json_encode($resultado);
+    }
+        function getArchivosNG(){
+        $idNegociacion = $this->input->post('idNegociacion');
+        $resultado = $this->mUpload->getArchivosNG($idNegociacion);
         echo json_encode($resultado);
     }
  
