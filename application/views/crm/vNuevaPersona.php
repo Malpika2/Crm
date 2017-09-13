@@ -1,7 +1,7 @@
 <style type="text/css">
 .select2 {
-  display: initial;
-}
+/*  display: initial;
+*/}
 .easy-autocomplete {
   position: relative;
   display: contents;

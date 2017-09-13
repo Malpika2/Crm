@@ -72,6 +72,7 @@
               <li><a href="#Notas" data-toggle="tab"><b class="text-blue">Notas</b></a></li>
               <li><a href="#Tareas" data-toggle="tab"><b class="text-blue">Tareas</b></a></li>
               <li><a href="#Negociaciones" data-toggle="tab"><b class="text-blue">Objetivos</b></a></li>
+              <li><a href="#Archivos" data-toggle="tab"><b class="text-blue">Archivos</b></a></li>
             </ul>
             <div class="tab-content">
               <div class="active tab-pane" id="Datos">
@@ -118,6 +119,16 @@
                   </div>
               </div>
               <!-- /.tab-pane -->
+              <div class="tab-pane" id="Archivos">
+                <div class="post clearfix" style="padding: 0px; margin: 3px;">
+                <div class="col-md-12" style="height: 500px; overflow: scroll;">
+                Lista Archivos
+                  <ul id="ListaArchivos">
+                  </ul>
+                </div>
+                </div>
+              </div>
+
             <!-- Comentarios -->
               <div class="tab-pane" id="Notas">
                 <div class="post clearfix" style="padding: 0px; margin: 3px;">

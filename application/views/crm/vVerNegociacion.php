@@ -76,6 +76,7 @@
                 <ul class="nav nav-tabs">
                   <li class="active"><a href="#Comentarios" data-toggle="tab">Comentarios</a></li>
                   <li class=""><a href="#TareasOb" data-toggle="tab">Tareas</a></li>
+                  <li class=""><a href="#Archivos" data-toggle="tab">Archivos</a></li>
                 </ul>
               </div>
                   <div class="box-body">
@@ -110,6 +111,15 @@
                         <ul class="timeline timeline-inverse" id="LineaTareasOb" style="height: 400px; overflow: scroll;">
                         </ul>
                       </div>
+                      <div class="tab-pane" id="Archivos">
+                        <div class="post clearfix" style="padding: 0px; margin: 3px;">
+                        <div class="col-md-12" style="height: 500px; overflow: scroll;">
+                        Lista Archivos
+                          <ul id="ListaArchivos">
+                          </ul>
+                        </div>
+                        </div>
+                      </div><!-- /.tab-pane -->
                     </div>
                   </div>
                 </div> <!-- box-header -->

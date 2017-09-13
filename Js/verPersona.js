@@ -560,3 +560,16 @@ $(document).ready(function(){
       $('#idComent'+idNegociacion).val(idNegociacion);
   });
 });
+
+
+$.post(baseurl+"ajaxupload/getArchivosPersona",
+  {
+    idPersona:idPersona
+  },
+  function(data){
+    var arc = JSON.parse(data);
+    $.each(arc,function(i,item){
+      $('#ListaArchivos').append('<li><a target="_blank" href="'+baseurl+'uploads/'+item.NombreArchivo+'">'+item.NombreArchivo+'</a></li>');
+    });
+  });
+

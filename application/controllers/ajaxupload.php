@@ -52,5 +52,15 @@ class AjaxUpload extends CI_Controller {
             echo 'Error: Recarga la pagina o seleccona otro archivo';
         }
     }
+    function getArchivos(){
+        $idEmpresa = $this->input->post('idEmpresa');
+        $resultado = $this->mUpload->getArchivos($idEmpresa);
+        echo json_encode($resultado);
+    }
+        function getArchivosPersona(){
+        $idEmpresa = $this->input->post('idPersona');
+        $resultado = $this->mUpload->getArchivosPersona($idEmpresa);
+        echo json_encode($resultado);
+    }
  
 }
