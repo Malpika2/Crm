@@ -520,17 +520,31 @@ $('#LineaNegociaciones').on('click','#btnEliminar', function() {
 
 GuardarEditPersona = function(){
   var idPersonaE = idPersona;
-  var NombrePersona = $('#mNombrePersona').val();
-  var Cargo = $('#mCargo').val();
-  var Puesto = $('#mPuesto').val();
-  var Telefono1 = $('#mTelefono1').val();
-  var Telefono2 = $('#mTelefono2').val();
-  var Correo1 = $('#mCorreo1').val();
-  var Correo2 = $('#mCorreo2').val();
-  var Skype = $('#mSkype').val();
-  var Direccion = $('#mDireccion').val();
-  var Estado = $('#mEstado').val();
-  var Pais   = $('#mPais').val();
+  var NombrePersona = $('#NombrePersona').val();
+  var Cargo = $('#Cargo').val();
+  var Puesto = $('#Puesto').val();
+  var Telefono1 = $('#Telefono1').val();
+  var Telefono2 = $('#Telefono2').val();
+  var Correo1 = $('#Correo1').val();
+  var Correo2 = $('#Correo2').val();
+  var Skype = $('#Skype').val();
+  var Direccion = $('#Direccion').val();
+  var Estado = $('#Estado').val();
+  var Pais   = $('#Pais').val();
+
+var Productos = $('#Productos').val();
+var PresupuestoPersona = $('#PresupuestoPersona').val();
+var InteresPersona = $('#InteresPersona').val();
+var ConfianzaPersona = $('#ConfianzaPersona').val();
+var Motivo = $('#Motivo').val();
+var LugarContacto = $('#LugarContacto').val();
+var ladaTel1input = $('#ladaTel1input').val();
+var TipoTelefono1 = $('#TipoTelefono1').val();
+var ladaTel2input = $('#ladaTel2input').val();
+var TipoTelefono2 = $('#TipoTelefono2').val();
+var DatosFiscalesPersona = $('#DatosFiscalesPersona').val();
+
+
 $.post(baseurl+"cPersona/updatePersona/",
   {   idPersonaE:idPersonaE,
       NombrePersona:NombrePersona,
@@ -543,7 +557,18 @@ $.post(baseurl+"cPersona/updatePersona/",
       Skype:Skype,
       Direccion:Direccion,
       Estado:Estado,
-      Pais:Pais
+      Pais:Pais,
+      DatosFiscalesPersona:DatosFiscalesPersona,
+      Productos:Productos,
+      PresupuestoPersona:PresupuestoPersona,
+      InteresPersona:InteresPersona,
+      ConfianzaPersona:ConfianzaPersona,
+      Motivo:Motivo,
+      LugarContacto:LugarContacto,
+      ladaTel1input:ladaTel1input,
+      TipoTelefono1:TipoTelefono1,
+      ladaTel2input:ladaTel2input,
+      TipoTelefono2:TipoTelefono2
   },
   function(data){
     location.reload();

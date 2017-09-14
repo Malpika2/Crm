@@ -78,7 +78,17 @@ class mPersona extends CI_Model
 			'Skype' => $param['Skype'],
 			'Direccion' => $param['Direccion'],
 			'Ciudad' => $param['Estado'],
-			'Pais' => $param['Pais']);
+			'Pais' => $param['Pais'],
+			'ProductosPersona' => $param['Productos'],
+			'PresupuestoPersona' => $param['PresupuestoPersona'],
+			'InteresPersona' => $param['InteresPersona'],
+			'ConfianzaPersona' => $param['ConfianzaPersona'],
+			'MotivoPersona' => $param['Motivo'],
+			'LugarContactoPersona' => $param['LugarContacto'],
+			'DatosFiscalesPersona' => $param['DatosFiscalesPersona'],
+			'TipoTelefono1' => $param['TipoTelefono1'],
+			'TipoTelefono2' => $param['TipoTelefono2']);
+
 	 	$this->db->where('idPersona',$param['idPersona']);
 	 	$this->db->update('Personas',$campos);
 	 	return 1;

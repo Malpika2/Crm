@@ -411,79 +411,177 @@
       <div class="modal-body">
       <div class="container-fluid">
       <div class="row">
-        <div class="col-md-12 text-center">
-          <h3>EDITAR PERSONA</h3>
-        </div>
-        <form id="formPersona" method="POST" action="<?php echo base_url();?>cPersona/guardar2">
-        <div class="col-md-12 divsNP">
-              <div class="input-group">
-                <span class="input-group-addon"><b>Nombre Completo</b></span>
-                <input type="text" class="form-control formsNP" id="mNombrePersona" name="mNombrePersona" value="<?php echo $row_Persona->Nombre; ?>" style="border:1px solid #d2d6de;" disabled />
+      <div class="col-md-12">
+                <table class="table table-responsive table-bordered" id="tablaRegistroPersonas">
+                  <thead>
+                    <tr style="background-color: #F0AD4E; color: white;">
+                      <th colspan="2" class="text-center"><b>Información General</b></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <span class="">Nombre Completo</span>
+                        <input type="text" class="form-control " id="NombrePersona" name="NombrePersona" placeholder="Nombre(s) Apellidos" disabled="true" value="<?php echo $row_Persona->Nombre; ?>">
+                      </td>
+                      <td>
+                        <span class="">Puesto</span>
+                        <input type="text" class="form-control" id="Puesto" name="Puesto" value="<?php echo $row_Persona->Puesto; ?>">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="">Tipo de Persona</span>
+                        <select class="form-control selectpicker" title="Tipo de Persona..." id="Cargo" name="Cargo" required="true">
+                          <option <?php if($row_Persona->Cargo=='Contacto'){?> selected="true" <?php } ?> value="Contacto">Contacto</option>
+                          <option <?php if($row_Persona->Cargo=='Representante'){?> selected="true" <?php } ?> value="Representante">Representante</option>
+                        </select>
+                      </td>
+                      <td>
+                        <span>Pais</span>
+                        <select class="form-control selectpicker select2" id="Pais" name="Pais" required="true" onchange="cambiarLada()">
+                        <option value="<?php echo $row_Persona->Pais; ?>" selected="true"><?php echo $row_Persona->Pais; ?></option>
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="">Productos que maneja</span>
+                        <textarea rows="2" cols="50" class="form-control" id="Productos" name="Productos" placeholder="Productos que maneja"><?php echo $row_Persona->ProductosPersona ?></textarea>
+                      </td>
+                      <td>
+                          <span class="">Propuesto por:</span>
+                          <input type="text" class="form-control" id="PresupuestoPersona" name="PresupuestoPersona" placeholder="Persona que recomienda el registro" value="<?php $row_Persona->PresupuestoPersona; ?>">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="">Nivel de Interés de la Persona</span>
+                        <select class="form-control" id="InteresPersona" name="InteresPersona" required="true">
+                          <option <?php if($row_Persona->InteresPersona=='Bajo'){?> selected="true" <?php } ?> value="Bajo">Bajo</option>
+                          <option <?php if($row_Persona->InteresPersona=='Medio'){?> selected="true" <?php } ?> value="Medio">Medio</option>
+                          <option <?php if($row_Persona->InteresPersona=='Alto'){?> selected="true" <?php } ?> value="Alto">Alto</option>
+                        </select>
+                      </td>
+                      <td>
+                        <span class="">Nivel de Confianza</span>
+                        <select class="form-control" id="ConfianzaPersona" name="ConfianzaPersona" required="true">
+                          <option <?php if($row_Persona->ConfianzaPersona=='1'){?> selected="true" <?php } ?> selected="true" value="1">1 (Bajo)</option>
+                          <option <?php if($row_Persona->ConfianzaPersona=='2'){?> selected="true" <?php } ?> value="2">2</option>
+                          <option <?php if($row_Persona->ConfianzaPersona=='3'){?> selected="true" <?php } ?> value="3">3</option>
+                          <option <?php if($row_Persona->ConfianzaPersona=='4'){?> selected="true" <?php } ?> value="4">4</option>
+                          <option <?php if($row_Persona->ConfianzaPersona=='5'){?> selected="true" <?php } ?> value="5">5 (Alto)</option>
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="">Motivo o Razón</span>
+                        <textarea rows="2" cols="50" class="form-control" id="Motivo" name="Motivo" placeholder="Motivo de Registro"><?php echo $row_Persona->MotivoPersona; ?></textarea>
+                      </td>
+                      <td>
+                        <span class="">Contactado en</span>
+                        <textarea rows="2" cols="50" class="form-control" id="LugarContacto" name="LugarContacto" placeholder="Lugar donde se realizó el contacto"><?php echo $row_Persona->LugarContactoPersona ?></textarea>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" style="background-color: #F0AD4E; color: white;">
+                        <b>Datos de Contacto</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="">Empresa</span>&nbsp;<i class="fa fa-info-circle" data-toggle="tooltip" title="Asignado en la ficha de la empresa"></i>
+                        <input disabled="true" class="form-control" type="text" name="EmpresaInp" value="<?php if(isset($row_Empresas)){echo $row_Empresas->NombreEmpresa; }?>">
+                      <td>
+                        <span class="">Skype</span>
+                        <input type="text" class="form-control" id="Skype" name="Skype" value="<? echo $row_Persona->Skype; ?>">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <?php
+                        $pos1 = stripos($row_Persona->Telefono1,'+');
+                        if ($pos1 ===0) {
+                          $lada1 = explode("-", $row_Persona->Telefono1);
+                          $Telefono1sinLada = str_replace(''.$lada1[0].'-', "", $row_Persona->Telefono1);
+                        }else{
+                          $lada1[0]="";
+                          $Telefono1sinLada=$row_Persona->Telefono1;
+                        }
+                        ?>
+                        <span class="">1º Telefono</span>&nbsp;<i class="fa fa-info-circle" data-toggle="tooltip" title="Lada generada apartir de la seleccion del pais"></i>
+                        <div class="input-group">
+                          <div class="input-group-addon" style="padding: 0px 12px;">
+                            <label id="ladaTel1"><?php echo $lada1[0]; ?></label>
+                            <input type="hidden" id="ladaTel1input" name="ladaTel1input" value="<?php echo $lada1[0];  ?>">
+                          </div>                        
+                          <input type="text" class="form-control" id="Telefono1" name="Telefono1" required="true"  style="height: 38px;" value="<?php echo $Telefono1sinLada; ?>">
+                        <div class="input-group-addon" style="padding: 0px 0px;">
+                            <select id="TipoTelefono1" name="TipoTelefono1" class="" data-minimum-results-for-search="Infinity">
+                              <option <?php if($row_Persona->TipoTelefono1=="Movil"){?> selected="true"<?php } ?> value="Movil">Movil</option>
+                              <option <?php if($row_Persona->TipoTelefono1=="Fijo"){?> selected="true"<?php }?>value="Fijo">Fijo</option>
+                            </select>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                      <?php 
+                        $pos2 = stripos($row_Persona->Telefono2,'+');
+                        if ($pos2 ===0) {
+                          $lada2 = explode("-", $row_Persona->Telefono2);
+                          $Telefono2sinLada = str_replace(''.$lada2[0].'-', "", $row_Persona->Telefono2);
+                        }else{
+                          $lada2[0]="";
+                          $Telefono2sinLada=$row_Empresas->Telefono2;
+                        }
+                        ?>
+                        <span class="">2º Telefono</span>&nbsp;<i class="fa fa-info-circle" data-toggle="tooltip" title="Lada generada apartir de la seleccion del pais"></i>
+                        <div class="input-group">
+                          <div class="input-group-addon" style="padding: 0px 12px;">
+                            <label id="ladaTel2"><?php echo $lada2[0]; ?></label>
+                            <input type="hidden" id="ladaTel2input" name="ladaTel2input" value="<?php echo $lada2[0]; ?>">
+                          </div>                        
+                        <input type="text" class="form-control " id="Telefono2" name="Telefono2" style="height: 38px;" value="<?php echo $Telefono2sinLada; ?>">
+                        <div class="input-group-addon" style="padding: 0px 0px;">
+                            <select id="TipoTelefono2" name="TipoTelefono2" class="" data-minimum-results-for-search="Infinity">
+                              <option <?php if($row_Persona->TipoTelefono2=="Movil"){?> selected="true"<?php } ?> value="Movil" selected="true">Movil</option>
+                              <option <?php if($row_Persona->TipoTelefono2=="Fijo"){?> selected="true"<?php } ?> value="Fijo">Fijo</option>
+                            </select>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="">1º Email</span>
+                        <input type="text" class="form-control" id="Correo1" name="Correo1" required="true" value="<?php echo $row_Persona->Correo1; ?>">
+                      </td>
+                      <td>
+                        <span class="">2º Email</span>
+                        <input type="text" class="form-control" id="Correo2" name="Correo2" value="<?php echo $row_Persona->Correo2; ?>">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="">Dirección</span>
+                        <input type="text" class="form-control" id="Calle" name="Calle" placeholder="Ciudad, Calle, Número" value="<?php echo $row_Persona->Direccion?>">
+                      </td>
+                      <td>
+                        <span>Datos Fiscales</span>
+                        <textarea rows="2" cols="50" class="form-control col-md-12" id="DatosFiscalesPersona" name="DatosFiscalesPersona" placeholder="Información referente a la facturación"><?php echo $row_Persona->DatosFiscalesPersona; ?></textarea> 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">
+                      <span class="col-md-2"></span>
+                        <input onclick="GuardarEditPersona();" type="submit" id="btn_GuardarEditarP" class="divsNP formsNP btn btn-primary btn-block" value="Guardar cambios" data-dismiss="modal">
+                        <span class="col-md-2"></span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
-        </div>
-        <div class="col-md-6 divsNP">
-              <div class="input-group">
-                <span class="input-group-addon"><b>Cargo</b></span>
-                <select class="form-control formsNP" id="mCargo" name="mCargo" required>
-                  <option value="Representante" <?php if ($row_Persona->Cargo=='Representante') {?> selected="true"<?php } ?> >Representante</option>
-                  <option <?php if ($row_Persona->Cargo=='Contacto') {?> selected="true"<?php } ?> value="Contacto">Contacto</option>
-                </select>
-              </div>
-        </div>
-        <div class="col-md-6 " style="padding: 0px;">
-        <div class="col-md-12 divsNP">
-              <div class="input-group">
-                <span class="input-group-addon"><b>Puesto</b></span>
-                <input type="text" class="form-control Puesto  formsNP" id="mPuesto" name="mPuesto" value="<?php echo $row_Persona->Puesto ?>">
-              </div>
-        </div>
-        </div>
-        <div class="col-md-3 divsNP">
-              <div class="input-group">
-                <span class="input-group-addon"><b>1º Telefono</b></span>
-                <input type="text" class="form-control Telefono1 formsNP" id="mTelefono1" name="mTelefono1" value="<?php echo $row_Persona->Telefono1  ?>">
-                <input type="text" class="form-control formsNP text-center" disabled="true" name="" value="Personal">
-
-              </div>
-        </div>
-        <div class="col-md-3 divsNP">
-              <div class="input-group">
-                <span class="input-group-addon"><b>2º Telefono</b></span>
-                <input type="text" class="form-control Telefono2  formsNP" id="mTelefono2" name="mTelefono2" value="<?php echo $row_Persona->Telefono2; ?>">
-                <input type="text" class="form-control formsNP text-center" disabled="true" name="" value="Trabajo">
-
-              </div>
-        </div>
-        <div class="col-md-3 divsNP">
-              <div class="input-group">
-                <span class="input-group-addon"><b>1º Email</b></span>
-                <input type="text" class="Correo1 form-control formsNP" id="mCorreo1" name="mCorreo1" value="<?php echo $row_Persona->Correo1; ?>">
-                <input type="text" class="form-control formsNP text-center" disabled="true" name="" value="Personal">
-              </div>
-        </div>
-        <div class="col-md-3 divsNP">
-              <div class="input-group">
-                <span class="input-group-addon"><b>2º Email</b></span>
-                <input type="text" class="Correo2 form-control formsNP" id="mCorreo2" name="mCorreo2" value="<?php echo $row_Persona->Correo2; ?>">
-                <input type="text" class="form-control formsNP text-center" disabled="true" name="" value="Trabajo">
-              </div>
-        </div>
-        <div class="col-md-12 divsNP">
-              <div class="input-group">
-                <span class="input-group-addon"><b>Skype</b></span>
-                <input type="text" class="form-control formsNP" id="mSkype" name="mSkype" value="<?php echo $row_Persona->Skype; ?>">
-              </div>
-        </div>
-        <div class="col-md-12 divsNP">
-              <div class="input-group">
-                <span class="input-group-addon"><b>Direccion</b></span>
-                <input type="text" class="form-control Calle col-md-12 formsNP2" id="mDireccion" name="mDireccion" value="<?php echo $row_Persona->Direccion; ?>">
-                <input type="text" class="form-control col-md-6 formsNP2" id="mEstado" name="mEstado" value="<?php  echo $row_Persona->Ciudad; ?>">
-                <input type="text" class="form-control Pais col-md-6 formsNP2" id="mPais" name="mPais" value="<?php echo $row_Persona->Pais; ?>" >
-              </div>
-              <input onclick="GuardarEditPersona();" type="submit" id="btn_GuardarEditarP" class="divsNP formsNP btn btn-primary btn-block" value="Guardar cambios" data-dismiss="modal">
-        </div>
-        </form>
         </div> <!-- row -->
       </div>
       </div><!--  modal-bod7 -->

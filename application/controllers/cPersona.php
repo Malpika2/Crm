@@ -299,6 +299,24 @@ $param['DatosFiscalesPersona'] = $this->input->post('DatosFiscalesPersona');
 		$param['Direccion'] = $this->input->post('Direccion');
 		$param['Estado'] = $this->input->post('Estado');
 		$param['Pais'] = $this->input->post('Pais');
+
+	$param['ladaTel1input'] = $this->input->post('ladaTel1input');
+	$param['Telefono1'] = $param['ladaTel1input'].'-'.$param['Telefono1'];
+
+	$param['ladaTel2input'] = $this->input->post('ladaTel2input');
+	$param['Telefono2'] = $param['ladaTel2input'].'-'.$param['Telefono2'];
+
+
+$param['Productos'] = $this->input->post('Productos');
+$param['PresupuestoPersona'] = $this->input->post('PresupuestoPersona');
+$param['InteresPersona'] = $this->input->post('InteresPersona');
+$param['ConfianzaPersona'] = $this->input->post('ConfianzaPersona');
+$param['Motivo'] = $this->input->post('Motivo');
+$param['LugarContacto'] = $this->input->post('LugarContacto');
+$param['TipoTelefono1'] = $this->input->post('TipoTelefono1');
+$param['TipoTelefono2'] = $this->input->post('TipoTelefono2');
+$param['DatosFiscalesPersona'] = $this->input->post('DatosFiscalesPersona');
+
 		$ultimaPersona = $this->mPersona->updatePersona($param);
 		return $ultimaPersona;
 	}
