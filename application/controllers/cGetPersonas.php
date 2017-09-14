@@ -41,4 +41,10 @@ class cGetPersonas extends CI_Controller
 		$resultado = $this->mGetPersonas->getPaises();
 		echo json_encode($resultado);
 	}
+	public function getLadaPorPais()
+	{
+		$Pais = $this->input->post('Pais');
+		$result = $this->mGetPersonas->getLadaPorPais($Pais);
+		echo json_encode($result);
+	}
 }?>

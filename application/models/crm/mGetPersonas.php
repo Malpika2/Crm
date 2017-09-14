@@ -88,5 +88,10 @@ class mGetPersonas extends CI_Model
 	public function getPaises(){
 		$r = $this->db->get('paises');
 		return $r->result();
+	}	
+	public function getLadaPorPais($Pais)
+	{
+		$r = $this->db->get_where('paises',array('nombre'=>$Pais));
+		return $r->row();
 	}
 }

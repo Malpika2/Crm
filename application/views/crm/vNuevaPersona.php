@@ -6,9 +6,10 @@
   position: relative;
   display: contents;
 }
-  #tablaRegistroPersonas td,
+#tablaRegistroPersonas td,
 #tablaRegistroPersonas th {
   border: 2px solid #e0e0e0;
+  width: 50%;
 }
 </style>    
     <!-- Main content -->
@@ -65,7 +66,7 @@
                       </td>
                       <td>
                         <span>Pais</span>
-                        <select class="form-control selectpicker select2" id="Pais" name="Pais" required="true">
+                        <select class="form-control selectpicker select2" id="Pais" name="Pais" required="true" onchange="cambiarLada()">
                         </select>
                       </td>
                     </tr>
@@ -128,12 +129,36 @@
                     </tr>
                     <tr>
                       <td>
-                        <span class=""><b>1º Telefono</b></span>
-                        <input type="text" class=" form-control" id="Telefono1" name="Telefono1" required="true">
+                        <span class="">1º Telefono</span>&nbsp;<i class="fa fa-info-circle" data-toggle="tooltip" title="Lada generada apartir de la seleccion del pais"></i>
+                        <div class="input-group">
+                          <div class="input-group-addon" style="padding: 0px 12px;">
+                            <label id="ladaTel1"></label>
+                            <input type="hidden" id="ladaTel1input" name="ladaTel1input" value="">
+                          </div>                        
+                          <input type="text" class="form-control" id="Telefono1" name="Telefono1" required="true"  style="height: 38px;">
+                        <div class="input-group-addon" style="padding: 0px 0px;">
+                            <select id="TipoTelefono1" name="TipoTelefono1" class="" data-minimum-results-for-search="Infinity">
+                              <option value="Movil" selected="true">Movil</option>
+                              <option value="Fijo">Fijo</option>
+                            </select>
+                          </div>
+                        </div>
                       </td>
                       <td>
-                        <span class="">2º Telefono</span>
-                        <input type="text" class="form-control " id="Telefono2" name="Telefono2">
+                        <span class="">2º Telefono</span>&nbsp;<i class="fa fa-info-circle" data-toggle="tooltip" title="Lada generada apartir de la seleccion del pais"></i>
+                        <div class="input-group">
+                          <div class="input-group-addon" style="padding: 0px 12px;">
+                            <label id="ladaTel2"></label>
+                            <input type="hidden" id="ladaTel2input" name="ladaTel2input" value="">
+                          </div>                        
+                        <input type="text" class="form-control " id="Telefono2" name="Telefono2" style="height: 38px;">
+                        <div class="input-group-addon" style="padding: 0px 0px;">
+                            <select id="TipoTelefono2" name="TipoTelefono2" class="select2" data-minimum-results-for-search="Infinity">
+                              <option value="Movil" selected="true">Movil</option>
+                              <option value="Fijo">Fijo</option>
+                            </select>
+                          </div>
+                        </div>
                       </td>
                     </tr>
                     <tr>

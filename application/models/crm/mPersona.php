@@ -23,6 +23,8 @@ class mPersona extends CI_Model
 				'Puesto' => $param['Puesto'],
 				'Telefono1' => $param['Telefono1'],
 				'Telefono2' => $param['Telefono2'],
+				'TipoTelefono1' => $param['TipoTelefono1'],
+				'TipoTelefono2' => $param['TipoTelefono2'],
 				'Correo1' => $param['Correo1'],
 				'Correo2' => $param['Correo2'],
 				'Direccion' => $param['Direccion'],

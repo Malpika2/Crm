@@ -337,8 +337,13 @@ $.post(baseurl+"cTareas/getTareas_deObjetivos",
       var Avance = Activa+Realizada+Cancelada;
       Avance = (Realizada/Avance)*100;
       if (Avance>0) {
-
       $('#Avance').html(Math.round(Avance)+'%');  
+      $.post(baseurl+"cNegociacion/ActualizarStatus",
+        {
+          idNegociacion:idNegociacion
+        },
+        function(data){
+        });
       }
     $('#LineaTareasOb').append(
     '<li>'+                  

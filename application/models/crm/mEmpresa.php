@@ -30,6 +30,8 @@ class mEmpresa extends CI_Model
 			'Telefono' => $param['Telefono'],
 			'Email2' => $param['Email2'],
 			'Telefono2' => $param['Telefono2'],
+			'TipoTelefono1' => $param['TipoTelefono1'],
+			'TipoTelefono2' => $param['TipoTelefono2'],
 
 'Productos' => $param['Productos'],
 'PresupuestoPersona' => $param['PresupuestoPersona'],

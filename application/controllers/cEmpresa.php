@@ -49,8 +49,14 @@ class cEmpresa extends CI_Controller
 		$param['Abreviacion'] = $this->input->post('Abreviacion');
 		$param['Email'] = $this->input->post('Correo1');
 		$param['Telefono'] = $this->input->post('Telefono1');
+		$param['ladaTel1input'] = $this->input->post('ladaTel1input');
+		$param['Telefono'] = $param['ladaTel1input'].' '.$param['Telefono'];
 		$param['Telefono2'] = $this->input->post('Telefono2');
+		$param['ladaTel2input'] = $this->input->post('ladaTel2input');
+		$param['Telefono2'] = $param['ladaTel2input'].' '.$param['Telefono2'];
 		$param['Email2'] = $this->input->post('Correo2');
+		$param['TipoTelefono1'] = $this->input->post('TipoTelefono1');
+		$param['TipoTelefono2'] = $this->input->post('TipoTelefono2');
 
 $param['Productos'] = $this->input->post('Productos');
 $param['PresupuestoPersona'] = $this->input->post('PresupuestoPersona');

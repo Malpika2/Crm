@@ -138,3 +138,18 @@ $('#form, #fat, #formPersona').submit(function() {
     });
        return false;
 });
+cambiarLada = function(){
+    var LPais = $('#Pais').val();
+    $.post(baseurl+"cGetPersonas/getLadaPorPais",
+    {
+      Pais:LPais
+    },
+    function(data){
+      var datos= JSON.parse(data);
+      $('#ladaTel1').html(datos['codigo_telefono']);
+      $('#ladaTel2').html(datos['codigo_telefono']);
+      $('#ladaTel2input').val(datos['codigo_telefono']);
+      $('#ladaTel1input').val(datos['codigo_telefono']);
+    });
+
+}

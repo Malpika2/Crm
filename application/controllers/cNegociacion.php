@@ -125,6 +125,11 @@ $param['Detalles'] = $this->input->post('Detalles');
 $param['idObjetivo'] = $this->input->post('idObjetivo');
 		$this->mNegociacion->updateNegociacion($param);
 	}
+	public function ActualizarStatus(){
+		$idNegociacion = $this->input->post('idNegociacion');
+		$this->mNegociacion->ActualizarStatus($idNegociacion);
+		return true;
+	}
 }
 
 ?>

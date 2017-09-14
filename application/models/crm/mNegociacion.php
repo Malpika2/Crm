@@ -151,8 +151,12 @@ class mNegociacion extends CI_Model
 			'FechaLimite' => $param['FechaVencimiento']);
 		$this->db->where('idNegociacion',$param['idObjetivo']);
 		$this->db->update('Negociaciones',$data);
-
-
+	}
+	public function ActualizarStatus($s)
+	{
+		$this->db->set('Status','Completado');
+		$this->db->where('idNegociacion',$s);
+		$this->db->update('Negociaciones');
 	}
 
 }
