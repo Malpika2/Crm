@@ -69,13 +69,12 @@ $this->db->update('Empresas');
 	 }
 	 public function updateEmpresa($param){
 	 	$campos = array(
-	 		'NombreEmpresa' => $param['NombreEmpresa'],
+			'NombreEmpresa' => $param['NombreEmpresa'],
 			'Tipo' => $param['Tipo'],
 			'idRepresentante' => $param['Representante'],
 			'idContacto' => $param['Contacto'],
 			'Skype' => $param['Skype'],
 			'SitioWeb' => $param['SitioWeb'],
-			'FechaRegistro' => $param['FechaRegistro'],
 			'spp' => $param['SPP'],
 			'DireccionOficina' => $param['DireccionOficina'],
 			'DireccionFiscal' => $param['DireccionFiscal'],
@@ -86,8 +85,16 @@ $this->db->update('Empresas');
 			'Email' => $param['Email'],
 			'Telefono' => $param['Telefono'],
 			'Email2' => $param['Email2'],
-			'Telefono2' => $param['Telefono2']);
-
+			'Telefono2' => $param['Telefono2'],
+			'TipoTelefono1' => $param['TipoTelefono1'],
+			'TipoTelefono2' => $param['TipoTelefono2'],
+			'Productos' => $param['Productos'],
+			'PresupuestoPersona' => $param['PresupuestoPersona'],
+			'InteresEmpresa' => $param['InteresEmpresa'],
+			'ConfianzaEmpresa' => $param['ConfianzaEmpresa'],
+			'MotivoEmpresa' => $param['Motivo'],
+			'LugarContacto' => $param['LugarContacto']);
+						
 			$this->db->where('idEmpresa',$param['idEmpresa']);
 			$this->db->update('Empresas',$campos);
 			return 1;

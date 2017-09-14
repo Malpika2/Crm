@@ -50,10 +50,10 @@ class cEmpresa extends CI_Controller
 		$param['Email'] = $this->input->post('Correo1');
 		$param['Telefono'] = $this->input->post('Telefono1');
 		$param['ladaTel1input'] = $this->input->post('ladaTel1input');
-		$param['Telefono'] = $param['ladaTel1input'].' '.$param['Telefono'];
+		$param['Telefono'] = $param['ladaTel1input'].'-'.$param['Telefono'];
 		$param['Telefono2'] = $this->input->post('Telefono2');
 		$param['ladaTel2input'] = $this->input->post('ladaTel2input');
-		$param['Telefono2'] = $param['ladaTel2input'].' '.$param['Telefono2'];
+		$param['Telefono2'] = $param['ladaTel2input'].'-'.$param['Telefono2'];
 		$param['Email2'] = $this->input->post('Correo2');
 		$param['TipoTelefono1'] = $this->input->post('TipoTelefono1');
 		$param['TipoTelefono2'] = $this->input->post('TipoTelefono2');
@@ -88,10 +88,9 @@ $param['LugarContacto'] = $this->input->post('LugarContacto');
 
 	}
 	public function verEmpresa($idEmpresa){
-
-				if($this->session->userdata('s_login')!=1){
-					redirect(base_url().cLogin);
-				}
+	if($this->session->userdata('s_login')!=1){
+		redirect(base_url().cLogin);
+	}
 		$data['row_Contactos'] = $this->mGetEmpresas->getContactos($idEmpresa);
 		$data['row_Empresas'] = $this->mGetEmpresas->getEmpresaPorId($idEmpresa);
 		$data['row_Persona'] = $this->mGetPersonas->getPersonasPorEmpresa2($idEmpresa);
@@ -250,6 +249,19 @@ $param['LugarContacto'] = $this->input->post('LugarContacto');
 		$param['Telefono2'] = $this->input->post('Telefono2');
 		$param['Email2'] = $this->input->post('Correo2');
 		$param['idEmpresa'] = $this->input->post('idEmpresa');
+
+		$param['ladaTel1input'] = $this->input->post('ladaTel1input');
+		$param['Telefono'] = $param['ladaTel1input'].'-'.$param['Telefono'];
+		$param['ladaTel2input'] = $this->input->post('ladaTel2input');
+		$param['Telefono2'] = $param['ladaTel2input'].'-'.$param['Telefono2'];
+		$param['TipoTelefono1'] = $this->input->post('TipoTelefono1');
+		$param['TipoTelefono2'] = $this->input->post('TipoTelefono2');
+		$param['Productos'] = $this->input->post('Productos');
+		$param['PresupuestoPersona'] = $this->input->post('PresupuestoPersona');
+		$param['InteresEmpresa'] = $this->input->post('InteresEmpresa');
+		$param['ConfianzaEmpresa'] = $this->input->post('ConfianzaEmpresa');
+		$param['Motivo'] = $this->input->post('Motivo');
+		$param['LugarContacto'] = $this->input->post('LugarContacto');
 
 		if(isset($_POST['ContactoEmp'])){
 		foreach ($_POST['ContactoEmp'] as $contactos_value){

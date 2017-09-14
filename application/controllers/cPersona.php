@@ -42,11 +42,11 @@ class cPersona extends CI_Controller
 
 	$param['Telefono1'] = $this->input->post('Telefono1');
 	$param['ladaTel1input'] = $this->input->post('ladaTel1input');
-	$param['Telefono1'] = $param['ladaTel1input'].' '.$param['Telefono1'];
+	$param['Telefono1'] = $param['ladaTel1input'].'-'.$param['Telefono1'];
 
 	$param['Telefono2'] = $this->input->post('Telefono2');
 	$param['ladaTel2input'] = $this->input->post('ladaTel2input');
-	$param['Telefono2'] = $param['ladaTel2input'].' '.$param['Telefono2'];
+	$param['Telefono2'] = $param['ladaTel2input'].'-'.$param['Telefono2'];
 	$param['TipoTelefono1'] = $this->input->post('TipoTelefono1');
 	$param['TipoTelefono2'] = $this->input->post('TipoTelefono2');
 
@@ -132,11 +132,11 @@ $param['DatosFiscalesPersona'] = $this->input->post('DatosFiscalesPersona');
 
 	$param['Telefono1'] = $this->input->post('Telefono1');
 	$param['ladaTel1input'] = $this->input->post('ladaTel1input');
-	$param['Telefono1'] = $param['ladaTel1input'].' '.$param['Telefono1'];
+	$param['Telefono1'] = $param['ladaTel1input'].'-'.$param['Telefono1'];
 
 	$param['Telefono2'] = $this->input->post('Telefono2');
 	$param['ladaTel2input'] = $this->input->post('ladaTel2input');
-	$param['Telefono2'] = $param['ladaTel2input'].' '.$param['Telefono2'];
+	$param['Telefono2'] = $param['ladaTel2input'].'-'.$param['Telefono2'];
 	$param['TipoTelefono1'] = $this->input->post('TipoTelefono1');
 	$param['TipoTelefono2'] = $this->input->post('TipoTelefono2');
 	$param['Correo1'] = $this->input->post('Correo1');

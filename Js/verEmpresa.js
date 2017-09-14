@@ -4,8 +4,7 @@ var ContactoEmp = $("#ContactoEmp").val();
 var NombreEmpresa = $("#NombreEmpresa").val();
 var SPP = $("#SPP").val();
 var Abreviacion = $("#Abreviacion").val();
-// var Tipo = $("#Tipo").val();
-var Tipo = $('#Tipo').val();
+var Tipo = $("#Tipo").val();
 var Representante = $("#idRepresentanteEmp").val();
 var Skype = $("#Skype").val();
 var SitioWeb = $("#SitioWeb").val();
@@ -18,6 +17,18 @@ var DireccionOficina = $("#DireccionOficina").val();
 var DireccionFiscal = $("#DireccionFiscal").val();
 var Ciudad = $("#Ciudad").val();
 var Pais = $("#Pais").val();
+
+var ladaTel1input = $("#ladaTel1input").val();
+var TipoTelefono1 = $("#TipoTelefono1").val();
+var ladaTel2input = $("#ladaTel2input").val();
+var TipoTelefono2 = $("#TipoTelefono2").val();
+
+var Productos = $("#Productos").val();
+var PresupuestoPersona = $("#PresupuestoPersona").val();
+var InteresEmpresa = $("#InteresEmpresa").val();
+var ConfianzaEmpresa = $("#ConfianzaEmpresa").val();
+var Motivo = $("#Motivo").val();
+var LugarContacto = $("#LugarContacto").val();
   
   $.post(baseurl+"cEmpresa/updateEmpresa/",
   {  
@@ -38,7 +49,17 @@ var Pais = $("#Pais").val();
     DireccionOficina:DireccionOficina,
     DireccionFiscal:DireccionFiscal,
     Ciudad:Ciudad,
-    Pais:Pais
+    Pais:Pais,
+    ladaTel1input:ladaTel1input,
+    TipoTelefono1:TipoTelefono1,
+    ladaTel2input:ladaTel2input,
+    TipoTelefono2:TipoTelefono2,
+    Productos:Productos,
+    PresupuestoPersona:PresupuestoPersona,
+    InteresEmpresa:InteresEmpresa,
+    ConfianzaEmpresa:ConfianzaEmpresa,
+    Motivo:Motivo,
+    LugarContacto:LugarContacto
   },
   function(data){
     window.location.href = baseurl+"cEmpresa/verEmpresa/"+idEmpresa;              
