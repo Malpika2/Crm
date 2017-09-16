@@ -76,24 +76,51 @@
                               <td><?php echo $row_Persona->Correo2; ?></td>
                           </tr>
                           <tr>
-                              <td><b>Telefono Oficina</b></td>
-                              <td><?php echo $row_Persona->Telefono1; ?></td>
+                              <td><b>Telefono <?php echo $row_Persona->TipoTelefono1; ?></b></td>
+                              <td><?php echo $row_Persona->Telefono1;?></td>
                           </tr>
                           <tr>
-                              <td><b>Telefono Personal</b></td>
+                              <td><b>Telefono <?php echo $row_Persona->TipoTelefono2;?></b></td>
                               <td><?php echo $row_Persona->Telefono2; ?></td>
                           </tr>
                           <tr>
                               <td><b>Skype</b></td>
                               <td><?php echo $row_Persona->Skype; ?></td>
                           </tr>
+                          <tr>
+                              <td><b>Productos</b></td>
+                              <td><?php echo $row_Persona->ProductosPersona; ?></td>
+                          </tr>
+                          <tr>
+                              <td><b>Propuesto por</b></td>
+                              <td><?php echo $row_Persona->PresupuestoPersona; ?></td>
+                          </tr>
+                          <tr>
+                              <td><b>Nivel de interés</b></td>
+                              <td><?php echo $row_Persona->InteresPersona; ?></td>
+                          </tr>
+                          <tr>
+                              <td><b>Nivel de confianza</b></td>
+                              <td><?php echo $row_Persona->ConfianzaPersona; ?></td>
+                          </tr>
+                          <tr>
+                              <td><b>Motivo de registro</b></td>
+                              <td><?php echo $row_Persona->MotivoPersona; ?></td>
+                          </tr>
+                          <tr>
+                              <td><b>Contactado en</b></td>
+                              <td><?php echo $row_Persona->LugarContactoPersona; ?></td>
+                          </tr>
                       </tbody>
                     </table>
                       <div class="col-md-12 bg-yellow">Datos Oficina:</div>
                       <div class="col-md-12">
                         <b>Dirección:</b>&nbsp;&nbsp;<?php echo $row_Persona->Direccion; ?><br>
-                        <b>Ciudad:</b>&nbsp;&nbsp;<?php echo $row_Persona->Ciudad; ?><br>
                         <b>País:</b>&nbsp;&nbsp;<?php echo $row_Persona->Pais; ?><br>
+                      </div>
+                      <div class="col-md-12 bg-yellow">Datos Fiscales:</div>
+                      <div class="col-md-12">
+                        <b>Datos Fiscales:</b>&nbsp;&nbsp;<?php echo $row_Persona->DatosFiscalesPersona; ?><br>
                       </div>
                   </div>
                   </div>
@@ -451,7 +478,7 @@
                       </td>
                       <td>
                           <span class="">Propuesto por:</span>
-                          <input type="text" class="form-control" id="PresupuestoPersona" name="PresupuestoPersona" placeholder="Persona que recomienda el registro" value="<?php $row_Persona->PresupuestoPersona; ?>">
+                          <input type="text" class="form-control" id="PresupuestoPersona" name="PresupuestoPersona" placeholder="Persona que recomienda el registro" value="<?php echo $row_Persona->PresupuestoPersona; ?>">
                       </td>
                     </tr>
                     <tr>
@@ -565,7 +592,7 @@
                     <tr>
                       <td>
                         <span class="">Dirección</span>
-                        <input type="text" class="form-control" id="Calle" name="Calle" placeholder="Ciudad, Calle, Número" value="<?php echo $row_Persona->Direccion?>">
+                        <input type="text" class="form-control" id="Direccion" name="Direccion" placeholder="Ciudad, Calle, Número" value="<?php echo $row_Persona->Direccion?>">
                       </td>
                       <td>
                         <span>Datos Fiscales</span>

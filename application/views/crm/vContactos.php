@@ -101,10 +101,10 @@ thead input {
                 <tr style="color:#00c8d9;">
                   <th>Nombre</th>
                   <th>Cargo</th>
-                  <th>Skype</th>
                   <th>Pais</th>
                   <th>Status</th>
-                  <th>Fecha Registro</th>
+                  <th>Nivel de Interés</th>
+                  <th>Nivel de Confianza</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
@@ -112,10 +112,10 @@ thead input {
                 <tr style="color:#00c8d9;">
                   <th>Nombre</th>
                   <th>Cargo</th>
-                  <th>Skype</th>
                   <th>Pais</th>
                   <th>Status</th>
-                  <th>Fecha Registro</th>
+                  <th>Nivel de Interés</th>
+                  <th>Nivel de Confianza</th>
                   <th>Acciones</th>
                 </tr>
                 </tfoot>
@@ -136,16 +136,16 @@ thead input {
                                 '.$Persona->Cargo.'
                               </td>
                               <td align="left">
-                                '.$Persona->Skype.'
-                              </td>
-                              <td align="left">
                                 '.$Persona->Pais.'
                               </td>
                               <td align="center">
                                 '.$Persona->Status.'
                               </td>
                               <td align="center">
-                                '.$Persona->FechaRegistro.'
+                                '.$Persona->InteresPersona.'
+                              </td>
+                              <td align="">
+                                '.$Persona->ConfianzaPersona.'
                               </td>
                               <td align="center">
                                 <button class="btn btn-danger" id="btnEliminarPersona" name="btnEliminarPersona" value="'.$Persona->idPersona.'"><i class="fa fa-trash"></i></button>
@@ -171,15 +171,16 @@ thead input {
             </div>
             <!-- /.box-header -->
             <div class="box-body table table-responsive" style="padding-top: 0px;">
-              <table id="example2" class="table table-bordered table-striped">
+              <table id="example2" class="table table-bordered table-striped table-responsive">
                 <thead>
                 <tr  style="color:#00c8d9;"">
                   <th>Nombre Empresa</th>
                   <th>Tipo</th>
                   <th>Pais</th>
-                  <th>Sitio Web</th>
-                  <th>Fecha Registro</th>
-                  <th>Accione</th>
+                  <th>Nivel de Interés</th>
+                  <th>Nivel de Confianza</th>
+
+                  <th>Acciones</th>
                 </tr>
                 </thead>
                 <tfoot>
@@ -187,8 +188,9 @@ thead input {
                   <th>Nombre</th>
                   <th>Tipo</th>
                   <th>Pais</th>
-                  <th>Sitio Web</th>
-                  <th>Fecha Registro</th>
+                  <th>Nivel de Interés</th>
+                  <th>Nivel de Confianza</th>
+
                   <th>Acciones</th>
                 </tr>
                 </tfoot>
@@ -210,10 +212,10 @@ thead input {
                                 '.$Empresa->Pais.'
                               </td>
                               <td align="center">
-                                '.$Empresa->SitioWeb.'
+                                '.$Empresa->InteresEmpresa.'
                               </td>
                               <td align="center">
-                                '.$Empresa->FechaRegistro.'
+                                '.$Empresa->ConfianzaEmpresa.'
                               </td>
                               <td align="center">
                                 <button class="btn btn-danger" id="btnEliminarEmpresa" name="btnEliminarEmpresa" value="'.$Empresa->idEmpresa.'"><i class="fa fa-trash"></i></button>
