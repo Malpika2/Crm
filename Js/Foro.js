@@ -46,7 +46,7 @@ function Recargar(){
                 '</p>'+
               '</div>'+
               '<hr>'+
-              '<div class="col-md-12" id="ListaComentariosTema'+item.idTemasForo+'" style="max-height:300px; overflow:scroll;">'+
+              '<div class="col-md-12" id="ListaComentariosTema'+item.idTemasForo+'" style="max-height:300px; overflow-y:scroll;">'+
               '</div>'+
             '</div>'+
     		'<form name="formComentarioTema" id="formComentarioTema" method="POST" action="#">'+
@@ -83,7 +83,7 @@ function comentariosPorTema(){
 		                    ''+item.Nombre+'  '+item.Paterno+'' +
 		                  '</a>'+
                       '<div id="item'+item.idComentario+'">'+
-		                  '<textarea  onblur="ActualizarComentario('+item.idComentario+');" id="Comentario'+item.idComentario+'" disabled class="pasive coments" type="text" style="resize:none; border:none" cols="50" rows="2">'+item.Comentario+'</textarea>'+
+		                  '<textarea  onblur="ActualizarComentario('+item.idComentario+');" id="Comentario'+item.idComentario+'" disabled class="pasive form-control" type="text" style="resize:none; border:none; margin-bottom:5px; ">'+item.Comentario+'</textarea>'+
                        '</div>'+
 		                '</p>'+
 		              '</div>');

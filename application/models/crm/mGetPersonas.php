@@ -86,6 +86,7 @@ class mGetPersonas extends CI_Model
 		return $r->result();
 	}
 	public function getPaises(){
+		$this->db->order_by('nombre','ASC');
 		$r = $this->db->get('paises');
 		return $r->result();
 	}	

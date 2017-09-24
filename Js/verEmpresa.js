@@ -1,7 +1,7 @@
 GuardarEditEmpresa = function(){
 var idEmpresa = $("#idEmpresa").val();
 var ContactoEmp = $("#ContactoEmp").val();
-var NombreEmpresa = $("#NombreEmpresa").val();
+var NombreEmpresa = $("#NombreEmpresa2").val();
 var SPP = $("#SPP").val();
 var Abreviacion = $("#Abreviacion").val();
 var Tipo = $("#Tipo").val();

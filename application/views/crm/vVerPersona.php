@@ -449,7 +449,7 @@
                     <tr>
                       <td>
                         <span class="">Nombre Completo</span>
-                        <input type="text" class="form-control " id="NombrePersona" name="NombrePersona" placeholder="Nombre(s) Apellidos" disabled="true" value="<?php echo $row_Persona->Nombre; ?>">
+                        <input type="text" class="form-control " id="NombrePersona" name="NombrePersona" placeholder="Nombre(s) Apellidos" value="<?php echo $row_Persona->Nombre; ?>">
                       </td>
                       <td>
                         <span class="">Puesto</span>

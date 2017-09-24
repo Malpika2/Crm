@@ -1,7 +1,7 @@
 <style type="text/css">
-.select2 {
-/*  display: initial;
-*/}
+.select2-container--default .select2-selection--single, .select2-selection .select2-selection--single {
+  border-color: red;
+}
 .easy-autocomplete {
   position: relative;
   display: contents;
@@ -49,7 +49,7 @@
                     <tr>
                       <td>
                         <span class="">Nombre Completo</span>
-                        <input type="text" class="form-control " id="Nombre" name="Nombre" placeholder="Nombre(s) Apellidos" required="true">
+                        <input type="text" class="form-control " id="Nombre" name="Nombre" placeholder="Nombre(s) Apellidos" required="true" style="border-color: red">
                       </td>
                       <td>
                         <span class="">Puesto</span>
@@ -59,7 +59,7 @@
                     <tr>
                       <td>
                         <span class="">Tipo de Persona</span>
-                        <select class="form-control selectpicker" title="Tipo de Persona..." id="Cargo" name="Cargo" required="true">
+                        <select class="form-control selectpicker" title="Tipo de Persona..." id="Cargo" name="Cargo" required="true" style="border-color: red;">
                           <option value="Contacto">Contacto</option>
                           <option value="Representante">Representante</option>
                         </select>
@@ -83,7 +83,7 @@
                     <tr>
                       <td>
                         <span class="">Nivel de Interés de la Persona</span>
-                        <select class="form-control" id="InteresPersona" name="InteresPersona" required="true">
+                        <select class="form-control" id="InteresPersona" name="InteresPersona" required="true" style="border-color:red;">
                           <option selected="true" value="Bajo">Bajo</option>
                           <option value="Medio">Medio</option>
                           <option value="Alto">Alto</option>
@@ -91,7 +91,7 @@
                       </td>
                       <td>
                         <span class="">Nivel de Confianza</span>
-                        <select class="form-control" id="ConfianzaPersona" name="ConfianzaPersona" required="true">
+                        <select class="form-control" id="ConfianzaPersona" name="ConfianzaPersona" required="true" style="border-color: red;">
                           <option selected="true" value="1">1 (Bajo)</option>
                           <option value="2">2</option>
                           <option value="3">3</option>
@@ -135,7 +135,7 @@
                             <label id="ladaTel1"></label>
                             <input type="hidden" id="ladaTel1input" name="ladaTel1input" value="">
                           </div>                        
-                          <input type="text" class="form-control" id="Telefono1" name="Telefono1" required="true"  style="height: 38px;">
+                          <input type="text" class="form-control" id="Telefono1" name="Telefono1"  style="height: 38px;">
                         <div class="input-group-addon" style="padding: 0px 0px;">
                             <select id="TipoTelefono1" name="TipoTelefono1" class="" data-minimum-results-for-search="Infinity">
                               <option value="Movil" selected="true">Movil</option>
@@ -164,7 +164,7 @@
                     <tr>
                       <td>
                         <span class="">1º Email</span>
-                        <input type="text" class="form-control" id="Correo1" name="Correo1" required="true">
+                        <input type="text" class="form-control" id="Correo1" name="Correo1" required="true" style="border-color: red;">
                       </td>
                       <td>
                         <span class="">2º Email</span>

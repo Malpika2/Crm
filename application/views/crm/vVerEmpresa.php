@@ -233,7 +233,7 @@
                     <tr>
                       <td>
                         <span class="">Nombre Empresa</span>
-                        <input type="text" class="form-control" id="NombreEmpresa" name="NombreEmpresa" required="true" disabled="true" value=" <? echo $row_Empresas->NombreEmpresa; ?>">
+                        <input type="text" class="form-control" id="NombreEmpresa2" name="NombreEmpresa2" required="true" value=" <? echo $row_Empresas->NombreEmpresa; ?>">
                       </td>
                       <td>
                         <span class="">Abreviación</span>

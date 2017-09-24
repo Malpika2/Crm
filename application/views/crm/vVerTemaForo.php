@@ -16,7 +16,7 @@
             <span><?php echo $row_TemaForo->AsuntoTema; ?></span>
         </div>
         <div class="box-body">
-          <div class="col-md-12" id="ListaComentariosTema<?php echo $row_TemaForo->idTemasForo;?>" style="max-height:500px; overflow:scroll;">
+          <div class="col-md-12" id="ListaComentariosTema<?php echo $row_TemaForo->idTemasForo;?>" style="max-height:500px; overflow-y:scroll;">
           </div>
         </div>
         <!-- /.box-body -->
