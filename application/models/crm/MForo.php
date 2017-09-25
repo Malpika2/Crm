@@ -1,7 +1,5 @@
 <?php
-/**
-* 
-*/
+
 class mForo extends CI_Model
 {
 	
@@ -30,7 +28,7 @@ class mForo extends CI_Model
 		$this->db->from('Comentarios c');
 		$this->db->join('Usuarios u','u.idUsuario = c.idUsuarioc');
 		$this->db->where('c.idTemaForo',$s);
-		$this->db->order_by('Fecha_Creacion','ASC');
+		$this->db->order_by('Fecha_Creacion','DESC');
 		$s = $this->db->get();
 		return $s->result();
 	}
