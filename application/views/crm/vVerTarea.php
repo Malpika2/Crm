@@ -23,8 +23,8 @@
                   <div class="btn-group pull-right">
                   <button type="button" class="btn btn-sm text-center btn-success pull-right" id="btnRealizarTarea" data-toggle="tooltip" data-tooltip="tooltip" title="Marcar como Realizada"><i class="fa fa-check-square"></i></button>
                   <button class="btn btn-sm text-center btn-danger pull-right" id="btnCancelarTarea" data-toggle="tooltip" data-tooltip="tooltip" title="Cancelar Tarea" ><i class="fa fa-ban"></i></button>
-                  <button type="button" class="btn btn-sm text-center btn-warning pull-right" id="btnEditarTarea" data-toggle="tooltip" data-tooltip="tooltip" title="Editar Tarea" ><i class="fa fa-edit"></i></button>
-                  </div>
+<!--                   <button type="button" class="btn btn-sm text-center btn-warning pull-right" id="btnEditarTarea" data-toggle="tooltip" data-tooltip="tooltip" title="Editar Tarea" ><i class="fa fa-edit"></i></button>
+ -->                  </div>
             <div class="widget-user-header bg-blue">
               <h3 class="widget-user-username"><?php echo strtoupper($row_Tareas->TituloTarea); ?></h3>
               <h5 class="widget-user-desc"><?php echo $row_Tareas->StatusTarea; ?></h5>

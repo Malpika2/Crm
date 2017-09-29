@@ -35,8 +35,8 @@
             </div>
             <div class="tab-content">
               <div class="tab-pane active" id="tab_Personas">
-                <button class="btn btn-app pull-left" onclick="limpiarFormularioPersona()">
-                  <i class="glyphicon glyphicon-erase"></i>Limpiar
+               <button type="button" class="btn btn-default btn-sm pull-right" onclick="limpiarFormularioPersona()" style="border-radius: 10px">
+                  <i class="glyphicon glyphicon-erase"></i>Limpiar Campos
                 </button> 
                 <form id="formPersona" method="POST" action="<?php echo base_url();?>cPersona/guardar">
                 <table class="table table-responsive table-bordered" id="tablaRegistroPersonas">
@@ -48,8 +48,9 @@
                   <tbody>
                     <tr>
                       <td>
-                        <span class="">Nombre Completo</span>
-                        <input type="text" class="form-control " id="Nombre" name="Nombre" placeholder="Nombre(s) Apellidos" required="true" style="border-color: red">
+                        <span class="col-md-4">Nombre Completo</span>
+                        <div id="mensaje_validar_persona" class="alert-danger hidden col-md-8">Persona Registrada Previamente</div>
+                        <input onchange="Validar_Nueva_Persona()" type="text" class="form-control " id="Nombre" name="Nombre" placeholder="Nombre(s) Apellidos" required="true" style="border-color: red">
                       </td>
                       <td>
                         <span class="">Puesto</span>
@@ -153,7 +154,7 @@
                           </div>                        
                         <input type="text" class="form-control " id="Telefono2" name="Telefono2" style="height: 38px;">
                         <div class="input-group-addon" style="padding: 0px 0px;">
-                            <select id="TipoTelefono2" name="TipoTelefono2" class="select2" data-minimum-results-for-search="Infinity">
+                            <select id="TipoTelefono2" name="TipoTelefono2" class="" data-minimum-results-for-search="Infinity">
                               <option value="Movil" selected="true">Movil</option>
                               <option value="Fijo">Fijo</option>
                             </select>
@@ -190,7 +191,7 @@
                     <tr>
                       <td colspan="2">
                       <span class="col-md-2"></span>
-                        <input type="submit" name="registrarPersona" class=" btn btn-success col-md-8" value="Registrar Persona" style="border-radius: 10px;">
+                        <input type="submit" id="registrarPersona" name="registrarPersona" class=" btn btn-success col-md-8" value="Registrar Persona" style="border-radius: 10px;" disabled>
                         <span class="col-md-2"></span>
                       </td>
                     </tr>
@@ -208,4 +209,5 @@
 
 <script type="text/javascript">
   var baseurl = "<?php echo base_url();?>";
+  var idUsuarioActivo = "<?php echo $this->session->userdata('s_idUsuario'); ?>";
 </script>

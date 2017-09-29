@@ -153,3 +153,22 @@ cambiarLada = function(){
     });
 
 }
+
+Validar_Nueva_Persona = function(){
+  var nPersona = $('#Nombre').val();
+  $.ajax({
+    type:'POST',
+    url: baseurl+"cEmpresa/Validar_Nueva_Persona",
+    data:{nPersona:nPersona},
+    success: function(data){
+      if (data>0){
+        $('#mensaje_validar_persona').removeClass('hidden');
+        $('#registrarPersona').prop("disabled",true);
+      }
+      else{
+        $('#mensaje_validar_persona').addClass('hidden');
+        $('#registrarPersona').prop("disabled",false);
+      }
+    }
+  });
+}

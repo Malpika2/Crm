@@ -1,4 +1,4 @@
- <?php
+<?php
 
 class mGetUsuarios extends CI_Model
 {
@@ -8,7 +8,10 @@ class mGetUsuarios extends CI_Model
 		parent::__construct();
 	}
 	public function getUsuarios(){
-		$s = $this->db->get('Usuarios');
+		$this->db->select('*');
+		$this->db->from('Usuarios');
+		$this->db->order_by('Nombre','ASC');
+		$s = $this->db->get();
 		return $s->result();
 	}
 }

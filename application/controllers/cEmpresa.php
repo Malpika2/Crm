@@ -309,5 +309,15 @@ $param['LugarContacto'] = $this->input->post('LugarContacto');
 		$result = $this->mGetPersonas->getPersonasPorEmpresa2($idEmpresa);
 		echo json_encode($result);
 	}
+	public function Validar_Nueva_Empresa(){
+		$nEmpresa = $this->input->post('NEmpresa');
+		$result = $this->mGetEmpresas->Validar_Nueva_Empresa($nEmpresa);
+		echo json_encode($result);
+	}
+	public function Validar_Nueva_Persona(){
+		$nPersona = $this->input->post('nPersona');
+		$result = $this->mGetPersonas->Validar_Nueva_Persona($nPersona);
+		echo json_encode($result);
+	}
 
 }

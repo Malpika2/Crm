@@ -90,6 +90,10 @@ class mGetEmpresas extends CI_Model
 		$s = $this->db->get();
 		return $s->result();
 	}
+	public function Validar_Nueva_Empresa($nEmpresa){
+		$query = $this->db->get_where('Empresas',array('NombreEmpresa'=>$nEmpresa));
+		return $query->num_rows();
+	}
 }
 		// Ã¡ = á
 		// Ã± = ñ

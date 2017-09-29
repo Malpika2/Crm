@@ -13,6 +13,7 @@ class mGetPersonas extends CI_Model
 	}
 	public function getRepresentantes($s){
 		$s = $this->db->get_where('Personas',array('Cargo' =>$s));
+
 		return $s->result();
 	}
 	public function getContactos($s){
@@ -94,5 +95,9 @@ class mGetPersonas extends CI_Model
 	{
 		$r = $this->db->get_where('paises',array('nombre'=>$Pais));
 		return $r->row();
+	}
+	public function Validar_Nueva_Persona($nPersona){
+		$query = $this->db->get_where('Personas',array('Nombre'=>$nPersona));
+		return $query->num_rows();
 	}
 }

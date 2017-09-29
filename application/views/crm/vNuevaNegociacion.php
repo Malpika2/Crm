@@ -85,7 +85,7 @@
                         <span class="input-group-addon"><b>Detalles</b></span>
                         <textarea class="form-control formsNP" id="Detalles" name="Detalles" required></textarea>
                       </div>
-                      <input type="submit" name="registrarPersona" class="form-control divsNP formsNP btn btn-primary btn-block" value="Registrar Negociación">
+                      <input type="submit" name="registrarPersona" class="form-control divsNP formsNP btn btn-primary btn-block" value="Registrar Objetivo">
 
                 </div>
                 </form>
@@ -143,7 +143,7 @@
                     <span class="input-group-addon"><b>Detalles</b></span>
                     <textarea class="form-control formsNP" id="DetallesP" name="DetallesP"></textarea>
                   </div>
-                  <input type="submit" name="registrarPersona" class="form-control divsNP formsNP btn btn-primary btn-block" value="Registrar Negociación">
+                  <input type="submit" name="registrarPersona" class="form-control divsNP formsNP btn btn-primary btn-block" value="Registrar Objetivo">
                 </div> 
                 </form>
               </div><!-- /.tab-pane tab2 -->

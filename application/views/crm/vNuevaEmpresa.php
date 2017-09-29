@@ -59,8 +59,9 @@
                   <tbody>
                     <tr>
                       <td>
-                        <span class="">Nombre Empresa</span>
-                        <input type="text" class="form-control" id="NombreEmpresa" name="NombreEmpresa" required="true" style="border-color: red;">
+                        <span class="col-md-4">Nombre Empresa</span>
+                        <div id="mensaje_validar_empresa" class="alert-danger hidden col-md-8">Empresa Registrada Previamente</div>
+                        <input type="text" class="form-control" id="NombreEmpresa" name="NombreEmpresa" required="true" style="border-color: red;"  onchange="Validar_Nueva_Empresa()">
                       </td>
                       <td>
                         <span class="">Abreviación</span>
@@ -236,7 +237,8 @@
                     <tr>
                       <td colspan="2">
                       <span class="col-md-2"></span>
-                        <input type="submit" id="registrarEmpresa" name="registrarEmpresa" class=" btn btn-success col-md-8" value="Registrar Empresa" style="border-radius: 10px;">
+                      <!-- <button id="registrarEmpresa" disabled="disabled" class="btn btn-success" >Registrar Empresa</button> -->
+                        <input type="submit" id="registrarEmpresa" name="registrarEmpresa" class=" btn btn-success col-md-8" value="Registrar Empresa" disabled style="border-radius: 10px;">
                         <span class="col-md-2"></span>
                       </td>
                     </tr>
@@ -280,7 +282,8 @@
                     <tr>
                       <td>
                         <span class="">Nombre Completo</span>
-                        <input type="text" class="form-control " id="Nombre" name="Nombre" placeholder="Nombre(s) Apellidos" required="true" style="border-color: red;">
+                        <div id="mensaje_validar_persona" class="alert-danger hidden col-md-12">Persona Registrada Previamente</div>
+                        <input  onchange="Validar_Nueva_Persona();" type="text" class="form-control " id="Nombre" name="Nombre" placeholder="Nombre(s) Apellidos" required="true" style="border-color: red;">
                       </td>
                       <td>
                         <span class="">Puesto</span>
@@ -422,7 +425,7 @@
                     <tr>
                       <td colspan="2">
                       <span class="col-md-2"></span>
-                        <input type="submit" name="registrarPersona" id="registrarPersona" class=" btn btn-success col-md-8" value="Registrar Persona" style="border-radius: 10px;">
+                        <input type="submit" name="registrarPersona" id="registrarPersona" class=" btn btn-success col-md-8" value="Registrar Persona" disabled style="border-radius: 10px;">
                         <span class="col-md-2"></span>
                       </td>
                     </tr>
@@ -441,4 +444,6 @@
 </div>
 <script type="text/javascript">
   var baseurl = "<?php echo base_url();?>"; 
+  var idUsuarioActivo = "<?php echo $this->session->userdata('s_idUsuario'); ?>";
+  var idEmpresa =0;
 </script>
