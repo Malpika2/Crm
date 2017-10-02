@@ -171,4 +171,31 @@ Validar_Nueva_Persona = function(){
       }
     }
   });
+  $.ajax({
+    type:'POST',
+    url:baseurl+"cEmpresa/Validar_Nueva_PersonaDSPP",
+    data:{nPersona:nPersona},
+    success: function(data){
+      if (data>0){
+        $("#PresupuestoPersona").val('N/A').trigger("change");
+        $("#InteresPersona").val('N/A').trigger("change");
+        $("#ConfianzaPersona").val('N/A').trigger("change");
+        $("#Motivo").val('N/A').trigger("change");
+        $("#Motivo").prop("readonly",true);
+        $("#LugarContacto").val('N/A').trigger("change");
+        $("#LugarContacto").prop("readonly",true);
+        $(".option").addClass('hidden');
+      }
+      else{
+        $("#PresupuestoPersona").val('').trigger("change");
+        $("#InteresPersona").val('Bajo').trigger("change");
+        $("#ConfianzaPersona").val('1').trigger("change");
+        $("#Motivo").val('').trigger("change");
+        $("#Motivo").prop("readonly",false);
+        $("#LugarContacto").val('').trigger("change");
+        $("#LugarContacto").prop("readonly",false);
+        $(".option").removeClass('hidden');
+      }
+    }
+  });
 }

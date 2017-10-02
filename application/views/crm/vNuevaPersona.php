@@ -85,19 +85,21 @@
                       <td>
                         <span class="">Nivel de Interés de la Persona</span>
                         <select class="form-control" id="InteresPersona" name="InteresPersona" required="true" style="border-color:red;">
-                          <option selected="true" value="Bajo">Bajo</option>
-                          <option value="Medio">Medio</option>
-                          <option value="Alto">Alto</option>
+                          <option class="" value="N/A">N/A</option>
+                          <option class="option" value="Bajo">Bajo</option>
+                          <option class="option" value="Medio">Medio</option>
+                          <option class="option" value="Alto">Alto</option>
                         </select>
                       </td>
                       <td>
                         <span class="">Nivel de Confianza</span>
                         <select class="form-control" id="ConfianzaPersona" name="ConfianzaPersona" required="true" style="border-color: red;">
-                          <option selected="true" value="1">1 (Bajo)</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5 (Alto)</option>
+                          <option class="" value="N/A">N/A</option>
+                          <option class="option" value="1">1 (Bajo)</option>
+                          <option class="option" value="2">2</option>
+                          <option class="option" value="3">3</option>
+                          <option class="option" value="4">4</option>
+                          <option class="option" value="5">5 (Alto)</option>
                         </select>
                       </td>
                     </tr>

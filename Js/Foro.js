@@ -80,9 +80,9 @@ function comentariosPorTema(){
 		                '<p class="message">'+
 		                  '<a href="#" class="name">'+
 		                    '<small class="text-muted pull-right"><i class="fa fa-clock-o"></i>'+item.Fecha_Creacion+'</small>'+
-		                    ''+item.Nombre+'  '+item.Paterno+'' +
-		                  '</a>'+
-                      '<div id="item'+item.idComentario+'">'+
+		                    '<div class="pull-left" id="divCheck'+item.idComentario+'"></div>'+item.Nombre+'  '+item.Paterno+''+
+		                  '</a>')
+                      $('#ListaComentariosTema'+idTemaForo+'').append('<div id="item'+item.idComentario+'">'+
 		                  '<textarea  onblur="ActualizarComentario('+item.idComentario+');" id="Comentario'+item.idComentario+'" disabled class="pasive form-control" type="text" style="resize:none; border:none; margin-bottom:5px; ">'+item.Comentario+'</textarea>'+
                        '</div>'+
 		                '</p>'+
@@ -91,7 +91,15 @@ function comentariosPorTema(){
                     $('#item'+item.idComentario+'').append(
                         '<button type="button" onclick="funcionclick('+item.idComentario+');" id="btnEditarComent" name="btnEditarComent" class="pull-right fa fa-edit" value="'+item.idComentario+'">'+
                         '</button>')}
+                    if (NombreUsuarioActivo==='Yasser') {
+                      $('#item'+item.idComentario+'').append(
+                        '<button type="button" onclick="VistoComent('+item.idComentario+');" id="btnVistoComent" name="btnVistoComent" class="pull-right fa fa-check" value="'+item.idComentario+'">'+
+                        'Visto</button>')}
+                    if (item.Visto=='1') {
+                      $('#divCheck'+item.idComentario).append('<i class="fa fa-check text-success"></i><i class="fa fa-check text-success"></i>');
+                    }
               	});
+
           	}
           });
 }
@@ -117,6 +125,16 @@ function funcionclick(valor){
   // $('#Comentario'+valor).classList.remove('pasive');
   $('#Comentario'+valor).addClass('EnEdicion');
   $('#Comentario'+valor).focus();
+}
+function VistoComent(valor){
+  $.ajax({
+    type:'POST',
+    url:baseurl+"cForo/ActualizarVisto",
+    data:{valor:valor},
+    success:function(data){
+      $('#divCheck'+valor).append('<i class="fa fa-check text-success"></i><i class="fa fa-check text-success"></i>');
+    }
+  });
 }
 
 $(document).ready(function(){//Guarda comentarios

@@ -139,7 +139,8 @@ var options = {
 			$("#DireccionOficina").val('').trigger("change");
 			$("#DireccionFiscal").val('');
 			$("#Ciudad").val('').trigger("change");
-			$("#Pais").val('').trigger("change");}	
+			$("#Pais").val('').trigger("change");
+			}	
 		}
 	}
 };
@@ -456,6 +457,7 @@ $('#btnAgregarNuevo').click(function(){
 	$('#Representante').removeClass('select2');
 	var Cargo = 'Representante';
 	$(".Cargo").val(Cargo).trigger("change");
+	$("#cargo3").val('Contacto Principal').trigger("change");
 
 });
 
@@ -535,7 +537,37 @@ Validar_Nueva_Empresa = function(){
       	}
       }
   });
+      $.ajax({
+      	type:'POST',
+      	url:baseurl+"cEmpresa/Validar_Nueva_EmpresaDSPP",
+      	data:{NEmpresa:NEmpresa},
+      	success:function(data){
+      		if (data>0){//Si tiene registro previo se dan los valores N/A;
+	      		$("#InteresEmpresa").val('N/A').trigger("change");
+				$("#PresupuestoPersona").val('N/A').trigger("change");
+				$("#PresupuestoPersona").prop('readonly',true);
+				$("#ConfianzaEmpresa").val('N/A').trigger("change");
+				$("#Motivo").val('N/A').trigger("change");
+				$("#Motivo").prop('readonly',true);
+				$("#LugarContacto").val('N/A').trigger("change");
+				$("#LugarContacto").prop('readonly',true);
+				$(".option").addClass('hidden');
+      		}else{//Si no tiene registro previo se activan los campos:
+		  		$("#InteresEmpresa").val('Bajo').trigger("change");
+				$("#PresupuestoPersona").val('').trigger("change");
+				$("#PresupuestoPersona").prop('readonly',false)
+				$("#ConfianzaEmpresa").val('1').trigger("change");
+				$("#Motivo").val('').trigger("change");
+				$("#Motivo").prop('readonly',false)
+				$("#LugarContacto").val('').trigger("change");
+				$("#LugarContacto").prop('readonly',false)
+		        $(".option").removeClass('hidden');
+      		}
+
+      	}
+      });
 }
+
 Validar_Nueva_Persona = function(){
 	var nPersona = $('#Nombre').val();
 	$.ajax({
@@ -550,6 +582,37 @@ Validar_Nueva_Persona = function(){
 			else{
 				$('#mensaje_validar_persona').addClass('hidden');
 				$('#registrarPersona').prop("disabled",false);
+			}
+		}
+	});
+	$.ajax({
+		type:'POST',
+		url:baseurl+"cEmpresa/Validar_Nueva_PersonaDSPP",
+		data:{nPersona:nPersona},
+		success: function(data){
+			if (data>0){
+				$(".PresupuestoPersona").val('N/A').trigger("change");
+				$(".PresupuestoPersona").prop("disabled",true);
+				$(".InteresPersona").val('N/A').trigger("change");
+				$(".InteresPersona").prop("disabled",true);
+				$(".ConfianzaPersona").val('N/A').trigger("change");
+				$(".ConfianzaPersona").prop("disabled",true);
+				$(".Motivo").val('N/A').trigger("change");
+				$(".Motivo").prop("disabled",true);
+				$(".LugarContacto").val('N/A').trigger("change");
+				$(".LugarContacto").prop("disabled",true);
+			}
+			else{
+				$(".PresupuestoPersona").val('').trigger("change");
+				$(".PresupuestoPersona").prop("disabled",false);
+				$(".InteresPersona").val('Bajo').trigger("change");
+				$(".InteresPersona").prop("disabled",false);
+				$(".ConfianzaPersona").val('1').trigger("change");
+				$(".ConfianzaPersona").prop("disabled",false);
+				$(".Motivo").val('').trigger("change");
+				$(".Motivo").prop("disabled",false);
+				$(".LugarContacto").val('').trigger("change");
+				$(".LugarContacto").prop("disabled",false);
 			}
 		}
 	});

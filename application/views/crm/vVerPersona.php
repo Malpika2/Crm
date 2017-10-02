@@ -56,8 +56,8 @@
             <ul class="nav nav-tabs">
               <li class="active"><a href="#Datos" data-toggle="tab"><b class="text-blue">Datos</b></a></li>
               <li class=""><a href="#Notas" data-toggle="tab"><b class="text-blue">Notas</b></a></li>
-              <li><a href="#Tareas" data-toggle="tab"><b class="text-blue">Tareas</b></a></li>
               <li><a href="#Negociaciones" data-toggle="tab"><b class="text-blue">Objetivo</b></a></li>
+              <li><a href="#Tareas" data-toggle="tab"><b class="text-blue">Tareas</b></a></li>
               <li><a href="#Archivos" data-toggle="tab"><b class="text-blue">Archivos</b></a></li>
             </ul>
             <div class="tab-content">
@@ -622,6 +622,7 @@
   var baseurl = "<?php echo base_url();?>";
   var idPersona = "<?php echo $row_Persona->idPersona; ?>";
   var idUsuarioCrea = "<?php echo $this->session->userdata('s_idUsuario');?>";
+  var idUsuarioActivo = "<?php echo $this->session->userdata('s_idUsuario');?>";
 </script>
 <!-- <?php if (isset($row_control)==1): ?>
     <script type="text/javascript">

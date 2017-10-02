@@ -106,20 +106,22 @@
                     <tr>
                       <td>
                         <span class="">Nivel de Interés de la Empresa</span>
-                        <select class="form-control" id="InteresEmpresa" name="InteresEmpresa" required="true" style="border-color: red;">
-                          <option selected="true" value="Bajo">Bajo</option>
-                          <option value="Medio">Medio</option>
-                          <option value="Alto">Alto</option>
+                        <select class="form-control" id="InteresEmpresa" name="InteresEmpresa" style="border-color: red;">
+                          <option value="N/A" >N/A</option>
+                          <option class="option" value="Bajo">Bajo</option>
+                          <option class="option" value="Medio">Medio</option>
+                          <option class="option" value="Alto">Alto</option>
                         </select>
                       </td>
                       <td>
                         <span class="">Nivel de Confianza</span>
-                        <select class="form-control" id="ConfianzaEmpresa" name="ConfianzaEmpresa" required="true" style="border-color: red;">
-                          <option selected="true" value="1">1 (Bajo)</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5 (Alto)</option>
+                        <select class="form-control" id="ConfianzaEmpresa" name="ConfianzaEmpresa" style="border-color: red;">
+                          <option class="" value="N/A" >N/A</option>
+                          <option class="option" value="1">1 (Bajo)</option>
+                          <option class="option" value="2">2</option>
+                          <option class="option" value="3">3</option>
+                          <option class="option" value="4">4</option>
+                          <option class="option" value="5">5 (Alto)</option>
                         </select>
                       </td>
                     </tr>
@@ -140,7 +142,7 @@
                     </tr>
                     <tr>
                       <td>
-                         <span class="col-md-12">Representante</span>
+                         <span class="col-md-12">Contacto Principal</span>
                         <div class="col-md-10" style="padding: 0px;">
                         <input type="text" class="col-md-12 form-control" id="RepresentanteEmp" style="border-color:red;" required>
                         <input type="hidden" class="col-md-12 form-control" id="idRepresentanteEmp" name="idRepresentanteEmp" value="0">
@@ -293,9 +295,10 @@
                     <tr>
                       <td>
                         <span class="">Tipo de Persona</span>
-                        <input type="text" id="Cargo2" name="Cargo2" class="form-control Cargo" disabled>
+                        <input type="hidden" id="Cargo2" name="Cargo2" class="form-control Cargo" disabled>
+                        <input type="text" id="cargo3" name="cargo3" class="form-control Cargo" disabled>
                         <select class="form-control Cargo hidden  formsNP" id="Cargo" name="Cargo">
-                          <option selected="true" value="Representante">Representante</option>
+                          <option selected="true" value="Representante">Contacto Principal</option>
                           <option selected="true" value="Contacto">Contacto</option>
                         </select>
                       </td>
@@ -312,22 +315,24 @@
                       </td>
                       <td>
                           <span class="">Propuesto por:</span>
-                          <input type="text" class="form-control" id="PresupuestoPersona" name="PresupuestoPersona" placeholder="Persona que recomienda el registro">
+                          <input type="text" class="form-control PresupuestoPersona" id="PresupuestoPersona" name="PresupuestoPersona" placeholder="Persona que recomienda el registro">
                       </td>
                     </tr>
                     <tr>
                       <td>
                         <span class="">Nivel de Interés de la Persona</span>
-                        <select class="form-control" id="InteresPersona" name="InteresPersona" required="true" style="border-color: red;">
-                          <option selected="true" value="Bajo">Bajo</option>
+                        <select class="form-control InteresPersona" id="InteresPersona" name="InteresPersona" required="true" style="border-color: red;">
+                          <option value="N/A" disabled="true">N/A</option>
+                          <option value="Bajo">Bajo</option>
                           <option value="Medio">Medio</option>
                           <option value="Alto">Alto</option>
                         </select>
                       </td>
                       <td>
                         <span class="">Nivel de Confianza</span>
-                        <select class="form-control" id="ConfianzaPersona" name="ConfianzaPersona" required="true" style="border-color: red;">
-                          <option selected="true" value="1">1 (Bajo)</option>
+                        <select class="form-control ConfianzaPersona" id="ConfianzaPersona" name="ConfianzaPersona" required="true" style="border-color: red;">
+                          <option value="N/A" disabled="true">N/A</option>
+                          <option value="1">1 (Bajo)</option>
                           <option value="2">2</option>
                           <option value="3">3</option>
                           <option value="4">4</option>
@@ -338,11 +343,11 @@
                     <tr>
                       <td>
                         <span class="">Motivo o Razón</span>
-                        <textarea rows="2" cols="50" class="form-control" id="Motivo" name="Motivo" placeholder="Motivo de Registro"></textarea>
+                        <textarea rows="2" cols="50" class="form-control Motivo" id="Motivo" name="Motivo" placeholder="Motivo de Registro"></textarea>
                       </td>
                       <td>
                         <span class="">Contactado en</span>
-                        <textarea rows="2" cols="50" class="form-control" id="LugarContacto" name="LugarContacto" placeholder="Lugar donde se realizó el contacto"></textarea>
+                        <textarea rows="2" cols="50" class="form-control LugarContacto" id="LugarContacto" name="LugarContacto" placeholder="Lugar donde se realizó el contacto"></textarea>
                       </td>
                     </tr>
                     <tr>

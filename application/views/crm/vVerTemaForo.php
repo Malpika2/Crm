@@ -43,6 +43,7 @@
 <script type="text/javascript">
   var idTemasForo = <?php echo $row_TemaForo->idTemasForo;?>;
   var baseurl = "<?php echo base_url();?>";
-    var idUsuarioActivo = "<?php echo $this->session->userdata('s_idUsuario');?>";
+  var idUsuarioActivo = "<?php echo $this->session->userdata('s_idUsuario');?>";
+  var NombreUsuarioActivo = "<?php echo $this->session->userdata('s_Nombre');?>";
 
 </script>

@@ -100,4 +100,8 @@ class mGetPersonas extends CI_Model
 		$query = $this->db->get_where('Personas',array('Nombre'=>$nPersona));
 		return $query->num_rows();
 	}
+	public function Validar_Nueva_PersonaDSPP($nPersona){
+		$query = $this->db->get_where('contactos',array('nombre'=>$nPersona));
+		return $query->num_rows();
+	}
 }

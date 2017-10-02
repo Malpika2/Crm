@@ -22,6 +22,9 @@
             <div class="box-body box-profile">
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
+                  <b><?php echo $row_Empresas->Abreviacion; ?></b> <a class="pull-right"></a>
+                </li>
+                <li class="list-group-item">
                   <b><?php echo $row_Empresas->Tipo; ?></b> <a class="pull-right"></a>
                 </li>
                 <li class="list-group-item">
@@ -73,8 +76,8 @@
             <ul class="nav nav-tabs">
               <li class="active"><a href="#Datos" data-toggle="tab"><b class="text-blue">Datos</b></a></li>
               <li><a href="#Notas" data-toggle="tab"><b class="text-blue">Notas</b></a></li>
-              <li><a href="#Tareas" data-toggle="tab"><b class="text-blue">Tareas</b></a></li>
               <li><a href="#Negociaciones" data-toggle="tab"><b class="text-blue">Objetivos</b></a></li>
+              <li><a href="#Tareas" data-toggle="tab"><b class="text-blue">Tareas</b></a></li>
               <li><a href="#Archivos" data-toggle="tab"><b class="text-blue">Archivos</b></a></li>
             </ul>
             <div class="tab-content">

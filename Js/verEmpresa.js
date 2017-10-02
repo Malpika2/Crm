@@ -486,6 +486,7 @@ $.post(baseurl+"cEmpresa/getNegociaciones",
     var UsuarioActivo = $('#idUsuarioc').val();
     $.each(emp,function(i,item){
             if(item.Activa==1){
+              if (item.Status!='Inactivo'){
             // if(item.PersonaCargo==UsuarioActivo){
       $('#LineaNegociaciones').append(                  
           '<li class="time-label">'+
@@ -506,6 +507,7 @@ $.post(baseurl+"cEmpresa/getNegociaciones",
           '</li>'
         )
     // }
+  }
   }
       });
     $('#LineaNegociaciones').append(

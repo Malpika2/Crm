@@ -430,6 +430,7 @@ $.post(baseurl+"cPersona/getNegociaciones",
 
     $.each(emp,function(i,item){
             if(item.Activa==1){
+              if (item.Status!='Inactivo') {
             // if(item.PersonaCargo==UsuarioActivo){
       $('#LineaNegociaciones').append(                  
           '<li class="time-label">'+
@@ -450,6 +451,7 @@ $.post(baseurl+"cPersona/getNegociaciones",
           '</li>'
         )
     // }
+  }
   }
       });
     $('#LineaNegociaciones').append(

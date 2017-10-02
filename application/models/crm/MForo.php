@@ -65,4 +65,10 @@ class mForo extends CI_Model
 		$r = $this->db->get();
 		return $r->row();
 	}
+	public function ActualizarVisto($idTema){
+		$data = array('Visto'=>1);
+		$this->db->where('idComentario',$idTema);
+		$this->db->update('Comentarios',$data);
+		return true;
+	}
 	}

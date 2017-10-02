@@ -61,4 +61,9 @@ class cForo extends CI_Controller
 		$this->load->view('crm/vVerTemaForo',$datos);
 		$this->load->view('crm/footer');
 	}
+	public function ActualizarVisto(){
+		$idTema = $this->input->post('valor');
+		$this->mForo->ActualizarVisto($idTema);
+		return true;
+	}
 }

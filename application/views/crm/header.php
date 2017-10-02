@@ -138,6 +138,12 @@ font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif !impo
                       <i class="fa fa-briefcase text-red"></i>Objetivo
                     </a>
                   </li>
+                    <li class="divider"></li>
+                  <li>
+                    <a href="<?php echo base_url();?>cTareas">
+                      <i class="fa fa-file-text-o text-green"></i>Tarea
+                    </a>
+                  </li>
                   </ul>
                 </div>
               </li>              
