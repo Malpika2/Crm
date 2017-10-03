@@ -263,13 +263,13 @@ function agregarTareaRealizadaEmpresa(clase,idTarea,TituloTarea,idEmpresa,Nombre
     }
 
 function ActualizarTarea(index){
+  alert(index);
   var tareaid = index;
   var varcontrol=0;
   if (varcontrol==0){
         $("#ModalCancelar").modal();
                   $('#btn_AceptarModalCancelar').click(function(){
                     if (varcontrol==0){
-                    var StatusFinal = $('#StatusFinal').val();
                     var StatusFinal = $('#StatusFinal').val();
                     $.post(baseurl+"cPersona/tareaRealizada",
                     {
@@ -629,8 +629,6 @@ $.post(baseurl+"cGetEmpresas/getEmpresas",
 
 filtrarTareas = function(){
   var FTareas = $('#FiltroTareas').val();
-  recargar();
-  recargar2();
 }
 ocultarTareas = function(){
   $(".NoPropia").addClass('hidden');

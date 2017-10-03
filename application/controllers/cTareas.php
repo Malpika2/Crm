@@ -12,10 +12,19 @@ class cTareas extends CI_Controller
 		$this->load->model('crm/mTareas');
 	}
 	public function index(){
+		$Tareas_tmp = array();
 		if($this->session->userdata('s_login')==1){
+			$Tareas = $this->mTareas->getTareas_deEmpresas_PorUsuario();
+			foreach ($Tareas as $tarea) {
+				$idTarea = $tarea->idTarea;
+					$data['row_Administrador'][$tarea->idTarea]['Administrador']=$this->mTareas->getAsignados($tarea->idTarea);
+			}
+			$data['row_Tareas']=$Tareas;
+
+
 			$this->load->view('crm/header');
 			$this->load->view('crm/menu');
-			$this->load->view('crm/vTareas');
+			$this->load->view('crm/vTareas',$data);
 			$this->load->view('crm/footer');
 		}
 		else{redirect(base_url().cLogin);}

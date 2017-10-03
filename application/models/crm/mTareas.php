@@ -63,6 +63,10 @@ class mTareas extends CI_Model
 			return true;
 		}else {return false;}
 	}
+	public function getTareas(){
+		$s = $this->db->get('Tareas');
+		return $s->result();
+	}
 
 	public function getTareasPersonas($s){
 		$this->db->select('*');
@@ -108,11 +112,13 @@ public function tareaNoRealizada($s){
 			$query = $this->db->get();	
 			return $query->row();
 		}
-		public function getTareas_deEmpresas_PorUsuario($s){
-			$this->db->select('*');
+		public function getTareas_deEmpresas_PorUsuario($s=null){
+			$this->db->select('idParticipantes, Participantes_Tareas.idTarea idTareaP, Participantes_Tareas.idUsuario idUsuarioP, Participantes_Tareas.idPersona idPersonaP, Participantes_Tareas.idEmpresa idEmpresaP, Empresas.idEmpresa idEmpresaE, Empresas.NombreEmpresa,Personas.idPersona idPersonaPer, Personas.Nombre,Tareas.idTarea, Tareas.TituloTarea, Tareas.Categoria, Tareas.Asignados, Tareas.emp_part, Tareas.per_part, Tareas.Descripcion, Tareas.idPersona idPersonaT, Tareas.idEmpresa idEmpresaT, Tareas.idNegociacion, Tareas.idMeta, Tareas.FechaFin, Tareas.idUsuarioCrea, Tareas.FechaCreacion, Tareas.Activa, Tareas.Prioridad, Tareas.StatusFinal, Tareas.StatusTarea
+				');
 			$this->db->from('Participantes_Tareas');
 			$this->db->join('Tareas','Tareas.idTarea=Participantes_Tareas.idTarea');
-			$this->db->join('Empresas','Empresas.idEmpresa=Tareas.idEmpresa');
+			$this->db->join('Empresas','Empresas.idEmpresa=Tareas.idEmpresa','left');
+			$this->db->join('Personas','Personas.idPersona=Tareas.idPersona','left');
 			// $this->db->where('Participantes_Tareas.idUsuario',$s);
 			$this->db->group_by('Tareas.idTarea');
 			$this->db->order_by('Tareas.FechaFin','DESC');

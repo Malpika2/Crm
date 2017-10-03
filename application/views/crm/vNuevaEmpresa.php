@@ -11,9 +11,9 @@
   border: 2px solid #e0e0e0;
   width: 50%;
 }
-.select2-container--default .select2-selection--multiple {
+/*.select2-container--default .select2-selection--multiple {
   border-color: red;
-}
+}*/
 #tdEmpresaPersona .select2-container--default .select2-selection--single, .select2-selection .select2-selection--single {
   border-color: #d2d6de;
 }
@@ -158,7 +158,7 @@
                       <td>
                         <span class="col-md-12">Contacto</span>
                         <div class="col-md-10" style="padding: 0px;">
-                          <select class="js-example-programmatic-multi form-control select2" id="ContactoEmp" name="ContactoEmp[]" multiple="multiple" maximumSelectionLength="2" style="border-color: red;" required>
+                          <select class="js-example-programmatic-multi form-control select2" id="ContactoEmp" name="ContactoEmp[]" multiple="multiple" maximumSelectionLength="2">
                           </select>
                           <select class="hidden form-control formsNP js-example-programmatic-multi" id="Contacto" name="Contacto">
                             <option selected="true" disabled="true" value="0">Lista de Contactos</option>

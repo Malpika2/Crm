@@ -14,6 +14,9 @@
   position: absolute;
   z-index: -1;
 }
+.select2-container--default{
+    width: 100% !important;
+}
 </style>
 <section class="content-header">
   <i class="fa fa-home fa-2x"><span class="profile-username">&nbsp;Ficha de la persona:&nbsp;&nbsp;</span><b class="profile-username text-red"><?php echo strtoupper($row_Persona->Nombre); ?></b></i>
@@ -315,8 +318,9 @@
                     <label>¿CUANDO DEBE CUMPLIRSE?</label>
 
                     <div class="input-group date">
-                      <div id="datepicker" data-date="08/07/2017"></div>
-                      <input type="hidden" id="FechaFin"  name="FechaFin" value="08/07/2017">
+                      <div id="datepicker">
+                        <input type="hidden" id="FechaFin"  name="FechaFin">
+                      </div>
                       <input type="hidden" id="idPersona" name="idPersona" value="<?php echo $row_Persona->idPersona;?>">
                       <input type="hidden" id="idUsuarioc" name="idUsuarioc" 
                       value="<?php echo $this->session->userdata('s_idUsuario');?>">
@@ -402,9 +406,9 @@
                 <div class="col-md-6">
                   <div class="col-md-12 divsNP">
                     <div class="input-group date">
-                        <div id="datepickerP" data-date="08/07/2017">
+                        <div id="datepickerP">
+                          <input type="hidden" id="FechaLimiteP"  name="FechaLimiteP"/>
                         </div>
-                        <input type="hidden" id="FechaLimiteP"  name="FechaLimiteP" value="08/07/2017"/>
                     </div>
                   </div>
                 </div>
@@ -465,8 +469,8 @@
                         </select>
                       </td>
                       <td>
-                        <span>Pais</span>
-                        <select class="form-control selectpicker select2" id="Pais" name="Pais" required="true" onchange="cambiarLada()">
+                        <span>Pais</span><br>
+                        <select class="form-control selectpicker select2 " id="Pais" name="Pais" required="true" onchange="cambiarLada()">
                         <option value="<?php echo $row_Persona->Pais; ?>" selected="true"><?php echo $row_Persona->Pais; ?></option>
                         </select>
                       </td>

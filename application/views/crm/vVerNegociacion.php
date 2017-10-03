@@ -251,4 +251,5 @@
   var baseurl = "<?php echo base_url();?>";
   var idNegociacion = "<?php echo $row_Negociacion->idNegociacion; ?>";
   var idUsuarioCrea = "<?php echo $this->session->userdata('s_idUsuario'); ?>";
+  var idUsuarioActivo = idUsuarioCrea;
 </script>

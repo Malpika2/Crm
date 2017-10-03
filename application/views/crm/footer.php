@@ -146,6 +146,19 @@
     });
 </script>
 <script type="text/javascript">
+    $(document).ready(function () {
+        $(function () {
+            $('#datepickerE').datetimepicker({
+              locale:'es',
+                inline: true,
+                sideBySide: true,
+                format:'L',
+                format:"YYYY-MM-DD"
+            });
+        });
+    });
+</script>
+<script type="text/javascript">
   $(function() {              
      $('#FechaLimite').datetimepicker({
            format: 'DD/MM/YYYY'
@@ -316,6 +329,66 @@ $('#linkMenuUsuarios').removeClass('active');
 <?php } ?>
 
 <script src="<?php echo base_url();?>Js/jquery-confirm.min.js"></script>
+    <script>
+  $(document).ready(function() {
+    // Setup - add a text input to each footer cell
+    $('#TablaTareas tfoot th').each( function () {
+        var title = $(this).text();
+        if (title!='Acciones'){
+        $(this).html( '<input type="text" placeholder="Filtrar '+title+'" />' );}
+        else{
+          $(this).html( '' );}
+      });
+
+    // DataTable 
+     var table = $('#TablaTareas').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": false,
+      "autoWidth": true,
+          oLanguage: {
+            "sProcessing":     "Procesando...",
+            "sLengthMenu":     "Mostrar _MENU_ registros",
+            "sZeroRecords":    "No se encontraron resultados",
+            "sEmptyTable":     "Ningún dato disponible en esta tabla",
+            "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix":    "",
+            "sSearch":         "Buscar:",
+            "sUrl":            "",
+            "sInfoThousands":  ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":     "Último",
+            "sNext":     "Siguiente",
+            "sPrevious": "Anterior"
+            }}
+    });
+    // Apply the search
+    table.columns().every( function () {
+        var that = this;
+ 
+        $( 'input', this.footer() ).on( 'keyup change', function () {
+            if ( that.search() !== this.value ) {
+                that
+                    .search( this.value )
+                    .draw();
+            }
+        });
+    });
+  var r = $('#TablaTareas tfoot tr');
+  r.find('th').each(function(){
+    $(this).css('padding', 8);
+  });
+  $('#TablaTareas thead').append(r);
+  $('#search_0').css('text-align', 'center');
+
+  });
+</script>
 <script>
   $(document).ready(function() {
     // Setup - add a text input to each footer cell
@@ -327,7 +400,7 @@ $('#linkMenuUsuarios').removeClass('active');
           $(this).html( '' );}
       });
 
-    // DataTable
+    // DataTable 
     var table = $('#example1').DataTable({
       "paging": true,
       "lengthChange": false,
@@ -355,7 +428,6 @@ $('#linkMenuUsuarios').removeClass('active');
             "sPrevious": "Anterior"
             }}
     });
- 
     // Apply the search
     table.columns().every( function () {
         var that = this;

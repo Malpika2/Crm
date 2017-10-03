@@ -319,15 +319,15 @@
                       <td>
                          <span class="col-md-12">Representante</span>
                         <div class="col-md-10" style="padding: 0px;">
-                          <input type="text" class="col-md-12 form-control" id="RepresentanteEmp" autocomplete="off" value="<?php echo $row_Persona->Nombre ?>">
+                          <input type="text" class="col-md-12 form-control" id="RepresentanteEmp" autocomplete="off" value="<?php if(isset($row_Persona->Nombre)){echo $row_Persona->Nombre;} ?>">
                           <input type="hidden" class="col-md-12 form-control" id="idRepresentanteEmp" name="idRepresentanteEmp" value="<?php echo $row_Persona->idPersona; ?>">
                           <select class="hidden form-control selectpicker" id="Representante" name="Representante" required>
                             <option selected="true" disabled="true" value="0">Lista de Representantes</option>
                           </select>                    
                         </div>
                         <div class="col-md-2 btn-group" style="padding: 0px;">
-                          <button style="padding: 0px" type="button" data-toggle="modal" data-target="#ModalNPersona" id="btnAgregarNuevo" class="btn bg-blue" data-toggle="tooltip" title="AGREGAR NUEVO"><i class="fa fa-plus-square fa-2x"></i></button>
-                          <button style="padding: 0px" type="button" id="btnBuscarExistente" class="btn bg-aqua" data-toggle="tooltip" title="BUSCAR EXISTENTE"><i class="fa fa-search fa-2x"></i></button>
+<!--                           <button style="padding: 0px" type="button" data-toggle="modal" data-target="#ModalNPersona" id="btnAgregarNuevo" class="btn bg-blue" data-toggle="tooltip" title="AGREGAR NUEVO"><i class="fa fa-plus-square fa-2x"></i></button>
+ -->                          <button style="padding: 0px" type="button" id="btnBuscarExistente" class="btn bg-aqua" data-toggle="tooltip" title="BUSCAR EXISTENTE"><i class="fa fa-search fa-2x"></i></button>
                         </div>
                       </td>
                       <td>
@@ -345,8 +345,8 @@
                           </select>
                         </div>
                         <div class="col-md-2" style="padding: 0px;">
-                          <button style="padding: 0px" type="button" data-toggle="modal" data-target="#ModalNPersona" id="btnAgregarNuevoCont" class="btn bg-blue" data-toggle="tooltip" title="AGREGAR NUEVO"><i class="fa fa-plus-square fa-2x"></i></button>
-                          <button style="padding: 0px" type="button" id="btnBuscarExistenteCont" class="btn bg-aqua" data-toggle="tooltip" title="BUSCAR EXISTENTE"><i class="fa fa-search fa-2x"></i></button>
+<!--                           <button style="padding: 0px" type="button" data-toggle="modal" data-target="#ModalNPersona" id="btnAgregarNuevoCont" class="btn bg-blue" data-toggle="tooltip" title="AGREGAR NUEVO"><i class="fa fa-plus-square fa-2x"></i></button>
+ -->                          <button style="padding: 0px" type="button" id="btnBuscarExistenteCont" class="btn bg-aqua" data-toggle="tooltip" title="BUSCAR EXISTENTE"><i class="fa fa-search fa-2x"></i></button>
                         </div>
                       </td>
                     </tr>
