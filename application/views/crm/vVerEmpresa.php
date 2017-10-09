@@ -96,11 +96,13 @@
                           </tr>
                           <tr>
                               <td><b>Telefono Oficina</b></td>
-                              <td><?php echo $row_Empresas->Telefono; ?></td>
+                              <td><?php echo $row_Empresas->Telefono; ?>&nbsp;<i class="fa fa-question-circle"></i>
+</td>
                           </tr>
                           <tr>
                               <td><b>Telefono Personal</b></td>
-                              <td><?php echo $row_Empresas->Telefono2; ?></td>
+                              <td><?php echo $row_Empresas->Telefono2; ?>&nbsp;<i class="fa fa-question-circle"></i>
+</td>
                           </tr>
                           <tr>
                               <td><b>Skype</b></td>

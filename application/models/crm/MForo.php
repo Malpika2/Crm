@@ -65,10 +65,42 @@ class mForo extends CI_Model
 		$r = $this->db->get();
 		return $r->row();
 	}
-	public function ActualizarVisto($idTema){
-		$data = array('Visto'=>1);
+	public function ActualizarVisto($idTema,$estado){
+		$data = array('Visto'=>$estado);
 		$this->db->where('idComentario',$idTema);
 		$this->db->update('Comentarios',$data);
 		return true;
+	}
+	public function AddTareaForo($idComentario,$comentario){
+
+		$this->db->where('descripcion',$comentario);
+		$this->db->from('TareasForo');
+		$r =  $this->db->count_all_results(); 
+		if ($r<1) {
+			$data = array(
+			'idComentario' => $idComentario,
+			'descripcion' => $comentario);
+			$this->db->insert('TareasForo',$data);
+			return true;
+		}
+	}
+	public function getTareaForo($idComentario=null){
+		if ($idComentario!==null) {
+			$this->db->select('*');
+			$this->db->from('TareasForo');
+			$this->db->where('idComentario',$idComentario);
+			$r= $this->db->get();
+			return $r->row();
+		}else{
+			$this->db->select('*');
+			$this->db->from('TareasForo');
+			$r = $this->db->get();
+			return $r->result();
+		}
+		}
+	public function actTareaForo($idTareaForo,$status){
+		$data = array('status'=>$status);
+		$this->db->where('idTareaForo',$idTareaForo);
+		$this->db->update('TareasForo',$data);
 	}
 	}

@@ -75,33 +75,62 @@ function comentariosPorTema(){
               success: function(data) { 
 				var tema = JSON.parse(data);
 				$.each(tema,function(i,item){
-					$('#ListaComentariosTema'+idTemaForo+'').append('<hr><div class="item">'+
-		                '<img src="<?php echo base_url();?>assets/dist/img/silueta_user.png" alt="" class="offline">'+
-		                '<p class="message">'+
-		                  '<a href="#" class="name">'+
-		                    '<small class="text-muted pull-right"><i class="fa fa-clock-o"></i>'+item.Fecha_Creacion+'</small>'+
-		                    '<div class="pull-left" id="divCheck'+item.idComentario+'"></div>'+item.Nombre+'  '+item.Paterno+''+
-		                  '</a>')
+          $('#ListaComentariosTema'+idTemaForo+'').append('<hr><div class="item">'+
+                    '<img src="<?php echo base_url();?>assets/dist/img/silueta_user.png" alt="" class="offline">'+
+                    '<p class="message">'+
+                      '<a href="#" class="name">'+
+                        '<small class="text-muted pull-right"><i class="fa fa-clock-o"></i>'+item.Fecha_Creacion+'</small>'+
+                        '<div class="pull-left" id="divCheck'+item.idComentario+'"></div>'+item.Nombre+'  '+item.Paterno+''+
+                      '</a>')
                       $('#ListaComentariosTema'+idTemaForo+'').append('<div id="item'+item.idComentario+'">'+
-		                  '<textarea  onblur="ActualizarComentario('+item.idComentario+');" id="Comentario'+item.idComentario+'" disabled class="pasive form-control" type="text" style="resize:none; border:none; margin-bottom:5px; ">'+item.Comentario+'</textarea>'+
+                      '<textarea  onblur="ActualizarComentario('+item.idComentario+');" id="Comentario'+item.idComentario+'" disabled class="pasive form-control" type="text" style="resize:none; border:none; margin-bottom:5px; ">'+item.Comentario+'</textarea>'+
                        '</div>'+
-		                '</p>'+
-		              '</div>');
+                    '</p>'+
+                  '</div>');
                   if (item.idUsuarioc==idUsuarioActivo){
                     $('#item'+item.idComentario+'').append(
                         '<button type="button" onclick="funcionclick('+item.idComentario+');" id="btnEditarComent" name="btnEditarComent" class="pull-right fa fa-edit" value="'+item.idComentario+'">'+
                         '</button>')}
                     if (NombreUsuarioActivo==='Yasser') {
                       $('#item'+item.idComentario+'').append(
-                        '<button type="button" onclick="VistoComent('+item.idComentario+');" id="btnVistoComent" name="btnVistoComent" class="pull-right fa fa-check" value="'+item.idComentario+'">'+
-                        'Visto</button>')}
+                        '<button type="button" onclick="VistoComent(\'Visto\','+item.idComentario+');" id="btnVistoComent" name="btnVistoComent" class="pull-right fa fa-check btn btn-info btn-xs" value="Realizado">'+
+                        'Visto</button>'+
+                        '<button type="button" onclick="VistoComent(\'Pendiente\','+item.idComentario+');" id="btnPendienteComent" name="btnPendienteComent" class="pull-right fa fa-check btn btn-warning btn-xs" value="pendiente">'+
+                        'Pendiente</button>'+
+                        '<button type="button" onclick="VistoComent(\'Realizado\','+item.idComentario+');" id="btnVistoComent" name="btnVistoComent" class="pull-right fa fa-check btn btn-success btn-xs" value="Visto">'+
+                        'Realizado</button>')}
                     if (item.Visto=='1') {
-                      $('#divCheck'+item.idComentario).append('<i class="fa fa-check text-success"></i><i class="fa fa-check text-success"></i>');
+                      $('#divCheck'+item.idComentario).append('<small class="bg-blue label">Visto</small>');
                     }
+                    if (item.Visto=='2') {
+                      $('#divCheck'+item.idComentario).append('<small class="bg-yellow label">Pendiente</small>');
+                    }
+                    if (item.Visto=='3') {
+                      $('#divCheck'+item.idComentario).append('<small class="bg-green label">Realizado</small>');
+                    }            
+                    if (item.Visto!=='3'){
+                      $('#item'+item.idComentario+'').append('<button type="button" onclick="AddTareaForo('+item.idComentario+');" id="btn_addTareaForo'+item.idComentario+'" name="btn_addTareaForo'+item.idComentario+'" class="pull-right fa fa-share-square-o btn btn-primary btn-xs" value="Realizado">'+
+                        'Generar Tarea</button>');
+                    }
+
               	});
 
           	}
           });
+}
+
+AddTareaForo = function($idComentario){
+  $comentario= $('#Comentario'+$idComentario).val();
+    $.ajax({
+      type:'POST',
+      url:baseurl+'cForo/AddTareaForo',
+      data:{idComentario:$idComentario,comentario:$comentario},
+      success:function(data){
+        alert ('Tarea agregada');
+        VistoComent('Visto',$idComentario);
+        $('#btn_addTareaForo'+$idComentario).addClass('hidden');
+      }
+    });
 }
 
 function ActualizarComentario(idComentario){
@@ -126,13 +155,21 @@ function funcionclick(valor){
   $('#Comentario'+valor).addClass('EnEdicion');
   $('#Comentario'+valor).focus();
 }
-function VistoComent(valor){
+function VistoComent(valor2,valor){
   $.ajax({
     type:'POST',
     url:baseurl+"cForo/ActualizarVisto",
-    data:{valor:valor},
+    data:{valor:valor,valor2:valor2},
     success:function(data){
-      $('#divCheck'+valor).append('<i class="fa fa-check text-success"></i><i class="fa fa-check text-success"></i>');
+  if (valor2==='Visto'){
+      $('#divCheck'+valor).html('<small class="bg-blue label">Visto</small>');
+  }
+  if (valor2==='Pendiente'){
+      $('#divCheck'+valor).html('<small class="bg-yellow label">Pendiente</small>');
+  }
+  if (valor2==='Realizado'){
+      $('#divCheck'+valor).html('<small class="bg-green label">Realizado</small>');
+  }
     }
   });
 }
@@ -169,4 +206,46 @@ $('#form, #fat, #formAgregarTema').submit(function() {
           });
         return false;
 });
+$.post(baseurl+'cForo/getTareaForo',
+  function(data){
+    $tareas = JSON.parse(data);
+    $.each($tareas,function(i,item){
+      if (item.status=='pendiente'){
+        $clase='btn-danger';
+      }
+      if (item.status=='En proceso'){
+        $clase='btn-warning';
+      }
+      if (item.status=='Realizada'){
+        $clase='btn-success';
+      }
+      $('#bodyTareasForo').append('<tr><td>'+item.descripcion+'</td>'+
+        '<td><select onChange="actTareaForo('+item.idTareaForo+')" id="selectTareasForo'+item.idTareaForo+'" class="btn '+$clase+'"></select></td>');
+      if (item.status=='pendiente'){
+        $('#selectTareasForo'+item.idTareaForo).append('<option class="" value="'+item.status+'" selected>'+item.status+'</option>'+
+          '<option value="En proceso">En proceso</option>'+
+          '<option value="Realizada">Realizada</option>')
+      }
+      if (item.status=='En proceso'){
+        $('#selectTareasForo'+item.idTareaForo).append('<option value="'+item.status+'" selected>'+item.status+'</option>'+
+          '<option value="pendiente">pendiente</option>'+
+          '<option value="Realizada">Realizada</option>')
+      }
+      if (item.status=='Realizada'){
+        $('#selectTareasForo'+item.idTareaForo).append('<option value="'+item.status+'" selected>'+item.status+'</option>'+
+          '<option value="En proceso">En proceso</option>'+
+          '<option value="pendiente">pendiente</option>')
+      }
+    });
+  });
 
+actTareaForo = function($idTareaForo){
+  $status = $('#selectTareasForo'+$idTareaForo).val();
+  alert($status);
+  alert($idTareaForo);
+    $.post(baseurl+'cForo/actTareaForo',
+      {idTareaForo:$idTareaForo,status:$status},
+      function(data){
+
+      });
+}

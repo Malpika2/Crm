@@ -12,17 +12,26 @@
       </ol>
     </section>
 
+
     <!-- Main content -->
     <section class="content">
       <div class="row">
+
       <h1></h1>
         <div class="col-md-0">
         </div>
         <div class="col-md-6">
+<?php
+$ActivarBotones=false;
+ foreach($row_Asignados as $Asignado){ 
+  if ($Asignado->idUsuario==$this->session->userdata('s_idUsuario')) {
+    $ActivarBotones=true;
+  }
+ }?>
           <div class="box box-widget widget-user-2">
                   <div class="btn-group pull-right">
-                  <button type="button" class="btn btn-sm text-center btn-success pull-right" id="btnRealizarTarea" data-toggle="tooltip" data-tooltip="tooltip" title="Marcar como Realizada"><i class="fa fa-check-square"></i></button>
-                  <button class="btn btn-sm text-center btn-danger pull-right" id="btnCancelarTarea" data-toggle="tooltip" data-tooltip="tooltip" title="Cancelar Tarea" ><i class="fa fa-ban"></i></button>
+                  <button type="button" class="btn btn-sm text-center btn-success pull-right" id="btnRealizarTarea" data-toggle="tooltip" data-tooltip="tooltip" title="Marcar como Realizada" <?php if ($ActivarBotones==false){echo "disabled"; } ?> ><i class="fa fa-check-square"></i></button>
+                  <button class="btn btn-sm text-center btn-danger pull-right" id="btnCancelarTarea" data-toggle="tooltip" data-tooltip="tooltip" title="Cancelar Tarea" <?php if ($ActivarBotones==false){echo "disabled";} ?> ><i class="fa fa-ban"></i></button>
 <!--                   <button type="button" class="btn btn-sm text-center btn-warning pull-right" id="btnEditarTarea" data-toggle="tooltip" data-tooltip="tooltip" title="Editar Tarea" ><i class="fa fa-edit"></i></button>
  -->                  </div>
             <div class="widget-user-header bg-blue">
@@ -38,10 +47,10 @@
                 </li>
 
             <?php if ($row_EmpParticipantes!=null) {?>
-            <li class="text-danger">Participantes:<ul><?php foreach($row_EmpParticipantes as $Participantes){ echo "<li>.$Participantes->RazonSocial."; }?></ul></li><?php } ?>
+            <li class="text-danger">Empresas Participantes:<ul><?php foreach($row_EmpParticipantes as $Participantes){ echo "<li>$Participantes->NombreEmpresa"; }?></ul></li><?php } ?>
 
             <?php if ($row_PersonasParticipantes!=null) {?>
-            <li class="text-danger">Participantes:<ul><?php foreach($row_PersonasParticipantes as $PersParticipantes){ echo "<li>.$PersParticipantes->Nombre."; }?></ul></li>
+            <li class="text-danger">Personas Participantes:<ul><?php foreach($row_PersonasParticipantes as $PersParticipantes){ echo "<li>$PersParticipantes->Nombre"; }?></ul></li>
             <?php } ?>
 
 

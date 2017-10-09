@@ -63,7 +63,41 @@ class cForo extends CI_Controller
 	}
 	public function ActualizarVisto(){
 		$idTema = $this->input->post('valor');
-		$this->mForo->ActualizarVisto($idTema);
+		$estado = $this->input->post('valor2');
+		if ($estado=='Visto'){
+			$estado=1;
+		}
+		if ($estado=='Pendiente') {
+			$estado=2;
+		}
+		if ($estado=='Realizado') {
+			$estado=3;
+		}
+		$this->mForo->ActualizarVisto($idTema,$estado);
 		return true;
 	}
-}
+	public function AddTareaForo(){
+		$idComentario = $this->input->post('idComentario');
+		$comentario = $this->input->post('comentario');
+		$this->mForo->AddTareaForo($idComentario,$comentario);
+		return true;
+	}
+	public function getTareaForo(){
+		$idComentario = $this->input->post('idComentario');
+		if ($idComentario>0) {
+			$r = $this->mForo->getTareaForo($idComentario);
+			$r = json_encode($r);
+			return $r;
+		}
+		else{
+			$r = $this->mForo->getTareaForo();
+			echo json_encode($r);
+		}
+	}
+	public function actTareaForo()
+	{
+		$idTareaForo = $this->input->post('idTareaForo');
+		$status = $this->input->post('status');
+		$this->mForo->actTareaForo($idTareaForo,$status);
+	}
+}			

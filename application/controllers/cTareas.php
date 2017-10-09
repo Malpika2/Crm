@@ -15,11 +15,38 @@ class cTareas extends CI_Controller
 		$Tareas_tmp = array();
 		if($this->session->userdata('s_login')==1){
 			$Tareas = $this->mTareas->getTareas_deEmpresas_PorUsuario();
-			foreach ($Tareas as $tarea) {
-				$idTarea = $tarea->idTarea;
-					$data['row_Administrador'][$tarea->idTarea]['Administrador']=$this->mTareas->getAsignados($tarea->idTarea);
+
+			foreach ($Tareas as $Tarea) {
+
+				$idTarea=$Tarea->idTarea;
+//Config Contactos
+          if ($Tarea->idEmpresaE>0) {
+            $data['verContacto'][$idTarea] = base_url().'cEmpresa/verEmpresa/'.$Tarea->idEmpresaE;
+            $data['NombreContacto'][$idTarea] = $Tarea->NombreEmpresa;
+            if ($Tarea->idNegociacion!==null) {
+              $data['ObjetivoSignal'][$idTarea]= '<span class=""><a href="'.base_url().'cPersona/verNegociacion/'.$Tarea->idNegociacion.'">OBJETIVO</a></span>';
+            }
+          }
+          else if($Tarea->idPersonaPer>0){
+            $data['verContacto'][$idTarea] = base_url().'cPersona/verPersona/'.$Tarea->idPersonaPer;
+            $data['NombreContacto'][$idTarea] = $Tarea->Nombre;
+              if ($Tarea->idNegociacion!==null) {
+              $data['ObjetivoSignal'][$idTarea]= '<span class=""><a href="'.base_url().'cPersona/verNegociacion/'.$Tarea->idNegociacion.'">OBJETIVO</a></span>';
+            }
+          }else if($Tarea->emp_part!==''){
+            $data['verContacto'][$idTarea] = base_url().'cPersona/verTarea/'.$Tarea->idTarea;
+            $data['NombreContacto'][$idTarea] = '<span data-toggle="tooltip" title="Consulte la ficha de la tarea">TAREA GRUPAL</span>';
+          }
+//Fin configuracion Contactos
+
+				$idTarea = $Tarea->idTarea;
+					$data['row_Administrador'][$idTarea]['Administrador']=$this->mTareas->getAsignados($Tarea->idTarea);
 			}
 			$data['row_Tareas']=$Tareas;
+
+
+
+
 
 
 			$this->load->view('crm/header');

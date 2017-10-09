@@ -154,4 +154,5 @@
   </section>
 <script type="text/javascript">
   var baseurl = "<?php echo base_url();?>";
+  var idUsuarioActivo = "<?php echo $this->session->userdata('s_idUsuario');?>";
 </script>

@@ -18,67 +18,71 @@
 </style>
 <section class="content-header">
 <select id="FiltroTareas" name="FiltroTareas" class="btn-link" onchange="filtrarTareas()">
-    <option value="Todas" selected="true">Tareas de todos los usuarios</option>
+    <option value="" selected="true">Tareas de todos los usuarios</option>
 </select>
 </section>
 
 <section class="content">
   <div class="table-responsive">
+  <input type="hidden" name="column2_search" id="column2_search" class="select-filter" value="<?php  ?>">
     <table class="table table-responsive table-hover" id="TablaTareas">
       <thead>
         <tr>
           <th>Tarea</th>
           <th>Contacto</th>
           <th>Administrador</th>
+          <th>Origen</th>
           <th>Fecha Fin</th>
-          <th>Prioridad</th>
+          <th id="Prioridad">Prioridad</th>
           <th>Acciones</th>
         </tr>
       </thead>
       <tfoot>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
+        <tr>
+          <th>Tarea</th>
+          <th>Contacto</th>
+          <th>Administrador</th>
+          <th>Origen</th>
+          <th>Fecha Fin</th>
+          <th id="Prioridad">Prioridad</th>
+          <th>Acciones</th>
+        </tr>
       </tfoot>
       <tbody>
        <?foreach ($row_Tareas as $Tareas) {
+        if ($Tareas->StatusTarea!=='Realizada') {
           $Administradores="";
-          $ObjetivoSignal="";
-          if ($Tareas->idEmpresaE>0) {
-            $verContacto = base_url().'cEmpresa/verEmpresa/'.$Tareas->idEmpresaE;
-            $NombreContacto = $Tareas->NombreEmpresa;
-            if ($Tareas->idNegociacion!==null) {
-              $ObjetivoSignal= '<span class="badge bg-aqua pull-right"><a href="'.base_url().'cPersona/verNegociacion/'.$Tareas->idNegociacion.'">OBJETIVO</a></span>';
-            }
-          }
-          else if($Tareas->idPersonaPer>0){
-            $verContacto = base_url().'cPersona/verPersona/'.$Tareas->idPersonaPer;
-            $NombreContacto = $Tareas->Nombre;
-              if ($Tareas->idNegociacion!==null) {
-              $ObjetivoSignal= '<span class="badge bg-aqua pull-right"><a href="'.base_url().'cPersona/verNegociacion/'.$Tareas->idNegociacion.'">OBJETIVO</a></span>';
-            }
-          }else if($Tareas->emp_part!==''){
-            $verContacto = base_url().'cPersona/verTarea/'.$Tareas->idTarea;
-            $NombreContacto = '<span data-toggle="tooltip" title="Consulte la ficha de la tarea">TAREA GRUPAL</span>';
-          }
+          $NAdmin="";
+          $ActiveRealizada=false;
+          $prueba = json_encode($Tareas);
+
             foreach ($row_Administrador[$Tareas->idTarea]['Administrador'] as $admin) {
               $Administradores= $Administradores.'&nbsp;<small> <i class=" text-muted fa fa-user"></i></small>'.$admin->Nombre;
+              $NAdmin = $admin->Nombre.' '.$NAdmin;
+              if ($admin->idUsuario===$this->session->userdata('s_idUsuario')) {
+                $ActiveRealizada=true;  
+              }
+              
             }            
         ?>
+        <tr id="<?php echo $NAdmin; ?>">
+          <td><span class="text LinkTarea"><a href="<?php base_url()?>cPersona/verTarea/<?php echo $Tareas->idTarea; ?>"><?php echo $Tareas->TituloTarea;?></a></span></td>
 
-        <tr>
-          <td><span class="text LinkTarea"><a href="<?php base_url()?>cPersona/verTarea/<?php echo $Tareas->idTarea; ?>"><?php echo $Tareas->TituloTarea;?></a></span><?php echo $ObjetivoSignal; ?></td>
-          <td><span class="text linkContacto"><a href="<?php echo $verContacto;?>"><?php echo $NombreContacto;?></a></span></td>
+          <td><span class="text linkContacto"><a href="<?php echo $verContacto[$Tareas->idTarea];?>"><?php echo $NombreContacto[$Tareas->idTarea];?></a></span></td>
+
           <td><?php echo $Administradores; ?>
+
+          <td><?php if(isset($ObjetivoSignal[$Tareas->idTarea])){ echo $ObjetivoSignal[$Tareas->idTarea];}else{ echo "Independiente";}?></td>
+
           </td>
           <td><span class="text"><?php echo $Tareas->FechaFin; ?></span></td>
+
           <td><span class="text"><?php echo $Tareas->Prioridad; ?></span></td>
-          <td class="text-center"><button onclick="ActualizarTarea(<?php echo $Tareas->idTarea?>)"  id="checkRealizada" type="button" value="<?php $Tareas->idTarea;?>" class="btn btn-success"><i class="fa fa-check">Realizada</i></button></td>
+
+          <td class="text-center"><button onclick="ActualizarTarea(<?php echo $Tareas->idTarea?>)"  id="checkRealizada" type="button" value="<?php $Tareas->idTarea;?>" <?php if ($ActiveRealizada==false){ echo "disabled";} ?> class="btn btn-success"><i class="fa fa-check">Realizada</i></button></td>
+
         </tr>
-        <? } ?>
+        <? } }?>
       </tbody>
         <div class="box-footer clearfix no-border">
             <button id="btn_nTarea" class="btn btn-default pull-right " data-toggle="modal" data-target="#ModalTarea"><i class="fa fa-plus fa-x2"></i> Nueva Tarea</button>
@@ -284,8 +288,8 @@
                       <div class="input-group-addon">
                         <span>Personas:</span>
                       </div>
-                      <select id="PersonasPart" name="PersonasPart[]" class="form-control select2" multiple="multiple" data-placeholder="Personas Participantes" style="width: 100%;" required>
-                      </select>
+                      <!-- <select id="PersonasPart" name="PersonasPart[]" class="form-control select2" multiple="multiple" data-placeholder="Personas Participantes" style="width: 100%;" required>
+                      </select> -->
                     </div>
                   </div>
                   <div class="form-group">
@@ -385,6 +389,15 @@
                         <span>Empresas:</span>
                       </div>
                       <select id="EmpresasPart" name="EmpresasPart[]" class="form-control select2" multiple="multiple" data-placeholder="Empresas Participantes" style="width: 100%;" required>
+                      </select>
+                    </div>
+                  </div>
+          <div class="form-group">
+                    <div class="input-group">
+                      <div class="input-group-addon">
+                        <span>Personas:</span>
+                      </div>
+                      <select id="PersonasPart" name="PersonasPart[]" class="form-control select2" multiple="multiple" data-placeholder="Personas Participantes" style="width: 100%;" required>
                       </select>
                     </div>
                   </div>

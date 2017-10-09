@@ -183,6 +183,7 @@
 <?php
  if ($this->uri->segment(1)=='cInicio'){ ?>
  <script src="<?php echo base_url();?>Js/Inicio.js"></script>
+<script src="<?php echo base_url();?>Js/Calendar.js"></script>
  <script>
 $('#linkMenuInicio').addClass('active');
 $('#linkMenuContactos').removeClass('active');
@@ -329,12 +330,12 @@ $('#linkMenuUsuarios').removeClass('active');
 <?php } ?>
 
 <script src="<?php echo base_url();?>Js/jquery-confirm.min.js"></script>
-    <script>
+<script>
   $(document).ready(function() {
     // Setup - add a text input to each footer cell
     $('#TablaTareas tfoot th').each( function () {
         var title = $(this).text();
-        if (title!='Acciones'){
+        if (title!=='Acciones'){
         $(this).html( '<input type="text" placeholder="Filtrar '+title+'" />' );}
         else{
           $(this).html( '' );}
@@ -342,6 +343,7 @@ $('#linkMenuUsuarios').removeClass('active');
 
     // DataTable 
      var table = $('#TablaTareas').DataTable({
+
       "paging": true,
       "lengthChange": false,
       "searching": true,
@@ -368,6 +370,14 @@ $('#linkMenuUsuarios').removeClass('active');
             "sPrevious": "Anterior"
             }}
     });
+
+    $('#column2_search').on( 'keyup', function () {
+    table
+        .columns( 2 )
+        .search( this.value )
+        .draw();
+      });
+
     // Apply the search
     table.columns().every( function () {
         var that = this;
@@ -386,7 +396,6 @@ $('#linkMenuUsuarios').removeClass('active');
   });
   $('#TablaTareas thead').append(r);
   $('#search_0').css('text-align', 'center');
-
   });
 </script>
 <script>

@@ -263,7 +263,6 @@ function agregarTareaRealizadaEmpresa(clase,idTarea,TituloTarea,idEmpresa,Nombre
     }
 
 function ActualizarTarea(index){
-  alert(index);
   var tareaid = index;
   var varcontrol=0;
   if (varcontrol==0){
@@ -277,11 +276,10 @@ function ActualizarTarea(index){
                       StatusFinal:StatusFinal
                     },
                     function(data){
-                    // document.location.href = baseurl+'cTareas';
+                    document.location.href = baseurl+'cTareas';
                       $("#tarea"+tareaid).remove();
-                      recargar2();
-                      recargar();
                       $('#btn_CerrarModalCancelar').click();
+                      $(location).attr('href', baseurl+'cTareas');
                       varcontrol++;
                     });
                   }
@@ -610,10 +608,15 @@ $.post(baseurl+"cGetUsuarios/getUsuarios",
       $('#Asignados').append('<option value="'+item.idUsuario+'">'+item.Nombre+'</option>');
       $('#Usuarios').append('<option value="'+item.idUsuario+'">'+item.Nombre+'</option>');
       if(item.idUsuario===idUsuarioActivo){
-        $('#FiltroTareas').append('<option value="'+item.idUsuario+'">Mis Tareas</option>');
-      }else{
-      $('#FiltroTareas').append('<option value="'+item.idUsuario+'">Tareas de: '+item.Nombre+'</option>')}
-      });
+        $('#FiltroTareas').append('<option selected="true" value="'+item.Nombre+'">Mis Tareas</option>');
+        $('#column2_search').val(item.Nombre);
+        $('#column2_search').keyup();
+
+      }
+      else{
+      $('#FiltroTareas').append('<option value="'+item.Nombre+'">Tareas de: '+item.Nombre+'</option>')}
+      }
+      );
   });
 
 $.post(baseurl+"cGetEmpresas/getEmpresas",
@@ -629,7 +632,25 @@ $.post(baseurl+"cGetEmpresas/getEmpresas",
 
 filtrarTareas = function(){
   var FTareas = $('#FiltroTareas').val();
+  $('#column2_search').val(FTareas);
+  $('#column2_search').keyup();
+  $('#TablaTareas>thead>tr>th:nth-of-type(3)').HiddenTables(); 
+  $('#TablaTareas>tfoot>tr>th:nth-of-type(3)').HiddenTables();
+  $('#TablaTareas>tbody>tr>td:nth-of-type(3)').HiddenTables(); 
+  if (FTareas==''){
+  $('#TablaTareas>thead>tr>th:nth-of-type(3)').ShowTables(); 
+  $('#TablaTareas>tfoot>tr>th:nth-of-type(3)').ShowTables();
+  $('#TablaTareas>tbody>tr>td:nth-of-type(3)').ShowTables(); 
+  }
 }
+ jQuery.fn.HiddenTables = function()  //damos nombre ala funcion
+   {
+     $(this).hide();
+  };
+   jQuery.fn.ShowTables = function()  //damos nombre ala funcion
+   {
+     $(this).show();
+  };
 ocultarTareas = function(){
   $(".NoPropia").addClass('hidden');
   var FTareas = $('#FiltroTareas').val();

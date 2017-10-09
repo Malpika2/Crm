@@ -11,12 +11,48 @@
 		max-width: 900px;
 		margin: 0 auto;
 	}
+.fc-day-grid-event .fc-content{
+	cursor: pointer;
+	}
+.evtObjetivos{
+	background-color: #556cd1;
+}
+.evtTareas{
+	background-color: #208989;
+}
 
 </style>
 <section class="content">
   <div class="row">
+  	<div class="container-fluid">
+		<div class="col-md-8" id='calendar'>
+			
+		</div>
+		<div class="col-md-4" style="padding-top: 80px;">
+			<div class="box box-info">
+				<div id="divTitleTarea" class="box-header h2 text-center ">
+					<label id="Tarea" class=""></label>
+				</div>
+				<div class=" box box-body">
+					<label for="Categoria">Categoria</label>
+					<p id="Categoria"></p>
 
-	<div class="col-md-12" id='calendar'></div>
+
+
+					<label for="Prioridad">Prioridad</label>
+					<p id="Prioridad"></p>
+
+					<label for="StatusTarea">Status</label>
+					<p id="StatusTarea"></p>
+
+					<label for="Descripcion">Descripcion</label>
+					<p id="Descripcion"></p>
+					<label for="Motivo">Motivo</label>
+					<p id="Motivo"></p>
+				</div>
+			</div>
+		</div>
+	</div>
   </div>
 </section>
 <script>

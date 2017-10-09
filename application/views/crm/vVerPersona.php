@@ -80,11 +80,12 @@
                           </tr>
                           <tr>
                               <td><b>Telefono <?php echo $row_Persona->TipoTelefono1; ?></b></td>
-                              <td><?php echo $row_Persona->Telefono1;?></td>
+                              <td><?php echo $row_Persona->Telefono1;?>&nbsp;<i class="fa fa-question-circle"></i>
+</td>
                           </tr>
                           <tr>
                               <td><b>Telefono <?php echo $row_Persona->TipoTelefono2;?></b></td>
-                              <td><?php echo $row_Persona->Telefono2; ?></td>
+                              <td><?php echo $row_Persona->Telefono2; ?>&nbsp;<i class="fa fa-question-circle"></i></td>
                           </tr>
                           <tr>
                               <td><b>Skype</b></td>

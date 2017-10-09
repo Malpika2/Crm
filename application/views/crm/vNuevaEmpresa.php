@@ -183,6 +183,7 @@
                     <tr>
                       <td>
                         <span class="">1º Telefono</span>&nbsp;<i class="fa fa-info-circle" data-toggle="tooltip" title="Lada generada apartir de la seleccion del pais"></i>
+                        &nbsp;<i class="fa fa-question-circle"></i>
                         <div class="input-group">
                           <div class="input-group-addon" style="padding: 0px 12px;">
                             <label id="ladaTel1"></label>
@@ -199,6 +200,8 @@
                       </td>
                       <td>
                         <span class="">2º Telefono</span>&nbsp;<i class="fa fa-info-circle" data-toggle="tooltip" title="Lada generada apartir de la seleccion del pais"></i>
+                        &nbsp;<i class="fa fa-question-circle"></i>
+
                         <div class="input-group">
                           <div class="input-group-addon" style="padding: 0px 12px;">
                             <label id="ladaTel2"></label>
