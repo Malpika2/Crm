@@ -392,7 +392,7 @@ $('#form, #fat, #formPersona').submit(function() {
 				if (cargo=='Representante') {
 					var emp = JSON.parse(data);
 					$.each(emp,function(i,item){
-						$('#RepresentanteEmp').val(item.Nombre);
+						$('#RepresentanteEmp').html('<label class="col-md-12" style="border: 1px solid #0073b7;">'+item.Nombre+'</label>');
 						$('#idRepresentanteEmp').val(item.idPersona);
 						});
 					}
@@ -450,6 +450,7 @@ $('#Representante').change(function(){
 $('#btnBuscarExistente').click(function(){
 	$('#Representante').removeClass('hidden');
 	$('#Representante').addClass('select2');
+	$('#RepresentanteEmp').html('');
 });
 
 $('#btnAgregarNuevo').click(function(){
@@ -497,10 +498,12 @@ cambiarLada = function(){
 	  },
 	  function(data){
 	  	var datos= JSON.parse(data);
+	  	if (datos!==null){
 	  	$('#ladaTel1').html(datos['codigo_telefono']);
 	  	$('#ladaTel2').html(datos['codigo_telefono']);
 	  	$('#ladaTel2input').val(datos['codigo_telefono']);
 	  	$('#ladaTel1input').val(datos['codigo_telefono']);
+	  	}
 	  });
 
 }
@@ -512,10 +515,12 @@ cambiarLadaP = function(){
 	  },
 	  function(data){
 	  	var datos= JSON.parse(data);
+	  if (datos!==null){
 	  	$('.ladaTel1').html(datos['codigo_telefono']);
 	  	$('.ladaTel2').html(datos['codigo_telefono']);
 	  	$('.ladaTel1input').val(datos['codigo_telefono']);
 	  	$('.ladaTel2input').val(datos['codigo_telefono']);
+	  }
 	  });
 
 }

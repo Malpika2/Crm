@@ -143,30 +143,31 @@
                     <tr>
                       <td>
                          <span class="col-md-12">Contacto Principal</span>
-                        <div class="col-md-10" style="padding: 0px;">
-                        <input type="text" class="col-md-12 form-control" id="RepresentanteEmp" style="border-color:red;" required>
+                        <div class="col-md-12 text-center" style="padding: 0px;">
+<!--                         <input type="text" class="col-md-12 form-control" id="RepresentanteEmp" style="border-color:red;" required> -->
+                          <label class="col-md-12" id="RepresentanteEmp" name="RepresentanteEmp"></label>
                         <input type="hidden" class="col-md-12 form-control" id="idRepresentanteEmp" name="idRepresentanteEmp" value="0">
-                          <select class="hidden form-control selectpicker" id="Representante" name="Representante">
+                          <select class="hidden form-control selectpicker btn-info" id="Representante" name="Representante">
                             <option selected="true" disabled="true" value="0">Lista de Representantes</option>
                           </select>                    
                         </div>
-                        <div class="col-md-2 btn-group" style="padding: 0px;">
-                          <button style="padding: 0px" type="button" data-toggle="modal" data-target="#ModalNPersona" id="btnAgregarNuevo" class="btn bg-blue" data-toggle="tooltip" title="AGREGAR NUEVO"><i class="fa fa-plus-square fa-2x"></i></button>
-                          <button style="padding: 0px" type="button" id="btnBuscarExistente" class="btn bg-aqua" data-toggle="tooltip" title="BUSCAR EXISTENTE"><i class="fa fa-search fa-2x"></i></button>
+                        <div class="col-md-12 text-center" style="padding: 0px;">
+                          <button style="padding: 0px; border-radius: 10px;" type="button" data-toggle="modal" data-target="#ModalNPersona" id="btnAgregarNuevo" class="btn bg-blue" data-toggle="tooltip" title="AGREGAR NUEVO">&nbsp;&nbsp;<i class="fa fa-plus-square fa-2x">&nbsp;</i>Agregar Nuevo&nbsp;&nbsp;</button>
+                          <button style="padding: 0px; border-radius: 10px;" type="button" id="btnBuscarExistente" class="btn bg-aqua" data-toggle="tooltip" title="BUSCAR EXISTENTE">&nbsp;<i class="fa fa-search fa-2x">&nbsp;</i>Buscar Existente&nbsp;&nbsp;</button>
                         </div>
                       </td>
                       <td>
                         <span class="col-md-12">Contacto</span>
-                        <div class="col-md-10" style="padding: 0px;">
-                          <select class="js-example-programmatic-multi form-control select2" id="ContactoEmp" name="ContactoEmp[]" multiple="multiple" maximumSelectionLength="2">
+                        <div class="col-md-12" style="padding: 0px;">
+                          <select  class="select2 form-control js-example-programmatic-multi" id="ContactoEmp" name="ContactoEmp[]" multiple="multiple" maximumSelectionLength="2" >
                           </select>
                           <select class="hidden form-control formsNP js-example-programmatic-multi" id="Contacto" name="Contacto">
                             <option selected="true" disabled="true" value="0">Lista de Contactos</option>
                           </select>
                         </div>
-                        <div class="col-md-2" style="padding: 0px;">
-                          <button style="padding: 0px" type="button" data-toggle="modal" data-target="#ModalNPersona" id="btnAgregarNuevoCont" class="btn bg-blue" data-toggle="tooltip" title="AGREGAR NUEVO"><i class="fa fa-plus-square fa-2x"></i></button>
-                          <button style="padding: 0px" type="button" id="btnBuscarExistenteCont" class="btn bg-aqua" data-toggle="tooltip" title="BUSCAR EXISTENTE"><i class="fa fa-search fa-2x"></i></button>
+                        <div class="col-md-12 text-center" style="padding: 0px;">
+                          <button style="padding: 0px; border-radius: 10px;" type="button" data-toggle="modal" data-target="#ModalNPersona" id="btnAgregarNuevoCont" class="btn bg-blue" data-toggle="tooltip" title="AGREGAR NUEVO">&nbsp;<i class="fa fa-plus-square fa-2x">&nbsp;</i>Agregar Nuevo&nbsp;&nbsp;</button>
+                          <button style="padding: 0px; border-radius: 10px;" type="button" id="btnBuscarExistenteCont" class="btn bg-aqua" data-toggle="tooltip" title="BUSCAR EXISTENTE">&nbsp;<i class="fa fa-search fa-2x"></i>Buscar Existente&nbsp;&nbsp;</button>
                         </div>
                       </td>
                     </tr>
@@ -299,7 +300,7 @@
                       <td>
                         <span class="">Tipo de Persona</span>
                         <input type="hidden" id="Cargo2" name="Cargo2" class="form-control Cargo" disabled>
-                        <input type="text" id="cargo3" name="cargo3" class="form-control Cargo" disabled>
+                        <label type="text" id="cargo3" name="cargo3" class="form-control Cargo" disabled>
                         <select class="form-control Cargo hidden  formsNP" id="Cargo" name="Cargo">
                           <option selected="true" value="Representante">Contacto Principal</option>
                           <option selected="true" value="Contacto">Contacto</option>
