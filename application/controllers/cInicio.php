@@ -29,5 +29,3 @@ class cInicio extends CI_Controller
 		echo json_encode($r);
 	}
 }
-	
-?>

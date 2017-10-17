@@ -200,7 +200,6 @@ $param['LugarContacto'] = $this->input->post('LugarContacto');
 			if(isset($_POST['Asignados'])){
 				foreach ($_POST['Asignados'] as $asignados_value){
 				$this->mTareas->guardarParticipantes($asignados_value,$paramTarea);
-				// $this->mMailer->enviarCorreo($ultimaTarea,$paramTarea);
 				}
 			}
 		}

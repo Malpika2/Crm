@@ -92,16 +92,6 @@ $.post(baseurl+"cGetComentarios/getComentarios_Por_Tarea",
       });
   });
 }
-
-// StatusRealizada = function(){
-//   $.post(baseurl+"cTareas/StatusRealizada",
-//   {
-//     idTarea:idTarea
-//   },
-//   function(data){
-//     location.reload(); 
-//   });
-// };
 $("#mbtnEnviar").click(function(){
   var StatusFinal = $('#StatusFinal').val();
       $.post(baseurl+"cTareas/StatusRealizada",
@@ -129,4 +119,52 @@ $("#mbtnEnviarCancelada").click(function(){
       }
 
     );
+});
+$("#mbtnEnviarRechazada").click(function(){
+  var StatusFinalRechazada= $('#StatusFinalRechazada').val();
+      $.post(baseurl+"cTareas/StatusRechazar",
+      {
+        idTarea:idTarea,
+        StatusFinalRechazada:StatusFinalRechazada
+      },
+      function(data){
+        location.reload(); 
+        $('#mbtnCancelarR').click();
+      }
+
+    );
+});
+AceptarTarea = function(){
+      $.post(baseurl+"cTareas/StatusAceptar",
+      {
+        idTarea:idTarea,
+      },
+      function(data){
+        location.reload(); 
+      }
+
+    );
+}
+$('#btnEditarTarea').click(function(){
+  $('#Categoria').prop('disabled',false);
+  $('#Descripcion').prop('disabled',false);
+  $('#btnGuardarCambiosTarea').removeClass('hidden');
+  $('#btnEditarTarea').addClass('hidden');
+});
+$('#btnGuardarCambiosTarea').click(function(){
+var Categoria= $('#Categoria').val();
+var Descripcion = $('#Descripcion').val();
+
+  $.post(baseurl+"cTareas/GuardarCambiosTarea/",
+    {
+      idTarea:idTarea,
+      Categoria:Categoria,
+      Descripcion:Descripcion
+    },
+    function(data){
+  $('#Categoria').prop('disabled',true);
+  $('#Descripcion').prop('disabled',true);
+  $('#btnGuardarCambiosTarea').addClass('hidden');
+  $('#btnEditarTarea').removeClass('hidden');  
+    });
 });

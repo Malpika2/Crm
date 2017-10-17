@@ -187,12 +187,12 @@ $param['DatosFiscalesPersona'] = $this->input->post('DatosFiscalesPersona');
 			if(isset($_POST['Asignados'])){
 				foreach ($_POST['Asignados'] as $asignados_value){
 				$this->mTareas->guardarParticipantes($asignados_value,$paramTarea);
-				// $this->mMailer->enviarCorreo($ultimaTarea,$paramTarea);
 				}
 			}
 		}
 
 	}
+
 		public function guardarTareaObjetivo(){
 		$paramTarea['TituloTarea'] = $this->input->post('TituloTarea');
 		$paramTarea['Categoria'] = $this->input->post('Categoria');

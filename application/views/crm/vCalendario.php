@@ -1,10 +1,10 @@
-<link href='<?php echo base_url();?>assets/fullcalendar/fullcalendar.min.css' rel='stylesheet' />
+<!-- <link href='<?php echo base_url();?>assets/fullcalendar/fullcalendar.min.css' rel='stylesheet' />
 <link href='<?php echo base_url();?>assets/fullcalendar/fullcalendar.print.min.css' rel='stylesheet' media='print' />
 <script src='<?php echo base_url();?>assets/fullcalendar/lib/moment.min.js'></script>
 <script src='<?php echo base_url();?>assets/fullcalendar/lib/jquery.min.js'></script>
 <script src='<?php echo base_url();?>assets/fullcalendar/fullcalendar.min.js'></script>
 <script src='<?php echo base_url();?>assets/fullcalendar/locale/es.js'></script>
-
+ -->
 
 <style>
 	#calendar {
@@ -26,7 +26,6 @@
   <div class="row">
   	<div class="container-fluid">
 		<div class="col-md-8" id='calendar'>
-			
 		</div>
 		<div class="col-md-4" style="padding-top: 80px;">
 			<div class="box box-info">

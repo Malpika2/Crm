@@ -126,6 +126,12 @@ thead input {
                     if ($Persona->Status=='Inactivo') {
                       
                     }else{
+                      if ($Persona->Cargo=='Representante'){
+                        $cargo = 'Contacto Principal';
+                      }else{
+                        $cargo = 'Contacto';
+                      }
+                      
                       echo '<tr>
                               <td align="left">
                               <a class="" href="'.base_url().'cPersona/verPersona/'.$Persona->idPersona.'">
@@ -133,7 +139,7 @@ thead input {
                               </a>
                               </td>
                               <td align="left">
-                                '.$Persona->Cargo.'
+                                '.$cargo.'
                               </td>
                               <td align="left">
                                 '.$Persona->Pais.'
@@ -576,4 +582,5 @@ thead input {
 
   <script type="text/javascript">
   var baseurl = "<?php echo base_url();?>";
+  var idUsuarioActivo = "<?php echo $this->session->userdata('s_idUsuario');?>";
 </script>

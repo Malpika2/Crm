@@ -200,6 +200,6 @@ Validar_Nueva_Persona = function(){
   });
 }
 $(document).ready(function(){
-    $('.fa').tooltip({title: "Para consultar codigos de marcación internacional haga click  <a href=\"http://www.comollamar.com\" target=\"_blank\">Aqui</a> (sitio externo)", html: true, placement: "bottom",trigger:"click"}); 
+    $('#fa').tooltip({title: "Para consultar codigos de marcación internacional haga click  <a href=\"http://www.comollamar.com\" target=\"_blank\">Aqui</a> (sitio externo)", html: true, placement: "bottom",trigger:"click"}); 
 
 });

@@ -1,23 +1,35 @@
 <style type="text/css">
-/*.easy-autocomplete {
-  position: absolute;
-  display: block;
-  z-index: 2000;
+[data-notify="container"][class*="alert-pastel-"] {
+  background-color: rgb(255, 255, 238);
+  border-width: 0px;
+  border-left: 15px solid rgb(255, 240, 106);
+  border-radius: 0px;
+  box-shadow: 0px 0px 5px rgba(51, 51, 51, 0.3);
+  font-family: 'Old Standard TT', serif;
+  letter-spacing: 1px;
 }
-.easy-autocomplete-container {
-position: absolute;
-display: contents;
-}*/
+[data-notify="container"].alert-pastel-info {
+  border-left-color: rgb(255, 179, 40);
+}
+[data-notify="container"].alert-pastel-danger {
+  border-left-color: rgb(255, 103, 76);
+}
+[data-notify="container"][class*="alert-pastel-"] > [data-notify="title"] {
+  color: rgb(80, 80, 57);
+  display: block;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+[data-notify="container"][class*="alert-pastel-"] > [data-notify="message"] {
+  font-weight: 400;
+}
 #BuscadorHeader{
 width: 100%;
 padding: 0px !important;
-font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif !important;
 }
 #BuscadorHeaderP{
   width: 100%;
 padding: 0px !important;
-font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif !important;
-
 }
 .select2 {
 
@@ -76,11 +88,78 @@ font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif !impo
 <link rel="stylesheet" href="<?php echo base_url();?>Js/EasyAutocomplete/easy-autocomplete.themes.min.css"> 
 <link rel="stylesheet" href="<?php echo base_url();?>assets/dist/css/personalizado/jquery-confirm.min.css"> 
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/dist/css/component.css" />
+<!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/alertify/alertify.core.css"> -->
+<!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/alertify/alertify.default.css"> -->
 <!-- jQuery 2.2.3 -->
 <script src="<?php echo base_url();?>assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+<!-- <script src="<?php echo base_url();?>assets/notify/notify.js"></script> -->
+
+
+
+<link href='<?php echo base_url();?>assets/fullcalendar/fullcalendar.min.css' rel='stylesheet' />
+<link href='<?php echo base_url();?>assets/fullcalendar/fullcalendar.print.min.css' rel='stylesheet' media='print' />
+<script src='<?php echo base_url();?>assets/fullcalendar/lib/moment.min.js'></script>
+<!-- <script src='<?php echo base_url();?>assets/fullcalendar/lib/jquery.min.js'></script> -->
+<script src='<?php echo base_url();?>assets/fullcalendar/fullcalendar.min.js'></script>
+<script src='<?php echo base_url();?>assets/fullcalendar/locale/es.js'></script>
+<script src="<?php echo base_url();?>assets/bootstrap-notify/bootstrap-notify.js"></script>
+<script src="<?php echo base_url();?>assets/bootstrap-notify/bootstrap-notify.min.js"></script>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
+
+    <script type="text/javascript">
+  var NombreUsuarioActivo = "User<?php echo $this->session->userdata('s_idUsuario'); ?>"
+
+    // Pusher.log = function(message) {
+    //   if (window.console && window.console.log) {
+    //     window.console.log(message);
+    //   }
+    // };
+
+    var pusher = new Pusher('0824bf96b5ad5478d289');
+    var presenceChannelUser = pusher.subscribe(NombreUsuarioActivo);
+    presenceChannelUser.bind('Notificacion', function(data) {
+
+$.notify({
+  title: '<strong><p>Tienes una nueva tarea:</p></strong>',
+  message:'<div style="text-overflow:ellipsis; white-space: nowrap; overflow:hidden; width:100%;">'+data.message+'</div>'
+},{
+  type: 'success'
+});
+
+  $.post(baseurl+'cNotificaciones/getNotificaciones/',
+    {idUsuarioActivo:idUsuarioActivo},
+    function(data){
+          $('#notificaciones_menu').html('');
+      var num_notificaciones=0;
+      var Notificaciones = JSON.parse(data);
+      $.each(Notificaciones,function(i,item){
+        num_notificaciones++;
+        $('#notificaciones_menu').append(
+        '<li class="divider"></li>'+
+          '<li class="col-md-12" style="padding:0px; margin:0px;">'+
+              '<a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'" class="col-md-10">'+
+                '<i class="fa fa-file-text-o text-green col-md-1" style="padding:0px; margin:0px;"></i>'+
+                '<div style="overflow:hidden; text-overflow:ellipsis; padding:0px;">'+item.TituloTarea+''+
+                '</div>'+
+              '</a>'+
+              '<button onClick="NotifVisto('+item.idNotificaciones+')" class=" btn btn-danger btn-xs"><i class="fa  fa-minus-square"></i></button>'+
+          '</li>'+
+          '<hr>')
+
+      });
+            if (num_notificaciones===0){
+        $('#notificaciones_menu').append('<li class="text-center">No hay notificaciones nuevas</li>');
+      }
+      $('#ContadorNotificaciones').html(num_notificaciones);
+
+    });  
+
+      });
+  </script>
+
 <div class="wrapper">
 
   <header class="main-header">
@@ -174,36 +253,14 @@ font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif !impo
                   </ul>
                 </div>
               </li>
-   <!--        <!-- User Account: style can be found in dropdown.less -->
-          <!-- <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding: 4px 0px 0px 0px; margin: 0px 5px 0px 5px;"> -->
-<!--               <img src="<?php echo base_url();?>assets/dist/img/avatar04.png" class="user-image" alt="User Image">
- -->
-              <!-- &nbsp;<i class="fa fa-user fa-2x"></i>
-              <span class="hidden-xs"></span>
-            </a>
-            <ul class="dropdown-menu">
- -->              <!-- User image -->
-              <!-- <li class="user-header"> -->
-<!--                 <img src="<?php echo base_url();?>assets/dist/img/avatar04.png" class="img-circle" alt="User Image"> -->
-<!--           &nbsp;<i class="fa fa-user fa-3x" style="color:white"></i>
-
-                <p>
-                  <?php echo $this->session->userdata('s_Usuario');?>
-                  <small><?php echo $this->session->userdata('s_Puesto');?></small>
-                </p>
-              </li> -->
-              <!-- Menu Footer-->
-<!--               <li class="user-footer" style="background-color: black">
-                <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Editar Datos</a>
-                </div>
-                <div class="pull-right">
-                  <a href="<?php echo base_url();?>/cLogin/cerrarSession" class="btn btn-default btn-flat">Cerrar Sesión</a>
-                </div>
+             <li class="dropdown notifications-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding-top: 5px; padding-bottom: 2px">
+                  <i class="fa  fa-exclamation-circle fa-2x"></i>
+                  <span class="label label-primary" id="ContadorNotificaciones" style="font-size: 1em; top: 3px;"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu" id="notificaciones_menu" name="notificaciones_menu" style="border-radius: 5px">
+                </ul>
               </li>
-            </ul>
-          </li> -->
         </ul>
       </div>
       </div>

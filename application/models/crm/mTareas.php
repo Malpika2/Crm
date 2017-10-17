@@ -25,7 +25,7 @@ class mTareas extends CI_Model
 
 		$this->db->insert('Tareas',$campos);
 		
-		if ($this->db->affected_rows() > 0) {
+		if ($this->db->affected_rows() > 0) {			
 			return $this->db->insert_id();				
 			}
 		else {
@@ -40,8 +40,37 @@ class mTareas extends CI_Model
 			'idEmpresa'=>null);//Personas a participar
 		$this->db->insert('Participantes_Tareas',$campos);
 		if($this->db->affected_rows()>0){
+			
+			$camposNotif = array(
+				'idTarea' =>$param['UltimaTarea'],
+				'idUsuario' => $s);
+
+			$this->db->insert('Notificaciones',$camposNotif);//Guarda las notificaciones de las TAREAS;
+			$this->trigger_event($s,$param['TituloTarea']);
+
 			return true;
 		}else {return false;}
+	}
+
+	public function trigger_event($s,$TituloTarea)
+	{
+		$pusher = $this->ci_pusher->get_pusher();
+
+		// Set message
+		$data['message'] = $TituloTarea;
+
+		// Send message
+		$canal = 'User'.$s;
+		$event = $pusher->trigger($canal, 'Notificacion', $data);
+
+		if ($event === TRUE)
+		{
+			echo 'Event triggered successfully!';
+		}
+		else
+		{
+			echo 'Ouch, something happend. Could not trigger event.';
+		}
 	}
 	public function guardarEmpresasParticipantes($s,$param){
 		$campos = array(
@@ -113,12 +142,13 @@ public function tareaNoRealizada($s){
 			return $query->row();
 		}
 		public function getTareas_deEmpresas_PorUsuario($s=null){
-			$this->db->select('idParticipantes, Participantes_Tareas.idTarea idTareaP, Participantes_Tareas.idUsuario idUsuarioP, Participantes_Tareas.idPersona idPersonaP, Participantes_Tareas.idEmpresa idEmpresaP, Empresas.idEmpresa idEmpresaE, Empresas.NombreEmpresa,Personas.idPersona idPersonaPer, Personas.Nombre,Tareas.idTarea, Tareas.TituloTarea, Tareas.Categoria, Tareas.Asignados, Tareas.emp_part, Tareas.per_part, Tareas.Descripcion, Tareas.idPersona idPersonaT, Tareas.idEmpresa idEmpresaT, Tareas.idNegociacion, Tareas.idMeta, Tareas.FechaFin, Tareas.idUsuarioCrea, Tareas.FechaCreacion, Tareas.Activa, Tareas.Prioridad, Tareas.StatusFinal, Tareas.StatusTarea
+			$this->db->select('idParticipantes, Participantes_Tareas.idTarea idTareaP, Participantes_Tareas.idUsuario idUsuarioP, Participantes_Tareas.idPersona idPersonaP, Participantes_Tareas.idEmpresa idEmpresaP, Empresas.idEmpresa idEmpresaE, Empresas.NombreEmpresa,Personas.idPersona idPersonaPer, Personas.Nombre,Tareas.idTarea, Tareas.TituloTarea, Tareas.Categoria, Tareas.Asignados, Tareas.emp_part, Tareas.per_part, Tareas.Descripcion, Tareas.idPersona idPersonaT, Tareas.idEmpresa idEmpresaT, Tareas.idNegociacion, Tareas.idMeta, Tareas.FechaFin, Tareas.idUsuarioCrea, Tareas.FechaCreacion, Tareas.Activa, Tareas.Prioridad, Tareas.StatusFinal, Tareas.StatusTarea, Usuarios.Nombre NombreU
 				');
 			$this->db->from('Participantes_Tareas');
 			$this->db->join('Tareas','Tareas.idTarea=Participantes_Tareas.idTarea');
 			$this->db->join('Empresas','Empresas.idEmpresa=Tareas.idEmpresa','left');
 			$this->db->join('Personas','Personas.idPersona=Tareas.idPersona','left');
+			$this->db->join('Usuarios','Usuarios.idUsuario=Tareas.idUsuarioCrea','left');
 			// $this->db->where('Participantes_Tareas.idUsuario',$s);
 			$this->db->group_by('Tareas.idTarea');
 			$this->db->order_by('Tareas.FechaFin','DESC');
@@ -247,6 +277,33 @@ public function tareaNoRealizada($s){
 	 		'StatusFinal' =>$status
 	 		);
 	 	$this->db->where('idTarea',$id);
+	 	$this->db->update('Tareas',$data);
+	 	return true;
+	 }
+	 public function StatusRechazar($id,$status){
+	 	$data = array(
+	 		'StatusTarea' =>'Rechazada',
+	 		'StatusFinal' =>$status
+	 		);
+	 	$this->db->where('idTarea',$id);
+	 	$this->db->update('Tareas',$data);
+	 	return true;
+	 }
+	 public function StatusAceptar($id){
+	 	$data = array(
+	 		'StatusTarea' =>'Activa',
+	 		'StatusFinal' =>$status
+	 		);
+	 	$this->db->where('idTarea',$id);
+	 	$this->db->update('Tareas',$data);
+	 	return true;
+	 }
+	 public function GuardarCambiosTarea($idTarea,$Categoria,$Descripcion){
+	 	$data = array(
+	 		'Categoria' =>$Categoria,
+	 		'Descripcion' =>$Descripcion
+	 		);
+	 	$this->db->where('idTarea',$idTarea);
 	 	$this->db->update('Tareas',$data);
 	 	return true;
 	 }

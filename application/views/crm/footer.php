@@ -57,6 +57,10 @@
 
 <!-- Bootstrap WYSIHTML5 -->
 <script src="<?php echo base_url();?>assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<!-- Alertify -->
+<!-- <script src="<?php echo base_url();?>assets/alertify/alertify.min.js"></script> -->
+<!-- Notify -->
+
 <!-- AdminLTE for demo purposes -->
 <!-- bootstrap datepicker -->
 <script type="text/javascript" src="<?php echo base_url();?>assets/moment/moment.min.js"></script>

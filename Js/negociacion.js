@@ -123,6 +123,7 @@ $.post(baseurl+"cNegociacion/ActualizarAvance",
 			var idNeg = item.idNegociacion;
 			var cont = item.cont;
 			var Status = item.StatusTarea;
+			if (Status!=='Pendiente Aceptar'){
 			$.ajax({
 				type:'POST',
 				url:baseurl+"cNegociacion/Actualizar"+Status,
@@ -131,6 +132,7 @@ $.post(baseurl+"cNegociacion/ActualizarAvance",
 
 				}
 			});
+			}
 		});
 	});
 });

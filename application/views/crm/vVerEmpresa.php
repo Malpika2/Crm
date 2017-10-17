@@ -32,7 +32,7 @@
                     <?php if(isset($row_Empresas->SitioWeb)){echo $row_Empresas->SitioWeb;} ?>
                 </li>
                 <li class="list-group-item">
-                <b>Representante:</b><br>
+                <b>Contacto Principal:</b><br>
                 <?php if (isset($row_Persona->Nombre)){?>
                   <a href="<?php echo base_url();?>/cPersona/verPersona/<?php echo $row_Persona->idPersona ?>"><?php echo $row_Persona->Nombre;?>
                   </a>
@@ -96,12 +96,12 @@
                           </tr>
                           <tr>
                               <td><b>Telefono Oficina</b></td>
-                              <td><?php echo $row_Empresas->Telefono; ?>&nbsp;<i class="fa fa-question-circle"></i>
+                              <td><?php echo $row_Empresas->Telefono; ?>&nbsp;<i id="fa" class="fa fa-question-circle"></i>
 </td>
                           </tr>
                           <tr>
                               <td><b>Telefono Personal</b></td>
-                              <td><?php echo $row_Empresas->Telefono2; ?>&nbsp;<i class="fa fa-question-circle"></i>
+                              <td><?php echo $row_Empresas->Telefono2; ?>&nbsp;<i id="fa2" class="fa fa-question-circle"></i>
 </td>
                           </tr>
                           <tr>
@@ -319,7 +319,7 @@
                     </tr>
                     <tr>
                       <td>
-                         <span class="col-md-12">Representante</span>
+                         <span class="col-md-12">Contacto Principal</span>
                         <div class="col-md-10" style="padding: 0px;">
                           <input type="text" class="col-md-12 form-control" id="RepresentanteEmp" autocomplete="off" value="<?php if(isset($row_Persona->Nombre)){echo $row_Persona->Nombre;} ?>">
                           <input type="hidden" class="col-md-12 form-control" id="idRepresentanteEmp" name="idRepresentanteEmp" value="<?php echo $row_Persona->idPersona; ?>">
@@ -701,7 +701,7 @@
               <div class="input-group">
                 <span class="input-group-addon"><b>Cargo</b></span>
                 <select class="form-control Cargo select2 formsNP" id="Cargo" name="Cargo">
-                  <option selected="true" value="Representante">Representante</option>
+                  <option selected="true" value="Representante">Contacto Principal</option>
                   <option selected="true" value="Contacto">Contacto</option>
                 </select>
               </div>

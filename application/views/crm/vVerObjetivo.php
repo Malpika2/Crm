@@ -117,4 +117,6 @@
 <script type="text/javascript">
   var baseurl = "<?php echo base_url();?>";
   var idObjetivos = "<?php echo $Objetivo->idObjetivos; ?>";
+    var idUsuarioActivo = "<?php echo $this->session->userdata('s_idUsuario');?>";
+
 </script>

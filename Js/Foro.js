@@ -91,7 +91,7 @@ function comentariosPorTema(){
                     $('#item'+item.idComentario+'').append(
                         '<button type="button" onclick="funcionclick('+item.idComentario+');" id="btnEditarComent" name="btnEditarComent" class="pull-right fa fa-edit" value="'+item.idComentario+'">'+
                         '</button>')}
-                    if (NombreUsuarioActivo==='Yasser') {
+                    if (NombreUsuarioActivo==='Anthony') {
                       $('#item'+item.idComentario+'').append(
                         '<button type="button" onclick="VistoComent(\'Visto\','+item.idComentario+');" id="btnVistoComent" name="btnVistoComent" class="pull-right fa fa-check btn btn-info btn-xs" value="Realizado">'+
                         'Visto</button>'+
@@ -241,8 +241,6 @@ $.post(baseurl+'cForo/getTareaForo',
 
 actTareaForo = function($idTareaForo){
   $status = $('#selectTareasForo'+$idTareaForo).val();
-  alert($status);
-  alert($idTareaForo);
     $.post(baseurl+'cForo/actTareaForo',
       {idTareaForo:$idTareaForo,status:$status},
       function(data){

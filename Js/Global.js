@@ -55,3 +55,54 @@ var options = {
 };
 $("#BuscadorHeaderP").easyAutocomplete(options); 
 });
+//Notificaciones
+$(document).ready(function() {
+    function Notificaciones(){
+    	// alert('1234');
+    }
+
+    // setInterval(Notificaciones, 3000);
+});
+
+$(document).ready(function(){
+  function getNotificaciones(){
+ 	$.post(baseurl+'cNotificaciones/getNotificaciones/',
+ 		{idUsuarioActivo:idUsuarioActivo},
+ 		function(data){
+  			$('#notificaciones_menu').html('');
+ 			var num_notificaciones=0;
+ 			var Notificaciones = JSON.parse(data);
+ 			$.each(Notificaciones,function(i,item){
+ 				num_notificaciones++;
+ 				$('#notificaciones_menu').append(
+ 				'<li class="divider"  id="item'+item.idNotificaciones+'"></li>'+
+ 					'<li class="col-md-12" style="padding:0px; margin:0px;" id="item2'+item.idNotificaciones+'">'+
+ 							'<a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'" class="col-md-10">'+
+								'<i class="fa fa-file-text-o text-green col-md-1" style="padding:0px; margin:0px;"></i>'+
+								'<div style="overflow:hidden; text-overflow:ellipsis; padding:0px;">'+item.TituloTarea+''+
+								'</div>'+
+ 					 		'</a>'+
+ 					 		'<button onClick="NotifVisto('+item.idNotificaciones+')" class=" btn btn-danger btn-xs"><i class="fa  fa-minus-square"></i></button>'+
+ 					'</li>'+
+ 					'<hr>')
+
+ 			});
+ 			if (num_notificaciones===0){
+ 				$('#notificaciones_menu').append('<li class="text-center">No hay notificaciones nuevas</li>');
+ 			}
+ 			$('#ContadorNotificaciones').html(num_notificaciones);
+
+ 		});
+ }
+ getNotificaciones();
+
+NotifVisto =  function($idNotificaciones){
+  	$('#notificaciones_menu').html('');
+	var idNotificacion=$idNotificaciones;
+	$.post(baseurl+'cNotificaciones/actNotificaciones/',
+		{idNotificacion:idNotificacion},
+		function(data){
+			getNotificaciones();
+		});
+}
+});

@@ -43,7 +43,7 @@ class cTareas extends CI_Controller
 					$data['row_Administrador'][$idTarea]['Administrador']=$this->mTareas->getAsignados($Tarea->idTarea);
 			}
 			$data['row_Tareas']=$Tareas;
-
+			
 
 
 
@@ -86,14 +86,29 @@ class cTareas extends CI_Controller
 		$status = $this->input->post('StatusFinal');
 		$resultado = $this->mTareas->StatusRealizada($id,$status);
 	}
+	public function StatusRechazar(){
+		$id = $this->input->post('idTarea');
+		$status = $this->input->post('StatusFinalRechazada');
+		$resultado = $this->mTareas->StatusRechazar($id,$status);
+	}
 	public function StatusCancelar(){
 		$id = $this->input->post('idTarea');
 		$status = $this->input->post('StatusFinal');
 		$resultado = $this->mTareas->StatusCancelar($id,$status);
 	}
+	public function StatusAceptar(){
+		$id = $this->input->post('idTarea');
+		$resultado = $this->mTareas->StatusAceptar($id);
+	}
 	public function getTareas(){
 		$tareas = $this->mTareas->getTareas_deObjetivosAll();
 		echo json_encode($tareas);
+	}
+	public function GuardarCambiosTarea(){
+		$idTarea=$this->input->post('idTarea');
+		$Categoria=$this->input->post('Categoria');
+		$Descripcion=$this->input->post('Descripcion');
+		$resultado = $this->mTareas->GuardarCambiosTarea($idTarea,$Categoria,$Descripcion);
 	}
 	
 

@@ -34,6 +34,7 @@
           <th>Origen</th>
           <th>Fecha Fin</th>
           <th id="Prioridad">Prioridad</th>
+          <th>Creada Por</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -45,12 +46,13 @@
           <th>Origen</th>
           <th>Fecha Fin</th>
           <th id="Prioridad">Prioridad</th>
+          <th>Creada Por</th>
           <th>Acciones</th>
         </tr>
       </tfoot>
       <tbody>
        <?foreach ($row_Tareas as $Tareas) {
-        if ($Tareas->StatusTarea!=='Realizada') {
+        if ($Tareas->StatusTarea!=='Realizada' && $Tareas->StatusTarea!=='Rechazada') {
           $Administradores="";
           $NAdmin="";
           $ActiveRealizada=false;
@@ -78,8 +80,9 @@
           <td><span class="text"><?php echo $Tareas->FechaFin; ?></span></td>
 
           <td><span class="text"><?php echo $Tareas->Prioridad; ?></span></td>
+          <td><?php echo $Tareas->NombreU ?></td>
 
-          <td class="text-center"><button onclick="ActualizarTarea(<?php echo $Tareas->idTarea?>)"  id="checkRealizada" type="button" value="<?php $Tareas->idTarea;?>" <?php if ($ActiveRealizada==false){ echo "disabled";} ?> class="btn btn-success"><i class="fa fa-check">Realizada</i></button></td>
+          <td class="text-center"><button onclick="ActualizarTarea(<?php echo $Tareas->idTarea?>)"  id="checkRealizada" type="button" value="<?php $Tareas->idTarea;?>" <?php if ($ActiveRealizada==false OR $Tareas->StatusTarea=="Pendiente Aceptar"){ echo "disabled";} ?> class="btn btn-success"><i class="fa fa-check"><?php if ($Tareas->StatusTarea=="Pendiente Aceptar"){ echo "Pendiente Aceptar";}else{ echo "Relizada";}?></i></button></td>
 
         </tr>
         <? } }?>
