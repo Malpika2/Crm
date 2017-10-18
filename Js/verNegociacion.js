@@ -283,7 +283,7 @@ $.post(baseurl+"cGetUsuarios/getUsuarios",
   function(data){
     var emp = JSON.parse(data);
     $.each(emp,function(i,item){
-      $('#Asignados').append('<option value="'+item.idUsuario+'">'+item.Nombre+' '+item.Paterno+'</option>');
+      $('#Asignados').append('<option value="'+item.idUsuario+'">'+item.Nombre+'</option>');
       });
   });
 
