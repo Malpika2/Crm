@@ -75,7 +75,6 @@ $(document).ready(function(){
  			$.each(Notificaciones,function(i,item){
  				num_notificaciones++;
  				$('#notificaciones_menu').append(
- 				'<li class="divider"  id="item'+item.idNotificaciones+'"></li>'+
  					'<li class="col-md-12" style="padding:0px; margin:0px;" id="item2'+item.idNotificaciones+'">'+
  							'<a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'" class="col-md-10">'+
 								'<i class="fa fa-file-text-o text-green col-md-1" style="padding:0px; margin:0px;"></i>'+
@@ -83,8 +82,7 @@ $(document).ready(function(){
 								'</div>'+
  					 		'</a>'+
  					 		'<button onClick="NotifVisto('+item.idNotificaciones+')" class=" btn btn-danger btn-xs"><i class="fa  fa-minus-square"></i></button>'+
- 					'</li>'+
- 					'<hr>')
+ 					'</li>')
 
  			});
  			if (num_notificaciones===0){

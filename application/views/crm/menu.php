@@ -5,8 +5,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image ">
-<!--           <img src="<?php echo base_url();?>assets/dist/img/avatar04.png" class="img-circle" alt="User Image"> -->  
-          &nbsp;<i class="fa fa-user fa-2x" style="color:white"></i>      
+          &nbsp;<i class="fa fa-user fa-2x" style="color:white"></i>     
       </div>
         <div class="pull-left info">
           <p class="h5"></p><?php echo $this->session->userdata('s_Usuario');?> 
@@ -45,23 +44,6 @@
             </li>
           </ul>
         </li>
-<!--         <li id="linkMenuNegociacion" class="treeview">
-          <a id="" href="<?php echo base_url();?>cNegociacion">
-            <i class="fa fa-calendar"></i>
-            <span>Objetivos</span>
-            <span class="pull-right-container">
-              <span class="label label-primary pull-right"></span>
-            </span>
-          </a>
-        </li>
-        <li id="linkMenuTareas" class="treeview">
-          <a id="" href="<?php echo base_url();?>cTareas">
-            <i class="fa  fa-file-text-o"></i> <span>Tareas</span>
-            <span class="pull-right-container">
-            <span class="label label-primary pull-right"></span>
-            </span>
-          </a>
-        </li> -->
         <li class="header" style="color:white">Usuario</li>
         <li id="linkMenuObjetivos" class="treeview">
           <a id="" href="<?php echo base_url();?>CObjetivos">
@@ -69,12 +51,6 @@
             <span>Objetivos internos</span>
           </a>
         </li>
-      <!--   <li class="treeview">
-          <a href="<?php echo base_url();?>cNotas">
-            <i class="fa fa-clone"></i>
-            <span>Notas</span>
-          </a>
-        </li> -->
         <li id="linkMenuForo" class="treeview">
           <a id="" href="<?php echo base_url();?>cForo">
             <i class="fa fa-comment"></i>

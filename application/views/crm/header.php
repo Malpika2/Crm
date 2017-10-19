@@ -25,11 +25,11 @@
 }
 #BuscadorHeader{
 width: 100%;
-padding: 0px !important;
+padding: 5px 5px !important;
 }
 #BuscadorHeaderP{
-  width: 100%;
-padding: 0px !important;
+width: 100% !important;
+padding: 5px 5px !important;
 }
 .select2 {
 
@@ -106,10 +106,7 @@ padding: 0px !important;
 <script src="<?php echo base_url();?>assets/bootstrap-notify/bootstrap-notify.js"></script>
 <script src="<?php echo base_url();?>assets/bootstrap-notify/bootstrap-notify.min.js"></script>
 </head>
-
-<body class="hold-transition skin-blue sidebar-mini">
-
-    <script type="text/javascript">
+<script type="text/javascript">
   var NombreUsuarioActivo = "User<?php echo $this->session->userdata('s_idUsuario'); ?>"
 
     // Pusher.log = function(message) {
@@ -159,111 +156,115 @@ $.notify({
 
       });
   </script>
-
+<body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="#" class="logo" style="height: 59px">
+    <a href="<?php echo base_url('cInicio'); ?>" class="logo" style="height: 59px">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b></b>SPP</span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg text-center">
      <b>C.R.M</b>
-      <!-- <img src="<?php echo base_url();?>assets/dist/img/FU<! NDEPPO.jpg" class="img-responsive" style="height: 74px; width: 140px; display:inline;"> -->
       </span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
-  <!--     <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-        <span class="sr-only">Toggle navigation</span>
-      </a> -->
-      <div class="col-md-9 text-center DivsNP2">
-        <div class="col-md-6 DivsNP2">
-          <input id="BuscadorHeaderP" class="form-control col-md-12" type="text" placeholder="Buscar Persona" />
-        </div>
+      <div class="navbar-custom-menu" style="float: left; width: 95%;">
+        <ul class="nav navbar-nav" style="width: 100%">
+          <li class="" style="padding: 15px 5% 0px 5%">
+            <div class="">
+              <input id="BuscadorHeaderP" class="form-control" type="text" placeholder="Buscar Persona">
+            </div>
+          </li>
+          <li style="padding: 15px 5% 0px 5%">
+            <div class="">          
+              <input type="text" class="form-control" name="BuscadorHeader" id="BuscadorHeader" placeholder="Buscar Empresas">
+            </div>
+          </li>
 
-        <div class="col-md-6 DivsNP2">          
-            <input type="text" class="form-control col-md-12" name="BuscadorHeader" id="BuscadorHeader" placeholder="Buscar Empresas">
-        </div>
-      </div>
-      <div class="col-md-3 DivsNP2">
-      <div class="navbar-custom-menu DivsNP2" style="float: left; padding: 0% 0px 0px 0px;">
-        <ul class="nav navbar-nav">
-          <!-- Notifications: style can be found in dropdown.less -->
-
-              <li class="dropdown notifications-menu">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" style="border-radius: 10px; margin:0px 10px 0px 0px; ">Crear
-                    <span class="caret"></span>
-                    <span class="sr-only">Toggle Dropdown</span>
-                  </button>
-                  <ul class="dropdown-menu" role="menu">
-                  <li>
-                    <a href="<?php echo base_url();?>cPersona">
-                      <i class="fa fa-user-plus text-aqua"></i>Persona
-                    </a>
-                  </li>
-                    <li class="divider"></li>
-                  <li>
-                    <a href="<?php echo base_url();?>cEmpresa">
+            
+          <li class="dropdown messages-menu">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown">
+               <button type="button" class="btn btn-success" style="border-radius: 10px; margin:0px 10px 0px 0px; ">Crear
+                  <span class="caret"></span>
+              </button>
+            </a>
+            <ul class="dropdown-menu">
+                <li class="header">Nueva:</li>
+                <li>
+                  <ul class="menu">
+                    <li>
+                      <a href="<?php echo base_url();?>cPersona">
+                        <i class="fa fa-user-plus text-aqua"></i>Persona
+                      </a>                      
+                    </li>
+                    <li>
+                      <a href="<?php echo base_url();?>cEmpresa">
                       <i class="fa fa-university text-yellow"></i>Empresa
-                    </a>
-                  </li>
-                    <li class="divider"></li>
-                  <li>
-                    <a href="<?php echo base_url();?>cNegociacion/nuevaNegociacion">
+                      </a>
+                    </li>
+                    <li>
+                      <a href="<?php echo base_url();?>cNegociacion/nuevaNegociacion">
                       <i class="fa fa-briefcase text-red"></i>Objetivo
-                    </a>
-                  </li>
-                    <li class="divider"></li>
-                  <li>
-                    <a href="<?php echo base_url();?>cTareas">
+                      </a>
+                    </li>
+                    <li>
+                      <a href="<?php echo base_url();?>cTareas">
                       <i class="fa fa-file-text-o text-green"></i>Tarea
-                    </a>
-                  </li>
+                      </a>
+                    </li>
                   </ul>
-                </div>
-              </li>              
-              <li class="dropdown notifications-menu">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-danger dropdown-toggle btn-menuHeader" data-toggle="dropdown" style="border-radius: 10px; margin: 0px 5px;">Eliminar
-                    <span class="caret"></span>
-                    <span class="sr-only">Toggle Dropdown</span>
-                  </button>
-                  <ul class="dropdown-menu" role="menu">
+                </li>
+            </ul>
+          </li>
+          <li class="dropdown notifications-menu">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown">
+              <button type="button" class="btn btn-danger btn-menuHeader" style="border-radius: 10px; margin: 0px 5px;">Eliminar
+                <span class="caret"></span>
+              </button>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="header">Eliminar</li>
+              <li>
+                <ul class="menu">
                   <li>
                     <a href="<?php echo base_url();?>cPersona/verEliminarPersona">
                       <i class="fa  fa-user-times text-aqua"></i>Persona
                     </a>
                   </li>
-                    <li class="divider"></li>
                   <li>
                     <a href="<?php echo base_url();?>cEmpresa/verEliminarEmpresa">
                       <i class="fa  fa-university text-yellow"></i>Empresa
                     </a>
                   </li>
-                    <li class="divider"></li>
                   <li>
                     <a href="<?php echo base_url();?>cNegociacion/verEliminarNegociacion">
                       <i class="fa fa-briefcase text-red"></i>Objetivo
                     </a>
                   </li>
-                  </ul>
-                </div>
-              </li>
-             <li class="dropdown notifications-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding-top: 5px; padding-bottom: 2px">
-                  <i class="fa  fa-exclamation-circle fa-2x"></i>
-                  <span class="label label-primary" id="ContadorNotificaciones" style="font-size: 1em; top: 3px;"></span>
-                </a>
-                <ul class="dropdown-menu" role="menu" id="notificaciones_menu" name="notificaciones_menu" style="border-radius: 5px">
                 </ul>
               </li>
+            </ul>
+          </li>
+          <li class="dropdown notifications-menu">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown" style="margin-bottom:7px;">
+                  <i class="fa  fa-exclamation-circle fa-2x"></i>
+                  <span class="label label-primary" id="ContadorNotificaciones" style="font-size: 1em; top: 5px;"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="header">Notificaciones:</li>
+              <li>
+                <ul class="menu" id="notificaciones_menu" name="notificaciones_menu">
+                </ul>
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
-      </div>
+
     </nav>
   </header>
   <script type="text/javascript">
