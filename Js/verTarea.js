@@ -128,7 +128,7 @@ $("#mbtnEnviarRechazada").click(function(){
         StatusFinalRechazada:StatusFinalRechazada
       },
       function(data){
-        location.reload(); 
+        actNotificacionesRechazada_Leida(idTarea);
         $('#mbtnCancelarR').click();
       }
 
@@ -140,17 +140,29 @@ AceptarTarea = function(){
         idTarea:idTarea,
       },
       function(data){
-        location.reload(); 
+        actNotificacionesRechazada_Leida(idTarea);
       }
-
     );
+       // location.reload();
 }
+ actNotificacionesRechazada_Leida = function($idTarea){
+  $.post(baseurl+'cTareas/actNotificacionesRechazada_Leida/',
+    {
+      idTarea:$idTarea,
+      idUduarioActivo:idUsuarioActivo
+    },
+    function(data){
+      location.reload();
+    });
+ }
+
 $('#btnEditarTarea').click(function(){
   $('#Categoria').prop('disabled',false);
   $('#Descripcion').prop('disabled',false);
   $('#btnGuardarCambiosTarea').removeClass('hidden');
   $('#btnEditarTarea').addClass('hidden');
 });
+
 $('#btnGuardarCambiosTarea').click(function(){
 var Categoria= $('#Categoria').val();
 var Descripcion = $('#Descripcion').val();

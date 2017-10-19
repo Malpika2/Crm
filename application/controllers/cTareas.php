@@ -10,6 +10,7 @@ class cTareas extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('crm/mTareas');
+		$this->load->model('crm/mNotificaciones');
 	}
 	public function index(){
 		$Tareas_tmp = array();
@@ -44,11 +45,6 @@ class cTareas extends CI_Controller
 			}
 			$data['row_Tareas']=$Tareas;
 			
-
-
-
-
-
 			$this->load->view('crm/header');
 			$this->load->view('crm/menu');
 			$this->load->view('crm/vTareas',$data);
@@ -86,11 +82,6 @@ class cTareas extends CI_Controller
 		$status = $this->input->post('StatusFinal');
 		$resultado = $this->mTareas->StatusRealizada($id,$status);
 	}
-	public function StatusRechazar(){
-		$id = $this->input->post('idTarea');
-		$status = $this->input->post('StatusFinalRechazada');
-		$resultado = $this->mTareas->StatusRechazar($id,$status);
-	}
 	public function StatusCancelar(){
 		$id = $this->input->post('idTarea');
 		$status = $this->input->post('StatusFinal');
@@ -98,7 +89,18 @@ class cTareas extends CI_Controller
 	}
 	public function StatusAceptar(){
 		$id = $this->input->post('idTarea');
+		$this->mNotificaciones->actNotificacionesRechazada_Leida($id);
 		$resultado = $this->mTareas->StatusAceptar($id);
+	}
+	public function StatusRechazar(){
+		$id = $this->input->post('idTarea');
+		$status = $this->input->post('StatusFinalRechazada');
+		$resultado = $this->mTareas->StatusRechazar($id,$status);
+	}
+	public function actNotificacionesRechazada_Leida(){
+		$id = $this->input->post('idTarea');
+		$idUsuarioActivo = $this->input->post('idUduarioActivo');
+		$resultado = $this->mNotificaciones->actNotificacionesRechazada_Leida($id,$idUsuarioActivo);
 	}
 	public function getTareas(){
 		$tareas = $this->mTareas->getTareas_deObjetivosAll();

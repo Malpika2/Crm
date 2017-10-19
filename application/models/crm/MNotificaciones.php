@@ -8,12 +8,12 @@ class mNotificaciones extends CI_Model
 	{
 		parent::__construct();
 	}
-	public function getNotificaciones($idUsuarioActiavo){
+	public function getNotificaciones($idUsuarioActivo){
 		$this->db->select('*');
 		$this->db->from('Notificaciones');
 		$this->db->join('Tareas','Tareas.idTarea=Notificaciones.idTarea');
 		$this->db->join('Usuarios','Usuarios.idUsuario=Notificaciones.idUsuario');
-		$this->db->where('Notificaciones.idUsuario',$idUsuarioActiavo);
+		$this->db->where('Notificaciones.idUsuario',$idUsuarioActivo);
 		$this->db->where('Notificaciones.statusNotificacion','No Leida');
 		$this->db->order_by('Notificaciones.Fecha_Creacion','ASC');
 		$s = $this->db->get();
@@ -22,6 +22,13 @@ class mNotificaciones extends CI_Model
 	public function actNotificaciones($s){
 		$this->db->set('statusNotificacion','Leida');
 		$this->db->where('idNotificaciones',$s);
+		$this->db->update('Notificaciones'); 
+		return true;
+	}
+	public function actNotificacionesRechazada_Leida($idTarea,$idUsuarioActivo){
+		$this->db->set('statusNotificacion','Leida');
+		$this->db->where('idTarea',$idTarea);
+		$this->db->where('idUsuario',$idUsuarioActivo);
 		$this->db->update('Notificaciones'); 
 		return true;
 	}
