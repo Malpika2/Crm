@@ -1,7 +1,6 @@
 mostrarTareasObjetivos();
 
 $('#form, #fat, #formComentarios').submit(function() {
-  alert('koko');
           $.ajax({
               type: 'POST',
               url: $(this).attr('action'),

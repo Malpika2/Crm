@@ -21,8 +21,8 @@ $.post(baseurl+"cGetComentarios/getComentarios_Por_Tarea",
     var emp = JSON.parse(data);
     $.each(emp,function(i,item){
       $('#ListaTareas').append(
-        '<div class="box box-info collapsed-box bg-info">'+
-            '<div class="box-header with-border bg-info">'+
+        '<div class="box box-info collapsed-box">'+
+            '<div class="box-header with-border">'+
                   '<div class="user-block">'+
                     // '<img class="img-circle img-bordered-sm" src="'+baseurl+'assets/dist/img/'+item.url_foto+'" alt="">'+
                         '<span class="username">'+
@@ -61,8 +61,8 @@ $.post(baseurl+"cGetComentarios/getComentarios_Por_Tarea",
     var emp = JSON.parse(data);
     $.each(emp,function(i,item){
       $('#ListaTareas').append(
-        '<div class="box box-info collapsed-box bg-info">'+
-            '<div class="box-header with-border bg-info">'+
+        '<div class="box box-info collapsed-box ">'+
+            '<div class="box-header with-border ">'+
                   '<div class="user-block">'+
                     // '<img class="img-circle img-bordered-sm" src="'+baseurl+'assets/dist/img/'+item.url_foto+'" alt="">'+
                         '<span class="username">'+

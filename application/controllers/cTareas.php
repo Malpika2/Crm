@@ -27,7 +27,7 @@ class cTareas extends CI_Controller
               $data['ObjetivoSignal'][$idTarea]= '<span class=""><a href="'.base_url().'cPersona/verNegociacion/'.$Tarea->idNegociacion.'">OBJETIVO</a></span>';
             }
           }
-          else if($Tarea->idPersonaPer>0){
+          else if($Tarea->idPersonaPer>0){//Si es tarea de  una persona
             $data['verContacto'][$idTarea] = base_url().'cPersona/verPersona/'.$Tarea->idPersonaPer;
             $data['NombreContacto'][$idTarea] = $Tarea->Nombre;
               if ($Tarea->idNegociacion!==null) {

@@ -127,7 +127,7 @@ class mTareas extends CI_Model
 			$this->db->update('Tareas',$data);
 			return true;
 		}
-public function tareaNoRealizada($s){
+		public function tareaNoRealizada($s){
 			$data = array(
 				'StatusTarea' => 'Activa','StatusFinal' => '');
 			$this->db->where('idTarea',$s);
@@ -150,6 +150,9 @@ public function tareaNoRealizada($s){
 			$this->db->join('Personas','Personas.idPersona=Tareas.idPersona','left');
 			$this->db->join('Usuarios','Usuarios.idUsuario=Tareas.idUsuarioCrea','left');
 			// $this->db->where('Participantes_Tareas.idUsuario',$s);
+			if ($s!==null) {
+			$this->db->where('Tareas.idTarea',$s);				
+			}
 			$this->db->group_by('Tareas.idTarea');
 			$this->db->order_by('Tareas.FechaFin','DESC');
 			$s = $this->db->get();
@@ -306,6 +309,15 @@ public function tareaNoRealizada($s){
 	 	$this->db->where('idTarea',$idTarea);
 	 	$this->db->update('Tareas',$data);
 	 	return true;
+	 }
+	 public function getEmpresaPorTarea($idTarea){
+	 	$this->db->select('*');
+	 	$this->db->from('Tareas');
+	 	$this->db->join('Empresas','Empresas.idEmpresa=Tareas.idEmpresa');
+	 	$this->db->where('idTarea',$idTarea);
+	 	$r = $this->db->get();
+	 	return $r->result();
+
 	 }
 
 }

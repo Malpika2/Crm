@@ -78,11 +78,18 @@ $param['DatosFiscalesPersona'] = $this->input->post('DatosFiscalesPersona');
 	public function verTarea($idTarea){
 
 		if($this->session->userdata('s_login')==1){
-
-		$data['row_Tareas'] = $this->mTareas->getTarea($idTarea);
+		$row_Tareas = $this->mTareas->getTarea($idTarea);
+		$data['row_Tareas'] = $row_Tareas;
 		$data['row_Asignados'] = $this->mTareas->getAsignados($idTarea);
 		$data['row_EmpParticipantes']= $this->mTareas->getEmp_Participantes($idTarea);
 		$data['row_PersonasParticipantes']= $this->mTareas->getPersonas_Participantes($idTarea);
+		$data['row_Empresa'] = $this->mGetEmpresas->getEmpresaPorId($row_Tareas->idEmpresa);
+		$data['row_Objetivo'] = $this->mNegociacion->getNegociacion($row_Tareas->idNegociacion);
+		$data['row_Persona'] = $this->mGetPersonas->getPersonaPorId($row_Tareas->idPersona);
+
+		// $Tareas = $this->mTareas->getTareas_deEmpresas_PorUsuario();
+		// $data['row_Tareas'] = $this->mTareas->getTareas_deEmpresas_PorUsuario($idTarea);
+
 
 
 		$this->load->view('crm/header');
@@ -179,6 +186,9 @@ $param['DatosFiscalesPersona'] = $this->input->post('DatosFiscalesPersona');
 		foreach ($_POST['Asignados'] as $asignados_value){
 			$paramTarea['Asignados'] = $paramTarea['Asignados'].','.$asignados_value;
 			}
+		}else
+		{
+			$paramTarea['Asignados']=$param['idPersona'];
 		}
 		$ultimaTarea=$this->mTareas->guardarTarea($paramTarea);
 		$paramTarea['UltimaTarea']=$ultimaTarea;
