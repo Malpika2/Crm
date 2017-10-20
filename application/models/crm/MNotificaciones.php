@@ -8,6 +8,15 @@ class mNotificaciones extends CI_Model
 	{
 		parent::__construct();
 	}
+	public function crearNotificacion($tarea){
+		$campos = array(
+			'idTarea' => $tarea->idTarea,
+			'idUsuario' => $tarea->idUsuarioCrea);
+		$this->db->insert('Notificaciones',$campos);
+		if($this->db->affected_rows()>0){
+			return true;
+		}
+	}
 	public function getNotificaciones($idUsuarioActivo){
 		$this->db->select('*');
 		$this->db->from('Notificaciones');

@@ -89,13 +89,45 @@ class cTareas extends CI_Controller
 	}
 	public function StatusAceptar(){
 		$id = $this->input->post('idTarea');
-		$this->mNotificaciones->actNotificacionesRechazada_Leida($id);
+		$this->GenerarNotificacion($id,'Tarea Aceptada');
 		$resultado = $this->mTareas->StatusAceptar($id);
 	}
 	public function StatusRechazar(){
 		$id = $this->input->post('idTarea');
 		$status = $this->input->post('StatusFinalRechazada');
+		$this->GenerarNotificacion($id,'Tarea Rechazada',$status);
 		$resultado = $this->mTareas->StatusRechazar($id,$status);
+	}
+	public function GenerarNotificacion($idTarea,$Encabezado,$status=null)
+	{
+		$tarea = $this->mTareas->getTarea($idTarea);
+		$pusher = $this->ci_pusher->get_pusher();
+
+		// Set message
+		$data['Encabezado']=$Encabezado;
+		$data['message'] = $tarea->TituloTarea;
+		if ($status==null) {
+		$data['message2']= '';
+		$data['type']='success';
+		}else {
+		$data['type']='danger';
+		$data['message2']= 'Razon: '.$status.'.';
+		}
+		
+
+		// Send message
+		$canal = 'User'.$tarea->idUsuarioCrea;
+		$event = $pusher->trigger($canal, 'Notificacion', $data);
+
+		if ($event === TRUE)
+		{
+			echo 'Event triggered successfully!';
+		}
+		else
+		{
+			echo 'Ouch, something happend. Could not trigger event.';
+		}
+		$this->mNotificaciones->crearNotificacion($tarea);
 	}
 	public function actNotificacionesRechazada_Leida(){
 		$id = $this->input->post('idTarea');

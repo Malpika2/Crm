@@ -52,7 +52,7 @@
       </tfoot>
       <tbody>
        <?foreach ($row_Tareas as $Tareas) {
-        if ($Tareas->StatusTarea!=='Realizada' && $Tareas->StatusTarea!=='Rechazada') {
+        if ($Tareas->StatusTarea!=='Realizada' && $Tareas->StatusTarea!=='Rechazada' && $Tareas->StatusTarea!=='Cancelada') {
           $Administradores="";
           $NAdmin="";
           $ActiveRealizada=false;
@@ -68,20 +68,22 @@
             }            
         ?>
         <tr id="<?php echo $NAdmin; ?>">
+          <!-- Nombre TAREA-->
           <td><span class="text LinkTarea"><a href="<?php base_url()?>cPersona/verTarea/<?php echo $Tareas->idTarea; ?>"><?php echo $Tareas->TituloTarea;?></a></span></td>
-
+          <!-- Nombre Contacto-->
           <td><span class="text linkContacto"><a href="<?php echo $verContacto[$Tareas->idTarea];?>"><?php echo $NombreContacto[$Tareas->idTarea];?></a></span></td>
-
-          <td><?php echo $Administradores; ?>
-
+          <!-- Nombre Administrador-->
+          <td><?php echo $Administradores; ?></td>
+          <!-- Origen-->
           <td><?php if(isset($ObjetivoSignal[$Tareas->idTarea])){ echo $ObjetivoSignal[$Tareas->idTarea];}else{ echo "Independiente";}?></td>
 
-          </td>
+            <!-- Fecha Fin-->
           <td><span class="text"><?php echo $Tareas->FechaFin; ?></span></td>
-
+            <!-- Nombre Prioridad-->
           <td><span class="text"><?php echo $Tareas->Prioridad; ?></span></td>
+            <!-- Nombre del usuario que la crea-->
           <td><?php echo $Tareas->NombreU ?></td>
-
+            <!-- Acciones -->
           <td class="text-center"><button onclick="ActualizarTarea(<?php echo $Tareas->idTarea?>)"  id="checkRealizada" type="button" value="<?php $Tareas->idTarea;?>" <?php if ($ActiveRealizada==false OR $Tareas->StatusTarea=="Pendiente Aceptar"){ echo "disabled";} ?> class="btn btn-success"><i class="fa fa-check"><?php if ($Tareas->StatusTarea=="Pendiente Aceptar"){ echo "Pendiente Aceptar";}else{ echo "Relizada";}?></i></button></td>
 
         </tr>

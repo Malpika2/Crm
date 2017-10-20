@@ -120,10 +120,14 @@ padding: 5px 5px !important;
     presenceChannelUser.bind('Notificacion', function(data) {
 
 $.notify({
-  title: '<strong><p>Tienes una nueva tarea:</p></strong>',
-  message:'<div style="text-overflow:ellipsis; white-space: nowrap; overflow:hidden; width:100%;">'+data.message+'</div>'
+  title: '<strong><p>'+data.Encabezado+'</p></strong>',
+  message:'<div style="text-overflow:ellipsis; white-space: nowrap; overflow:hidden; width:100%;">'+data.message+'</div><div>'+data.message2+'</div>'
 },{
-  type: 'success'
+  type: ''+data.type+'',
+  animate: {
+    enter: 'animated fadeInDown',
+    exit: 'animated fadeOutUp'
+  }
 });
 
   $.post(baseurl+'cNotificaciones/getNotificaciones/',
@@ -172,7 +176,7 @@ $.notify({
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
-      <div class="navbar-custom-menu" style="float: left; width: 95%;">
+      <div class="navbar-custom-menu" style="float: right; width: 100%;">
         <ul class="nav navbar-nav" style="width: 100%">
           <li class="" style="padding: 15px 5% 0px 5%">
             <div class="">
@@ -187,7 +191,7 @@ $.notify({
 
             
           <li class="dropdown messages-menu">
-            <a href="" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown" style="padding-left: 0px; padding-right: 0px;">
                <button type="button" class="btn btn-success" style="border-radius: 10px; margin:0px 10px 0px 0px; ">Crear
                   <span class="caret"></span>
               </button>
@@ -221,7 +225,7 @@ $.notify({
             </ul>
           </li>
           <li class="dropdown notifications-menu">
-            <a href="" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown" style="padding-left: 0px; padding-right: 0px;">
               <button type="button" class="btn btn-danger btn-menuHeader" style="border-radius: 10px; margin: 0px 5px;">Eliminar
                 <span class="caret"></span>
               </button>
@@ -250,7 +254,7 @@ $.notify({
             </ul>
           </li>
           <li class="dropdown notifications-menu">
-            <a href="" class="dropdown-toggle" data-toggle="dropdown" style="margin-bottom:7px;">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown" style="margin-bottom:7px; padding-left: 0px; padding-right: 0px;">
                   <i class="fa  fa-exclamation-circle fa-2x"></i>
                   <span class="label label-primary" id="ContadorNotificaciones" style="font-size: 1em; top: 5px;"></span>
             </a>

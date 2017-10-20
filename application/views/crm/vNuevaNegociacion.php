@@ -1,10 +1,3 @@
-    <section class="content-header">
-      <ol class="breadcrumb">
-        <li><a href="<?php echo base_url();?>cInicio"><i class="fa fa-map-signs"></i>Inicio</a></li>
-        <li class="active">Nuevo Objetivo</li>
-      </ol>
-    </section>
-
   <section class="content" style="padding-top: 4em">
     <div class="container-fluid">
       <div class="row">

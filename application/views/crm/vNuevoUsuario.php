@@ -1,9 +1,4 @@
-    <section class="content-header">
-      <ol class="breadcrumb">
-        <li><a href="<?php echo base_url();?>cInicio"><i class="fa fa-map-signs"></i>Inicio</a></li>
-        <li class="active">Registrar Usuario</li>
-      </ol>
-    </section>
+
     <!-- Main content -->
     <section class="content">
     <div class="container-fluid">

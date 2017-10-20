@@ -210,7 +210,7 @@ $MostrarBotonesAceptar=false;
         <div class="row">
         <div class="col-md-12">
         <label>Razón:</label>
-          <textarea id="StatusFinalRechazada" class="form-control col-md-12 text-black"></textarea>
+          <textarea id="StatusFinalRechazada" name="StatusFinalRechazada" class="form-control col-md-12 text-black"></textarea>
         </div>
         </div>
       </div>

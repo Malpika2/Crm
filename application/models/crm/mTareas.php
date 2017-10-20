@@ -57,7 +57,10 @@ class mTareas extends CI_Model
 		$pusher = $this->ci_pusher->get_pusher();
 
 		// Set message
+		$data['Encabezado']='Tienes una Nueva Tarea:';
 		$data['message'] = $TituloTarea;
+		$data['message2']= '';
+		$data['type']='warning';
 
 		// Send message
 		$canal = 'User'.$s;
