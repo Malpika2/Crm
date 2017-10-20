@@ -90,7 +90,12 @@ function comentariosPorTema(){
                   if (item.idUsuarioc==idUsuarioActivo){
                     $('#item'+item.idComentario+'').append(
                         '<button type="button" onclick="funcionclick('+item.idComentario+');" id="btnEditarComent" name="btnEditarComent" class="pull-right fa fa-edit" value="'+item.idComentario+'">'+
-                        '</button>')}
+                        '</button>');
+                                      if (item.Visto!=='3'){
+                      $('#item'+item.idComentario+'').append('<button type="button" onclick="AddTareaForo('+item.idComentario+');" id="btn_addTareaForo'+item.idComentario+'" name="btn_addTareaForo'+item.idComentario+'" class="pull-right fa fa-share-square-o btn btn-primary btn-xs" value="Realizado">'+
+                        'Generar Tarea</button>');
+                    }
+                  }
                     if (NombreUsuarioActivo==='Anthony') {
                       $('#item'+item.idComentario+'').append(
                         '<button type="button" onclick="VistoComent(\'Visto\','+item.idComentario+');" id="btnVistoComent" name="btnVistoComent" class="pull-right fa fa-check btn btn-info btn-xs" value="Realizado">'+
@@ -108,11 +113,6 @@ function comentariosPorTema(){
                     if (item.Visto=='3') {
                       $('#divCheck'+item.idComentario).append('<small class="bg-green label">Realizado</small>');
                     }            
-                    if (item.Visto!=='3'){
-                      $('#item'+item.idComentario+'').append('<button type="button" onclick="AddTareaForo('+item.idComentario+');" id="btn_addTareaForo'+item.idComentario+'" name="btn_addTareaForo'+item.idComentario+'" class="pull-right fa fa-share-square-o btn btn-primary btn-xs" value="Realizado">'+
-                        'Generar Tarea</button>');
-                    }
-
               	});
 
           	}

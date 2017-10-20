@@ -30,7 +30,7 @@
 		<div class="col-md-4" style="padding-top: 80px;">
 			<div class="box box-info">
 				<div id="divTitleTarea" class="box-header text-center ">
-					<label id="Tarea" class="h2" style="margin: 0px"><small>Para consultar la información de un evento: hacer clic en el calendario sobre el nombre del evento</small></label>
+					<label id="Tarea" class="h2" style="margin: 0px"><smallPara consultar la información de una tarea, hacer clic en el calendario</label>
 				</div>
 				<div class=" box box-body">
 					<label for="Categoria">Categoria</label>

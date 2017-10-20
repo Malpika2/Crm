@@ -25,7 +25,7 @@
     <li class="active"><a data-toggle="tab" href="#TareasActivas">Tareas Activas</a></li>
     <li><a data-toggle="tab" href="#TareasNoActivas">Tareas Realizadas/Rechazadas/Canceladas</a></li>
   </ul>
-    <select id="FiltroTareas" name="FiltroTareas" class="btn-link" onchange="filtrarTareas()">
+    <select id="FiltroTareas" name="FiltroTareas" class=" btn btn-info" onchange="filtrarTareas()">
     <option value="" selected="true">Tareas de todos los usuarios</option>
 </select>
 
