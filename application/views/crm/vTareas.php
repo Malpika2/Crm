@@ -17,12 +17,20 @@
 
 </style>
 <section class="content-header">
-<select id="FiltroTareas" name="FiltroTareas" class="btn-link" onchange="filtrarTareas()">
-    <option value="" selected="true">Tareas de todos los usuarios</option>
-</select>
+
 </section>
 
 <section class="content">
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#TareasActivas">Tareas Activas</a></li>
+    <li><a data-toggle="tab" href="#TareasNoActivas">Tareas Realizadas/Rechazadas/Canceladas</a></li>
+  </ul>
+    <select id="FiltroTareas" name="FiltroTareas" class="btn-link" onchange="filtrarTareas()">
+    <option value="" selected="true">Tareas de todos los usuarios</option>
+</select>
+
+  <div class="tab-content">
+  <div id="TareasActivas" class="tab-pane fade in active">
   <div class="table-responsive">
   <input type="hidden" name="column2_search" id="column2_search" class="select-filter" value="<?php  ?>">
     <table class="table table-responsive table-hover" id="TablaTareas">
@@ -94,143 +102,84 @@
         </div>
     </table>
   </div>
+</div>
+  <div id="TareasNoActivas" class="tab-pane fade">
+      <div class="table-responsive">
+  <input type="hidden" name="column2_search" id="column2_search" class="select-filter" value="<?php  ?>">
+    <table class="table table-responsive table-hover" id="TablaTareasNoActivas">
+      <thead>
+        <tr>
+          <th>Tarea</th>
+          <th>Contacto</th>
+          <th>Administrador</th>
+          <th>Origen</th>
+          <th>Fecha Fin</th>
+          <th id="Prioridad">Status</th>
+          <th>Creada Por</th>
+          <th>Razón</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <th>Tarea</th>
+          <th>Contacto</th>
+          <th>Administrador</th>
+          <th>Origen</th>
+          <th>Fecha Fin</th>
+          <th id="Prioridad">Status</th>
+          <th>Creada Por</th>
+          <th>Razón</th>
+        </tr>
+      </tfoot>
+      <tbody>
+       <?foreach ($row_Tareas as $Tareas) {
+        if ($Tareas->StatusTarea=='Realizada' || $Tareas->StatusTarea=='Rechazada' || $Tareas->StatusTarea=='Cancelada') {
+          $Administradores="";
+          $NAdmin="";
+          $ActiveRealizada=false;
+          $prueba = json_encode($Tareas);
 
+            foreach ($row_Administrador[$Tareas->idTarea]['Administrador'] as $admin) {
+              $Administradores= $Administradores.'&nbsp;<small> <i class=" text-muted fa fa-user"></i></small>'.$admin->Nombre;
+              $NAdmin = $admin->Nombre.' '.$NAdmin;
+              if ($admin->idUsuario===$this->session->userdata('s_idUsuario')) {
+                $ActiveRealizada=true;  
+              }
+              
+            }            
+        ?>
+        <tr id="<?php echo $NAdmin; ?>">
+          <!-- Nombre TAREA-->
+          <td><span class="text LinkTarea"><a href="<?php base_url()?>cPersona/verTarea/<?php echo $Tareas->idTarea; ?>"><?php echo $Tareas->TituloTarea;?></a></span></td>
+          <!-- Nombre Contacto-->
+          <td><span class="text linkContacto"><a href="<?php echo $verContacto[$Tareas->idTarea];?>"><?php echo $NombreContacto[$Tareas->idTarea];?></a></span></td>
+          <!-- Nombre Administrador-->
+          <td><?php echo $Administradores; ?></td>
+          <!-- Origen-->
+          <td><?php if(isset($ObjetivoSignal[$Tareas->idTarea])){ echo $ObjetivoSignal[$Tareas->idTarea];}else{ echo "Independiente";}?></td>
+
+            <!-- Fecha Fin-->
+          <td><span class="text"><?php echo $Tareas->FechaFin; ?></span></td>
+            <!--  Estatus Tarea-->
+          <td><span class="text"><?php echo $Tareas->StatusTarea; ?></span></td>
+            <!-- Nombre del usuario que la crea-->
+          <td><?php echo $Tareas->NombreU ?></td>
+            <!-- Razón -->
+          <td class="text-center">
+            <?php echo $Tareas->StatusFinal; ?>
+          </td>
+
+        </tr>
+        <? } }?>
+      </tbody>
+        <div class="box-footer clearfix no-border">
+            <button id="btn_nTarea" class="btn btn-default pull-right " data-toggle="modal" data-target="#ModalTarea"><i class="fa fa-plus fa-x2"></i> Nueva Tarea</button>
+        </div>
+    </table>
+  </div>
+  </div>
+  </div>
 </section>
-    <!-- Main content -->
-<!-- <section class="content">
-      <div class="row">
-      <div class="col-md-12">
-        <div class="nav-tabs-custom">
-            <div class="text-center bg-white" style="padding: 1px; margin: 10px 15px 0px 15px; border-radius: 20px">
-                <ul class="nav nav-tabs">
-                  <li class="active col-md-3 text-center">
-                    <a class="btn" href="#tab_Empresas" data-toggle="tab" style="border-radius: 10px; margin-bottom: 3px;">
-                      <i class="fa fa-list "></i>&nbsp;Tareas con Empresas
-                    </a>
-                  </li>
-                  <li class="col-md-3">
-                    <a class="btn text-center" href="#tab_Personas" data-toggle="tab" style="border-radius: 10px; margin-bottom: 3px;">
-                      <i class="fa fa-list"></i>&nbsp;Tareas con Personas
-                    </a>
-                  </li>
-                </ul>
-            </div>
-        </div>
-        <div class="tab-content">
-            <div class="tab-pane active" id="tab_Empresas"> 
-              <div class="col-md-12">
-                <!-- Custom Tabs -->
-               <!--  <div class="nav-tabs-custom">
-                  <ul class="nav nav-tabs">
-                    <li class="active"><a href="#Tareas_Pendientes" data-toggle="tab">Tareas Pendientes</a></li>
-                    <li><a href="#Tareas_Realizadas" data-toggle="tab">Tareas Realizadas</a>
-                    </li>
-                    <li class="pull-right">
-                   <span class="text-muted" style="padding: 10px 0px">Prioridad:&nbsp;
-                      <i class="fa fa-bookmark text-red">Alta</i> &nbsp;
-                      <i class="fa fa-bookmark text-yellow">Media</i>&nbsp;
-                      <i class="fa fa-bookmark text-green">Baja</i>
-                    </span>
-                    </li>
-                  </ul>
-                  <div class="tab-content">
-                    <div class="tab-pane active" id="Tareas_Pendientes">
-                <div class="box box-primary">  <!-- LISTA TAREAS -->
-   <!--                      <div class="box-header">
-                          <i class="fa fa-university"></i>
-                          <i class="ion ion-clipboard"></i>
-                          <h3 class="box-title">TAREAS</h3>
-                        </div>
-                        <div class="box-body" id="ContTareas">
-                          <ul class="todo-list" id="ListaTareas">
-                          </ul>
-                        </div>
-                        <div class="box-footer clearfix no-border">
-                            <button id="btn_nTarea" class="btn btn-default pull-right " data-toggle="modal" data-target="#ModalTarea"><i class="fa fa-plus fa-x2"></i> Nueva Tarea</button>
-                        </div>
-                      </div>
-                    </div> -->
-                    <!-- /.tab-pane --> 
-                      <!-- <div class="tab-pane" id="Tareas_Realizadas"> -->
-                        <!-- <b>Empresas:</b> -->
-                <!-- <div class="box box-primary">  <!-- LISTA TAREAS -->
-                        <!-- <div class="box-header"> -->
-                          <!-- <i class="fa fa-university"></i> -->
-                          <!-- <i class="ion ion-clipboard"></i> -->
-                          <!-- <h3 class="box-title">TAREAS</h3> -->
-                        <!-- </div> -->
-                        <!-- <div class="box-body" id="ContTareas"> -->
-                          <!-- <ul class="todo-list" id="ListaTareasRealizadasEmp"> -->
-                          <!-- </ul> -->
-                        <!-- </div> -->
-          <!--               <div class="box-footer clearfix no-border">
-                            <button id="btn_nTarea" class="btn btn-default pull-right " data-toggle="modal" data-target="#ModalTarea"><i class="fa fa-plus fa-x2"></i> Nueva Tarea</button>
-                        </div>
-                      </div> -->          
-                        <!-- </div>/.tab-pane -->
-                  <!-- </div>/.tab-content -->
-                <!-- </div>nav-tabs-custom -->
-              <!-- </div>/.col -->
-            <!-- </div> -->
-
-            <!-- <div class="tab-pane" id="tab_Personas"> -->
-              <!-- <div class="col-md-12"> -->
-                    <!-- Custom Tabs -->
-         <!--            <div class="nav-tabs-custom">
-                      <ul class="nav nav-tabs">
-                        <li class="active"><a href="#Tareas_PendientesPersonas" data-toggle="tab">Tareas Pendientes</a></li>
-                        <li><a href="#Tareas_RealizadasPersona" data-toggle="tab">Tareas Realizadas</a></li>
-                        <li class="pull-right">             
-                          <span class="text-muted" style="padding: 10px 0px">Prioridad:&nbsp;
-                            <i class="fa fa-bookmark text-red">Alta</i>&nbsp;
-                            <i class="fa fa-bookmark text-yellow">Media</i>&nbsp;
-                            <i class="fa fa-bookmark text-green">Baja</i>
-                          </span>
-                        </li>
-                      </ul>
-                      <div class="tab-content">
-                        <div  class="tab-pane active" id="Tareas_PendientesPersonas">
-
-                    <div class="box box-primary">  <!-- LISTA TAREAS de PERSONAS -->
-                            <!-- <div class="box-header"> -->
-                             <!-- <i class="fa fa-users"></i>
-                             <i class="ion ion-clipboard"></i>
-                             <h3 class="box-title">TAREAS</h3>
-                            </div>
-                            <div class="box-body" id="ContTareas">
-                                <ul class="todo-list" id="ListaTareasPersonas">
-                                </ul>
-                            </div>
-                            <div class="box-footer clearfix no-border">
-                                <button id="btn_nTarea" class="btn btn-default pull-right " data-toggle="modal" data-target="#ModalTareap"><i class="fa fa-plus fa-x2"></i> Nueva Tarea</button>
-                            </div>
-                          </div> -->
-                        <!-- </div>/.tab-pane -->
-                          <!-- <div class="tab-pane" id="Tareas_RealizadasPersona"> -->
-                            <!-- <b>Personas:</b> -->
-                            <!-- <div class="box box-primary">  LISTA TAREAS de PERSONAS -->
-              <!--               <div class="box-header">
-                             <i class="fa fa-users"></i>
-                             <i class="ion ion-clipboard"></i>
-                             <h3 class="box-title">TAREAS</h3>
-                            </div>
-                            <div class="box-body" id="ContTareas">
-                                <ul class="todo-list" id="ListaTareasRealizadasPersonas">
-                                </ul>
-                            </div>
-                            <div class="box-footer clearfix no-border">
-                                <button id="btn_nTarea" class="btn btn-default pull-right " data-toggle="modal" data-target="#ModalTareap"><i class="fa fa-plus fa-x2"></i> Nueva Tarea</button>
-                            </div>
-                          </div> -->
-                          <!-- </div>/.tab-pane -->
-                      <!-- </div>/.tab-content -->
-                    <!-- </div>nav-tabs-custom -->
-                  <!-- </div>/.col -->
-            <!--</div>
-          </div>
-        </div>
-      </div>
-</section> -->
 
 <div class="modal fade modal-info" id="ModalTareap" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
