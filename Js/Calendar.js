@@ -3,9 +3,6 @@ $(document).ready(function() {
 	$('#calendar').fullCalendar({
 		    eventClick: function(calEvent, jsEvent, view) {
 
-        // alert('Event: ' + calEvent.title);
-        // alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-        // alert('View: ' + view.name);
 $('#Tarea').html('');
 $('#Categoria').html('');
 $('#Prioridad').html('');
@@ -25,10 +22,6 @@ $('#divTitleTarea').addClass(''+$clase);
 
 
 
-
-        // change the border color just for fun no yet::
-        // $(this).css('border-color', 'red');
-
     },
 	header: {
 		left: 'prev,next today',
@@ -46,17 +39,22 @@ $('#divTitleTarea').addClass(''+$clase);
 		function(data){
 			var datos = $.parseJSON(data);
 			$.each(datos,function(i,item){
+		if (item.StatusTarea!=='Rechazada') {
+			if (item.StatusTarea!=='Pendiente Aceptar') {
 			var a = item.Asignados.indexOf(idUsuarioActivo); 
 			if (a>=1) {
 				var event={id:item.idTarea , title:item.TituloTarea, start:item.FechaFin, allDay:true, className:'evtTareas', prioridad:item.Prioridad ,status:item.StatusTarea, categoria:item.Categoria, descripcion:item.Descripcion};
 				$('#calendar').fullCalendar('renderEvent',event,true);
 			}
+		}
+		}
 		})
 	});
 	$.post(baseurl+"cCalendario/getEventosObjetivos",
 		function(data){
 			var datos = $.parseJSON(data);
 			$.each(datos,function(i,item){
+
 			if (item.PersonaCargo===idUsuarioActivo) {
 				var event={id:item.idNegociacion , title:item.NombreNegociacion, start:item.FechaLimite, allDay:true, className:'evtObjetivos', motivo:item.Motivo, prioridad:item.Prioridad, status:item.Status, descripcion:item.Detalles};
 				$('#calendar').fullCalendar('renderEvent',event,true);
