@@ -17,6 +17,12 @@
 .evtObjetivos{
 	background-color: #556cd1;
 }
+.evtObjetivos a{
+	color:white;
+}
+.evtTareas a{
+	color:white;
+}
 .evtTareas{
 	background-color: #208989;
 }

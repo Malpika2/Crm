@@ -8,6 +8,7 @@
     	#Inicio p{
     		color:black;
     	}
+
     </style>
     <section class="content">
         <div class="col-md-12">

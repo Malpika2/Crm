@@ -9,7 +9,8 @@ $('#Prioridad').html('');
 $('#StatusTarea').html('');
 $('#Descripcion').html('');
 $('#Motivo').html('');
-$('#Tarea').html(calEvent.title);
+$link='';
+// $('#Tarea').html(calEvent.title);
 $('#Categoria').html(calEvent.categoria);
 $('#Prioridad').html(calEvent.prioridad);
 $('#StatusTarea').html(calEvent.status);
@@ -19,6 +20,12 @@ $clase = calEvent.className;
 $('#divTitleTarea').removeClass('evtObjetivos');
 $('#divTitleTarea').removeClass('evtTareas');
 $('#divTitleTarea').addClass(''+$clase);
+if ($clase=='evtObjetivos'){
+	$('#Tarea').html('<a href="'+baseurl+'cPersona/VerNegociacion/'+calEvent.id+'">'+calEvent.title+'</a>');
+}if ($clase=='evtTareas'){
+	$('#Tarea').html('<a href="'+baseurl+'cPersona/VerTarea/'+calEvent.id+'">'+calEvent.title+'</a>');
+}
+
 
 
 
