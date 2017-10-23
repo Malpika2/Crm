@@ -109,9 +109,11 @@ class cTareas extends CI_Controller
 		if ($status==null) {
 		$data['message2']= '';
 		$data['type']='success';
+		$TituloNotificacion='Tarea Aceptada:';
 		}else {
 		$data['type']='danger';
 		$data['message2']= 'Razon: '.$status.'.';
+		$TituloNotificacion='Tarea Rechazada:';
 		}
 		
 
@@ -127,7 +129,7 @@ class cTareas extends CI_Controller
 		{
 			echo 'Ouch, something happend. Could not trigger event.';
 		}
-		$this->mNotificaciones->crearNotificacion($tarea);
+		$this->mNotificaciones->crearNotificacion($tarea,$TituloNotificacion);
 	}
 	public function actNotificacionesRechazada_Leida(){
 		$id = $this->input->post('idTarea');

@@ -328,8 +328,7 @@ $('#form, #fat, #formTareaEmpresas2').submit(function() {
                 $("#formTareaEmpresas2")[0].reset();
                 $("#ModalTarea").modal("hide");
                 $("#Asignados").val(null).trigger("change");
-                recargar();              
-              }
+ location.reload();               }
           });
           
           return false;

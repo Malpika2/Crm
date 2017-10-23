@@ -7,12 +7,10 @@ class cPersona extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->library('My_phpmailer');
 		$this->load->model('crm/mPersona');
 		$this->load->model('crm/mTelefono');
 		$this->load->model('crm/mCorreo');
 		$this->load->model('crm/mDireccion');
-
 		$this->load->model('crm/mUsuario');
 		$this->load->model('crm/mGetPersonas');
 		$this->load->model('crm/mGetEmpresas');

@@ -40,8 +40,10 @@ class mTareas extends CI_Model
 			'idEmpresa'=>null);//Personas a participar
 		$this->db->insert('Participantes_Tareas',$campos);
 		if($this->db->affected_rows()>0){
+			if ($this->session->userdata('s_idUsuario')!=$s) { //Si no es una tarea creada para uno mismo notifica.
 			
 			$camposNotif = array(
+				'TituloNotificacion' => 'Nueva Tarea:',
 				'idTarea' =>$param['UltimaTarea'],
 				'idUsuario' => $s);
 
@@ -49,7 +51,11 @@ class mTareas extends CI_Model
 			$this->trigger_event($s,$param['TituloTarea']);
 
 			return true;
-		}else {return false;}
+			}else{
+			 	$this->StatusAceptar($param['UltimaTarea']);
+			}
+		}
+		else {return false;}
 	}
 
 	public function trigger_event($s,$TituloTarea)

@@ -75,13 +75,13 @@ $(document).ready(function(){
  			$.each(Notificaciones,function(i,item){
  				num_notificaciones++;
  				$('#notificaciones_menu').append(
- 					'<li class="col-md-12" style="padding:0px; margin:0px;" id="item2'+item.idNotificaciones+'">'+
- 							'<a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'" class="col-md-10">'+
-								'<i class="fa fa-file-text-o text-green col-md-1" style="padding:0px; margin:0px;"></i>'+
-								'<div style="overflow:hidden; text-overflow:ellipsis; padding:0px;">'+item.TituloTarea+''+
+ 					'<li class="col-md-12 col-xs-12" style="padding:0px; margin:0px;" id="item2'+item.idNotificaciones+'">'+
+ 							'<a href="'+baseurl+'cPersona/verTarea/'+item.idTarea+'" class="col-md-10 col-xs-10">'+
+								'<i class=" col-xs-1 fa fa-file-text-o text-green" style="padding:0px; margin:0px;"></i>'+
+								'<div style=" col-xs-11 overflow:hidden; text-overflow:ellipsis; padding:0px;"><b>'+item.TituloNotificacion+'</b> '+item.TituloTarea+''+
 								'</div>'+
  					 		'</a>'+
- 					 		'<button onClick="NotifVisto('+item.idNotificaciones+')" class=" btn btn-danger btn-xs"><i class="fa  fa-minus-square"></i></button>'+
+ 					 		'<button onClick="NotifVisto('+item.idNotificaciones+')" class=" btn btn-danger btn-xs pull-right"><i class="fa  fa-minus-square"></i></button>'+
  					'</li>')
 
  			});
