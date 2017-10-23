@@ -95,8 +95,6 @@ class cNegociacion extends CI_Controller
 		echo json_encode($result);
 	}
 	public function ActualizarAvance(){
-		// $idNegociacion = $this->input->post('idNegociacion');
-		// $Status = $this->input->post('Status');
 		$result = $this->mNegociacion->ActualizarAvance();
 		echo json_encode($result);
 	}
@@ -109,7 +107,6 @@ class cNegociacion extends CI_Controller
 		$idNeg = $this->input->post('idNeg');	
 		$cont = $this->input->post('cont');
 		$this->mNegociacion->ActualizarCancelada($idNeg,$cont);
-
 	}
 	public function ActualizarActiva(){
 		$idNeg = $this->input->post('idNeg');
@@ -127,7 +124,9 @@ $param['idObjetivo'] = $this->input->post('idObjetivo');
 	}
 	public function ActualizarStatus(){
 		$idNegociacion = $this->input->post('idNegociacion');
-		$this->mNegociacion->ActualizarStatus($idNegociacion);
+		$EstatusAvance = $this->input->post('EstatusAvance');
+		$this->mNegociacion->ActualizarStatus($idNegociacion,$EstatusAvance);
+
 		return true;
 	}
 }

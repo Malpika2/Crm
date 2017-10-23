@@ -297,6 +297,7 @@ $.post(baseurl+"cTareas/getTareas_deObjetivos",
     var Activa =0;
     var Cancelada =0;
     var Realizada =0;
+    var EstatusAvance='';
     $.each(emp,function(i,item){
       var texto = $('#idUsuarioc').val();
       var cadena = item.Asignados;
@@ -337,12 +338,19 @@ $.post(baseurl+"cTareas/getTareas_deObjetivos",
       Avance = (Realizada/Avance)*100;
       if (Avance>0) {
       $('#Avance').html(Math.round(Avance)+'%');  
-      $.post(baseurl+"cNegociacion/ActualizarStatus",
-        {
-          idNegociacion:idNegociacion
-        },
-        function(data){
-        });
+        if (Avance==100){
+          alert(Avance);
+           EstatusAvance='Completado';
+        }else{alert(Avance);
+           EstatusAvance='En Proceso';
+        }
+          $.post(baseurl+"cNegociacion/ActualizarStatus",
+          {
+            idNegociacion:idNegociacion,
+            EstatusAvance:EstatusAvance
+          },
+          function(data){
+          });
       }
     $('#LineaTareasOb').append(
     '<li>'+                  

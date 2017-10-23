@@ -152,9 +152,9 @@ class mNegociacion extends CI_Model
 		$this->db->where('idNegociacion',$param['idObjetivo']);
 		$this->db->update('Negociaciones',$data);
 	}
-	public function ActualizarStatus($s)
+	public function ActualizarStatus($s,$EstatusAvance)
 	{
-		$this->db->set('Status','Completado');
+		$this->db->set('Status',$EstatusAvance);
 		$this->db->where('idNegociacion',$s);
 		$this->db->update('Negociaciones');
 	}
