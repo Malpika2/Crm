@@ -338,10 +338,9 @@ $.post(baseurl+"cTareas/getTareas_deObjetivos",
       Avance = (Realizada/Avance)*100;
       if (Avance>0) {
       $('#Avance').html(Math.round(Avance)+'%');  
-        if (Avance==100){
-          alert(Avance);
+        if (Activa==0){
            EstatusAvance='Completado';
-        }else{alert(Avance);
+        }else{
            EstatusAvance='En Proceso';
         }
           $.post(baseurl+"cNegociacion/ActualizarStatus",
@@ -350,6 +349,7 @@ $.post(baseurl+"cTareas/getTareas_deObjetivos",
             EstatusAvance:EstatusAvance
           },
           function(data){
+            $('#Estatus').html(EstatusAvance);
           });
       }
     $('#LineaTareasOb').append(
