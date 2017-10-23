@@ -115,6 +115,10 @@ $MostrarBotonesAceptar=false;
                   </div>
                 <?php endif ?>
                 <div class="col-md-12">
+                  <label>Tarea creada por:</label><ul>
+                  <p><?php echo $row_UsuarioCrea->Nombre.' '.$row_UsuarioCrea->Paterno; ?></p></ul>
+                </div>
+                <div class="col-md-12">
                   <label class="">Descripcion:</label>
                   <textarea class="form-control"  type="text" name="Descripcion" id="Descripcion" value="" disabled><?php echo $row_Tareas->Descripcion?></textarea>
                 </div>

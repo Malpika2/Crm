@@ -77,7 +77,12 @@
         ?>
         <tr id="<?php echo $NAdmin; ?>">
           <!-- Nombre TAREA-->
-          <td><span class="text LinkTarea"><a href="<?php base_url()?>cPersona/verTarea/<?php echo $Tareas->idTarea; ?>"><?php echo $Tareas->TituloTarea;?></a></span></td>
+          <td><span class="text LinkTarea"><a href="<?php base_url()?>cPersona/verTarea/<?php echo $Tareas->idTarea; ?>"><?php
+          echo $Tareas->TituloTarea;
+              // echo substr(strip_tags($Tareas->TituloTarea), 0,100);
+              // echo strlen($Tareas->TituloTarea);
+                  // if (strlen(strip_tags($Tareas->TituloTarea)) >100){echo "...";}
+          ?></a></span></td>
           <!-- Nombre Contacto-->
           <td><span class="text linkContacto"><a href="<?php echo $verContacto[$Tareas->idTarea];?>"><?php echo $NombreContacto[$Tareas->idTarea];?></a></span></td>
           <!-- Nombre Administrador-->
@@ -342,7 +347,7 @@
                       <div class="input-group-addon">
                         <span>Empresas:</span>
                       </div>
-                      <select id="EmpresasPart" name="EmpresasPart[]" class="form-control select2" multiple="multiple" data-placeholder="Empresas Participantes" style="width: 100%;" required>
+                      <select id="EmpresasPart" name="EmpresasPart[]" class="form-control select2" multiple="multiple" data-placeholder="Empresas Participantes" style="width: 100%;">
                       </select>
                     </div>
                   </div>
@@ -351,7 +356,7 @@
                       <div class="input-group-addon">
                         <span>Personas:</span>
                       </div>
-                      <select id="PersonasPart" name="PersonasPart[]" class="form-control select2" multiple="multiple" data-placeholder="Personas Participantes" style="width: 100%;" required>
+                      <select id="PersonasPart" name="PersonasPart[]" class="form-control select2" multiple="multiple" data-placeholder="Personas Participantes" style="width: 100%;" >
                       </select>
                     </div>
                   </div>

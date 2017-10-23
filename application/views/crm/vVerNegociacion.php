@@ -65,6 +65,12 @@
                   <textarea class="form-control"  type="text" name="Motivo" id="Motivo" value="" disabled><?php echo $row_Negociacion->Motivo; ?></textarea>
                 </div>
                 <div class="col-md-12">
+                  <label>Objetivo Creado Por:</label>
+                  <ul>
+                    <?php echo $row_UsuarioCrea->Nombre.' '.$row_UsuarioCrea->Paterno; ?>
+                  </ul>
+                </div>
+                <div class="col-md-12">
                   <label class="">Detalles:</label>
                   <textarea type="text" id="Detalles" name="Detalles" class="form-control" disabled value=""><?php echo $row_Negociacion->Detalles; ?></textarea>
                 </div>

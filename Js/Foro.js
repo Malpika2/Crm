@@ -96,14 +96,15 @@ function comentariosPorTema(){
                         'Generar Tarea</button>');
                     }
                   }
-                    if (NombreUsuarioActivo==='Anthony') {
+                    if (NombreUsuarioActivo==='Anthony' || NombreUsuarioActivo==='Yasser') {
                       $('#item'+item.idComentario+'').append(
                         '<button type="button" onclick="VistoComent(\'Visto\','+item.idComentario+');" id="btnVistoComent" name="btnVistoComent" class="pull-right fa fa-check btn btn-info btn-xs" value="Realizado">'+
                         'Visto</button>'+
                         '<button type="button" onclick="VistoComent(\'Pendiente\','+item.idComentario+');" id="btnPendienteComent" name="btnPendienteComent" class="pull-right fa fa-check btn btn-warning btn-xs" value="pendiente">'+
                         'Pendiente</button>'+
                         '<button type="button" onclick="VistoComent(\'Realizado\','+item.idComentario+');" id="btnVistoComent" name="btnVistoComent" class="pull-right fa fa-check btn btn-success btn-xs" value="Visto">'+
-                        'Realizado</button>')}
+                        'Realizado</button>')
+                    }
                     if (item.Visto=='1') {
                       $('#divCheck'+item.idComentario).append('<small class="bg-blue label">Visto</small>');
                     }

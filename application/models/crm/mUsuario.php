@@ -27,4 +27,11 @@ class mUsuario extends CI_Model
 				return false;
 			}
 	}
+	public function getUsuario($id){
+		$this->db->select('*');
+		$this->db->from('Usuarios');
+		$this->db->where('idUsuario',$id);
+		$r= $this->db->get();
+		return $r->row();
+	}
 }?>

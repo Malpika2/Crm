@@ -8,7 +8,7 @@
         <div class="box-header with-border">
           <h3 class="box-title "><h2><?php echo strtoupper($row_TemaForo->TituloTema);?></h2></h3>
             <span><?php echo $row_TemaForo->AsuntoTema; ?></span>
-<?php if($this->session->userdata('s_Nombre')=='Anthony'){;?><button type="button" class="btn btn-info pull-right" data-toggle="modal" data-target="#ModalTareasForo">Tareas</button><?php } ?>
+<?php if($this->session->userdata('s_Nombre')=='Anthony' OR $this->session->userdata('s_Nombre')=='Yasser' ){;?><button type="button" class="btn btn-info pull-right" data-toggle="modal" data-target="#ModalTareasForo">Tareas</button><?php } ?>
 
         </div>
         <div class="box-body" id="ComentariosTemaForo">

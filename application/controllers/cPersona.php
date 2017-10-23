@@ -12,6 +12,8 @@ class cPersona extends CI_Controller
 		$this->load->model('crm/mTelefono');
 		$this->load->model('crm/mCorreo');
 		$this->load->model('crm/mDireccion');
+
+		$this->load->model('crm/mUsuario');
 		$this->load->model('crm/mGetPersonas');
 		$this->load->model('crm/mGetEmpresas');
 		$this->load->model('crm/mTareas');
@@ -86,7 +88,7 @@ $param['DatosFiscalesPersona'] = $this->input->post('DatosFiscalesPersona');
 		$data['row_Empresa'] = $this->mGetEmpresas->getEmpresaPorId($row_Tareas->idEmpresa);
 		$data['row_Objetivo'] = $this->mNegociacion->getNegociacion($row_Tareas->idNegociacion);
 		$data['row_Persona'] = $this->mGetPersonas->getPersonaPorId($row_Tareas->idPersona);
-
+		$data['row_UsuarioCrea'] = $this->mUsuario->getUsuario($row_Tareas->idUsuarioCrea);
 		// $Tareas = $this->mTareas->getTareas_deEmpresas_PorUsuario();
 		// $data['row_Tareas'] = $this->mTareas->getTareas_deEmpresas_PorUsuario($idTarea);
 
@@ -264,8 +266,9 @@ $param['DatosFiscalesPersona'] = $this->input->post('DatosFiscalesPersona');
 	}
 	public function verNegociacion($idNegociacion){
 		if($this->session->userdata('s_login')==1){
-		$data['row_Negociacion'] = $this->mNegociacion->getNegociacionyEmpresa($idNegociacion);
-		// $data['row_Empresa'] = $this->mNegociacion->getNegociacionyEmpresa($idNegociacion);
+			$row_Negociacion=$this->mNegociacion->getNegociacionyEmpresa($idNegociacion);
+		$data['row_Negociacion'] = $row_Negociacion;
+		$data['row_UsuarioCrea'] = $this->mUsuario->getUsuario($row_Negociacion->CreadaPor);
 		$this->load->view('crm/header');
 		$this->load->view('crm/menu');
 		$this->load->view('crm/vVerNegociacion',$data);
