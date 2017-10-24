@@ -8,6 +8,7 @@ $('#form, #fat, #formUpdateEmpresa').submit(function() {
                 location.reload(baseurl+'cPersona/verEmpresa/'+idEmpresa);
               }
           });;
+          return true;
   });
 
 //Mostrar Comentarios
