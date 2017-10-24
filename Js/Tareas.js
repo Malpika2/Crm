@@ -636,14 +636,14 @@ filtrarTareas = function(){
   var FTareas = $('#FiltroTareas').val();
   $('#column2_search').val(FTareas);
   $('#column2_search').keyup();
-  $('#TablaTareas>thead>tr>th:nth-of-type(3)').HiddenTables(); 
-  $('#TablaTareas>tfoot>tr>th:nth-of-type(3)').HiddenTables();
-  $('#TablaTareas>tbody>tr>td:nth-of-type(3)').HiddenTables(); 
-  if (FTareas==''){
-  $('#TablaTareas>thead>tr>th:nth-of-type(3)').ShowTables(); 
-  $('#TablaTareas>tfoot>tr>th:nth-of-type(3)').ShowTables();
-  $('#TablaTareas>tbody>tr>td:nth-of-type(3)').ShowTables(); 
-  }
+  // $('#TablaTareas>thead>tr>th:nth-of-type(3)').HiddenTables(); 
+  // $('#TablaTareas>tfoot>tr>th:nth-of-type(3)').HiddenTables();
+  // $('#TablaTareas>tbody>tr>td:nth-of-type(3)').HiddenTables(); 
+  // if (FTareas==''){
+  // $('#TablaTareas>thead>tr>th:nth-of-type(3)').ShowTables(); 
+  // $('#TablaTareas>tfoot>tr>th:nth-of-type(3)').ShowTables();
+  // $('#TablaTareas>tbody>tr>td:nth-of-type(3)').ShowTables(); 
+  // }
 }
  jQuery.fn.HiddenTables = function()  //Oculta las filas seleccionadas
    {

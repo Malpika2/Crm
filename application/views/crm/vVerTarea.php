@@ -7,7 +7,11 @@
 </style>
 
     <section class="content-header">
-      <label class="h3">Tarea:</label>&nbsp;&nbsp;<label class="h3 text-info text-red"><?php echo strtoupper($row_Tareas->TituloTarea); ?></label> 
+      <label class="h3">Tarea:</label>&nbsp;&nbsp;<label class="h3 text-info text-red"><?php 
+      
+$variable = strtr(strtoupper($row_Tareas->TituloTarea),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
+echo $variable;
+      ?></label> 
     </section>
     <?php
 $ActivarBotones=false;

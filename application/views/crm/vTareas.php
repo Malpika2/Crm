@@ -41,7 +41,7 @@
           <th>Administrador</th>
           <th>Origen</th>
           <th>Fecha Fin</th>
-          <th id="Prioridad">Prioridad</th>
+          <th>Prioridad</th>
           <th>Creada Por</th>
           <th>Acciones</th>
         </tr>
@@ -53,7 +53,7 @@
           <th>Administrador</th>
           <th>Origen</th>
           <th>Fecha Fin</th>
-          <th id="Prioridad">Prioridad</th>
+          <th>Prioridad</th>
           <th>Creada Por</th>
           <th>Acciones</th>
         </tr>

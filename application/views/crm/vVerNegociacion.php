@@ -16,7 +16,9 @@
 </style>
 
     <section class="content-header">
-      <label class="h3">Objetivo:</label>&nbsp;&nbsp;<label class="h3 text-info text-red"><?php echo strtoupper($row_Negociacion->NombreNegociacion); ?></label> 
+      <label class="h3">Objetivo:</label>&nbsp;&nbsp;<label class="h3 text-info text-red"><?php
+      echo strtr(strtoupper($row_Negociacion->NombreNegociacion),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
+       ?></label> 
     </section>
 
 <section class="content">

@@ -347,7 +347,6 @@ $('#linkMenuUsuarios').removeClass('active');
 
     // DataTable 
      var table = $('#TablaTareas').DataTable({
-
       "paging": true,
       "lengthChange": false,
       "searching": true,
@@ -374,6 +373,7 @@ $('#linkMenuUsuarios').removeClass('active');
             "sPrevious": "Anterior"
             }}
     });
+
 
     $('#column2_search').on( 'keyup', function () {
     table
