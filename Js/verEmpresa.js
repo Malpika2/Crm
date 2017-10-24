@@ -1,70 +1,14 @@
-GuardarEditEmpresa = function(){
-var idEmpresa = $("#idEmpresa").val();
-var ContactoEmp = $("#ContactoEmp").val();
-var NombreEmpresa = $("#NombreEmpresa2").val();
-var SPP = $("#SPP").val();
-var Abreviacion = $("#Abreviacion").val();
-var Tipo = $("#Tipo").val();
-var Representante = $("#idRepresentanteEmp").val();
-var Skype = $("#Skype").val();
-var SitioWeb = $("#SitioWeb").val();
-var Telefono1 = $("#Telefono1").val();
-var Telefono2 = $("#Telefono2").val();
-var Correo1 = $("#Correo1").val();
-var Correo2 = $("#Correo2").val();
-var DatosFiscales = $("#DatosFiscales").val();
-var DireccionOficina = $("#DireccionOficina").val();
-var DireccionFiscal = $("#DireccionFiscal").val();
-var Ciudad = $("#Ciudad").val();
-var Pais = $("#Pais").val();
-
-var ladaTel1input = $("#ladaTel1input").val();
-var TipoTelefono1 = $("#TipoTelefono1").val();
-var ladaTel2input = $("#ladaTel2input").val();
-var TipoTelefono2 = $("#TipoTelefono2").val();
-
-var Productos = $("#Productos").val();
-var PresupuestoPersona = $("#PresupuestoPersona").val();
-var InteresEmpresa = $("#InteresEmpresa").val();
-var ConfianzaEmpresa = $("#ConfianzaEmpresa").val();
-var Motivo = $("#Motivo").val();
-var LugarContacto = $("#LugarContacto").val();
-  
-  $.post(baseurl+"cEmpresa/updateEmpresa/",
-  {  
-    idEmpresa:idEmpresa,
-    ContactoEmp:ContactoEmp,
-    NombreEmpresa:NombreEmpresa,
-    SPP:SPP,
-    Abreviacion:Abreviacion,
-    Tipo:Tipo,
-    Representante:Representante,
-    Skype:Skype,
-    SitioWeb:SitioWeb,
-    Telefono1:Telefono1,
-    Telefono2:Telefono2,
-    Correo1:Correo1,
-    Correo2:Correo2,
-    DatosFiscales:DatosFiscales,
-    DireccionOficina:DireccionOficina,
-    DireccionFiscal:DireccionFiscal,
-    Ciudad:Ciudad,
-    Pais:Pais,
-    ladaTel1input:ladaTel1input,
-    TipoTelefono1:TipoTelefono1,
-    ladaTel2input:ladaTel2input,
-    TipoTelefono2:TipoTelefono2,
-    Productos:Productos,
-    PresupuestoPersona:PresupuestoPersona,
-    InteresEmpresa:InteresEmpresa,
-    ConfianzaEmpresa:ConfianzaEmpresa,
-    Motivo:Motivo,
-    LugarContacto:LugarContacto
-  },
-  function(data){
-    window.location.href = baseurl+"cEmpresa/verEmpresa/"+idEmpresa;              
+//Guardar formulario editar empresa:
+$('#form, #fat, #formUpdateEmpresa').submit(function() {
+          $.ajax({
+              type: 'POST',
+              url: $(this).attr('action'),
+              data: $(this).serialize(),
+              success: function(data) {
+                location.reload(baseurl+'cPersona/verEmpresa/'+idEmpresa);
+              }
+          });;
   });
-}
 
 //Mostrar Comentarios
  if(typeof(idEmpresa) != "undefined"){

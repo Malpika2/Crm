@@ -231,7 +231,8 @@ $param['LugarContacto'] = $this->input->post('LugarContacto');
 		$result=$this->mEmpresa->EmpresaInactiva($idEmpresa,$StatusFinalE);
 	}
 	public function updateEmpresa(){
-		$param['NombreEmpresa'] = $this->input->post('NombreEmpresa');
+
+		$param['NombreEmpresa'] = $this->input->post('NombreEmpresa2');
 		$param['Tipo'] = $this->input->post('Tipo');
 		$param['Representante'] =$this->input->post('Representante');
 		$param['Skype'] = $this->input->post('Skype');
@@ -244,6 +245,7 @@ $param['LugarContacto'] = $this->input->post('LugarContacto');
 		$param['SPP'] = $this->input->post('SPP');
 		$param['Abreviacion'] = $this->input->post('Abreviacion');
 		$param['Email'] = $this->input->post('Correo1');
+
 		$param['Telefono'] = $this->input->post('Telefono1');
 		$param['Telefono2'] = $this->input->post('Telefono2');
 		$param['Email2'] = $this->input->post('Correo2');
@@ -261,6 +263,7 @@ $param['LugarContacto'] = $this->input->post('LugarContacto');
 		$param['ConfianzaEmpresa'] = $this->input->post('ConfianzaEmpresa');
 		$param['Motivo'] = $this->input->post('Motivo');
 		$param['LugarContacto'] = $this->input->post('LugarContacto');
+		$param['Contacto']='';
 
 		if(isset($_POST['ContactoEmp'])){
 		foreach ($_POST['ContactoEmp'] as $contactos_value){
